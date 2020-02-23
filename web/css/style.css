@@ -7,7 +7,7 @@ header nav {
     flex-direction: row;
 }
 
-.cart::before {
+.carrinho::before {
     content: url('../img/shopping-basket-16.png');
 }
 

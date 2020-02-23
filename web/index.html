@@ -10,32 +10,195 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-dark bg-dark p-4 text-light">
             <a href="#" class="navbar-brand mb-1">Meu Pano Online</a>
             <div class="input-group col-md-4 col-sm-12 mb-1">
-                <input type="text" class="form-control" placeholder="Sua pesquisa..." aria-label="Sua pesquisa..." aria-describedby="pesquisa">
+                <input type="text" class="form-control" placeholder="Sua pesquisa..." aria-label="Sua pesquisa..."
+                    aria-describedby="pesquisa">
                 <div class="input-group-append">
                     <button class="btn btn-outline-info" type="button" id="pesquisa"></button>
                 </div>
             </div>
             <div class="mb-1">
-                <button type="button" class="btn btn-outline-success rounded login" data-toggle="modal" data-target="#login"></button>
-                <a class="btn btn-outline-warning text-light rounded cart" href="#"></a>
+                <button type="button" class="btn btn-outline-success rounded login" data-toggle="modal"
+                    data-target="#login"></button>
+                <a class="btn btn-outline-warning text-light rounded carrinho" href="#"></a>
             </div>
         </nav>
     </header>
 
     <main class="container mt-5">
         <div class="row">
-            <h1>Hello World</h1>
+            <div class="col-md-3">
+                <div class="card " style="width: 16rem;">
+                    <img src="./img/27590004_1GG.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pano de Prato #01</h5>
+                        <div class="dropdown-divider"></div>
+                        <p class="card-text text-justify">R$ 49,99</p>
+                        <a href="#" target="_blank" class="btn btn-danger btn-block rounded">Comprar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card " style="width: 16rem;">
+                    <img src="./img/27590004_1GG.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pano de Prato #02</h5>
+                        <div class="dropdown-divider"></div>
+                        <p class="card-text text-justify">R$ 49,99</p>
+                        <a href="#" target="_blank" class="btn btn-danger btn-block rounded">Comprar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card " style="width: 16rem;">
+                    <img src="./img/27590004_1GG.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pano de Prato #03</h5>
+                        <div class="dropdown-divider"></div>
+                        <p class="card-text text-justify">R$ 49,99</p>
+                        <a href="#" target="_blank" class="btn btn-danger btn-block rounded">Comprar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card " style="width: 16rem;">
+                    <img src="./img/27590004_1GG.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pano de Prato #04</h5>
+                        <div class="dropdown-divider"></div>
+                        <p class="card-text text-justify">R$ 49,99</p>
+                        <a href="#" target="_blank" class="btn btn-danger btn-block rounded">Comprar</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <footer>
+    <!-- referencia https://mdbootstrap.com/docs/jquery/navigation/footer/ -->
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark mt-5 pt-4 text-white">
+        <!-- First section -->
+        <div class="container text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row bg-light text-dark">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold mt-3 mb-4">Mapa do Site</h5>
+
+                    <ul class="list-unstyled">
+                        <li><a href="#!" class="text-dark">Inicio</a></li>
+                        <li><a href="#!" class="text-dark">Produtos</a></li>
+                        <li><a href="#!" class="text-dark">Carrinho</a></li>
+                        <li><a href="#!" class="text-dark">Sobre</a></li>
+                        <li><a href="#!" class="text-dark">Contato</a></li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold mt-3 mb-4">Atendimento/Televendas</h5>
+
+                    <ul class="list-unstyled">
+                        <li>(11) 9 9999-9999</li>
+                        <li>&nbsp;</li>
+                        <li>De segunda a sexta-feira, <br>das 08h as 18h.</li>
+                    </ul>
+                </div>
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold mt-3 mb-4">Redes Sociais</h5>
+
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="#!"><img src="./img/facebook-3-32.png" alt=""></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><img src="./img/instagram-3-32.png" alt=""></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><img src="./img/snapchat-32.png" alt=""></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><img src="./img/twitter-3-32.png" alt=""></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><img src="./img/youtube-3-32.png" alt=""></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- First section -->
+
+        <!-- Call to action -->
+        <div class="container text-md-left pt-5">
+            <h5 class="mb-1">Formas de Pagamento</h5>
+            <div class="row">
+                <div class="col-10">
+
+                    <ul class="list-unstyled list-inline py-2">
+                        <li class="list-inline-item">
+                            <img src="./img/mastercard-32.png" alt="">
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="./img/mastercard-32.png" alt="">
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="./img/mastercard-32.png" alt="">
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="./img/mastercard-32.png" alt="">
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="./img/mastercard-32.png" alt="">
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="./img/mastercard-32.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <img src="./img/site-seguro-google.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="container pt-5 pb-4">
+            <div class="row">
+                <div class="col-6">
+                    <a href="#!" class="font-weight-bold text-light text-decoration-none">Meu Pano Online</a>
+                </div>
+
+                <div class=" col-6">
+                    <p class="text-right">&copy; 2020 - Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
 
     </footer>
+    <!-- Footer -->
 
     <div class="modal" tabindex="-1" role="dialog" id="login">
         <div class="modal-dialog" role="document">
@@ -69,4 +232,5 @@
     <script src="./js/script.js"></script>
 
 </body>
+
 </html>
