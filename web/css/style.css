@@ -1,0 +1,16 @@
+header nav {
+    background-color: #fff;
+}
+
+.login::before {
+    content: url('../img/contacts-16.png');
+    flex-direction: row;
+}
+
+.cart::before {
+    content: url('../img/shopping-basket-16.png');
+}
+
+#pesquisa::before {
+    content: url('../img/search-3-16.png');
+}

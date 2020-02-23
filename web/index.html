@@ -8,28 +8,54 @@
     <title>Meu Pano Online</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-
-    <nav class="navbar navbar-dark bg-dark p-4">
-        <a class="navbar-brand">Meu Pano Online (logo)</a>
-        <form class="form-inline">
-            <input type="text" class="form-control" placeholder="Pesquisar por qualquer coisa" aria-label="Pesquisar" aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-success" type="button" id="button-addon2">Pesquisar</button>
+    <header>
+        <nav class="navbar navbar-dark bg-dark p-4 text-light">
+            <a href="#" class="navbar-brand mb-1">Meu Pano Online</a>
+            <div class="input-group col-md-4 col-sm-12 mb-1">
+                <input type="text" class="form-control" placeholder="Sua pesquisa..." aria-label="Sua pesquisa..." aria-describedby="pesquisa">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info" type="button" id="pesquisa"></button>
+                </div>
             </div>
-        </form>
-        <div>
-            <button type="button" class="btn btn-info">Login</button>
-            <button type="button" class="btn btn-danger">Cadastrar</button>
-        </div>
-
-    </nav>
+            <div class="mb-1">
+                <button type="button" class="btn btn-outline-success rounded login" data-toggle="modal" data-target="#login"></button>
+                <a class="btn btn-outline-warning text-light rounded cart" href="#"></a>
+            </div>
+        </nav>
+    </header>
 
     <main class="container mt-5">
-        <div class="container"></div>
+        <div class="row">
+            <h1>Hello World</h1>
+        </div>
     </main>
+
+    <footer>
+
+    </footer>
+
+    <div class="modal" tabindex="-1" role="dialog" id="login">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Acesse o seu cadastro!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>O formulario vai aqui!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success rounded">Login</button>
+                    <button type="button" class="btn btn-outline-danger rounded" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -40,6 +66,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-</body>
+    <script src="./js/script.js"></script>
 
+</body>
 </html>
