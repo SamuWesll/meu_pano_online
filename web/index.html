@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/home/style.css">
+    <title>Meu pano Online</title>
 </head>
 <body>
     <header class="navbar navbar-brack bg-info text-white">
@@ -17,9 +18,113 @@
             <a href="#" class="col-xs-3 text-black"><h4>Categoria 3</h4></a>
             <a href="#" class="col-xs-3 text-black"><h4>Categoria 4</h4></a>
         </div>
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="10000">
+                <img class="img-fluid" src="img/carousel/imagem_01.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                <img src="img/carousel/imagem_02.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="img/carousel/imagem_03.webp" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="beneficios container col-md-12 m-2 d-flex justify-content-around">
+            <div class="part col-md-3">
+                <img src="img/beneficios/truck.png" class="m-2" alt="">
+                <div>
+                    <h6 class="card-title">ENVIO IMEDIATO</h6>
+                    <p class="card-text">após a confirmação do pagamento a <br>média é de 4 horas para a postagem.</p>
+                </div>
+            </div>
+            <div class="part col-md-3">
+                <img src="img/beneficios/credit-card.png" class="m-2" alt="">
+                <div>
+                    <h6 class="card-title">PARCELAMENTO</h6>
+                    <p class="card-text">parcele suas compras em ate 9x sem juros</p>
+                </div>
+            </div>
+            <div class="part col-md-3">
+                <img src="img/beneficios/sketch.png" class="m-2" alt="customize">
+                <h6 class="card-text">CUSTOMIZE</h6>
+                <p>Customize seus panos de pratos e receba em <br>casa com toda a comodidade.</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around m-5">
+            <h5 id="tituloCarouselProdutos" class="text-">Básicos</h5>
+        </div>
+        <div class="m-3 d-flex justify-content-center">
+            <div class="card col-md-2 m-3" style="width: 18rem;">
+                <img src="img/produtos/carousel/produto_01.jfif" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text mb-4">kit 50 panos de pratos, algodão estampandos</p>
+                    <div class="dropdown-divider"></div>
+                    <p class=""><span style="text-decoration: line-through;">R$99,00 </span> <br> <span class="font-weight-bold text-warning" style="text-decoration: none;">R$76,99</span></p>
+                    <p id="textPreco">R$76,99 a vista ou 3x de R$25,66 sem juros</p>
+                </div>
+            </div>
+            <div class="card col-md-2 m-3" style="width: 18rem;">
+                <img src="img/produtos/carousel/produto_02.jfif" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text mb-4">kit 50 panos de pratos, algodão estampandos</p>
+                    <div class="dropdown-divider"></div>
+                    <p class=""><span style="text-decoration: line-through;">R$99,00 </span> <br> <span class="font-weight-bold text-warning" style="text-decoration: none;">R$76,99</span></p>
+                    <p id="textPreco">R$76,99 a vista ou 3x de R$25,66 sem juros</p>
+                </div>
+            </div>
+            <div class="card col-md-2 m-3" style="width: 18rem;">
+                <img src="img/produtos/carousel/produto_01.jfif" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text mb-4">kit 50 panos de pratos, algodão estampandos</p>
+                    <div class="dropdown-divider"></div>
+                    <p class=""><span style="text-decoration: line-through;">R$99,00 </span> <br> <span class="font-weight-bold text-warning" style="text-decoration: none;">R$76,99</span></p>
+                    <p id="textPreco">R$76,99 a vista ou 3x de R$25,66 sem juros</p>
+                </div>
+            </div>
+            <div class="card col-md-2 m-3" style="width: 18rem;">
+                <img src="img/produtos/carousel/produto_02.jfif" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text mb-4">kit 50 panos de pratos, algodão estampandos</p>
+                    <div class="dropdown-divider"></div>
+                    <p class=""><span style="text-decoration: line-through;">R$99,00 </span> <br> <span class="font-weight-bold text-warning" style="text-decoration: none;">R$76,99</span></p>
+                    <p id="textPreco">R$76,99 a vista ou 3x de R$25,66 sem juros</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <div id="carouselExampleControls m-2" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div> -->
     </section>
     <footer>
         
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

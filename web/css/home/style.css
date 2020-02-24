@@ -1,0 +1,21 @@
+*{
+
+}
+
+/* div beneficios */
+.beneficios {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+.beneficios .part {
+    text-align: center;
+}
+.beneficios img {
+    width: 40px;
+}
+
+/* carousel prudtos */
+#textPreco {
+    font-size: 12px;
+}
