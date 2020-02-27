@@ -6,7 +6,7 @@ let erro = null
 
 function validaCampo(inputForm) {
     if (inputForm.value.length === 0) {
-        alert(`O campo "${inputForm['placeholder']}" é obrigatório`)
+        alert(`O campo "${inputForm.previousElementSibling.innerText}" é obrigatório`)
         inputForm.classList.remove('border-success')
         inputForm.classList.add('border-danger')
         erro++
