@@ -30,11 +30,3 @@ inputCEP.addEventListener('keyup',  (event)=>{
             inputCEP.value = inputCEP.value.substring(0, 8)
         }
 })
-
-btnPesquisarCEP.addEventListener('click', (event)=>{
-    if(inputCEP.value.length<8){
-        alert('Insira um CEP');
-    }else{
-        alert('Buscando CEP');
-    }
-})
