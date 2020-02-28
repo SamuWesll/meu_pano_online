@@ -42,7 +42,6 @@
     color: black;
 }
 
-
 /* formulario de logis */
 #formLogin label {
     margin-top: 10px;
@@ -59,8 +58,10 @@
     font-size: 12px;
 }
 
-@media (max-width: 900px) {
-    * {
-        background-color: blue;
-    }
+#categorias a h4:hover {
+    background-color: rgba(165, 42, 42, 0.35);
+    color: #ffffff;
+    padding: 15px 40px;
+    margin-top: -10px;
+    margin-bottom: -15px;
 }
