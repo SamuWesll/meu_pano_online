@@ -42,6 +42,18 @@
     color: black;
 }
 
+.card button {
+    display: none;
+}
+
+.card :hover button {
+    display: block;
+}
+
+.card :hover #textPreco {
+    display: none;
+}
+
 /* formulario de logis */
 #formLogin label {
     margin-top: 10px;
