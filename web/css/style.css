@@ -16,5 +16,9 @@
 }
 
 .bg-div-green {
-    background-color: rgba(150, 195, 170, 0.5);
+    background-color: rgba(150, 195, 170, 0.5)
+}
+.btnDetalhe{
+    background-color: #03B304;
+    color: #fff;
 }
