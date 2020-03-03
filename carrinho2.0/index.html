@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+
+
+<nav class="navbar navbar-dark bg-dark" >
+	<div style="text-align: center;" class="container">
+	  <a class="navbar-brand" href="#">Resumo do pedido</a>
+	</div>
+  </nav>
+
+<main class="container d-flex justify-content-center" style="margin-top: 50px; text-align: center; background-color: aquamarine;"  >
+<div style=" width: 800px; background-color: rgb(185, 158, 211);" >
+	
+<div>
+	<div style="padding-top: 20px;">
+		<img src="images/pano2.png" class="card-img " alt="...">
+	</div>
+	<h5 class="card-title">Resumo do pedido</h5>
+	Pano de prato - Borda xadrez <strong>R$ 3,49</strong><br>
+	Quantidade: <input type="number" value="1" min="1" max="10" id="qtd1">
+	<button style="background-color:lime; " type="button" id="adicionar1" id="produto1" 
+	onclick="AddCarrinho('Pano de prato - Borda xadrez', 
+	document.getElementById('qtd1').value, '3.49', 1)"> Comprar </button>
+</div>
+
+<div style="padding-top: 20px;">
+	<div>
+		<img src="images/pano1.webp" class="card-img " alt="...">
+	</div>
+	<br>Pano de prato - borda croché <strong>R$ 5,99</strong><br>
+	Quantidade: <input type="number" value="1" min="1" max="10" id="qtd2">
+	<button style="background-color:lime; " type="button" id="adicionar1" id="produto1" onclick="AddCarrinho('Pano de prato - borda croché', 
+	document.getElementById('qtd2').value, '3.90', 2)"> Comprar </button>
+</div>
+
+<div >
+	<div style="padding-top: 20px;">
+		<img src="images/pano3.jpg" class="card-img " alt="...">
+	</div>
+	<br>Pano de prato - personalizado <strong>R$ 7,90</strong><br>
+	Quantidade: <input type="number" value="1" min="1" max="10" id="qtd3">
+	<button style="background-color:lime; "type="button" id="adicionar1" id="produto1" onclick="AddCarrinho('Pano de prato - personalizado',
+	 document.getElementById('qtd3').value, '11.90', 3)"> Comprar </button>
+</div>
+
+<p > 
+	<a href="carrinho.html"> Ver Carrinho de compras </a>
+</p>	
+
+<div class="d-flex justify-content-center">
+	<button type="button" class="btn btn-success" type="button" data-toggle="modal" 
+	data-target="#compraFinalizada">Ir para pagamento</button>
+</div>
+<div id="compraFinalizada" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Você deseja adicionar algo mais?</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <p><b>Obrigado! </b>Você fez uma excelente escolha.</p>
+		</div>
+		<div class="modal-footer">
+		  
+		  <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+</div>
+<div class="form-group" style="margin-left: 12px; margin-top: 15px; width: 400px; height: 750px; position:-webkit-sticky;">
+	<label for="CEPUsuario">CEP</label>
+	<input class="form-control " type="text" id="CEPUsuario" name="CEPUsuario"
+		placeholder="Consultar CEP">
+</div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="script.js"></script>
+
+		
