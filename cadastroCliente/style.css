@@ -1,0 +1,21 @@
+h3 {
+    text-align: center;
+}
+
+div {
+    margin: auto;
+    padding-top: 16px;
+} 
+
+.bg-nav-green, footer {
+    background-color: rgba(31, 189, 139, 0.29);
+}
+
+.bg-div-green {
+    background-color: rgba(150, 195, 170, 0.5);
+}
+
+.bg-nav-green, footer {
+    background-color: rgba(31, 189, 139, 0.29);
+}
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Cadastro cliente</title>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar bg-nav-green p-4 text-light">
+        <a href="#" class="navbar-brand mb-1 text-dark font-weight-bold">Meu Pano Online</a>
+        <div class="input-group col-md-4 col-sm-12 mb-1">
+            <input type="text" class="form-control" placeholder="Sua pesquisa..." aria-label="Sua pesquisa..."
+                aria-describedby="pesquisa">
+            <div class="input-group-append">
+                <button class="btn btn-outline-info" type="button" id="pesquisa"></button>
+            </div>
+        </div>
+        <div class="mb-1">
+            <button type="button" class="btn btn-outline-success rounded login mr-2" data-toggle="modal"
+                data-target="#login"></button>
+            <a class="btn btn-outline-warning text-light rounded carrinho" href="#"></a>
+        </div>
+    </nav>
+</header>
+
+  <main class="container">
+    <form method="post">
+      <div class="col-md-6 just justify-content-center">
+        <header class=" text-light p-2" style="background-color: rgba(31, 189, 139, 0.29)">
+          <h3 style="color: rgb(92, 90, 90);"> Cadastro</h3>
+          <div class="form-group">
+            <label for="nomeUsuario"></label>
+            <input class="form-control" type="text" id="nomeUsuario" name="nomeUsuario" placeholder="Nome completo">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="email" id="emailUsuario" name="emailUsuario" placeholder="E-mail">
+          </div>
+
+          <!-- <div class="form-group" action="" onSubmit="return ( verifica() )" name="frmEnvia">
+            <label for="email"></label>
+            <input class="form-control" type="text" id="email" name="email" onblur="checarEmail();"
+              placeholder="Digite seu email">
+          </div> -->
+
+          <div class="form-group">
+            <input class="form-control" type="password" id="senhaUsuario" name="SenhaUsuario" placeholder="Senha">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" id="confirmarSenhaUsuario" name="confirmarSenhaUsuario"
+              placeholder="Repita sua senha">
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-success" type="button" data-toggle="modal"
+              data-target="#cadastroFinalizado">Cadastrar</button>
+          </div>
+      </div>
+
+      <div id="cadastroFinalizado" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Cadastro realizado com sucesso!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><b>Seja bem vindo!</b></p>
+            </div>
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+</body>
+
+<body>
+
+  <!-- <div class="form-group">
+    <input class="form-control" type="email" id="emailUsuario" name="emailUsuario"
+    placeholder="E-mail">
+  </div> -->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
