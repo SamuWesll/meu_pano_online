@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meu Pano Online</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="css/home/style.css">
-    <title>Meu pano Online</title>
 </head>
 <body>
     <header class="">
@@ -25,11 +30,36 @@
                 <a class="btn btn-outline-warning text-light rounded carrinho" href="#"></a>
             </div>
         </nav>
-
-        
     </header>
-    <section>
 
+    <section class="mt-3">
+        <div id="categorias">
+            <ul class="list-unstyled list-inline d-flex flex-row justify-content-around">
+                <li class="list-inline-item">
+                    <a href="#" class="col-xs-3">
+                        <h4>Personalizados</h4>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#" class="col-xs-3">
+                        <h4>Sem renda</h4>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#" class="col-xs-3">
+                        <h4>Desenhados</h4>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#" class="col-xs-3">
+                        <h4>Bordados</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
 
     </section>
     
@@ -46,7 +76,7 @@
                     <h5 class="font-weight-bold mt-3 mb-4">Mapa do Site</h5>
 
                     <ul class="list-unstyled">
-                        <li><a href="#!" class="text-dark">Inicio</a></li>
+                        <li><a href="#!" class="text-dark">Início</a></li>
                         <li><a href="#!" class="text-dark">Produtos</a></li>
                         <li><a href="#!" class="text-dark">Carrinho</a></li>
                         <li><a href="#!" class="text-dark">Sobre</a></li>
@@ -73,19 +103,19 @@
                     <h5 class="font-weight-bold mt-3 mb-4">Redes Sociais</h5>
 
                     <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
+                        <li class="list-inline-item mb-1">
                             <a href="#!"><img src="./img/facebook-3-32.png" alt=""></a>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item mb-1">
                             <a href="#!"><img src="./img/instagram-3-32.png" alt=""></a>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item mb-1">
                             <a href="#!"><img src="./img/snapchat-32.png" alt=""></a>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item mb-1">
                             <a href="#!"><img src="./img/twitter-3-32.png" alt=""></a>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item mb-1">
                             <a href="#!"><img src="./img/youtube-3-32.png" alt=""></a>
                         </li>
                     </ul>
@@ -107,27 +137,27 @@
 
                     <ul class="list-unstyled list-inline py-2">
                         <li class="list-inline-item">
-                            <img src="./img/mastercard-32.png" alt="">
+                            <i class="text-muted fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <img src="./img/mastercard-32.png" alt="">
+                            <i class="text-muted fa fa-cc-visa fa-2x" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <img src="./img/mastercard-32.png" alt="">
+                            <i class="text-muted fa fa-cc-amex fa-2x" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <img src="./img/mastercard-32.png" alt="">
+                            <i class="text-muted fa fa-cc-discover fa-2x" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <img src="./img/mastercard-32.png" alt="">
+                            <i class="text-muted fa fa-cc-paypal fa-2x" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <img src="./img/mastercard-32.png" alt="">
+                            <i class="text-muted fa fa-cc-diners-club fa-2x" aria-hidden="true"></i>
                         </li>
                     </ul>
                 </div>
                 <div class="col-2">
-                    <img src="./img/site-seguro-google.png" alt="">
+                    <img src="./img/site-seguro-google.png" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -148,34 +178,72 @@
 
     </footer>
 
+    <!-- Modal para o login -->
     <div class="modal" tabindex="-1" role="dialog" id="login">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Já sou cliente PanoOnline</h5>
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100">Já sou cliente PanoOnline</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="#" method="GET">
+                    <div class="modal-body mt-4">
+                        <div class="form-group">
+                            <label for="emailCpfUser" name="testando" class="offset-sm-1">E-mail ou CPF</label>
+                            <input type="email" class="form-control border offset-sm-1 col-10" id="emailCpfUser"
+                                required placeholder="E-mail ou CPF">
+                        </div>
+                        <div class="form-group">
+                            <label for="senhaUser" class="offset-sm-1">Senha</label>
+                            <input type="password" class="form-control border offset-sm-1 col-10" id="senhaUser"
+                                required placeholder="Senha">
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <a id="esqueciSenha"
+                                class="text-uppercase text-decoration-none text-secondary font-weight-bold" href="#"
+                                data-toggle="modal" data-target="#modalEsqueciSenha" data-dismiss="modal">Esqueceu
+                                a senha?</a>
+                            <a class="text-uppercase text-decoration-none text-secondary font-weight-bold pr-1"
+                                href="cadastro.html">Criar cadastro</a>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" id="btnLogin" class="btn btn-outline-success rounded">Login</button>
+                        <button type="button" class="btn btn-outline-danger rounded"
+                            data-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal de esqueci senha -->
+    <div class="modal fade" id="modalEsqueciSenha" tabindex="-1" role="dialog" aria-labelledby="esqueceuSenha"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="esqueceuSenha">Esqueceu sua senha?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- <p>O formulario vai aqui!</p> -->
-                    <form action="" class="">
-                        <div id="formLogin" class="form-group">
-                            <label for="emailOuCPF">E-mail ou CPF:</label>
-                            <input class="form-control" type="text" name="email_ou_cpf" id="emailOuCPF" placeholder="E-MAIL ou CPF">
-                            <label for="senha">Senha*</label>
-                            <input class="form-control" type="password" name="senha" id="senha" placeholder="SENHA">
-                        </div>
-                        <div id="forLoginFooter" class="d-flex justify-content-between">
-                            <a id="esqueciSenha" class="text-uppercase" href="#" data-toggle="modal" data-target="#modalEsqueciSenha" data-dismiss="modal">Esqueceu a senha?</a>
-                            <a class="text-uppercase" href="cadastro.html">Criar cadastro</a>
-                        </div>
+                    <p>Por favor informe o seu endereço de e-mail abaixo. Você receberá um link para redefinir sua
+                        senha.</p>
+                    <form action="">
+                        <label for="emailEsqueciSenha">E-mail</label>
+                        <input class="form-control" type="email" name="emailEsqueciSenha" id="emailEsqueciSenha"
+                            placeholder="Digite o seu e-mail">
                     </form>
-                    
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success rounded">Login</button>
-                    <button type="button" class="btn btn-outline-danger rounded" data-dismiss="modal">Fechar</button>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-success rounded" id="btnEnviarEmail">Enviar</button>
+                    <button type="button" class="btn btn-outline-danger rounded" data-toggle="modal"
+                        data-target="#login" data-dismiss="modal">Voltar</button>
                 </div>
             </div>
         </div>
