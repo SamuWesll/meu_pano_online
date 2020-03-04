@@ -1,0 +1,24 @@
+.login::before {
+    content: url('../img/contacts-16.png');
+    flex-direction: row;
+}
+
+.carrinho::before {
+    content: url('../img/shopping-basket-16.png');
+}
+
+#pesquisa::before {
+    content: url('../img/search-3-16.png');
+}
+
+.bg-nav-green, footer {
+    background-color: rgba(31, 189, 139, 0.29);
+}
+
+.bg-div-green {
+    background-color: rgba(150, 195, 170, 0.5);
+}
+
+img {
+    max-width: 300px;
+}
