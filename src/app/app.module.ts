@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 // import { AngularFontAwesomeModule } from "angular-font-awesome";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { ContatoComponent } from './components/contato/contato.component';
     HeaderComponent,
     FooterComponent,
     SobreComponent,
-    ContatoComponent
+    ContatoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,4 +30,5 @@ import { ContatoComponent } from './components/contato/contato.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -16,6 +16,11 @@ const routes: Routes = [
   {
     path: "contato",
     component: ContatoComponent
+  },
+  {
+    path: "**",
+    redirectTo: "/home",
+    pathMatch: "full"
   }
 ];
 
