@@ -12,6 +12,9 @@ import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produto-detalhado.component';
+import { ProdutosSimilaresComponent } from './components/produtos-similares/produtos-similares.component';
+import { ConsultarFreteComponent } from './components/consultar-frete/consultar-frete.component';
+import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produt
     SobreComponent,
     ContatoComponent,
     LoginComponent,
-    ProdutoDetalhadoComponent
+    ProdutoDetalhadoComponent,
+    ProdutosSimilaresComponent,
+    ConsultarFreteComponent,
+    ProdutosCategoriaComponent
   ],
   imports: [
     BrowserModule,
