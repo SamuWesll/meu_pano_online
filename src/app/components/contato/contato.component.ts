@@ -12,8 +12,10 @@ export class ContatoComponent implements OnInit {
 
   constructor() { }
 
-  private createForm(){
+  private createForm(){}
 
+  contactar(){
+    console.log("cheguei até aqui");
   }
 
   ngOnInit(): void {
