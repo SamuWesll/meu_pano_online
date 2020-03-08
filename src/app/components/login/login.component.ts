@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
+// import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 
 
 @Component({
@@ -9,12 +9,12 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 })
 export class LoginComponent implements OnInit {
 
-  modalRef: BsModalRef
-  constructor(private modalService: BsModalService) { }
+  // modalRef: BsModalRef
+  // constructor(private modalService: BsModalService) { }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template)
-  }
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template)
+  // }
   ngOnInit(): void {
   }
 
