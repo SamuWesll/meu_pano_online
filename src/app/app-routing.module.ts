@@ -8,6 +8,11 @@ import { ContatoComponent } from './components/contato/contato.component';
 const routes: Routes = [
   {
     path: "",
+    redirectTo: "/home",
+    pathMatch: "full"
+  },
+  {
+    path: "home",
     component: HomeComponent
   }, {
     path: "sobre",
