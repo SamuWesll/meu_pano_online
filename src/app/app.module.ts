@@ -15,6 +15,7 @@ import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produt
 import { ProdutosSimilaresComponent } from './components/produtos-similares/produtos-similares.component';
 import { ConsultarFreteComponent } from './components/consultar-frete/consultar-frete.component';
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProdutosCategoriaComponent } from './components/produtos-categoria/prod
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
     // AngularFontAwesomeModule
   ],
   providers: [],
