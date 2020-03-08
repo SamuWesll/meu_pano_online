@@ -1,0 +1,21 @@
+/* .carProdutos{
+    display: flex;
+    flex-direction: row;
+}
+
+.listaProdutos {
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+} */
+
+#app-produtos {
+    /* justify-content: center; */
+}
+
+/* .carousel-item {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blueviolet;
+} */
