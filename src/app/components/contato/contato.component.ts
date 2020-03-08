@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class ContatoComponent implements OnInit {
 
-  //formContato: FormGroup;
+  formContato: FormGroup;
 
   constructor() { }
 

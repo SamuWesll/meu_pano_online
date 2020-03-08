@@ -1,1 +1,30 @@
 <app-home></app-home>
+<main class="container">
+    <div class="row">
+       
+        <div class="col-md-5 mx-auto" id="formContato">
+            <h2 class="pt-1 pb-1">Contato</h2>
+            <form [formGroup]="formContato" >
+                <div class="mt-1">
+                    <label for="nameContact">Nome</label>
+                    <input class="form-control" type="text" name="nameContact" id="nameContact" placeholder="Seu nome">
+                </div>
+                <div class="mt-1">
+                    <label for="emailContact">E-mail</label>
+                    <input class="form-control" type="email" name="emailContact" id="emailContact" placeholder="email@email.com">
+                </div>
+                <div class="mt-1">
+                    <label for="telContact">Telefone</label>
+                    <input class="form-control" type="tel" name="telContact" id="telContact" placeholder="(__)_____-____">
+                </div>
+                <div class="mt-1">
+                    <label for="messageContact">Mensagem</label>
+                    <textarea class="form-control" name="messageContact" id="messageContact" rows="5" cols="33" placeholder="Digite sua mensagem aqui..."></textarea>
+                </div>
+                <div class="mt-2">
+                    <button class="btn btnDetalhe offset-1 col-10" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
