@@ -14,8 +14,11 @@ import { ContatoComponent } from './components/contato/contato.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListaDeProdutosComponent } from './components/lista-de-produtos/lista-de-produtos.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
-
-
+import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produto-detalhado.component';
+import { ProdutosSimilaresComponent } from './components/produtos-similares/produtos-similares.component';
+import { ConsultarFreteComponent } from './components/consultar-frete/consultar-frete.component';
+import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,11 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
     ContatoComponent,
     LoginComponent,
     ListaDeProdutosComponent,
-    ProdutosComponent
+    ProdutosComponent,
+    ProdutoDetalhadoComponent,
+    ProdutosSimilaresComponent,
+    ConsultarFreteComponent,
+    ProdutosCategoriaComponent
   ],
   imports: [
     BrowserModule,
