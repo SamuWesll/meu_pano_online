@@ -23,7 +23,7 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
     SobreComponent,
     ContatoComponent,
     ListaDeProdutosComponent,
-    ProdutosComponent
+    ProdutosComponent,
   ],
   imports: [
     BrowserModule,
