@@ -1,20 +1,4 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { HttpClient } from "@angular/common/http";
-import { Contato } from '../models/Contato';
-
-// function AdaptadorDeContato(data: any[]) {
-//   return data.map(
-//     elem => new Contato(
-//       // elem.codigo,
-//       elem.nome,
-//       elem.email,
-//       elem.telefone,
-//       elem.mensagem
-//     )
-//   )
-// }
-=======
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { Produtos } from '../models/Produtos';
@@ -28,7 +12,6 @@ function JsonProdutosURL(data: any[]) {
     }
   )
 }
->>>>>>> samuel
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +19,6 @@ function JsonProdutosURL(data: any[]) {
 export class HttpService {
 
   constructor(private http: HttpClient) { }
-<<<<<<< HEAD
-=======
 
   getProdutos() {
 
@@ -49,5 +30,4 @@ export class HttpService {
 
   }
 
->>>>>>> samuel
 }
