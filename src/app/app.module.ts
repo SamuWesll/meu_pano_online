@@ -14,6 +14,7 @@ import { ContatoComponent } from './components/contato/contato.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListaDeProdutosComponent } from './components/lista-de-produtos/lista-de-produtos.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 
 
@@ -27,7 +28,8 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
     ContatoComponent,
     LoginComponent,
     ListaDeProdutosComponent,
-    ProdutosComponent
+    ProdutosComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
