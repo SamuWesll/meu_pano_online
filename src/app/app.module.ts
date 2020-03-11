@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ListaDeProdutosComponent } from './components/lista-de-produtos/lista-de-produtos.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -37,6 +38,8 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
     ModalModule.forRoot(),
     // AngularFontAwesomeModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [LoginComponent],
   providers: [],

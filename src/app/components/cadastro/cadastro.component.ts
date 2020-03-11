@@ -12,7 +12,7 @@ export class CadastroComponent implements OnInit {
   formRegister: FormGroup;
 
   constructor() {
-    this.formRegister = this.createForm(new Cadastro(null,null,null,null,null,null));
+    this.formRegister = this.createForm(new Cadastro("@gmail.com",null,null,null,null,null));
   }
 
   private createForm(cadastro: Cadastro): FormGroup {
@@ -24,6 +24,10 @@ export class CadastroComponent implements OnInit {
       genre: new FormControl(cadastro.genre),
       telephone: new FormControl(cadastro.telephone)
     })
+  }
+
+  enviarCadastro() {
+    
   }
 
   ngOnInit(): void {
