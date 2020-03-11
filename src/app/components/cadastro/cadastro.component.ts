@@ -12,7 +12,7 @@ export class CadastroComponent implements OnInit {
   formRegister: FormGroup;
 
   constructor() {
-    this.formRegister = this.createForm(new Cadastro("@gmail.com",null,null,null,null,null));
+    this.formRegister = this.createForm(new Cadastro("",null,null,null,null,null,null,null));
   }
 
   private createForm(cadastro: Cadastro): FormGroup {
@@ -22,7 +22,9 @@ export class CadastroComponent implements OnInit {
       numCPF: new FormControl(cadastro.numCPF),
       birthDate: new FormControl(cadastro.birthDate),
       genre: new FormControl(cadastro.genre),
-      telephone: new FormControl(cadastro.telephone)
+      telephone: new FormControl(cadastro.telephone),
+      cell: new FormControl(cadastro.cell),
+      password: new FormControl(cadastro.password),
     })
   }
 

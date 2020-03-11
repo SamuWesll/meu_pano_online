@@ -9,6 +9,8 @@ export class Cadastro {
         public birthDate: Date,
         public genre: Sexo,
         public telephone: number,
+        public cell: number,
+        public password: string,
     ){}
 
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 // import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxViacepModule } from '@brunoc/ngx-viacep';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ListaDeProdutosComponent } from './components/lista-de-produtos/lista-d
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnderecoComponent } from './components/endereco/endereco.component';
 
 
 
@@ -30,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     ListaDeProdutosComponent,
     ProdutosComponent,
-    CadastroComponent
+    CadastroComponent,
+    EnderecoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     // AngularFontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxViacepModule
   ],
   entryComponents: [LoginComponent],
   providers: [],
