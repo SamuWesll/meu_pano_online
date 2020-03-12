@@ -12,21 +12,21 @@ export class CadastroComponent implements OnInit {
   formRegister: FormGroup;
 
   constructor() {
-    this.formRegister = this.createForm(new Cadastro("",null,null,null,null,null,null,null));
+    // this.formRegister = this.createForm(new Cadastro("",null,null,null,null,null,null,null));
   }
 
-  private createForm(cadastro: Cadastro): FormGroup {
-    return new FormGroup({
-      email: new FormControl(cadastro.email),
-      fullName: new FormControl(cadastro.fullName),
-      numCPF: new FormControl(cadastro.numCPF),
-      birthDate: new FormControl(cadastro.birthDate),
-      genre: new FormControl(cadastro.genre),
-      telephone: new FormControl(cadastro.telephone),
-      cell: new FormControl(cadastro.cell),
-      password: new FormControl(cadastro.password),
-    })
-  }
+  // private createForm(cadastro: Cadastro): FormGroup {
+  //   return new FormGroup({
+  //     email: new FormControl(cadastro.email),
+  //     fullName: new FormControl(cadastro.fullName),
+  //     numCPF: new FormControl(cadastro.numCPF),
+  //     birthDate: new FormControl(cadastro.birthDate),
+  //     genre: new FormControl(cadastro.genre),
+  //     telephone: new FormControl(cadastro.telephone),
+  //     cell: new FormControl(cadastro.cell),
+  //     password: new FormControl(cadastro.password),
+  //   })
+  // }
 
   enviarCadastro() {
     

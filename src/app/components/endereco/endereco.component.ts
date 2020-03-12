@@ -8,12 +8,16 @@ import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-vi
   templateUrl: './endereco.component.html',
   styleUrls: ['./endereco.component.css']
 })
+
+
 export class EnderecoComponent implements OnInit {
 
-  public endereco: Endereco[] = [];
-
   constructor(private viacep: NgxViacepService) {
-    this.viacep.buscarPorCep("04949130")
+    
+  }
+
+  consultarCep(cep: string) {
+    this.viacep.buscarPorCep(cep)
       .then(
         (enderero: Endereco) => {
           console.log(enderero);
@@ -25,6 +29,7 @@ export class EnderecoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

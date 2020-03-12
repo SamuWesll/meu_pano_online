@@ -43,7 +43,8 @@ import { EnderecoComponent } from './components/endereco/endereco.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxViacepModule
+    NgxViacepModule,
+    FormsModule
   ],
   entryComponents: [LoginComponent],
   providers: [],
