@@ -12,7 +12,7 @@ export class CadastroComponent implements OnInit {
   formRegister: FormGroup;
 
   constructor() {
-    this.formRegister = this.createForm(new Cadastro("@gmail.com",null,null,null,null,null));
+    this.formRegister = this.createForm(new Cadastro("@gmail.com","Samuel Weslley", 41851766863,null,null,1222323));
   }
 
   private createForm(cadastro: Cadastro): FormGroup {
