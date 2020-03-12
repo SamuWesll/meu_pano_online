@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Cadastro } from 'src/app/models/Cadastro';
 
 @Component({
@@ -11,22 +11,25 @@ export class CadastroComponent implements OnInit {
 
   formRegister: FormGroup;
 
-  constructor() {
-    this.formRegister = this.createForm(new Cadastro("@gmail.com","Samuel Weslley", 41851766863,null,null,null,null,null))
-  }
+  constructor(private fb: FormBuilder) { }
 
-  private createForm(cadastro: Cadastro): FormGroup {
-    return new FormGroup({
-      email: new FormControl(cadastro.email),
-      fullName: new FormControl(cadastro.fullName),
-      numCPF: new FormControl(cadastro.numCPF),
-      birthDate: new FormControl(cadastro.birthDate),
-      genre: new FormControl(cadastro.genre),
-      telephone: new FormControl(cadastro.telephone),
-      cell: new FormControl(cadastro.cell),
-      password: new FormControl(cadastro.password),
-    })
-  }
+  registrationForm = this.fb.group({
+    email: ['email'],
+    fullName: ['Samuel'],
+    numCPF: [''],
+    birthDate: [''],
+    genre: [''],
+    telephone: [''],
+    cell: [''],
+    password: [''],
+  })
+
+  // private createForm(cadastro: Cadastro): FormGroup {
+  //   return new FormGroup({
+  //      new FormControl(cadastro.email),
+  //     
+  //   })
+  // }
 
   enviarCadastro() {
     
