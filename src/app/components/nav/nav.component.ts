@@ -21,8 +21,8 @@ export class NavComponent implements OnInit {
     },
     {
       ativo: false,
-      label: "Pop",
-      route: "/pop"
+      label: "Desenhados",
+      route: "/desenhados"
     },
     {
       ativo: false,
@@ -31,8 +31,8 @@ export class NavComponent implements OnInit {
     },
     {
       ativo: false,
-      label: "Pintados",
-      route: "/pintados"
+      label: "Com Barra",
+      route: "/barra"
     },
     {
       ativo: false,
