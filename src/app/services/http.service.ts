@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { Produtos } from '../models/Produtos';
 import { Endereco } from '../models/Endereco';
+import { Observable } from 'rxjs';
 
 const URLLocalJson: string = "assets/json/produtos.json";
+const urlCriarCadastro: string = "http://localhost:8080/meupanoonline/cliente";
 
 function JsonProdutosURL(data: any[]) {
   return data.map(
@@ -13,6 +15,10 @@ function JsonProdutosURL(data: any[]) {
     }
   )
 };
+
+function converterJson(data: any) {
+  return JSON.parse(data);
+} 
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +33,18 @@ export class HttpService {
       map(JsonProdutosURL)
     )
   };
+
+  postClientes(){
+    let body = {
+      "nome": "Samuel Weslley Rocha Barboza",
+      "cpf": 41851766863,
+      "email": "samuelwrochabarboza@gmai.com",
+      "senha": "12345",
+      "dataNascimento": "1994-12-08",
+      "genero": "m"
+    };
+    return this.http.post(urlCriarCadastro, body)
+  }
 
 
 }

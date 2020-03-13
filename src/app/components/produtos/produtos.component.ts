@@ -21,6 +21,13 @@ export class ProdutosComponent implements OnInit {
         this.produtos = data;
       }
     )
+
+
+    http.postClientes().subscribe(
+      (data) => {
+        console.log(data)
+      }
+    )
   }
 
   ngOnInit(): void {
