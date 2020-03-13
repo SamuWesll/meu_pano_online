@@ -5,7 +5,8 @@ import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { ProdutoDetalhadoComponent } from "./components/produto-detalhado/produto-detalhado.component";
 import { ProdutosCategoriaComponent } from "./components/produtos-categoria/produtos-categoria.component";
-import { CadastroComponent} from "./components/cadastro/cadastro.component";
+import { PedidoComponent } from "./components/pedido/pedido.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -32,8 +33,8 @@ const routes: Routes = [
     component: ContatoComponent
   },
   {
-    path: "cadastro",
-    component: CadastroComponent
+    path: "pedido",
+    component: PedidoComponent
   },
   {
     path: "**",

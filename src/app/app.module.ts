@@ -19,7 +19,8 @@ import { ProdutosSimilaresComponent } from './components/produtos-similares/prod
 import { ConsultarFreteComponent } from './components/consultar-frete/consultar-frete.component';
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { NavComponent } from './components/nav/nav.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
     ProdutosSimilaresComponent,
     ConsultarFreteComponent,
     ProdutosCategoriaComponent,
-    CadastroComponent
+    NavComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
