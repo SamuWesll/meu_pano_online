@@ -23,13 +23,14 @@ export class CadastroComponent implements OnInit {
   //   })
   // }
 
-  enviarCadastro() {
-    let retorno: string;
-    this.http.postClientes().subscribe(
-      data => {
-        return console.log(data)
-      }
-    )
+  enviarCadastro(form) {
+    // let retorno: string
+    // this.http.postClientes().subscribe(
+    //   data => {
+    //     return console.log(data)
+    //   }
+    // )
+    console.log(form.value.fullName)
   }
 
   ngOnInit(): void {
