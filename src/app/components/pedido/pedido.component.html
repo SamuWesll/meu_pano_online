@@ -1,5 +1,6 @@
 <app-nav></app-nav>
 <main class="container mt-2" >
+  <form [formGroup]="userForm">
   <div class="row">
     <div class="col-7">
       <div class="card mb-3" style="max-width: 540px;">
@@ -10,22 +11,25 @@
           <div class="col-md-8" >
             <div class="card-body" >
               <h5 class="card-title">Pano de prato sua casa</h5>
-              <input id="produto" class="number" type="number">
-              
+
+              <input id="produto" class="form-control" type="number" formControlName="nome">
+              <div *ngIf="userForm.get('produto').invalid && (userForm.get('produto').dirty ||
+              userForm.get('produto').touched)" class="alert alert-danger"> 
+              Selecione ao menos 1 produto
+              </div>
+
               <p class="card-text">Pano de prato sua casa, personalizado - Julius</p>
               
-
-              <div class="row" id="itens">
-              <button type="button" class="btn btn-success" onclick=" localStorage.clear(); location.reload();">Adicionar</button>
-              <button type="button" class="btn btn-outline-danger" style="padding-left: 5px;"  onclick=" localStorage.clear(); location.reload();">Remover</button> 
-              <!-- <button type="button" onclick=" localStorage.clear(); location.reload();"> Limpar carrinho </button> -->
+            <div class="d-flex justify-content-center " id="itens">
+              <button type="button" class="btn btn-success" onclick=" localStorage.clear(); location.reload();">Adicionar</button> 
+              <button type="button" class="btn btn-link" onclick=" localStorage.clear(); location.reload();">Remover</button>
             </div>
+
             <div class="row">
               <div>Total: <span id="total"></span> </div>
-              <h6 style="color: green;">R$ 4,99</h6>
+              <h6 style="color: green;"> R$ 4,99</h6>
             </div>
            
-
             </div>
           </div>
         </div>
@@ -33,51 +37,52 @@
     </div>
     <div class="col-5">
       <div class="card">
-        <h5 class="card-title p-3">Resumo do Pedido</h5>
+        <h5 class="card-title p-3 " style="color: white;" style="background-color: rgba(31, 189, 139, 0.29);">Resumo do Pedido</h5>
         <div class="card-body" style="background-color: rgba(31, 189, 139, 0.29);">
-          <blockquote class="blockquote mb-0">
+          <blockquote class="blockquote mb-0 ">
             <p>Pano de prato sua casa, personalizado - Julius.</p>
           </blockquote> 
 
               
-              <p class="card-text">1 Produto .......................................................R$ 4,99
-              <button type="button" class="btn btn-outline-info">5,88</button></p>
-              <p class="card-text">Frete .........................................................................</p>
+              <p class="card-text">1 Produto ....................................................................R$ 4,99
               <h5>Total</h5><h5 style="color: rgb(34, 160, 34);">R$ 4,99</h5>   
+
+              <div class="p-2 row">
+                <div class="col-6">
+                    <label for="">Frete rápido <br> R$ 15,99</label>
+                    <input type="radio" name="frete" id="freteRapido">
+                </div>
+                <div class="col-6">
+                    <label for="">Frete normal <br> R$ 7,99</label>
+                    <input type="radio" name="frete" id="freteNormal">
+                </div>
+              </div>
         
               <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-success" type="button" data-toggle="modal" 
-                data-target="#compraFinalizada">Continuar</button>
+                <button type="button" data-toggle="modal" class="btn btn-success btn-lg" data-target="#compraFinalizada">Continuar</button>
               </div>
 
               <div id="compraFinalizada" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Você deseja adicionar algo mais?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
+                    <div class="modal-header">
+                      <h5 class="modal-title">Você deseja adicionar algo mais?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
                   <div class="modal-body">
                     <p><b>Obrigado! </b>Você fez uma excelente escolha.</p>
                   </div>
-                  <div class="modal-footer">
-                    
+                  <div class="modal-footer">                    
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                   </div>
                   </div>
                 </div>
-                </div>
-
+              </div>
         </div>
       </div>
-
-      <div class=" form-group" style="margin-left: 12px; margin-top: 15px; width: 400px; height: 750px; position:-webkit-sticky;">
-        <label for="CEPUsuario">Consulte o frete</label>
-        <input class="form-control justify-content-center " type="text" id="CEPUsuario" name="CEPUsuario"> <button type="button" class="btn btn-success">Consultar</button>           
-      </div>
-
     </div>
   </div>
+</form>
 </main>

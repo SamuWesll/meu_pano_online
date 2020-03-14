@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { Pedido} from '../produto';
+import { FormGroup, FormControl, Validators } from  '@angular/forms';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-pedido',
@@ -10,34 +13,16 @@ export class PedidoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    var objetos = Array();
+    // 'produto': new FormControl(this.form.nome, [Validators.required]),
+    // function total(){
+    //     let valor1 = window.document.getElementById('produto')
+    //     let valor2 = window.document.getElementById('total')
+    //     var prod = Number(valor1.value)
+    //     var prod = Number(valor2.value)
+    //     let somaprodutos = valor1 * valor2
+    //     valor2.innerHTML = (somaprodutos)
 
-    localStorage.getItem("");
-    function AddCarrinho(produto, qtd, valor, posicao)
-    { 
-    localStorage.setItem("produto" + posicao, produto);
-    localStorage.setItem("qtd" + posicao, qtd);
-    valor = valor * qtd;
-    localStorage.setItem("valor" + posicao, valor);
-    alert("Produto adicionado ao carrinho!");
-    }
-
-    var app = angular.module("myShoppingList", []);
-    app.controller("myCtrl", function($scope) {
-    $scope.products = ["Milk", "Bread", "Cheese"];
-    $scope.addItem = function () {
-        $scope.errortext = "";
-        if (!$scope.addMe) {return;}       
-        if ($scope.products.indexOf($scope.addMe) == -1) {
-            $scope.products.push($scope.addMe);
-        } else {
-            $scope.errortext = "The item is already in your shopping list.";
-        }
-    }
-    $scope.removeItem = function (x) {
-        $scope.errortext = "";   
-        $scope.products.splice(x, 1);
-    }
-});
+    // });
+  
 }
 }
