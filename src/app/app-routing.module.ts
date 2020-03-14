@@ -4,7 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
-
+import { ProdutoDetalhadoComponent } from "./components/produto-detalhado/produto-detalhado.component";
+import { ProdutosCategoriaComponent } from "./components/produtos-categoria/produtos-categoria.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,14 @@ const routes: Routes = [
   }, {
     path: "sobre",
     component: SobreComponent
+  },
+  {
+    path: "produtos-categoria",
+    component: ProdutosCategoriaComponent
+  },
+  {
+    path: "produto-detalhado",
+    component: ProdutoDetalhadoComponent
   },
   {
     path: "contato",

@@ -11,6 +11,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class ContatoComponent implements OnInit {
 
   formContato: FormGroup;
+
   // constructor(private http: HttpService) {
   //   this.formContato = this.createForm(new Contato('', '', '', ''))
   //  }
@@ -28,6 +29,7 @@ export class ContatoComponent implements OnInit {
   contactar() {
     console.log(this.formContato)
   }
+ 
   ngOnInit(): void {
   }
 
