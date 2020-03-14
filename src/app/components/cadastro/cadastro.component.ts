@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, NgForm } from '@angular/forms';
-import { Cadastro } from 'src/app/models/Cadastro';
 import { HttpService } from 'src/app/services/http.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,6 +13,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class CadastroComponent implements OnInit {
 
   formRegister: FormGroup;
+  private home: HomeComponent;
 
   constructor(private http: HttpService) { }
 
@@ -24,13 +25,22 @@ export class CadastroComponent implements OnInit {
   // }
 
   enviarCadastro(form) {
-    // let retorno: string
-    // this.http.postClientes().subscribe(
-    //   data => {
-    //     return console.log(data)
-    //   }
-    // )
-    console.log(form.value.fullName)
+    let body = {
+      "nome": form.value.fullName,
+      "cpf": form.value.numCPF,
+      "email": form.value.email,
+      "senha": form.value.senha1,
+      "dataNascimento": form.value.dataNasc,
+      "genero": form.value.genero
+    };
+    this.http.postClientes(body).subscribe(
+      data => {
+        // if(data.statusCode == "OK") {
+        //   alert("Cadastro realizado com sucesso");
+        // }
+        return console.log(data);
+      }
+    )
   }
 
   ngOnInit(): void {

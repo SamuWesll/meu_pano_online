@@ -34,15 +34,7 @@ export class HttpService {
     )
   };
 
-  postClientes(){
-    let body = {
-      "nome": "Samuel Weslley Rocha Barboza",
-      "cpf": 41851766863,
-      "email": "samuelwrochabarboza@gmai.com",
-      "senha": "12345",
-      "dataNascimento": "1994-12-08",
-      "genero": "m"
-    };
+  postClientes(body: object){
     return this.http.post(urlCriarCadastro, body)
   }
 
