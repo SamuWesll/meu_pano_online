@@ -11,6 +11,7 @@ export class Produtos {
         public valorUnitario: number,
         public idFornecedor: number,
         public estoqueDisponivel: number,
+        public urlImagem: string,
     ){}
     
 }

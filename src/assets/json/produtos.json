@@ -9,7 +9,8 @@
     "valor_bruto": 48.9,
     "valor_unitario": 44.15,
     "id_fornecedor": 2,
-    "estoque_disponivel": 3
+    "estoque_disponivel": 3,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_01.jfif"
   },
   {
     "id_produto": 2,
@@ -21,7 +22,8 @@
     "valor_bruto": 6.62,
     "valor_unitario": 5.29,
     "id_fornecedor": 2,
-    "estoque_disponivel": 5
+    "estoque_disponivel": 5,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_02.jfif"
   },
   {
     "id_produto": 3,
@@ -33,7 +35,8 @@
     "valor_bruto": 4.05,
     "valor_unitario": 4.05,
     "id_fornecedor": 2,
-    "estoque_disponivel": 20
+    "estoque_disponivel": 20,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_03.jfif"
   },
   {
     "id_produto": 4,
@@ -45,7 +48,8 @@
     "valor_bruto": 4.28,
     "valor_unitario": 4.15,
     "id_fornecedor": 2,
-    "estoque_disponivel": 100
+    "estoque_disponivel": 100,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_05.jpg"
   },
   {
     "id_produto": 5,
@@ -57,7 +61,8 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 76
+    "estoque_disponivel": 76,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_01.jfif"
   },
   {
     "id_produto": 6,
@@ -69,7 +74,8 @@
     "valor_bruto": 32,
     "valor_unitario": 29.99,
     "id_fornecedor": 2,
-    "estoque_disponivel": 50
+    "estoque_disponivel": 50,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_02.jfif"
   },
   {
     "id_produto": 7,
@@ -81,7 +87,8 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 45
+    "estoque_disponivel": 45,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_03.jfif"
   },
   {
     "id_produto": 8,
@@ -93,7 +100,8 @@
     "valor_bruto": 39.48,
     "valor_unitario": 29.99,
     "id_fornecedor": 2,
-    "estoque_disponivel": 80
+    "estoque_disponivel": 80,
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_01.jfif"
   },
   {
     "id_produto": 9,
@@ -105,7 +113,8 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 100
+    "estoque_disponivel": 100, 
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_01.jfif"
   },
   {
     "id_produto": 10,
@@ -117,7 +126,8 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 32
+    "estoque_disponivel": 32, 
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_01.jfif"
   },
   {
     "id_produto": 11,
@@ -129,7 +139,8 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 13
+    "estoque_disponivel": 13, 
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_01.jfif"
   },
   {
     "id_produto": 12,
@@ -141,7 +152,8 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 1
+    "estoque_disponivel": 1, 
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_02.jfif"
   },
   {
     "id_produto": 13,
@@ -153,6 +165,7 @@
     "valor_bruto": 3.56,
     "valor_unitario": 3.03,
     "id_fornecedor": 2,
-    "estoque_disponivel": 7
+    "estoque_disponivel": 7, 
+    "url_img": "http://localhost:4200/assets/img/produtos/carousel/produto_03.jfif"
   }
 ]
