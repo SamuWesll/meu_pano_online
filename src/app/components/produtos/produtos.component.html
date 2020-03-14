@@ -24,8 +24,8 @@
         <div class="card-body">
             <p class="card-text font-weight-bold">{{produto.name}}<</p>
             <div class="dropdown-divider"></div>
-            <p class=""><span style="text-decoration: line-through;">R${{converteDecimal(produto.valorBruto)}}</span> <br> <span class="font-weight-bold text-warning text-decoration-none">R${{converteDecimal(produto.valorUnitario)}}</span></p>
-            <p id="textPreco">R${{converteDecimal(produto.valorBruto)}} a vista ou 3x de R$25,66 sem juros</p>
+            <p class=""><span style="text-decoration: line-through;">R${{converteDecimal(produto.valor)}}</span> <br> <span class="font-weight-bold text-warning text-decoration-none">R${{converteDecimal(produto.valorUnitario)}}</span></p>
+            <p id="textPreco">R${{converteDecimal(produto.valor)}} a vista ou 3x de R$25,66 sem juros</p>
             <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
         </div>
     </a>
