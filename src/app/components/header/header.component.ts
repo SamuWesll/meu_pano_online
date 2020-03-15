@@ -37,6 +37,11 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  separarNome(nome: string) {
+    let separado = nome.split(" ",1)
+    return separado;
+  }
+
   ngOnInit(): void {
   }
 

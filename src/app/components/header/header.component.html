@@ -13,7 +13,7 @@
         <button type="button" class="btn btn-outline-success rounded login mr-2" data-toggle="modal"
         data-target="#login" (click)="openModal()">
             <span *ngIf="login">
-                <span> {{ login.nome }} </span>
+                <span> {{ separarNome(login.nome) }} </span>
             </span>
         </button>
         <a class="btn btn-outline-warning text-light rounded carrinho" href="#"></a>

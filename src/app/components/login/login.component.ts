@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/Cliente';
 import { Sexo } from 'src/app/models/Sexo';
-import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor() {
 
-    // this.logadoLocalStorage();
-
-    // this.sairLogin();
-    // console.log(this.logado)
+    this.verificarLogin();
 
   }
 
@@ -43,12 +39,26 @@ export class LoginComponent implements OnInit {
       cliente.senha,
       cliente.dataNascimento,
       cliente.genero
-    )
+    );
+
+      // this.trocadorUrl();
+
+  }
+
+  verificarLogin() {
+
+    this.logado = JSON.parse(localStorage.getItem("logado"));
+    console.log(this.logado);
+
   }
 
   sairLogin() {
 
     localStorage.removeItem("logado");
+
+    this.logado = null;
+
+    // this.trocadorUrl();
 
   }
 
