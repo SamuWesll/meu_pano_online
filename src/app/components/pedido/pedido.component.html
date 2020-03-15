@@ -1,6 +1,5 @@
 <app-nav></app-nav>
 <main class="container mt-2" >
-  <form [formGroup]="userForm">
   <div class="row">
     <div class="col-7">
       <div class="card mb-3" style="max-width: 540px;">
@@ -13,10 +12,10 @@
               <h5 class="card-title">Pano de prato sua casa</h5>
 
               <input id="produto" class="form-control" type="number" formControlName="nome">
-              <div *ngIf="userForm.get('produto').invalid && (userForm.get('produto').dirty ||
+              <!-- <div *ngIf="userForm.get('produto').invalid && (userForm.get('produto').dirty ||
               userForm.get('produto').touched)" class="alert alert-danger"> 
-              Selecione ao menos 1 produto
-              </div>
+              Selecione ao menos 1 produto -->
+             
 
               <p class="card-text">Pano de prato sua casa, personalizado - Julius</p>
               
@@ -42,8 +41,6 @@
           <blockquote class="blockquote mb-0 ">
             <p>Pano de prato sua casa, personalizado - Julius.</p>
           </blockquote> 
-
-              
               <p class="card-text">1 Produto ....................................................................R$ 4,99
               <h5>Total</h5><h5 style="color: rgb(34, 160, 34);">R$ 4,99</h5>   
 
@@ -57,11 +54,9 @@
                     <input type="radio" name="frete" id="freteNormal">
                 </div>
               </div>
-        
               <div class="d-flex justify-content-center">
                 <button type="button" data-toggle="modal" class="btn btn-success btn-lg" data-target="#compraFinalizada">Continuar</button>
               </div>
-
               <div id="compraFinalizada" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -84,5 +79,72 @@
       </div>
     </div>
   </div>
-</form>
+
+  <form id="checkout" class="row mt-12">
+  <div class="col-md-4">
+    <header class="bg-dark text-light p-2">
+        Entrega
+    </header>
+    <div class="p-2">
+        <div class="form-group">
+            <label for="CEPUsuario">CEP</label>
+            <input class="form-control" type="text" id="CEPUsuario" name="CEPUsuario"
+                placeholder="Digite seu CEP">
+        </div>
+
+        <div class="form-group">
+            <label for="enderecoSenhaUsuario">Endereço</label>
+            <input class="form-control" type="text" id="enderecoSenhaUsuario" name="enderecoSenhaUsuario"
+                placeholder="Digite seu endereço">
+        </div>
+
+        <div class="form-group">
+            <label for="numeroUsuario">Número</label>
+            <input class="form-control" type="number" id="numeroUsuario" name="numeroUsuario"
+                placeholder="Digite o número">
+        </div>
+
+        <div class="form-group">
+            <label for="complementoUsuario">Complemento</label>
+            <input class="form-control" type="text" id="complementoUsuario" name="complementoUsuario"
+                placeholder="Digite o complemento">
+        </div>
+
+        <div class="form-group">
+            <label for="bairroUsuario">Bairro</label>
+            <input class="form-control" type="text" id="bairroUsuario" name="bairroUsuario"
+                placeholder="Digite seu bairro">
+        </div>
+
+        <div class="form-group row">
+            <div class="col-6">
+                <label for="cidadeUsuario">Cidade</label>
+                <input class="form-control" type="text" id="cidadeUsuario" name="cidadeUsuario"
+                    placeholder="Cidade">
+            </div>
+            <div class="col-6">
+                <label for="estadoUsuario" >Estado</label>
+                <select class="form-control" name="estadoUsuario" id="estadoUsuario">
+                    <option value="" disabled selected>Estado</option>
+                    <option value="SP">SP</option>
+                    <option value="SP">RJ</option>
+                    <option value="SP">ES</option>
+                </select>
+            </div>
+        </div>
+        <div class="p-2 row">
+            <div class="col-6">
+                <label for="">Frete rápido <br> R$ 50,00</label>
+                <input type="radio" name="frete" id="freteRapido">
+            </div>
+            <div class="col-6">
+                <label for="">Frete normal <br> R$ 20,00</label>
+                <input type="radio" name="frete" id="freteNormal">
+            </div>
+        </div>
+    </div>
+</div>
+</form> 
+
+
 </main>

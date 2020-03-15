@@ -13,6 +13,22 @@ export class PedidoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    // function buscarCep(cep){
+    //   fetch(`https://viacep.com.br/ws/${cep}/json`)
+    //   .then(response => response.json())
+    //   .then(dados =>{
+    //       if(dados.erro){
+    //           return inputCEPUsuario.setAttribute('class', 'form-control is-invalid')
+    //       }
+    //       inputCEPUsuario.setAttribute('class', 'form-control is valid')
+    //       inputendEndereco.value = dados.logradouro
+    //       inputBairro.value = dados.bairro
+    //       inputCidade.value = dados.localidade
+    //       selectEstado.value = dados.uf
+    //   })
+    //     }
+
     // 'produto': new FormControl(this.form.nome, [Validators.required]),
     // function total(){
     //     let valor1 = window.document.getElementById('produto')

@@ -1,0 +1,176 @@
+<main class="container">
+    <h3 class="d-flex justify-content-center">Seu carrinho de compras</h3>
+    <form id="checkout" class="row mt-4">
+        <div class="col-md-4">
+            <header class="p-2" style="background-color: rgba(31, 189, 139, 0.29); color: white;" >
+                Dados pessoais
+            </header>
+            <div class="p-2">
+                <div class="form-group">
+                    <label for="nomeUsuario">Nome completo</label>
+                    <input class="form-control" type="text" id="nomeUsuario" name="nomeUsuario"
+                        placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="CPFUsuario">CPF</label>
+                    <input class="form-control" type="text" id="CPFUsuario" name="CPFUsuario"
+                        placeholder="Digite o seu CPF">
+                </div>
+
+                <div class="form-group">
+                    <label for="TelefoneUsuario">Telefone</label>
+                    <input class="form-control" type="tel" id="telefoneUsuario" name="telefoneUsuario"
+                        placeholder="Digite o numero do seu telefone">
+                </div>
+
+                <div class="form-group">
+                    <label for="emailUsuario">Email</label>
+                    <input class="form-control" type="email" id="emailUsuario" name="emailUsuario"
+                        placeholder="Digite o seu email">
+                </div>
+
+                <div class="form-group">
+                    <label for="SenhaUsuario">Senha</label>
+                    <input class="form-control" type="password" id="senhaUsuario" name="SenhaUsuario"
+                        placeholder="Digite sua senha">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmarSenhaUsuario">Confirme a senha</label>
+                    <input class="form-control" type="password" id="confirmarSenhaUsuario"
+                        name="confirmarSenhaUsuario" placeholder="Confirme sua senha">
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <header class="text-light p-2" style="background-color: rgba(31, 189, 139, 0.29);">
+                Entrega
+            </header>
+            <div class="p-2">
+                <div class="form-group">
+                    <label for="CEPUsuario">CEP</label>
+                    <input class="form-control" type="text" id="CEPUsuario" name="CEPUsuario"
+                        placeholder="Digite seu CEP">
+                </div>
+
+                <div class="form-group">
+                    <label for="enderecoSenhaUsuario">Endereço</label>
+                    <input class="form-control" type="text" id="enderecoSenhaUsuario" name="enderecoSenhaUsuario"
+                        placeholder="Digite seu endereço">
+                </div>
+
+                <div class="form-group">
+                    <label for="numeroUsuario">Número</label>
+                    <input class="form-control" type="number" id="numeroUsuario" name="numeroUsuario"
+                        placeholder="Digite o número">
+                </div>
+
+                <div class="form-group">
+                    <label for="complementoUsuario">Complemento</label>
+                    <input class="form-control" type="text" id="complementoUsuario" name="complementoUsuario"
+                        placeholder="Digite o complemento">
+                </div>
+
+                <div class="form-group">
+                    <label for="bairroUsuario">Bairro</label>
+                    <input class="form-control" type="text" id="bairroUsuario" name="bairroUsuario"
+                        placeholder="Digite seu bairro">
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label for="cidadeUsuario">Cidade</label>
+                        <input class="form-control" type="text" id="cidadeUsuario" name="cidadeUsuario"
+                            placeholder="Cidade">
+                    </div>
+                    <div class="col-6">
+                        <label for="estadoUsuario" >Estado</label>
+                        <select class="form-control" name="estadoUsuario" id="estadoUsuario">
+                            <option value="" disabled selected>Estado</option>
+                            <option value="SP">SP</option>
+                            <option value="SP">RJ</option>
+                            <option value="SP">ES</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p-2 row">
+                    <div class="col-6">
+                        <label for="">Frete rápido <br> R$ 7,99</label>
+                        <input type="radio" name="frete" id="freteRapido">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Frete normal <br> R$ 15,99</label>
+                        <input type="radio" name="frete" id="freteNormal">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <header class=" text-light p-2" style="background-color: rgba(31, 189, 139, 0.29);">
+                Pagamento
+            </header>
+            <div class="d-flex justify-content-center flex-column p-2">
+                <h4>Pano de prato sua casa, personalizado - Julius. </h4>
+                <p>R$ 4,99</p>
+            </div>
+            <div class="p-2">
+                <div class="form-group">
+                    <label for="numeroCartaoUsuario">Numero do cartão</label>
+                    <input class="form-control" type="text" id="numeroCartaoUsuario" name="numeroCartaoUsuario"
+                        placeholder="Digite o numero do cartão">
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8">
+                        <label for="validadeCartao">Data de validade</label>
+                        <input class="form-control" type="month" id="validadeCartao" name="validadeCartao"
+                            placeholder="Validade">
+                    </div>
+                    <div class="col-4">
+                        <label for="codigoSeguranca">Validade</label>
+                        <input class="form-control" type="number" id="codigoSeguranca" name="codigoSeguranca"
+                            placeholder="CVV">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="nomeTitularUsuario">Nome do titular</label>
+                    <input class="form-control" type="text" id="nomeTitularUsuario" name="nomeTitularUsuario"
+                        placeholder="Digite o nome do titular">
+                </div>
+
+                <div class="form-group">
+                    <label for="CPFTitularUsuario">CPF do titular</label>
+                    <input class="form-control" type="text" id="CPFTitularUsuario" name="CPFTitularUsuario"
+                        placeholder="Digite o CPF do titular">
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-success" type="button" data-toggle="modal" data-target="#compraFinalizada">Finalizar compra</button>
+            </div>
+        </div>
+    </form>
+</main>
+<div id="compraFinalizada" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Compra realizada com sucesso!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p>
+        </div>
+        <div class="modal-footer">        
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>

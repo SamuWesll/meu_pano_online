@@ -21,6 +21,7 @@ import { ProdutosCategoriaComponent } from './components/produtos-categoria/prod
 import { ReactiveFormsModule } from "@angular/forms";
 import { NavComponent } from './components/nav/nav.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     ConsultarFreteComponent,
     ProdutosCategoriaComponent,
     NavComponent,
-    PedidoComponent
+    PedidoComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
