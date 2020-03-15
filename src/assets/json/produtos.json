@@ -6,34 +6,62 @@
     "cor": "Branco",
     "valor": 48.9,
     "valorDesconto": 44.15,
+<<<<<<< HEAD
     "cod_categoria": 30
+=======
+    "codCategoria": 30
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 2,
     "titulo": "Pano de Prato Transfer - 45x70cm - Branco",
+<<<<<<< HEAD
     "descricao": "Pano de Prato com material 100% algodão. Medida da Barra: 7cm D� seu toque pessoal em bordados no melhor estilo \"Feito � M�o\". Pano de Prato pr�prio para bordado em Ponto Cruz.",
     "cor": "Branco",
     "valor": 6.62,
     "valorDesconto": 5.29,
     "cod_categoria": 50
+=======
+    "descricao": "Pano de Prato com material 100% algod�o. Medida da Barra: 7cm D� seu toque pessoal em bordados no melhor estilo \"Feito � M�o\". Pano de Prato pr�prio para bordado em Ponto Cruz.",
+    "cor": "Branco",
+    "valor": 6.62,
+    "valorDesconto": 5.29,
+    "codCategoria": 50
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 3,
     "titulo": "Pano de Sarja (Prato) - 45x70cm - Branco Grosso",
+<<<<<<< HEAD
     "descricao": "Totalmente desenvolvidos para a cozinha, os panos de prato s�o decorativos e muito pr�ticos. Do cl�ssico �s modernas estampas, o mix de produto atende v�rios perfis de consumidores.",
     "cor": "Amarelo",
     "valor": 4.05,
     "valorDesconto": 4.05,
     "cod_categoria": 50
+=======
+    "cor": "",
+    "valor": 4.05,
+    "valorDesconto": 4.05,"descricao": "Total
+    mente desenvolvidos pra a cozinha, os panos de prato s�o decorativos e muito pr�ticos. Do cl�ssico �s modernas estampas, o mix de produto atende v�rios perfis de consumidores.",
+    "codCategoria": 
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 4,
     "titulo": "Pano de Prato Listrado Estampado - 40x65cm - Sortidos",
+<<<<<<< HEAD
     "descricao": "Pano de Prato com material 90% algod�o (no m�nimo) Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mx'ais encantadora.",
     "cor": "Vermelho",
     "valor": 4.28,
     "valorDesconto": 4.15,
     "cod_categoria": 40
+=======
+    "cor": "",
+    "valor": 4.28,
+    "valorDesconto": 4.15,"descricao": "Pano 
+    de Prato com material90% algod�o (no m�nimo) Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mx'ais encantadora.",
+    "codCategoria": 4
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 5,
@@ -42,7 +70,12 @@
     "cor": "Verde",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 40
+
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 6,
@@ -51,7 +84,12 @@
     "cor": "Preto",
     "valor": 32,
     "valorDesconto": 29.99,
+<<<<<<< HEAD
     "cod_categoria": 10
+=======
+    "codCategoria": 10
+
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 7,
@@ -60,7 +98,12 @@
     "cor": "Branco",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 40
+
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 8,
@@ -69,7 +112,11 @@
     "cor": "Branco",
     "valor": 39.48,
     "valorDesconto": 29.99,
+<<<<<<< HEAD
     "cod_categoria": 20
+=======
+    "codCategoria": 20
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 9,
@@ -78,7 +125,12 @@
     "cor": "Rosa",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 40
+
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 10,
@@ -87,7 +139,12 @@
     "cor": "Cinza",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 40
+
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 11,
@@ -96,7 +153,11 @@
     "cor": "Azul",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 40
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 12,
@@ -105,7 +166,11 @@
     "cor": "Bege",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 4
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   },
   {
     "id_produto": 13,
@@ -114,6 +179,10 @@
     "cor": "Lilas",
     "valor": 3.56,
     "valorDesconto": 3.03,
+<<<<<<< HEAD
     "cod_categoria": 40
+=======
+    "codCategoria": 40
+>>>>>>> e3ef7e7e6ee6f708107c740b73e2cbb76a3f0cf1
   }
 ]
