@@ -11,7 +11,7 @@
   {
     "id_produto": 2,
     "titulo": "Pano de Prato Transfer - 45x70cm - Branco",
-    "descricao": "Pano de Prato com material 100% algod�o. Medida da Barra: 7cm D� seu toque pessoal em bordados no melhor estilo \"Feito � M�o\". Pano de Prato pr�prio para bordado em Ponto Cruz.",
+    "descricao": "Pano de Prato com material 100% algodão. Medida da Barra: 7cm Dê seu toque pessoal em bordados no melhor estilo \"Feito à Mão\". Pano de Prato próprio para bordado em Ponto Cruz.",
     "cor": "Branco",
     "valor": 6.62,
     "valorDesconto": 5.29,
@@ -22,23 +22,21 @@
     "titulo": "Pano de Sarja (Prato) - 45x70cm - Branco Grosso",
     "cor": "",
     "valor": 4.05,
-    "valorDesconto": 4.05,"descricao": "Total
-    mente desenvolvidos pra a cozinha, os panos de prato s�o decorativos e muito pr�ticos. Do cl�ssico �s modernas estampas, o mix de produto atende v�rios perfis de consumidores.",
-    "codCategoria": 
+    "valorDesconto": 4.05,"descricao": "Totalmente desenvolvidos pra a cozinha, os panos de prato são decorativos e muito práticos. Do clássico às modernas estampas, o mix de produto atende vários perfis de consumidores.",
+    "codCategoria": 3
   },
   {
     "id_produto": 4,
     "titulo": "Pano de Prato Listrado Estampado - 40x65cm - Sortidos",
     "cor": "",
     "valor": 4.28,
-    "valorDesconto": 4.15,"descricao": "Pano 
-    de Prato com material90% algod�o (no m�nimo) Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mx'ais encantadora.",
+    "valorDesconto": 4.15,"descricao": "Pano de Prato com material90% algodão (no mínimo) Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "codCategoria": 4
   },
   {
     "id_produto": 5,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Verde",
     "valor": 3.56,
     "valorDesconto": 3.03,
@@ -47,8 +45,8 @@
   },
   {
     "id_produto": 6,
-    "titulo": "Jogo de Pano de Prato Spring 45 cm x 65 cm 2 Pe�as - Home Style",
-    "descricao": "O Jogo de Pano de Prato Spring 45 cm x 65 cm 2 Pe�as, confeccionado em tecido 100% algod�o, � pe�a essencial e um charme a mais na cozinha. Pode ser utilizado para secar a lou�a, as m�os e at� mesmo para auxiliar na prepara��o dos alimentos. Com �tima absor��o, contribui ainda para a decora��o da cozinha e bancada, conferindo um toque delicado.",
+    "titulo": "Jogo de Pano de Prato Spring 45 cm x 65 cm 2 Peças - Home Style",
+    "descricao": "O Jogo de Pano de Prato Spring 45 cm x 65 cm 2 Peças, confeccionado em tecido 100% algodão, é peça essencial e um charme a mais na cozinha. Pode ser utilizado para secar a louça, as mãos e até mesmo para auxiliar na preparação dos alimentos. Com ótima absorção, contribui ainda para a decoração da cozinha e bancada, conferindo um toque delicado.",
     "cor": "Preto",
     "valor": 32,
     "valorDesconto": 29.99,
@@ -58,7 +56,7 @@
   {
     "id_produto": 7,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Branco",
     "valor": 3.56,
     "valorDesconto": 3.03,
@@ -68,7 +66,7 @@
   {
     "id_produto": 8,
     "titulo": "Kit 12 Panos de Copa/Prato Atoalhado 40x60cm",
-    "descricao": "Aqui na Central Toalhas voc� adquire um kit com 12 panos para copa e prato atoalhado, com lindas estampas e muita qualidade! Tudo isso para deixar a decora��o da sua cozinha ainda mais aconchegante.",
+    "descricao": "Aqui na Central Toalhas você adquire um kit com 12 panos para copa e prato atoalhado, com lindas estampas e muita qualidade! Tudo isso para deixar a decoração da sua cozinha ainda mais aconchegante.",
     "cor": "Branco",
     "valor": 39.48,
     "valorDesconto": 29.99,
@@ -77,7 +75,7 @@
   {
     "id_produto": 9,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo).Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo).Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Rosa",
     "valor": 3.56,
     "valorDesconto": 3.03,
@@ -87,7 +85,7 @@
   {
     "id_produto": 10,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Cinza",
     "valor": 3.56,
     "valorDesconto": 3.03,
@@ -97,7 +95,7 @@
   {
     "id_produto": 11,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Azul",
     "valor": 3.56,
     "valorDesconto": 3.03,
@@ -106,7 +104,7 @@
   {
     "id_produto": 12,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Bege",
     "valor": 3.56,
     "valorDesconto": 3.03,
@@ -115,7 +113,7 @@
   {
     "id_produto": 13,
     "titulo": "Pano de Prato Estampado para Bordar com Franja - 40x68cm - Toalhas Groh",
-    "descricao": "Pano de Prato com material 100% algod�o (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irrever�ncia a sua cozinha e a deixam ainda mais encantadora.",
+    "descricao": "Pano de Prato com material 100% algodão (exceto efeito decorativo). Conferindo requinte e bom gosto, trazem irreverência a sua cozinha e a deixam ainda mais encantadora.",
     "cor": "Lilas",
     "valor": 3.56,
     "valorDesconto": 3.03,
