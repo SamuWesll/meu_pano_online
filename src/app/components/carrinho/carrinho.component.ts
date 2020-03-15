@@ -19,11 +19,19 @@ export class CarrinhoComponent implements OnInit {
       confirmarsenha: new FormControl(carrinho.confirmarsenha),
       telefone: new FormControl(carrinho.telefone),
       cep: new FormControl(carrinho.cep),
+      endereco: new FormControl(carrinho.endereco),
+      numero: new FormControl(carrinho.numero),
+      complemento: new FormControl(carrinho.complemento),
+      bairro: new FormControl(carrinho.bairro),
+      cidade: new FormControl(carrinho.cidade),
+      estado: new FormControl(carrinho.estado),
       numCartao: new FormControl(carrinho.numCartao),
       dtValidade: new FormControl(carrinho.dtValidade),
       validade: new FormControl(carrinho.validade),
       nomeTitular: new FormControl(carrinho.nomeTitular),
       cpfTitular: new FormControl(carrinho.cpfTitular)
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
     })
   }
