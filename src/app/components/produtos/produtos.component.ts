@@ -9,20 +9,18 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  public produtos: Produtos = [];
+  public produtos: Produtos[] = [];
 
   converteDecimal(valor: string): string {
-    return parseFloat(valor).toFixed(2).replace('.',',')
+    return parseFloat(valor).toFixed(2).replace('.', ',')
   };
 
-  constructor(private http: HttpService) {
-    this.http.getProdutos().subscribe(
-      (data) => {
-        this.produtos = data;
-        console.log(this.produtos)
-      }
-    )
+  tresParcelas(valor: number): string {
+    valor /= 3
+    return valor.toFixed(2).replace('.', ',')
   }
+
+  constructor(public http: HttpService) { }
 
   ngOnInit(): void {
   }

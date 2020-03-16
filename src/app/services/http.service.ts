@@ -37,10 +37,14 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getProdutos() {
-    let prods = this.http.get(urlListaProdutos);
+    let prods = this.http.get(URLLocalJson)
     return prods.pipe(
       map(JsonProdutosURL)
     )
+    //   this.http.get(urlListaProdutos).subscribe((resp: Produtos) => {
+    //   this.carregado = true;
+    //   this.info = resp['body']
+    // });
   };
 
   postClientes(body: object){
