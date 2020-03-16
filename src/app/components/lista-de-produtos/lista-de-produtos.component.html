@@ -4,12 +4,56 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade d-flex justify-content-center" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active d-flex justify-content-center">
-            <app-produtos id="app-produtos" class=""></app-produtos>
+            <div *ngFor="let produto of http?.info; index as i" class="carProdudos">
+                <a *ngIf="i < 4" class="card">
+                    <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
+                    <img src="../../../assets/img/produtos/carousel/produto_01.jfif" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <p class="card-text font-weight-bold">{{produto.tituloProduto}}</p>
+                        <div class="dropdown-divider"></div>
+                        <p>
+                            <span style="text-decoration: line-through">
+                                R$ {{converteDecimal(produto.valor)}}
+                            </span>
+                            <br>
+                            <span class="font-weight-bold text-warning text-decoration-none">
+                                R$ {{converteDecimal(produto.valorDesconto)}}
+                            </span>
+                        </p>
+                        <p id="textPreco">R$ {{converteDecimal(produto.valorDesconto)}}
+                            à vista ou em 3x de R$ {{tresParcelas(produto.valor | json)}} sem juros</p>
+                        <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
+                    </div>
+                </a>
+            </div>
+
         </div>
         <div class="carousel-item d-flex justify-content-center">
-            <app-produtos id="app-produtos" class=""></app-produtos>
+            <div *ngFor="let produto of http?.info; index as i" class="carProdudos">
+                <a *ngIf="i < 4" class="card">
+                    <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
+                    <img src="../../../assets/img/produtos/carousel/produto_01.jfif" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <p class="card-text font-weight-bold">{{produto.tituloProduto}}</p>
+                        <div class="dropdown-divider"></div>
+                        <p>
+                            <span style="text-decoration: line-through">
+                                R$ {{converteDecimal(produto.valor)}}
+                            </span>
+                            <br>
+                            <span class="font-weight-bold text-warning text-decoration-none">
+                                R$ {{converteDecimal(produto.valorDesconto)}}
+                            </span>
+                        </p>
+                        <p id="textPreco">R$ {{converteDecimal(produto.valorDesconto)}}
+                            à vista ou em 3x de R$ {{tresParcelas(produto.valor | json)}} sem juros</p>
+                        <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
+                    </div>
+                </a>
+            </div>
+
         </div>
-        </div>
+    </div>
     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
