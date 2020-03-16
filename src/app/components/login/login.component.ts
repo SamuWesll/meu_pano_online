@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/Cliente';
 import { Sexo } from 'src/app/models/Sexo';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +13,17 @@ export class LoginComponent implements OnInit {
 
   public logado: Cliente;
 
-  constructor() {
+  constructor(public _router: Router, public _location: Location) {
 
     this.verificarLogin();
 
+  }
+
+  refresh(): void{
+    this._router.navigateByUrl('', {skipLocationChange:true}).then(() => {
+      console.log(decodeURI(this._location.path()))
+      this._router.navigate([ decodeURI(this._location.path())])
+    });
   }
 
   logadoLocalStorage() {
@@ -41,7 +50,7 @@ export class LoginComponent implements OnInit {
       cliente.genero
     );
 
-      // this.trocadorUrl();
+      this.refresh();
 
   }
 
@@ -58,7 +67,7 @@ export class LoginComponent implements OnInit {
 
     this.logado = null;
 
-    // this.trocadorUrl();
+    this.refresh();
 
   }
 

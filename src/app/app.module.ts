@@ -40,7 +40,8 @@ import { NavComponent } from './components/nav/nav.component';
     ProdutosSimilaresComponent,
     ConsultarFreteComponent,
     ProdutosCategoriaComponent,
-    NavComponent
+    NavComponent,
+
   ],
   imports: [
     BrowserModule,
