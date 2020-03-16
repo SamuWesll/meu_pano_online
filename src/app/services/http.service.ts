@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Produtos } from '../models/Produtos';
 
-const URLLocalJson: string = "../assets/json/produtos.json";
+
+const URLLocalJson: string = "http://localhost:8080/meupanoonline/produto/lista";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class HttpService {
   constructor(private http: HttpClient) {
     this.http.get(URLLocalJson).subscribe((resp: Produtos) => {
       this.carregado = true;
-      this.info = resp
+      this.info = resp['body']
     });
   }
 
