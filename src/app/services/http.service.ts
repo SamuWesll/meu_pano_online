@@ -7,12 +7,21 @@ import { Observable } from 'rxjs';
 
 const URLLocalJson: string = "assets/json/produtos.json";
 const urlCriarCadastro: string = "http://localhost:8080/meupanoonline/cliente";
+const urlListaProdutos: string = "http://localhost:8080/meupanoonline/produto/lista";
 
 function JsonProdutosURL(data: any[]) {
   return data.map(
     (el) => {
-      return new Produtos(el.id_produto,el.titulo, el.fabricante, el.descricao, el.cod_categoria, el.cor, el.valor_bruto, el.valor_unitario, el.id_fornecedor, el.estoque_disponivel,el.url_img)
-    }
+      return console.log(el)
+      // return new Produtos(
+      //   el.idProduto,
+      //   el.tituloProduto,
+      //   el.descricao,
+      //   el.imagem,
+      //   el.valor,
+      //   el.valorDesconto,
+      //   el.categoria,
+      }
   )
 };
 
@@ -28,7 +37,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getProdutos() {
-    let prods = this.http.get(URLLocalJson);
+    let prods = this.http.get(urlListaProdutos);
     return prods.pipe(
       map(JsonProdutosURL)
     )

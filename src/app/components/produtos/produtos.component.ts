@@ -9,7 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  public produtos: Produtos[] = [];
+  public produtos: Produtos = [];
 
   converteDecimal(valor: string): string {
     return parseFloat(valor).toFixed(2).replace('.',',')
@@ -19,6 +19,7 @@ export class ProdutosComponent implements OnInit {
     this.http.getProdutos().subscribe(
       (data) => {
         this.produtos = data;
+        console.log(this.produtos)
       }
     )
   }
