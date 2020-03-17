@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
   verificarLogin() {
 
     this.login = JSON.parse(localStorage.getItem("logado"));
-    console.log(this.login);
 
   }
 

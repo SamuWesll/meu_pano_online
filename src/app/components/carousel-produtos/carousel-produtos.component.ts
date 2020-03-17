@@ -3,11 +3,11 @@ import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
-  selector: 'app-lista-de-produtos',
-  templateUrl: './lista-de-produtos.component.html',
-  styleUrls: ['./lista-de-produtos.component.css']
+  selector: 'app-carousel-produtos',
+  templateUrl: './carousel-produtos.component.html',
+  styleUrls: ['./carousel-produtos.component.css']
 })
-export class ListaDeProdutosComponent implements OnInit {
+export class CarouselProdutos implements OnInit {
 
   public produtos: Produtos[] = [];
 
@@ -23,6 +23,10 @@ export class ListaDeProdutosComponent implements OnInit {
   constructor(public http: HttpService) {}
 
   ngOnInit(): void {
+
+    console.log(this.http.info
+    )
+
   }
 
 }
