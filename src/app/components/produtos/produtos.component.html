@@ -16,7 +16,6 @@
 </div> -->
 
 <app-nav></app-nav>
-{{ http.info[0].imagem | json }}
 <div class="container">
 <div *ngFor="let produto of http?.info" class="carProdudos">
     <a class="card" routerLink="/produto-detalhado">
