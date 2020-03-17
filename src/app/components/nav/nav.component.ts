@@ -17,7 +17,7 @@ export class NavComponent implements OnInit {
     {
       ativo: true,
       label: "Todas as Categorias",
-      route: "/todas"
+      route: "/produtos"
     },
     {
       ativo: false,

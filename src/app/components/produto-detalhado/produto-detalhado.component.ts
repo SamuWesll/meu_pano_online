@@ -15,12 +15,12 @@ export class ProdutoDetalhadoComponent implements OnInit {
 
   public produtos: Produtos[]=[];
 
-  constructor(private http: HttpService) {
-    this.http.getProdutos().subscribe(
-      (data) => {
-        this.produtos=data;
-      }
-    )
+  constructor(public http: HttpService) {
+  //   this.http.getProdutos().subscribe(
+  //     (data) => {
+  //       this.produtos=data;
+  //     }
+  //   )
    }
 
   ngOnInit(): void {

@@ -1,31 +1,29 @@
 <app-nav></app-nav>
 <main class="container bg-light border-bottom pb-5">
+
+    <!-- {{http.info[29] |json}} -->
+    <div>
     <div class="row mt-3">
         <div class="col-md-4  text-secondary">
-            <h3 class="pt-2 pb-3 ">Título do produto</h3>
-            <p class="text-jestify">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda voluptas, totam dolores eos
-                autem
-                veritatis dolorum magnam pariatur eligendi odit. Corporis saepe aspernatur modi. Esse dolore officia
-                sit tempore molestias!
-            </p>
+            <h3 class="pt-2 pb-3 ">{{http.info[29].tituloProduto}}</h3>
             <p class="text-justify">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eos ea, corrupti rem a quam
-                tempore dolor suscipit vitae ad placeat corporis ab blanditiis aliquid voluptas itaque recusandae
-                nostrum!
-            </p>
-            <p class="text-justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nam molestias assumenda
-                consequuntur deserunt aspernatur eaque perferendis architecto, consequatur veniam sint tempore ipsam
-                dicta doloremque est ab provident, placeat corporis?
+                {{http.info[29].descricao}}
             </p>
         </div>
         <div class="col-md-5 mt-3">
-            <img src="../../../assets/img/produtos/detalhado/img05.png" class="img-fluid mx-auto d-block rounded mw-100 mh-100"
+            <img src="{{http.info[29].imagem}}" class="img-fluid mx-auto d-block rounded mw-100 mh-100"
                 style="width:300px; height: auto;" alt="Pano de Prato" title="Pano de Prato" />
         </div>
         <div class="col-md-3">
-            <p class="h3 p-3 border-bottom text-success font-weight-bold">R$15,00</p>
+            <p class="p-3 ">
+                    <span style="text-decoration: line-through">
+                        R$ {{convertDecimal(http.info[29].valor)}}
+                    </span>
+                    <br>
+                    <span class="h3 font-weight-bold text-success text-decoration-none">
+                        R$ {{convertDecimal(http.info[29].valorDesconto)}}
+                    </span>
+            </p>
             <p class="text-muted text-right">Em até 1x sem juros</p>
             <div class="row">
                 <button type="submit" class="mx-auto btn btnDetalhe offset-1 col-10 mb-2" value="submit">Comprar</button>
@@ -36,6 +34,7 @@
             <!--<app-consultar-frete></app-consultar-frete>-->
         </div>
     </div>
+</div>
 </main>
 <app-produtos-similares></app-produtos-similares>
 <section class="container text-secondary mt-4 pb-3">
