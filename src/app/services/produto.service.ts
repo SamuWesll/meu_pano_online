@@ -15,6 +15,11 @@ export class ProdutoService {
   getListaProdutos() {
     let buscarProdutos = this.http.get(urlProduto + "/lista");
     return buscarProdutos
+  };
+
+  getProduto(codProduto: number) {
+    let buscarProduto = this.http.get(urlProduto + "?idCliente=" + codProduto)
+    return buscarProduto;
   }
 
 }

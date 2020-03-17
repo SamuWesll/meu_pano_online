@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produtos } from "src/app/models/Produtos";
 import { HttpService } from 'src/app/services/http.service';
+import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -13,9 +14,9 @@ export class ProdutoDetalhadoComponent implements OnInit {
     return parseFloat(valor).toFixed(2).replace('.', ',');
   }
 
-  public produtos: Produtos[]=[];
+  public produto: Produtos;
 
-  constructor(public http: HttpService) {
+  constructor(public http: HttpService, private httpProduto: ProdutoService) {
   //   this.http.getProdutos().subscribe(
   //     (data) => {
   //       this.produtos=data;
@@ -24,6 +25,7 @@ export class ProdutoDetalhadoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
   }
 
 }
