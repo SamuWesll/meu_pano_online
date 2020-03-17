@@ -12,16 +12,15 @@ export class ProdutosComponent implements OnInit {
   public produtos: Produtos[] = [];
 
   converteDecimal(valor: string): string {
-    return parseFloat(valor).toFixed(2).replace('.',',')
+    return parseFloat(valor).toFixed(2).replace('.', ',')
   };
 
-  constructor(private http: HttpService) {
-    this.http.getProdutos().subscribe(
-      (data) => {
-        this.produtos = data;
-      }
-    )
+  tresParcelas(valor: number): string {
+    valor /= 3
+    return valor.toFixed(2).replace('.', ',')
   }
+
+  constructor(public http: HttpService) { }
 
   ngOnInit(): void {
   }

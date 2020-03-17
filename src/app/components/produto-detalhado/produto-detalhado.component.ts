@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Produtos } from "src/app/models/Produtos";
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoDetalhadoComponent implements OnInit {
 
-  constructor() { }
+  convertDecimal(valor: string): string{
+    return parseFloat(valor).toFixed(2).replace('.', ',');
+  }
+
+  public produtos: Produtos[]=[];
+
+  constructor(public http: HttpService) {
+  //   this.http.getProdutos().subscribe(
+  //     (data) => {
+  //       this.produtos=data;
+  //     }
+  //   )
+   }
 
   ngOnInit(): void {
   }
