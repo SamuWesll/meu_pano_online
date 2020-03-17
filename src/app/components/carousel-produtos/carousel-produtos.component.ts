@@ -28,7 +28,6 @@ export class CarouselProdutos implements OnInit {
     this.httpProduto.getListaProdutos().subscribe(
       (body) => {
         this.produtos = body['body'];
-        console.log(this.produtos)
     })
 
   }
