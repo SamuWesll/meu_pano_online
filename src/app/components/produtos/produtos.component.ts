@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
+import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
   selector: 'app-produtos',
@@ -9,7 +10,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  public produtos: Produtos[] = [];
+  public produtos: Produtos;
 
   converteDecimal(valor: string): string {
     return parseFloat(valor).toFixed(2).replace('.', ',')
@@ -20,9 +21,16 @@ export class ProdutosComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  constructor(public http: HttpService) { }
+  constructor(private httpProduto: ProdutoService) { }
 
   ngOnInit(): void {
+
+    this.httpProduto.getListaProdutos().subscribe(
+      (body) => {
+        this.produtos = body['body'];
+        console.log(this.produtos)
+    })
+
   }
 
 }
