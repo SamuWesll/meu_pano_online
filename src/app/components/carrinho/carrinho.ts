@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Carrinho } from 'src/app/models/Carrinho';
 
 @Component({
@@ -8,6 +8,8 @@ import { Carrinho } from 'src/app/models/Carrinho';
   styleUrls: ['./carrinho.component.css']
 })
 export class CarrinhoComponent implements OnInit {
+  formBuilder: any;
+  formulario: any;
 
   private createForm(carrinho: Carrinho): FormGroup {
     return new FormGroup({
@@ -40,6 +42,14 @@ export class CarrinhoComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.formulario = this.formBuilder.group({
+      nome: [null, Validators.required],
+      email: [null, [Validators.minLength(3), 
+        Validators.email]]
+    });
   }
 
+  OnSubmit() {
+    console.log(this.formulario)
+  }
 }

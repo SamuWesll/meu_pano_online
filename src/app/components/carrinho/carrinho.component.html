@@ -1,6 +1,6 @@
 <main class="container">
-    <h3 class="d-flex justify-content-center">Seu carrinho de compras</h3>
-    <form id="checkout" class="row mt-4">
+    <h3 class="d-flex justify-content-center">Preencha os dados para finalizar compra!</h3>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="checkout" class="row mt-4">
         <div class="col-md-4">
             <header class="p-2" style="background-color: rgba(31, 189, 139, 0.29); color: white;" >
                 Dados pessoais
@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                     <label for="CPFUsuario">CPF</label>
-                    <input class="form-control" type="text" id="CPFUsuario" name="CPFUsuario"
+                    <input ng class="form-control" type="text" id="CPFUsuario" name="CPFUsuario"
                         placeholder="Digite o seu CPF">
                 </div>
 

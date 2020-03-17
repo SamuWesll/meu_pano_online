@@ -14,9 +14,13 @@ export class PedidoComponent implements OnInit {
   pedido: Pedido[] = [];
 
 
-  constructor() {
-    
-  }
+//    constructor(private Pedido: pedido ) {
+//      this.Pedido.getPedido().subscribe(
+//      (data) => {
+//       this.pedido = data;
+//     }
+//   )
+// }
 
   ngOnInit(): void {
 
