@@ -38,6 +38,10 @@ const routes: Routes = [
     component: ProdutosComponent
   },
   {
+    path: "produtos/:id",
+    component: ProdutoDetalhadoComponent
+  },
+  {
     path: "**",
     redirectTo: "/home",
     pathMatch: "full"

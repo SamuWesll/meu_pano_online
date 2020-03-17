@@ -17,9 +17,14 @@ export class HttpService {
 
   constructor(private http: HttpClient) {
     this.http.get(URLLocalJson).subscribe((resp: Produtos) => {
+      console.log(resp['body'])
       this.carregado = true;
       this.info = resp['body']
     });
+  }
+
+  getProdutoById(id: string) {
+    return this.http.get(`http://localhost:8080/meupanoonline/produto?idProduto=${id}`)
   }
 
 }
