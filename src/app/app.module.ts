@@ -20,10 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnderecoComponent } from './components/endereco/endereco.component';
 import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produto-detalhado.component';
 import { ProdutosSimilaresComponent } from './components/produtos-similares/produtos-similares.component';
-import { ConsultarFreteComponent } from './components/consultar-frete/consultar-frete.component';
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
 import { NavComponent } from './components/nav/nav.component';
-import { PedidoComponent } from './components/pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +37,8 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     CadastroComponent,
     EnderecoComponent,
     ProdutosSimilaresComponent,
-    ConsultarFreteComponent,
     ProdutosCategoriaComponent,
     NavComponent,
-    PedidoComponent
   ],
   imports: [
     BrowserModule,
