@@ -1,0 +1,24 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text"  class="form-control" name="nome"
+        id="nome" placeholder="Nome" [ngModel]="usuario.nome" 
+        required #nome="ngModel">
+
+        <div *ngIf="!nome.valid && nome.touched">
+            Nome é obrigatório.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email"
+        id="email" placeholder="nome@email.com" [ngModel]="usuario.email" 
+        required email>
+        <!-- pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" -->
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
