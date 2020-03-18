@@ -1,0 +1,46 @@
+.percDesconto {
+    /* display: block; */
+    font-size: 12px;
+    color: white;
+    margin-left: 170px;
+    margin-top: -220px;
+    padding: 7px;
+}
+
+#textPreco {
+    height: 30px;
+    font-size: 12px;
+    color: rgb(39, 39, 39);
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card button {
+    display: none;
+}
+
+.card:hover button {
+    display: block;
+}
+
+.card:hover #textPreco {
+    display: none;
+}
+
+.card-img-top {
+    width: 90%;
+    margin: 10px 10px -10px 10px;
+}
+
+.card-text {
+    height: 50px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.btn-success {
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
