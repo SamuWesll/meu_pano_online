@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { LoginComponent } from '../login/login.component';
 import { Cliente } from 'src/app/models/Cliente';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   openModal() {
     this.modalRef = this.modalService.show(LoginComponent)
   }
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService, private router: Router) {
 
     this.verificarLogin();
 
@@ -43,6 +44,16 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  pesquisarProduto(pesquisa: string) {
+    if (pesquisa.length < 1) {
+      return
+    }
+
+    this.router.navigate(['/busca', pesquisa])
+    const input = document.querySelector('input')
+    input.value = ''
   }
 
 }

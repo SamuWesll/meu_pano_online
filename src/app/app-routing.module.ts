@@ -7,6 +7,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ProdutoDetalhadoComponent } from "./components/produto-detalhado/produto-detalhado.component";
 import { ProdutosCategoriaComponent } from "./components/produtos-categoria/produtos-categoria.component";
 import { ProdutosComponent } from './components/produtos/produtos.component';
+import { BuscaComponent } from './components/busca/busca.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: "produtos/:id",
     component: ProdutoDetalhadoComponent
+  },
+  {
+    path: "busca/:produto",
+    component: BuscaComponent
   },
   {
     path: "**",

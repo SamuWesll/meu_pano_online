@@ -3,15 +3,15 @@
         <img src="../../../assets/img/logo1.png" alt="">
     </a>
     <div class="input-group col-md-4 col-sm-12 mb-1">
-        <input type="text" class="form-control" placeholder="Sua pesquisa..." aria-label="Sua pesquisa..."
-            aria-describedby="pesquisa">
+        <input type="text" (keyup.enter)="pesquisarProduto(txtPesquisa.value)" class="form-control"
+            placeholder="Sua pesquisa..." aria-label="Sua pesquisa..." aria-describedby="pesquisa" #txtPesquisa>
         <div class="input-group-append">
             <button class="btn btn-outline-info" type="button" id="pesquisa"></button>
         </div>
     </div>
     <div class="mb-1">
         <button type="button" class="btn btn-outline-success rounded login mr-2" data-toggle="modal"
-        data-target="#login" (click)="openModal()">
+            data-target="#login" (click)="openModal()">
             <span *ngIf="login">
                 <span> {{ separarNome(login.nome) }} </span>
             </span>
