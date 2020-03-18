@@ -1,0 +1,72 @@
+<app-nav></app-nav>
+<main class="container">
+  <div class="row mt-3">
+    <div class="col-8">
+      <div class="card" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{carrinho.info[23].imagem}}" class="card-img mt-2" alt="Foto do pano de prato à venda"
+              title="Foto do pano de prato à venda">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{carrinho.info[23].tituloProduto}}</h5>
+              <p class="card-text">{{carrinho.info[23].descricao}}</p>
+              <div class="row">
+                <div class="col-4">
+                  <form class="form-group">
+                    <input class="form-control" type="number" />
+                  </form>
+                </div>
+                <div class="col-4">
+                  <a href="" class="text-muted align-middle">Remover</a>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 bg-light">
+      <div>
+        <header class="mb-3">
+          <h4>Resumo do Pedido</h4>
+        </header>
+        <div class="row">
+          <div class="col-6">
+            <p>qtde produtos</p>
+          </div>
+          <div class="col-6">
+            <p>valor compra</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <p>Frete</p>
+          </div>
+          <div class="col-4">
+            <input class="" type="radio" id="rapida" name="frete" value="rapida">
+            <label for="rapida">Rápido R$40,00</label>
+          </div>
+          <div class="col-4">
+            <input class="" type="radio" id="normal" name="frete" value="normal">
+            <label for="normal">Normal R$15,00</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p>Total</p>
+          </div>
+          <div class="col-6">
+            <p>valor total</p>
+          </div>
+        </div>
+        <div class="row">
+          <button class="mx-auto btn btnDetalhe offset-1 col-10 mb-2">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
