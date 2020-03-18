@@ -8,6 +8,7 @@ import { ProdutosCategoriaComponent } from "./components/produtos-categoria/prod
 import { PedidoComponent } from "./components/pedido/pedido.component";
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 
+
 const routes: Routes = [
   {
     path: "",

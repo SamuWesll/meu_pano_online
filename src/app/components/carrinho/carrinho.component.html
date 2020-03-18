@@ -7,10 +7,15 @@
             </header>
             <div class="p-2">
                 <div class="form-group">
-                    <label for="nomeUsuario">Nome completo</label>
-                    <input class="form-control" type="text" id="nomeUsuario" name="nomeUsuario"
-                        placeholder="Digite seu nome completo">
-                </div>
+                    <label for="nome">Nome completo</label>
+                    <input class="form-control" type="text" id="nome" name="nome"
+                    placeholder="Digite seu nome completo" [ngModel]="usuario.nome" 
+                    required #nome="ngModel">
+                    <div *ngIf="!nome.valid && nome.touched">
+                        Nome é obrigatório.
+                    </div>
+                
+                    </div>
 
                 <div class="form-group">
                     <label for="CPFUsuario">CPF</label>
@@ -25,9 +30,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="emailUsuario">Email</label>
-                    <input class="form-control" type="email" id="emailUsuario" name="emailUsuario"
-                        placeholder="Digite o seu email">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email"
+                        placeholder="Digite o seu email"  [ngModel]="usuario.email" 
+                        required email>
                 </div>
 
                 <div class="form-group">
@@ -156,7 +162,8 @@
 
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success" type="button" data-toggle="modal" data-target="#compraFinalizada">Finalizar compra</button>
+                <button type="submit" class="btn btn-success" data-toggle="modal" 
+                data-target="#compraFinalizada">Finalizar compra</button>
             </div>
         </div>
     </form>

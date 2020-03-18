@@ -8,8 +8,19 @@ import { Carrinho } from 'src/app/models/Carrinho';
   styleUrls: ['./carrinho.component.css']
 })
 export class CarrinhoComponent implements OnInit {
-  formBuilder: any;
-  formulario: any;
+
+
+  usuario: any = {
+    nome: null,
+    email: null
+  }
+
+  onSubmit(form){
+    console.log(form);
+  }
+
+   formBuilder: any;
+   formulario: any;
 
   private createForm(carrinho: Carrinho): FormGroup {
     return new FormGroup({
@@ -42,14 +53,16 @@ export class CarrinhoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formulario = this.formBuilder.group({
-      nome: [null, Validators.required],
-      email: [null, [Validators.minLength(3), 
-        Validators.email]]
-    });
-  }
+  //   this.formulario = this.formBuilder.group({
+  //     nome: [null, Validators.required],
+  //     email: [null, [Validators.minLength(3), 
+  //       Validators.email]]
+  //   });
+  // }
 
-  OnSubmit() {
-    console.log(this.formulario)
+  // OnSubmit() {
+  //   console.log(this.formulario)
+  // }
+ 
   }
 }

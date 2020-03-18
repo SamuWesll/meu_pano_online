@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// import { FormsModule } from  'angular/FormsModule;
 // import { AngularFontAwesomeModule } from "angular-font-awesome";
+
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,10 +19,11 @@ import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produt
 import { ProdutosSimilaresComponent } from './components/produtos-similares/produtos-similares.component';
 import { ConsultarFreteComponent } from './components/consultar-frete/consultar-frete.component';
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NavComponent } from './components/nav/nav.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     ProdutosCategoriaComponent,
     NavComponent,
     PedidoComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ModalModule.forRoot(),
     // AngularFontAwesomeModule,
     HttpClientModule,
