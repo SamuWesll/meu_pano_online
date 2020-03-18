@@ -24,7 +24,6 @@ import { NavComponent } from './components/nav/nav.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +42,7 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     NavComponent,
     PedidoComponent,
     CarrinhoComponent,
+    
 
   ],
   imports: [
@@ -52,6 +52,7 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     ModalModule.forRoot(),
     // AngularFontAwesomeModule,
     HttpClientModule,
+    
   ],
   entryComponents: [LoginComponent],
   providers: [],

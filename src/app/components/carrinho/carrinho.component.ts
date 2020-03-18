@@ -1,6 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Carrinho } from 'src/app/models/Carrinho';
+// import { Http } from '@angular/http';
+// import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-carrinho',
@@ -14,6 +18,8 @@ export class CarrinhoComponent implements OnInit {
     nome: null,
     cpf: null,
     email: null,
+    senha: null,
+    confSenha: null,
     telefone: null,
     cep: null,
     endereco: null,
@@ -27,6 +33,7 @@ export class CarrinhoComponent implements OnInit {
     nomeTitular: null,
     cpfTitular: null
   }
+  HttpClientModule: any;
 
   onSubmit(form){
     console.log(form);
@@ -62,20 +69,30 @@ export class CarrinhoComponent implements OnInit {
     })
   }
 
-  constructor() { }
+  constructor(private Http: HttpClientModule) { }
 
   ngOnInit(): void {
+  }
+  
 
-  //   this.formulario = this.formBuilder.group({
-  //     nome: [null, Validators.required],
-  //     email: [null, [Validators.minLength(3), 
-  //       Validators.email]]
-  //   });
-  // }
+  consultaCEP(cep){
+    console.log(cep);
+    // variavel (cep) somente com digitos
+     cep = cep.replace(/\D/g, '');
 
-  // OnSubmit() {
-  //   console.log(this.formulario)
-  // }
- 
+     //verifica se campo cep possui valor informado
+     if (cep != ""){
+
+       //expressão regular para validar o cep.
+       var validacep = /^[0-9]{8}$/;
+
+       //valida o formato do cep
+       if(validacep.test(cep)){
+
+         this.HttpClientModule.get(`//viacep.com.br/ws/${cep}/json`)
+         .map(dados => dados.json())
+         .subscribe(dados => console.log(dados));
+       }
+     }
   }
 }

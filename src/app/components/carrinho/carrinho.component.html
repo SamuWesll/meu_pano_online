@@ -15,8 +15,7 @@
                     class="alert alert-danger" role="alert">
                         Nome é obrigatório.
                     </div>
-                
-                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="cpf">CPF</label>
@@ -49,19 +48,28 @@
                     class="alert alert-danger" role="alert">
                         Email é obrigatório.
                     </div>
-
                 </div>
 
                 <div class="form-group">
-                    <label for="SenhaUsuario">Senha</label>
-                    <input class="form-control" type="password" id="senhaUsuario" name="SenhaUsuario"
-                        placeholder="Digite sua senha">
+                    <label for="senha">Senha</label>
+                    <input class="form-control" type="password" id="senha" name="senha"
+                    placeholder="Digite sua senha"  [ngModel]="usuario.senha" 
+                    required #senha="ngModel">
+                    <div *ngIf="!senha.valid && senha.touched"
+                    class="alert alert-danger" role="alert">
+                        Senha é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmarSenhaUsuario">Confirme a senha</label>
-                    <input class="form-control" type="password" id="confirmarSenhaUsuario"
-                        name="confirmarSenhaUsuario" placeholder="Confirme sua senha">
+                    <label for="confSenha">Confirme a senha</label>
+                    <input class="form-control" type="password" id="confSenha"
+                    name="confSenha" placeholder="Confirme sua senha" [ngModel]="usuario.confSenha" 
+                    required #confSenha="ngModel">
+                    <div *ngIf="!confSenha.valid && confSenha.touched"
+                    class="alert alert-danger" role="alert">
+                        É obrigatório confirmar a senha.
+                    </div>
                 </div>
 
             </div>
@@ -75,7 +83,8 @@
                     <label for="cep">CEP</label>
                     <input class="form-control" type="text" id="cep" name="cep"
                     placeholder="Digite seu CEP" [ngModel]="usuario.cep"
-                    required #cep="ngModel">
+                    required #cep="ngModel" 
+                    (blur)="consultaCEP($event.target.value)">
                     <div *ngIf="!cep.valid && cep.touched"
                     class="alert alert-danger" role="alert">
                     CEP é obrigatório.
@@ -141,24 +150,43 @@
                         Selecione seu estado.
                         </div>
                             <option value="" disabled selected>Estado</option>
-                            <option value="SP">SP</option>
-                            <option value="RJ">RJ</option>
-                            <option value="ES">ES</option>
-                            <option value="BA">BA</option>
-                            <option value="MG">MG</option>
+                            <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
                             <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
                         </select>
                     </div>
                 </div>
                 <div class="p-2 row">
                     <div class="col-6">
-                        <label for="">Frete rápido <br> R$ 7,99</label>
+                        <label for="">Até 30 dias <br> R$ 7,99</label>
                         <input type="radio" name="frete" id="freteRapido">
                     </div>
                     <div class="col-6">
-                        <label for="">Frete normal <br> R$ 15,99</label>
+                        <label for="">Até 7 dias <br> R$ 15,99</label>
                         <input type="radio" name="frete" id="freteNormal">
                     </div>
                 </div>
@@ -175,35 +203,60 @@
             </div>
             <div class="p-2">
                 <div class="form-group">
-                    <label for="numeroCartaoUsuario">Numero do cartão</label>
-                    <input class="form-control" type="text" id="numeroCartaoUsuario" name="numeroCartaoUsuario"
-                        placeholder="Digite o numero do cartão">
+                    <label for="numCartao">Numero do cartão</label>
+                    <input class="form-control" type="text" id="numCartao" name="numCartao"
+                    placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao"
+                    required #numCartao="ngModel">
+                    <div *ngIf="!numCartao.valid && numCartao.touched"
+                        class="alert alert-danger" role="alert">
+                        Número do cartão é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-8">
-                        <label for="validadeCartao">Data de validade</label>
-                        <input class="form-control" type="month" id="validadeCartao" name="validadeCartao"
-                            placeholder="Validade">
+                        <label for="dtValidade">Data de validade</label>
+                        <input class="form-control" type="month" id="dtValidade" name="dtValidade"
+                        placeholder="Validade" [ngModel]="usuario.dtValidade"
+                        required #dtValidade="ngModel">
+                        <div *ngIf="!dtValidade.valid && dtValidade.touched"
+                            class="alert alert-danger" role="alert">
+                            Data de validade é obrigatória.
+                        </div>
                     </div>
                     <div class="col-4">
-                        <label for="codigoSeguranca">Cod. Segurança</label>
-                        <input class="form-control" type="number" id="codigoSeguranca" name="codigoSeguranca"
-                            placeholder="CVV">
+                        <label for="cdSeguranca">Cod. S</label>
+                        <input class="form-control" type="number" id="cdSeguranca" name="cdSeguranca"
+                        placeholder="CVV" [ngModel]="usuario.cdSeguranca"
+                        required #cdSeguranca="ngModel">
+                        <div *ngIf="!cdSeguranca.valid && cdSeguranca.touched"
+                            class="alert alert-danger" role="alert">
+                            Cd. Seg
+                        </div>
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="nomeTitularUsuario">Nome do titular</label>
-                    <input class="form-control" type="text" id="nomeTitularUsuario" name="nomeTitularUsuario"
-                        placeholder="Digite o nome do titular">
+                    <label for="nomeTitular">Nome do titular</label>
+                    <input class="form-control" type="text" id="nomeTitular" name="nomeTitular"
+                    placeholder="Digite o nome do titular" [ngModel]="usuario.nomeTitular"
+                    required #nomeTitular="ngModel">
+                    <div *ngIf="!nomeTitular.valid && nomeTitular.touched"
+                        class="alert alert-danger" role="alert">
+                        Nome do titular é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="CPFTitularUsuario">CPF do titular</label>
-                    <input class="form-control" type="text" id="CPFTitularUsuario" name="CPFTitularUsuario"
-                        placeholder="Digite o CPF do titular">
+                    <label for="cpfTitular">CPF do titular</label>
+                    <input class="form-control" type="text" id="cpfTitular" name="cpfTitular"
+                    placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular"
+                    required #cpfTitular="ngModel">
+                    <div *ngIf="!cpfTitular.valid && cpfTitular.touched"
+                        class="alert alert-danger" role="alert">
+                        CPF do titular é obrigatório.
+                    </div>
                 </div>
 
             </div>
