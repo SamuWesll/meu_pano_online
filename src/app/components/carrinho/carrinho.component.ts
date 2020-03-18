@@ -12,7 +12,20 @@ export class CarrinhoComponent implements OnInit {
 
   usuario: any = {
     nome: null,
-    email: null
+    cpf: null,
+    email: null,
+    telefone: null,
+    cep: null,
+    endereco: null,
+    numero: null,
+    bairro: null,
+    cidade: null,
+    estado: null,
+    numCartao: null,
+    dtValidade: null,
+    cdSeguranca: null,
+    nomeTitular: null,
+    cpfTitular: null
   }
 
   onSubmit(form){

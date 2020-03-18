@@ -11,29 +11,45 @@
                     <input class="form-control" type="text" id="nome" name="nome"
                     placeholder="Digite seu nome completo" [ngModel]="usuario.nome" 
                     required #nome="ngModel">
-                    <div *ngIf="!nome.valid && nome.touched">
+                    <div *ngIf="!nome.valid && nome.touched"
+                    class="alert alert-danger" role="alert">
                         Nome é obrigatório.
                     </div>
                 
                     </div>
 
                 <div class="form-group">
-                    <label for="CPFUsuario">CPF</label>
-                    <input ng class="form-control" type="text" id="CPFUsuario" name="CPFUsuario"
-                        placeholder="Digite o seu CPF">
+                    <label for="cpf">CPF</label>
+                    <input ng class="form-control" type="text" id="cpf" name="cpf"
+                    placeholder="Digite o seu CPF" [ngModel]="usuario.cpf"
+                    required #cpf="ngModel">
+                    <div *ngIf="!cpf.valid && cpf.touched"
+                    class="alert alert-danger" role="alert">
+                        CPF é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="TelefoneUsuario">Telefone</label>
-                    <input class="form-control" type="tel" id="telefoneUsuario" name="telefoneUsuario"
-                        placeholder="Digite o numero do seu telefone">
+                    <label for="telefone">Telefone</label>
+                    <input class="form-control" type="tel" id="telefone" name="telefone"
+                    placeholder="Digite o numero do seu telefone"  [ngModel]="usuario.telefone"
+                    required #telefone="ngModel">
+                    <div *ngIf="!telefone.valid && telefone.touched"
+                    class="alert alert-danger" role="alert">
+                        CPF é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input class="form-control" type="email" id="email" name="email"
-                        placeholder="Digite o seu email"  [ngModel]="usuario.email" 
-                        required email>
+                    placeholder="Digite o seu email"  [ngModel]="usuario.email" 
+                    required #email="ngModel">
+                    <div *ngIf="!email.valid && email.touched"
+                    class="alert alert-danger" role="alert">
+                        Email é obrigatório.
+                    </div>
+
                 </div>
 
                 <div class="form-group">
@@ -56,21 +72,36 @@
             </header>
             <div class="p-2">
                 <div class="form-group">
-                    <label for="CEPUsuario">CEP</label>
-                    <input class="form-control" type="text" id="CEPUsuario" name="CEPUsuario"
-                        placeholder="Digite seu CEP">
+                    <label for="cep">CEP</label>
+                    <input class="form-control" type="text" id="cep" name="cep"
+                    placeholder="Digite seu CEP" [ngModel]="usuario.cep"
+                    required #cep="ngModel">
+                    <div *ngIf="!cep.valid && cep.touched"
+                    class="alert alert-danger" role="alert">
+                    CEP é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="enderecoSenhaUsuario">Endereço</label>
-                    <input class="form-control" type="text" id="enderecoSenhaUsuario" name="enderecoSenhaUsuario"
-                        placeholder="Digite seu endereço">
+                    <label for="endereco">Endereço</label>
+                    <input class="form-control" type="text" id="endereco" name="endereco"
+                    placeholder="Digite seu endereço" [ngModel]="usuario.endereco"
+                    required #endereco="ngModel">
+                    <div *ngIf="!endereco.valid && endereco.touched"
+                    class="alert alert-danger" role="alert">
+                    Endereço é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="numeroUsuario">Número</label>
-                    <input class="form-control" type="number" id="numeroUsuario" name="numeroUsuario"
-                        placeholder="Digite o número">
+                    <label for="numero">Número</label>
+                    <input class="form-control" type="number" id="numero" name="numero"
+                    placeholder="Digite o número" [ngModel]="usuario.numero"
+                    required #numero="ngModel">
+                    <div *ngIf="!numero.valid && numero.touched"
+                    class="alert alert-danger" role="alert">
+                    Número é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -80,20 +111,35 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="bairroUsuario">Bairro</label>
-                    <input class="form-control" type="text" id="bairroUsuario" name="bairroUsuario"
-                        placeholder="Digite seu bairro">
+                    <label for="bairro">Bairro</label>
+                    <input class="form-control" type="text" id="bairro" name="bairro"
+                    placeholder="Digite seu bairro" [ngModel]="usuario.bairro"
+                    required #bairro="ngModel">
+                    <div *ngIf="!bairro.valid && bairro.touched"
+                    class="alert alert-danger" role="alert">
+                    Bairro é obrigatório.
+                    </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <label for="cidadeUsuario">Cidade</label>
-                        <input class="form-control" type="text" id="cidadeUsuario" name="cidadeUsuario"
-                            placeholder="Cidade">
+                        <label for="cidade">Cidade</label>
+                        <input class="form-control" type="text" id="cidade" name="cidade"
+                        placeholder="Cidade" [ngModel]="usuario.cidade"
+                        required #cidade="ngModel">
+                        <div *ngIf="!cidade.valid && cidade.touched"
+                        class="alert alert-danger" role="alert">
+                        Digite sua cidade.
+                        </div>
                     </div>
                     <div class="col-6">
-                        <label for="estadoUsuario" >Estado</label>
-                        <select class="form-control" name="estadoUsuario" id="estadoUsuario">
+                        <label for="estado" >Estado</label>
+                        <select class="form-control" name="estado" id="estado" [ngModel]="usuario.estado"
+                        required #estado="ngModel">
+                        <div *ngIf="!estado.valid && estado.touched"
+                        class="alert alert-danger" role="alert">
+                        Selecione seu estado.
+                        </div>
                             <option value="" disabled selected>Estado</option>
                             <option value="SP">SP</option>
                             <option value="RJ">RJ</option>
@@ -141,7 +187,7 @@
                             placeholder="Validade">
                     </div>
                     <div class="col-4">
-                        <label for="codigoSeguranca">Validade</label>
+                        <label for="codigoSeguranca">Cod. Segurança</label>
                         <input class="form-control" type="number" id="codigoSeguranca" name="codigoSeguranca"
                             placeholder="CVV">
                     </div>
@@ -163,7 +209,7 @@
             </div>
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-success" data-toggle="modal" 
-                data-target="#compraFinalizada">Finalizar compra</button>
+                data-target="#compraFinalizada" [disabled]="!f.valid" >Finalizar compra</button>
             </div>
         </div>
     </form>
