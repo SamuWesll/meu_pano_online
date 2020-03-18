@@ -20,7 +20,7 @@ export class HttpService {
     this.carregarProdutos();
   }
 
-  private carregarProdutos() {
+  public carregarProdutos() {
     return new Promise((resolve, reject) => {
       this.http.get(URLLocalJson).subscribe((resp: Produtos) => {
         this.carregado = true;
@@ -30,11 +30,11 @@ export class HttpService {
     });
   }
 
-  getProdutoById(id: string) {
+  public getProdutoById(id: string) {
     return this.http.get(`http://localhost:8080/meupanoonline/produto?idProduto=${id}`)
   }
 
-  pesquisarProduto(pesquisa: string) {
+  public pesquisarProduto(pesquisa: string) {
     if (this.info.length === 0) {
       this.carregarProdutos().then(() => this.filtrarProdutos(pesquisa))
     } else {
