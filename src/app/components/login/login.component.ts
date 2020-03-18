@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/Cliente';
 import { Sexo } from 'src/app/models/Sexo';
+import { Form, FormGroup } from '@angular/forms';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-login',
@@ -10,23 +12,45 @@ import { Sexo } from 'src/app/models/Sexo';
 export class LoginComponent implements OnInit {
 
   public logado: Cliente;
+  formLogin: FormGroup;
 
-  constructor() {
+  constructor(private httpCliente: ClienteService) {  }
 
-    this.verificarLogin();
-
+  btnLogin(login) {
+    let body = {
+      "email": login.value.email,
+	    "senha": login.value.senha
+    };
+    this.httpCliente.postLogin(body).subscribe(
+      (data) => {
+        if(data['statusCodeValue'] == 400) {
+          alert(data['body']);
+        } else if(data['statusCodeValue'] == 200) {
+          this.logadoLocalStorage(data['body']);
+        }
+        // console.log(data);
+      }
+    )
   }
 
-  logadoLocalStorage() {
+  logadoLocalStorage(body) {
+
+    let gen: Sexo;
+
+    if(body.genero == "M") {
+      gen = Sexo.masculino;
+    } else if(body.genero == "F") {
+      gen = Sexo.feminino;
+    }
 
     let cliente = {
-      idCliente: 1,
-      nome: "Samuel Weslley Rocha Barboza",
-      cpf: "41851766865",
-      email: "samuelwrochabarboza@gmail.com",
-      senha: "samuka",
-      dataNascimento: "08/12/1994",
-      genero: Sexo.masculino,
+      idCliente: body['idCliente'],
+      nome: body['nome'],
+      cpf: body['cpf'],
+      email: body['email'],
+      senha: body['senha'],
+      dataNascimento: body['dataNascimento'],
+      genero: gen,
     }
 
     localStorage.setItem("logado", JSON.stringify(cliente));
@@ -40,8 +64,6 @@ export class LoginComponent implements OnInit {
       cliente.dataNascimento,
       cliente.genero
     );
-
-      // this.trocadorUrl();
 
   }
 
@@ -63,6 +85,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.verificarLogin();
+
   }
 
 }

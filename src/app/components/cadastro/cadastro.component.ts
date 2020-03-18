@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, NgForm } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { HomeComponent } from '../home/home.component';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -14,7 +14,6 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class CadastroComponent implements OnInit {
 
   formRegister: FormGroup;
-  private home: HomeComponent;
 
   constructor(private httpCliente: ClienteService) { }
 

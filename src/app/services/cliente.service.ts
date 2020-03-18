@@ -6,8 +6,6 @@ import { ClienteForm } from '../models/ClienteForm';
   providedIn: 'root'
 })
 
-// const URLCLIENTE: string = 
-
 export class ClienteService {
 
   constructor(private httpCliente: HttpClient) { }
@@ -15,6 +13,10 @@ export class ClienteService {
 
   postClientes(body: {}) {
     return this.httpCliente.post("http://localhost:8080/meupanoonline/cliente", body);
+  };
+
+  postLogin(body: {}) {
+    return this.httpCliente.post("http://localhost:8080/meupanoonline/cliente/login", body)
   }
 
 }
