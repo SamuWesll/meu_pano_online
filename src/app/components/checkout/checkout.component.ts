@@ -4,9 +4,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Checkout } from 'src/app/models/Checkout';
 import { HttpClient } from "@angular/common/http";
-import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
-
-//import { NgxViacepService } from '@brunoc/ngx-viacep'; // Importando o serviço
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -17,6 +14,7 @@ import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-vi
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+
 
   usuario: any = {
     nome: null,
@@ -74,43 +72,32 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  // constructor(private Http: HttpClient) { }
+  constructor(private Http: HttpClient) { }
 
-  title = 'app';
-  constructor( private viacep: NgxViacepService ) {} // Injetando o serviço
-  
   ngOnInit(): void {
   }
   
 
-    // this.viacep.buscarPorCep('01001000').then( ( endereco: Endereco ) => {
-    //  //  Endereço retornado :)
-    //   console.log(endereco);
-    //  }).catch( (error: ErroCep) => {
-    //  //  Alguma coisa deu errado :/
-    //   console.log(error.message);
-    //  });
+   consultaCEP(cep){
+     console.log(cep);
+     // variavel (cep) somente com digitos
+      cep = cep.replace(/\D/g, '');
 
-    consultaCEP(cep){
-      console.log(cep);
-      // variavel (cep) somente com digitos
-       cep = cep.replace(/\D/g, '');
+      //verifica se campo cep possui valor informado
+      if (cep != ""){
 
-       //verifica se campo cep possui valor informado
-       if (cep != ""){
-
-         //expressão regular para validar o cep.
-         var validacep = /^[0-9]{8}$/;
+        //expressão regular para validar o cep.
+        var validacep = /^[0-9]{8}$/;
 
         //valida o formato do cep
-         if(validacep.test(cep)){
+        if(validacep.test(cep)){
 
-           this.HttpClient.get(`//viacep.com.br/ws/${cep}/json`)
-           .map(dados => dados.json())
-           .subscribe(dados => console.log(dados));
-         }
-       }
-    }
+          this.HttpClient.get(`//viacep.com.br/ws/${cep}/json`)
+          .map(dados => dados.json())
+          .subscribe(dados => console.log(dados));
+        }
+      }
+   }
 
 //   consultaCEP(cep){
 //      fetch(`https://viacep.com.br/ws/${cep}/json`)
@@ -129,4 +116,3 @@ export class CheckoutComponent implements OnInit {
 //  }
 
 }
-
