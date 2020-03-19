@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Categorias</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active" *ngFor="let c of item">
+                <a class="nav-link" routerLink="{{c.route}}">{{c.label}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--<section class="mt-3">
+    <div id="categorias">
+        <ul class="list-unstyled list-inline d-flex flex-row justify-content-around">
+            <li class="list-inline-item">
+                <a routerLink="#" class="col-xs-3">
+                    <h4>Personalizados</h4>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a routerLink="#" class="col-xs-3">
+                    <h4>Sem renda</h4>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a routerLink="#" class="col-xs-3">
+                    <h4>Desenhados</h4>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a routerLink="#" class="col-xs-3">
+                    <h4>Bordados</h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>-->

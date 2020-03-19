@@ -1,0 +1,25 @@
+<app-nav></app-nav>
+<div class="container">
+<div *ngFor="let produto of produtos" class="carProdudos">
+    <a class="card" routerLink="/produto-detalhado">
+        <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
+        <img src="{{produto.imagem}}" class="card-img-top" alt="">
+        <div class="card-body">
+            <p class="card-text font-weight-bold">{{produto.tituloProduto}}</p>
+            <div class="dropdown-divider"></div>
+            <p>
+                <span style="text-decoration: line-through">
+                    R$ {{converteDecimal(produto.valor)}}
+                </span>
+                <br>
+                <span class="font-weight-bold text-warning text-decoration-none">
+                    R$ {{converteDecimal(produto.valorDesconto)}}
+                </span>
+            </p>
+            <p id="textPreco">R$ {{converteDecimal(produto.valorDesconto)}} 
+                à vista ou em 3x de R$ {{tresParcelas(produto.valor)}} sem juros</p>
+            <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
+        </div>
+    </a>
+</div>
+</div>
