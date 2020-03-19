@@ -17,11 +17,7 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(LoginComponent)
   }
   constructor(private modalService: BsModalService) {
-
-    this.verificarLogin();
-
-    // this.sairLogin();
-
+    
   }
 
   verificarLogin() {
@@ -42,6 +38,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.verificarLogin();
+  
   }
 
 }

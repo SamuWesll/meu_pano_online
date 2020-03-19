@@ -3,6 +3,8 @@ import { Cliente } from 'src/app/models/Cliente';
 import { Sexo } from 'src/app/models/Sexo';
 import { Form, FormGroup } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { Router } from '@angular/router';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   public logado: Cliente;
   formLogin: FormGroup;
 
-  constructor(private httpCliente: ClienteService) {  }
+  constructor(private httpCliente: ClienteService, private router: Router) {  }
 
   btnLogin(login) {
     let body = {
