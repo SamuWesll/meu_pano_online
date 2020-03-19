@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 // import { FormsModule } from  'angular/FormsModule;
 // import { AngularFontAwesomeModule } from "angular-font-awesome";
 
@@ -22,7 +23,9 @@ import { ProdutosCategoriaComponent } from './components/produtos-categoria/prod
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NavComponent } from './components/nav/nav.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
-import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { NgxViacepModule } from '@brunoc/ngx-viacep'; // Importando o módulo
+import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
 
 @NgModule({
   declarations: [
@@ -41,12 +44,13 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     ProdutosCategoriaComponent,
     NavComponent,
     PedidoComponent,
-    CarrinhoComponent,
+    CheckoutComponent,
     
 
   ],
   imports: [
     BrowserModule,
+    NgxViacepModule,
     AppRoutingModule,
     FormsModule,
     ModalModule.forRoot(),

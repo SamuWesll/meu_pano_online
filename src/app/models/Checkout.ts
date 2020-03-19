@@ -1,4 +1,4 @@
-export class Carrinho {
+export class Checkout {
     constructor(
         // public codigo: number,
         public nome: string,
