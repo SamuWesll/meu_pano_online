@@ -84,7 +84,8 @@
                     <input class="form-control" type="text" id="cep" name="cep"
                     placeholder="Digite seu CEP" [ngModel]="usuario.cep"
                     required #cep="ngModel" 
-                    (blur)="consultaCEP($event.target.value)"> 
+                    (blur)="consultaCEP($event.target.value)"
+                    (keydown)="consultaCEP(usuario.cep)"> 
                     <div *ngIf="!cep.valid && cep.touched"
                     class="alert alert-danger" role="alert">
                     CEP é obrigatório.
@@ -115,8 +116,9 @@
 
                 <div class="form-group">
                     <label for="complementoUsuario">Complemento</label>
-                    <input class="form-control" type="text" id="complementoUsuario" name="complementoUsuario"
-                        placeholder="Digite o complemento">
+                    <input class="form-control" type="text" id="complementoUsuario" name="complemento"
+                        placeholder="Digite o complemento"
+                        [ngModel]="usuario.complemento" #complemento="ngModel">
                 </div>
 
                 <div class="form-group">

@@ -27,6 +27,7 @@ export class CheckoutComponent implements OnInit {
     telefone: null,
     cep: null,
     endereco: null,
+    complemento: null,
     numero: null,
     bairro: null,
     cidade: null,
@@ -81,9 +82,13 @@ export class CheckoutComponent implements OnInit {
 
   consultaCEP(cep: string){
     
-    this.viacep.buscarPorCep("04949130").then(
+    this.viacep.buscarPorCep(cep).then(
       (endereco: Endereco) => {
         this.usuario.endereco = endereco.logradouro;
+        this.usuario.complemento = endereco.complemento;
+        this.usuario.bairro = endereco.bairro;
+        this.usuario.cidade = endereco.localidade;
+        this.usuario.estado = endereco.uf;
         console.log(endereco);
       }
     ).catch(
@@ -114,8 +119,6 @@ export class CheckoutComponent implements OnInit {
 
   
   ngOnInit(): void {
-
-    this.consultaCEP("04949130");
 
   }
   
