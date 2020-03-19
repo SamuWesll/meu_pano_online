@@ -84,7 +84,7 @@
                     <input class="form-control" type="text" id="cep" name="cep"
                     placeholder="Digite seu CEP" [ngModel]="usuario.cep"
                     required #cep="ngModel" 
-                   >
+                    (blur)="consultaCEP($event.target.value)">
                     <div *ngIf="!cep.valid && cep.touched"
                     class="alert alert-danger" role="alert">
                     CEP é obrigatório.
