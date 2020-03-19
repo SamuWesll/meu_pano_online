@@ -40,6 +40,7 @@ import { NavComponent } from './components/nav/nav.component';
     ProdutosSimilaresComponent,
     ProdutosCategoriaComponent,
     NavComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,7 @@ import { NavComponent } from './components/nav/nav.component';
     FormsModule,
     ReactiveFormsModule,
     NgxViacepModule,
-    FormsModule
+    FormsModule,
   ],
   entryComponents: [LoginComponent],
   providers: [],

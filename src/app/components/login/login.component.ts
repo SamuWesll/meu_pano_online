@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from 'src/app/models/Cliente';
 import { Sexo } from 'src/app/models/Sexo';
 import { Form, FormGroup } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Router } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,8 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(private httpCliente: ClienteService, private router: Router) {  }
+
+  @Input() login: HeaderComponent;
 
   btnLogin(login) {
     let body = {
@@ -82,7 +85,7 @@ export class LoginComponent implements OnInit {
 
     this.logado = null;
 
-    // this.trocadorUrl();
+    this.verificarLogin();
 
   }
 

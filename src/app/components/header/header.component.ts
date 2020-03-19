@@ -16,8 +16,9 @@ export class HeaderComponent implements OnInit {
   openModal() {
     this.modalRef = this.modalService.show(LoginComponent)
   }
+
   constructor(private modalService: BsModalService) {
-    
+    this.verificarLogin();
   }
 
   verificarLogin() {
@@ -30,6 +31,8 @@ export class HeaderComponent implements OnInit {
 
     localStorage.removeItem("logado");
 
+    this.verificarLogin();
+
   }
 
   separarNome(nome: string) {
@@ -39,8 +42,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.verificarLogin();
-  
   }
 
 }
