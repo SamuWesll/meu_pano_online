@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
           alert(data['body']);
         } else if(data['statusCodeValue'] == 200) {
           this.logadoLocalStorage(data['body']);
+          alert('Login realizado com sucesso')
+          return this.router.navigate(['/home'])
         }
         // console.log(data);
       }
