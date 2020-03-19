@@ -35,6 +35,10 @@ const routes: Routes = [
     component: ContatoComponent
   },
   {
+    path: "cadastro",
+    component: CadastroComponent
+  },
+  {
     path: "produtos",
     component: ProdutosComponent
   },

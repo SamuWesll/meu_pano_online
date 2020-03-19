@@ -1,14 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
-  selector: 'app-produtos',
-  templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.css']
+  selector: 'app-carousel-produtos',
+  templateUrl: './carousel-produtos.component.html',
+  styleUrls: ['./carousel-produtos.component.css']
 })
-export class ProdutosComponent implements OnInit {
+export class CarouselProdutos implements OnInit {
 
   public produtos: Produtos;
 
@@ -21,7 +21,7 @@ export class ProdutosComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  constructor(private httpProduto: ProdutoService) { }
+  constructor(public httpProduto: ProdutoService) {}
 
   ngOnInit(): void {
 

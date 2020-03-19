@@ -13,7 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { LoginComponent } from './components/login/login.component';
-import { ListaDeProdutosComponent } from './components/lista-de-produtos/lista-de-produtos.component';
+import { CarouselProdutos } from './components/carousel-produtos/carousel-produtos.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,12 +28,13 @@ import { BuscaComponent } from './components/busca/busca.component';
   declarations: [
     AppComponent,
     HomeComponent,
+
     HeaderComponent,
     FooterComponent,
     SobreComponent,
     ContatoComponent,
     LoginComponent,
-    ListaDeProdutosComponent,
+    CarouselProdutos,
     ProdutosComponent,
     CadastroComponent,
     EnderecoComponent,

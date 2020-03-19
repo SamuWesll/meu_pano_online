@@ -17,18 +17,22 @@ export class HeaderComponent implements OnInit {
   openModal() {
     this.modalRef = this.modalService.show(LoginComponent)
   }
+<<<<<<< HEAD
   constructor(private modalService: BsModalService, private router: Router) {
 
     this.verificarLogin();
 
     // this.sairLogin();
 
+=======
+  constructor(private modalService: BsModalService) {
+    
+>>>>>>> samuelFaseTwo
   }
 
   verificarLogin() {
 
     this.login = JSON.parse(localStorage.getItem("logado"));
-    console.log(this.login);
 
   }
 
@@ -44,6 +48,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.verificarLogin();
+  
   }
 
   pesquisarProduto(pesquisa: string) {
