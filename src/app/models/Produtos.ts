@@ -7,10 +7,6 @@ export class Produtos {
         public valor: number,
         public valorDesconto: number,
         public categoria: number
-<<<<<<< HEAD
-    ) { }
-=======
     ){}
     
->>>>>>> samuelFaseTwo
 }

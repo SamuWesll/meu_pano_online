@@ -21,14 +21,14 @@ export class ProdutosComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  constructor(private httpProduto: ProdutoService) { }
+  constructor(private httpProduto: ProdutoService, private http: HttpService) { }
 
   ngOnInit(): void {
 
-    this.httpProduto.getListaProdutos().subscribe(
-      (body) => {
-        this.produtos = body['body'];
-    })
+    // this.httpProduto.getListaProdutos().subscribe(
+    //   (body) => {
+    //     this.produtos = body['body'];
+    // })
 
   }
 

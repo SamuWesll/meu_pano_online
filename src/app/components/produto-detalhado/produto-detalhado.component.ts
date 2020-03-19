@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Produtos } from "src/app/models/Produtos";
 import { HttpService } from 'src/app/services/http.service';
-<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
-=======
 import { ProdutoService } from 'src/app/services/produto.service';
->>>>>>> samuelFaseTwo
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -18,11 +15,10 @@ export class ProdutoDetalhadoComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',');
   }
 
-<<<<<<< HEAD
   public produtos: Produtos[] = [];
   public produtoDetalhado: Produtos;
 
-  constructor(public http: HttpService, private route: ActivatedRoute) { }
+  constructor(public http: HttpService, private route: ActivatedRoute, private httpProduto: ProdutoService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(parametros => {
@@ -32,20 +28,11 @@ export class ProdutoDetalhadoComponent implements OnInit {
         this.produtoDetalhado = produto['body']
       })
     })
-=======
-  public produto: Produtos;
 
-  constructor(public http: HttpService, private httpProduto: ProdutoService) {
   //   this.http.getProdutos().subscribe(
   //     (data) => {
   //       this.produtos=data;
   //     }
   //   )
    }
-
-  ngOnInit(): void {
-
->>>>>>> samuelFaseTwo
-  }
-
 }
