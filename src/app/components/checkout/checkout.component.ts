@@ -78,8 +78,45 @@ export class CheckoutComponent implements OnInit {
 
   title = 'app';
   constructor( private viacep: NgxViacepService ) {} // Injetando o serviço
+
+  consultaCEP(cep: string){
+    
+    this.viacep.buscarPorCep("04949130").then(
+      (endereco: Endereco) => {
+        this.usuario.endereco = endereco.logradouro;
+        console.log(endereco);
+      }
+    ).catch(
+      (error: ErroCep) => {
+        console.log(error.message)
+      }
+    )
+
+        // console.log(cep);
+        // // variavel (cep) somente com digitos
+        // cep = cep.replace(/\D/g, '');
+
+        // //verifica se campo cep possui valor informado
+        // if (cep != ""){
+
+        //   //expressão regular para validar o cep.
+        //   var validacep = /^[0-9]{8}$/;
+
+        //   //valida o formato do cep
+        //   if(validacep.test(cep)){
+
+        //     this.HttpClient.get(`//viacep.com.br/ws/${cep}/json`)
+        //     .map(dados => dados.json())
+        //     .subscribe(dados => console.log(dados));
+        //   }
+        // }
+  }
+
   
   ngOnInit(): void {
+
+    this.consultaCEP("04949130");
+
   }
   
 
@@ -91,26 +128,7 @@ export class CheckoutComponent implements OnInit {
     //   console.log(error.message);
     //  });
 
-    consultaCEP(cep){
-      console.log(cep);
-      // variavel (cep) somente com digitos
-       cep = cep.replace(/\D/g, '');
-
-       //verifica se campo cep possui valor informado
-       if (cep != ""){
-
-         //expressão regular para validar o cep.
-         var validacep = /^[0-9]{8}$/;
-
-        //valida o formato do cep
-         if(validacep.test(cep)){
-
-           this.HttpClient.get(`//viacep.com.br/ws/${cep}/json`)
-           .map(dados => dados.json())
-           .subscribe(dados => console.log(dados));
-         }
-       }
-    }
+    
 
 //   consultaCEP(cep){
 //      fetch(`https://viacep.com.br/ws/${cep}/json`)

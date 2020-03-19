@@ -25,7 +25,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { NgxViacepModule } from '@brunoc/ngx-viacep'; // Importando o módulo
-import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
+// import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
 
 @NgModule({
   declarations: [
