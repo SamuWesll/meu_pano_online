@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { HomeComponent } from '../home/home.component';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +16,7 @@ export class CadastroComponent implements OnInit {
 
   formRegister: FormGroup;
 
-  constructor(private httpCliente: ClienteService) { }
+  constructor(private httpCliente: ClienteService, private router: Router) { }
 
   enviarCadastro(form) {
     let body = {
@@ -24,14 +25,17 @@ export class CadastroComponent implements OnInit {
       "email": form.value.email,
       "senha": form.value.senha1,
       "dataNascimento": form.value.dataNasc,
-      "genero": form.value.genero
+      "genero": form.value.genero,
+      "nrCelular": form.value.phone,
+      "nrTelefone": form.value.tell
     };
     this.httpCliente.postClientes(body).subscribe(
       (data) => {
         if(data['statusCode'] == "OK") {
-          alert("Cadastro realizado com sucesso");
+          this.router.navigate(['/home'])
+          return alert("Cadastro realizado com sucesso");
         }
-        return console.log(data);
+        // return console.log(data);
       }
     )
   }
