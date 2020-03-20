@@ -1,10 +1,10 @@
 <app-nav (categoriaClicada)="listarCategoria($event)"></app-nav>
-<app-produtos-categoria #lista></app-produtos-categoria>
 <section>
     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-interval="10000">
-                <img class="img-fluid" src="../../../assets/img/carousel/imagem_01.webp" class="d-block w-100" alt="...">
+                <img class="img-fluid" src="../../../assets/img/carousel/imagem_01.webp" class="d-block w-100"
+                    alt="...">
             </div>
             <div class="carousel-item" data-interval="2000">
                 <img src="../../../assets/img/carousel/imagem_02.webp" class="d-block w-100" alt="...">
@@ -24,31 +24,33 @@
     </div>
 
 </section>
-    <main class="">
-        <div class="beneficios container col-md-12 m-2 d-flex justify-content-around">
-            <div class="part col-md-3">
-                <img src="../../../assets/img/beneficios/truck.png" class="m-2" alt="">
-                <div>
-                    <h6 class="card-title">ENVIO IMEDIATO</h6>
-                    <p class="card-text">Após a confirmação do pagamento a <br>média é de 4 horas para a postagem.
-                    </p>
-                </div>
-            </div>
-            <div class="part col-md-3">
-                <img src="../../../assets/img/beneficios/credit-card.png" class="m-2" alt="">
-                <div>
-                    <h6 class="card-title">PARCELAMENTO</h6>
-                    <p class="card-text">Parcele suas compras em até 9x sem juros</p>
-                </div>
-            </div>
-            <div class="part col-md-3">
-                <img src="../../../assets/img/beneficios/sketch.png" class="m-2" alt="customize">
-                <!-- <h6>Em Breve!</h6> -->
-                <h6 class="card-text">CUSTOMIZE</h6>
-                <p>Customize seus panos de prato e receba em <br>casa com toda a comodidade.</p>
+<main class="">
+    <div class="beneficios container col-md-12 m-2 d-flex justify-content-around">
+        <div class="part col-md-3">
+            <img src="../../../assets/img/beneficios/truck.png" class="m-2" alt="">
+            <div>
+                <h6 class="card-title">ENVIO IMEDIATO</h6>
+                <p class="card-text">Após a confirmação do pagamento a <br>média é de 4 horas para a postagem.
+                </p>
             </div>
         </div>
-        <div>
-            <app-carousel-produtos></app-carousel-produtos>
+        <div class="part col-md-3">
+            <img src="../../../assets/img/beneficios/credit-card.png" class="m-2" alt="">
+            <div>
+                <h6 class="card-title">PARCELAMENTO</h6>
+                <p class="card-text">Parcele suas compras em até 9x sem juros</p>
+            </div>
         </div>
-    </main>
+        <div class="part col-md-3">
+            <img src="../../../assets/img/beneficios/sketch.png" class="m-2" alt="customize">
+            <!-- <h6>Em Breve!</h6> -->
+            <h6 class="card-text">CUSTOMIZE</h6>
+            <p>Customize seus panos de prato e receba em <br>casa com toda a comodidade.</p>
+        </div>
+    </div>
+    <div>
+        <app-carousel-produtos></app-carousel-produtos>
+    </div>
+    
+    <app-produtos-categoria #lista></app-produtos-categoria>
+</main>
