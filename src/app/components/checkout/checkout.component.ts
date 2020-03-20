@@ -78,7 +78,11 @@ export class CheckoutComponent implements OnInit {
   constructor( private viacep: NgxViacepService, private Http: HttpClient) {} // Injetando o serviço
 
   consultaCEP(cep: string){
-    
+
+    if (cep != ""){
+    //expressão regular para validar o cep.
+    var validacep = /^[0-9]{8}$/;
+
     this.viacep.buscarPorCep(cep).then(
       (endereco: Endereco) => {
         this.usuario.endereco = endereco.logradouro;
@@ -92,7 +96,7 @@ export class CheckoutComponent implements OnInit {
       (error: ErroCep) => {
         console.log(error.message)
       }
-    )
+    )}
 
         // console.log(cep);
         // // variavel (cep) somente com digitos

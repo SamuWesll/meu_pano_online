@@ -7,7 +7,7 @@
             </header>
             <div class="p-2">
                 <div class="form-group">
-                    <label for="nome">Nome completo</label>
+                    <label for="nome">Nome completo*</label>
                     <input class="form-control" type="text" id="nome" name="nome"
                     placeholder="Digite seu nome completo" [ngModel]="usuario.nome" 
                     required #nome="ngModel">
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cpf">CPF</label>
+                    <label for="cpf">CPF*</label>
                     <input ng class="form-control" type="text" id="cpf" name="cpf"
                     placeholder="Digite o seu CPF" [ngModel]="usuario.cpf"
                     required #cpf="ngModel">
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="telefone">Telefone</label>
+                    <label for="telefone">Telefone ou celular*</label>
                     <input class="form-control" type="tel" id="telefone" name="telefone"
                     placeholder="Digite o numero do seu telefone"  [ngModel]="usuario.telefone"
                     required #telefone="ngModel">
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email*</label>
                     <input class="form-control" type="email" id="email" name="email"
                     placeholder="Digite o seu email"  [ngModel]="usuario.email" 
                     required #email="ngModel">
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="senha">Senha</label>
+                    <label for="senha">Senha*</label>
                     <input class="form-control" type="password" id="senha" name="senha"
                     placeholder="Digite sua senha"  [ngModel]="usuario.senha" 
                     required #senha="ngModel">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="confSenha">Confirme a senha</label>
+                    <label for="confSenha">Confirme a senha*</label>
                     <input class="form-control" type="password" id="confSenha"
                     name="confSenha" placeholder="Confirme sua senha" [ngModel]="usuario.confSenha" 
                     required #confSenha="ngModel">
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="endereco">Endereço</label>
+                    <label for="endereco">Endereço*</label>
                     <input class="form-control" type="text" id="endereco" name="endereco"
                     placeholder="Digite seu endereço" [ngModel]="usuario.endereco"
                     required #endereco="ngModel">
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="numero">Número</label>
+                    <label for="numero">Número*</label>
                     <input class="form-control" type="number" id="numero" name="numero"
                     placeholder="Digite o número" [ngModel]="usuario.numero"
                     required #numero="ngModel">
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="bairro">Bairro</label>
+                    <label for="bairro">Bairro*</label>
                     <input class="form-control" type="text" id="bairro" name="bairro"
                     placeholder="Digite seu bairro" [ngModel]="usuario.bairro"
                     required #bairro="ngModel">
@@ -134,7 +134,7 @@
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <label for="cidade">Cidade</label>
+                        <label for="cidade">Cidade*</label>
                         <input class="form-control" type="text" id="cidade" name="cidade"
                         placeholder="Cidade" [ngModel]="usuario.cidade"
                         required #cidade="ngModel">
@@ -144,14 +144,14 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <label for="estado" >Estado</label>
+                        <label for="estado" >Estado*</label>
                         <select class="form-control" name="estado" id="estado" [ngModel]="usuario.estado"
                         required #estado="ngModel">
                         <div *ngIf="!estado.valid && estado.touched"
                         class="alert alert-danger" role="alert">
                         Selecione seu estado.
                         </div>
-                            <option value="" disabled selected>Estado</option>
+                            <option value="" disabled selected>Estado*</option>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AP">AP</option>
@@ -205,7 +205,7 @@
             </div>
             <div class="p-2">
                 <div class="form-group">
-                    <label for="numCartao">Numero do cartão</label>
+                    <label for="numCartao">Numero do cartão*</label>
                     <input class="form-control" type="text" id="numCartao" name="numCartao"
                     placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao"
                     required #numCartao="ngModel">
@@ -217,7 +217,7 @@
 
                 <div class="form-group row">
                     <div class="col-8">
-                        <label for="dtValidade">Data de validade</label>
+                        <label for="dtValidade">Data de validade*</label>
                         <input class="form-control" type="month" id="dtValidade" name="dtValidade"
                         placeholder="Validade" [ngModel]="usuario.dtValidade"
                         required #dtValidade="ngModel">
@@ -227,7 +227,7 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <label for="cdSeguranca">Cod. S</label>
+                        <label for="cdSeguranca">Cod. S*</label>
                         <input class="form-control" type="number" id="cdSeguranca" name="cdSeguranca"
                         placeholder="CVV" [ngModel]="usuario.cdSeguranca"
                         required #cdSeguranca="ngModel">
@@ -240,7 +240,7 @@
 
 
                 <div class="form-group">
-                    <label for="nomeTitular">Nome do titular</label>
+                    <label for="nomeTitular">Nome do titular*</label>
                     <input class="form-control" type="text" id="nomeTitular" name="nomeTitular"
                     placeholder="Digite o nome do titular" [ngModel]="usuario.nomeTitular"
                     required #nomeTitular="ngModel">
@@ -251,7 +251,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cpfTitular">CPF do titular</label>
+                    <label for="cpfTitular">CPF do titular*</label>
                     <input class="form-control" type="text" id="cpfTitular" name="cpfTitular"
                     placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular"
                     required #cpfTitular="ngModel">
