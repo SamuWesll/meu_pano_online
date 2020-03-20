@@ -83,8 +83,10 @@
                 <div class="form-group">
                     <label for="cep">CEP</label>
                     <input class="form-control" type="text" id="cep" name="cep"
+                    
+                       
                     placeholder="Digite seu CEP" [ngModel]="usuario.cep"
-                    minlength="8" required #cep="ngModel" 
+                    minlength="8" maxlength="8" required #cep="ngModel" 
                     (blur)="consultaCEP($event.target.value)"
                     (keydown)="consultaCEP(usuario.cep)"> 
                     <div *ngIf="!cep.valid && cep.touched"
@@ -152,7 +154,8 @@
                         class="alert alert-danger" role="alert">
                         Selecione seu estado.
                         </div>
-                            <option value="" disabled selected>Estado*</option>
+                        
+                            <option value="" disabled selected >Estado*</option>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AP">AP</option>
@@ -186,11 +189,11 @@
                 <div class="p-2 row">
                     <div class="col-6">
                         <label for="">Até 30 dias <br> R$ 7,99</label>
-                        <input type="radio" name="frete" id="freteRapido">
+                        <input type="radio" name="frete" id="freteRapido" >
                     </div>
                     <div class="col-6">
                         <label for="">Até 7 dias <br> R$ 15,99</label>
-                        <input type="radio" name="frete" id="freteNormal">
+                        <input type="radio" name="frete" id="freteNormal" >
                     </div>
                 </div>
             </div>
@@ -297,4 +300,4 @@
    Verificamos aqui se é um email ou não de acordo com o que setamos em nosso formControl 'email' 
   <div *ngIf="userForm.get('email').hasError('email')">
     Não é um formato de email válido. 
-  </div> --> -->
+  </div> --> 

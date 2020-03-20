@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './../../services/http.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Checkout } from 'src/app/models/Checkout';
 import { HttpClient } from "@angular/common/http";
 import { NgxViacepService, Endereco, ErroCep } from '@brunoc/ngx-viacep';
@@ -67,9 +67,7 @@ export class CheckoutComponent implements OnInit {
       dtValidade: new FormControl(checkout.dtValidade),
       validade: new FormControl(checkout.validade),
       nomeTitular: new FormControl(checkout.nomeTitular),
-      cpfTitular: new FormControl(checkout.cpfTitular)
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+      cpfTitular: new FormControl(checkout.cpfTitular)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
     })
   }
@@ -111,58 +109,16 @@ export class CheckoutComponent implements OnInit {
         //   //valida o formato do cep
         //   if(validacep.test(cep)){
 
-//   static isValidCpf() {
-//     return (control: AbstractControl): Validators => {
-//       const cpf = control.value;
-//       if (cpf) {
-//         let numbers, digits, sum, i, result, equalDigits;
-//         equalDigits = 1;
-//         if (cpf.length < 11) {
-//          return null;
-//         }
-
-//         for (i = 0; i < cpf.length - 1; i++) {
-//           if (cpf.charAt(i) !== cpf.charAt(i + 1)) {
-//             equalDigits = 0;
-//             break;
-//           }
-//         }
-
-//         if (!equalDigits) {
-//           numbers = cpf.substring(0, 9);
-//           digits = cpf.substring(9);
-//           sum = 0;
-//           for (i = 10; i > 1; i--) {
-//             sum += numbers.charAt(10 - i) * i;
-//           }
-
-//           result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
-
-//           if (result !== Number(digits.charAt(0))) {
-//             return { cpfNotValid: true };
-//           }
-//           numbers = cpf.substring(0, 10);
-//           sum = 0;
-
-//           for (i = 11; i > 1; i--) {
-//             sum += numbers.charAt(11 - i) * i;
-//           }
-//           result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
-
-//           if (result !== Number(digits.charAt(1))) {
-//             return { cpfNotValid: true };
-//           }
-//           return null;
-//         } else {
-//           return { cpfNotValid: true };
-//         }
-//      }
-//    return null;
-//  };
 }
-
-  ngOnInit(): void {
-  }
+public f : FormGroup
+  ngOnInit() {
+    this.f = this.formBuilder.group({
+      cep: new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.pattern('[0-9]{5}')
+      ])),    
+    })
+   }
   
 
   //  consultaCEP(cep){
@@ -186,21 +142,4 @@ export class CheckoutComponent implements OnInit {
   //     }
   //  }
 
-//   consultaCEP(cep){
-//      fetch(`https://viacep.com.br/ws/${cep}/json`)
-//      .then(response => response.json())
-//      .then(dados =>{
-//          if(dados.erro){
-//              return cep.setAttribute('class', 'form-control is-invalid')
-//          }
-//          cep.setAttribute('class', 'form-control is valid')
-         
-//          endereco.value = dados.endereco
-//          bairro.value = dados.bairro
-//          cidade.value = dados.cidade
-//          estado.value = dados.estado
-//      })
-//  }
-
 }
-// Validators.pattern="[a-z0-9!#$%$'*+/=?^_`{\}~-]+(?:\.[a-z0-9!#$%&'*+/=^_`{|}~-]+)*@(?[a"
