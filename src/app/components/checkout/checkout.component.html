@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="email">Email*</label>
                     <input class="form-control" type="email" id="email" name="email"
-                    placeholder="Digite o seu email"  [ngModel]="usuario.email" 
+                    placeholder="Digite o seu email"  [ngModel]="usuario.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     minlength="12" maxlength="40" required email #email="ngModel">
                     
                     <div *ngIf="!email.valid && email.touched "
