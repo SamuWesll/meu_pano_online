@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Produtos } from '../models/Produtos';
+// import { map } from "rxjs/operators";
 import { Endereco } from '../models/Endereco';
 import { Observable } from 'rxjs';
 
 
 const URLLocalJson: string = "http://localhost:8080/meupanoonline/produto/lista";
+const URLCategoria: string = "http://localhost:8080/meupanoonline/categoria/lista";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,20 @@ export class HttpService {
 
   constructor(private http: HttpClient) {
     this.carregarProdutos();
+  }
+
+  public carregarCategorias() {
+    return this.http.get(URLCategoria)
+  }
+
+  public carregarProdutos2() {
+    return this.http.get(URLLocalJson)
+    
+    // return prods.pipe(map((data: any[]) => {
+    //   return data.map(el => {
+    //     return new Produtos(el.idProduto, el.tituloProduto, el.descricao, el.imagem, el.valor, el.valorDesconto, el.categoria)
+    //   })
+    // }))
   }
 
   public carregarProdutos() {

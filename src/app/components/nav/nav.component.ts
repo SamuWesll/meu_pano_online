@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-interface iCategoria{
-  label: string;
-  route: string;
-  ativo: boolean;
-}
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Categorias } from 'src/app/models/Categorias';
+import { HttpService } from 'src/app/services/http.service';
+import { Produtos } from 'src/app/models/Produtos';
 
 @Component({
   selector: 'app-nav',
@@ -13,41 +10,18 @@ interface iCategoria{
 })
 export class NavComponent implements OnInit {
 
-    item:iCategoria[]=[
-    {
-      ativo: true,
-      label: "Todas as Categorias",
-      route: "/produtos"
-    },
-    {
-      ativo: false,
-      label: "Desenhados",
-      route: "/desenhados"
-    },
-    {
-      ativo: false,
-      label: "Bordados",
-      route: "/bordados"
-    },
-    {
-      ativo: false,
-      label: "Com Barra",
-      route: "/barra"
-    },
-    {
-      ativo: false,
-      label: "Frases",
-      route: "/frases"
-    }
-  ]
+  @Input() produto: Produtos;
+  public categorias: Categorias[] = [];
 
-  constructor() { }
+  @Output() categoriaClicada = new EventEmitter();
 
-  destacar(item: iCategoria){
-    this.item.forEach(
-      (item)=>{item.ativo=false}
-    )
-    item.ativo=true;
+  private categoriaTotal: Categorias = new Categorias(0, 'Todas as Categorias')
+
+  constructor(private http: HttpService) {
+    this.http.carregarCategorias().subscribe(cat => {
+      this.categorias.push(this.categoriaTotal)
+      cat['body'].forEach(c => this.categorias.push(new Categorias(c.idCategoria, c.descricao)))
+    })
   }
 
   ngOnInit(): void {

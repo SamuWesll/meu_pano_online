@@ -10,10 +10,10 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  public produtos: Produtos;
+  @Input() produto: Produtos;
 
-  converteDecimal(valor: string): string {
-    return parseFloat(valor).toFixed(2).replace('.', ',')
+  converteDecimal(valor: number): string {
+    return valor.toFixed(2).replace('.', ',')
   };
 
   tresParcelas(valor: number): string {
@@ -21,15 +21,8 @@ export class ProdutosComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  constructor(private httpProduto: ProdutoService, private http: HttpService) { }
+  constructor(private httpProduto: ProdutoService, public http: HttpService) { }
 
-  ngOnInit(): void {
-
-    // this.httpProduto.getListaProdutos().subscribe(
-    //   (body) => {
-    //     this.produtos = body['body'];
-    // })
-
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,8 +1,13 @@
-<app-nav></app-nav>
+<!-- <app-nav></app-nav> -->
 <main class="container">
+    <div class="row">
+        <app-produtos *ngFor="let prod of produtosPorCategoria" [produto]="prod"></app-produtos>
+    </div>
+</main>
+
+<!-- <main class="container">
     <h1 class="text-dark mt-3 pb-2">Categoria</h1>
     <div class="card-group">  
-      <!--<app-produtos id="app-produtos"></app-produtos>-->
         <div class="card col-md-3 col-xs-6" style="width: 20rem;">
             <a href="#"><img class="card-img-top pt-1" src="../../../assets/img/produtos/detalhado/img01.jpg"
                     alt="Pano de Prato" title="Pano de Prato" style="width:100%; height:auto;"></a>
@@ -24,4 +29,4 @@
             </div>
         </div>
     </div>
-</main>
+</main> -->
