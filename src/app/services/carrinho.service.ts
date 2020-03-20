@@ -13,8 +13,8 @@ export class CarrinhoService{
     info: Produtos;
     carregado = false;
 
-    constructor(private carrinho: HttpClient){
-        this.carrinho.get(URLCarrinho).subscribe((resp: Produtos)=>{
+    constructor(private itemCarrinho: HttpClient){
+        this.itemCarrinho.get(URLCarrinho).subscribe((resp: Produtos)=>{
             this.carregado=true;
             this.info=resp['body'];
         })

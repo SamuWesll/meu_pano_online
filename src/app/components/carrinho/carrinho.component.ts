@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
 import { Carrinho } from "src/app/models/Carrinho";
 import { CarrinhoService } from 'src/app/services/carrinho.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -15,33 +16,33 @@ export class CarrinhoComponent implements OnInit {
   }
 
   public produtos: Produtos[];
-  public carrinho: Carrinho[];
+  //public carrinho: Carrinho[];
   public valorTotal: number = 0;
 
-  constructor() { 
-    if(this.carrinho){
-      this.carrinho.forEach( item =>{
-          this.valorTotal +=(item.produtos.valorUnitario * item.qtde);
-      })
-    }
+  constructor(public itemCarrinho: CarrinhoService) { 
+    // if(this.carrinho){
+    //   this.carrinho.forEach( item =>{
+    //       this.valorTotal +=(item.produtos.valorUnitario * item.qtde);
+    //   })
+    // }
    }
 
   ngOnInit(): void {
   }
 
-  alterarQtde(valor, item){
-    if(item.qtde){
-      item.qtde++;
-      this.valorTotal+=item.produtos.valorUnitario;
-    }else{
-      item.qtde--;
-      this.valorTotal -= item.produtos.valorUnitario;
-    }
-  }
+  // alterarQtde(valor, item){
+  //   if(item.qtde){
+  //     item.qtde++;
+  //     this.valorTotal+=item.produtos.valorUnitario;
+  //   }else{
+  //     item.qtde--;
+  //     this.valorTotal -= item.produtos.valorUnitario;
+  //   }
+  // }
 
-  removerCarrinho(item){
-    this.valorTotal-=item.produtos.valorUnitario;
-    this.carrinho = this.carrinho.filter(prod=>prod != item
-    )
-  }
+  // removerCarrinho(item){
+  //   this.valorTotal-=item.produtos.valorUnitario;
+  //   this.carrinho = this.carrinho.filter(prod=>prod != item
+  //   )
+  // }
 }
