@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { Cliente } from 'src/app/models/Cliente';
+import { FormControl } from '@angular/forms';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-header',
@@ -9,17 +10,16 @@ import { Cliente } from 'src/app/models/Cliente';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild(ModalDirective) modal: ModalDirective;
 
-  modalRef: BsModalRef
-  public login: Cliente;
+  // modalRef: BsModalRef
+  // public login: Cliente;
+  public login: number = 1; 
 
-  openModal() {
-    this.modalRef = this.modalService.show(LoginComponent)
-  }
+  emailInput = new FormControl();
+  senhaInput = new FormControl();
 
-  constructor(private modalService: BsModalService) {
-    this.verificarLogin();
-  }
+  constructor() {}
 
   verificarLogin() {
 

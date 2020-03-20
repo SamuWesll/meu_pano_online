@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-// import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { NgModule, NO_ERRORS_SCHEMA, Component, ViewChild } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxViacepModule } from '@brunoc/ngx-viacep';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,7 +27,6 @@ import { NavComponent } from './components/nav/nav.component';
   declarations: [
     AppComponent,
     HomeComponent,
-
     HeaderComponent,
     FooterComponent,
     SobreComponent,
@@ -45,8 +44,8 @@ import { NavComponent } from './components/nav/nav.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ModalModule.forRoot(),
-    // AngularFontAwesomeModule,
+    BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot(),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -55,7 +54,7 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   entryComponents: [LoginComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 
 export class AppModule { }
