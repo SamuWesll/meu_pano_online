@@ -10,7 +10,7 @@
                     <label for="nome">Nome completo*</label>
                     <input class="form-control" type="text" id="nome" name="nome"
                     placeholder="Digite seu nome completo" [ngModel]="usuario.nome" 
-                    minlength="12" maxlength="50"required #nome="ngModel">
+                    minlength="12" maxlength="50"required #nome="ngModel"> 
                     <div *ngIf="!nome.valid && nome.touched"
                     class="alert alert-danger" role="alert">
                         Nome é obrigatório.
@@ -44,8 +44,9 @@
                     <input class="form-control" type="email" id="email" name="email"
                     placeholder="Digite o seu email"  [ngModel]="usuario.email" 
                     minlength="12" maxlength="40" required #email="ngModel">
-                    <div *ngIf="!email.valid && email.touched"
-                    class="alert alert-danger" role="alert">
+                    
+                    <div *ngIf="!email.valid && email.touched "
+                    class="alert alert-danger" role="alert"  >
                         Email é obrigatório.
                     </div>
                 </div>
@@ -287,3 +288,13 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="alert alert-danger"
+  *ngIf="userForm.get('email').invalid && (userForm.get('email').dirty || userForm.get('email').touched)">
+  <div *ngIf="userForm.get('email').hasError('required')"> 
+      A Idade é obrigatória. 
+  </div>
+   Verificamos aqui se é um email ou não de acordo com o que setamos em nosso formControl 'email' 
+  <div *ngIf="userForm.get('email').hasError('email')">
+    Não é um formato de email válido. 
+  </div> --> -->
