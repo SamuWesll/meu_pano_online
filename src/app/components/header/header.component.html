@@ -34,7 +34,7 @@
   style="overflow-y: auto"
 >
     <!--Dialog-->
-  <div class="modal-dialog modal-danger">
+  <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-center">
             <h5 class="modal-title w-100">Já sou cliente PanoOnline</h5>
@@ -56,10 +56,10 @@
                         {{ senhaInput.value }}
                     </div>
                     <div class="d-flex justify-content-around mt-3">
-                        <a id="esqueciSenha" class="text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="modal" routerLink="/" data-target="#modalEsqueciSenha" data-dismiss="modal">
+                        <a id="esqueciSenha" class="text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="modal" routerLink="/" data-dismiss="modal" (click)="modalEsqueciSenha.show()">
                             Esqueceu a senha?
                         </a>
-                        <a class="text-uppercase text-decoration-none text-secondary font-weight-bold pr-1" data-dismiss="modal" routerLink="/cadastro">Criar cadastro</a>
+                        <a class="text-uppercase text-decoration-none text-secondary font-weight-bold pr-1" data-dismiss="modal" routerLink="/cadastro" (click)="modalLogin.hide()">Criar cadastro</a>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
@@ -70,4 +70,27 @@
         </div>
       </div>
   </div>
+</div>
+
+<!-- Modal Esqueci a senha -->
+<div 
+    mdbModal
+    #modalEsqueciSenha="mdbModal"
+    class="modal fade top"
+    id="frameModalTop"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+    style="overflow-y: auto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100">Esqueceu sua senha?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalLogin.hide()">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
