@@ -56,7 +56,7 @@
                         {{ senhaInput.value }}
                     </div>
                     <div class="d-flex justify-content-around mt-3">
-                        <a id="esqueciSenha" class="text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="modal" routerLink="/" data-dismiss="modal" (click)="modalEsqueciSenha.show()">
+                        <a id="esqueciSenha" class="text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="modal" routerLink="/" (click)="modalEsqueciSenha.show(); modalLogin.hide()">
                             Esqueceu a senha?
                         </a>
                         <a class="text-uppercase text-decoration-none text-secondary font-weight-bold pr-1" data-dismiss="modal" routerLink="/cadastro" (click)="modalLogin.hide()">Criar cadastro</a>
@@ -87,7 +87,7 @@
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title w-100">Esqueceu sua senha?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalLogin.hide()">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalEsqueciSenha.hide()">
                     <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
             </div>

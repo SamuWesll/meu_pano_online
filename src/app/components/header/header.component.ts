@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { Cliente } from 'src/app/models/Cliente';
 import { FormControl } from '@angular/forms';
