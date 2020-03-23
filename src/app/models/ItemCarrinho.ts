@@ -1,5 +1,9 @@
-import { Carrinho } from './Carrinho';
+import { Produtos } from './Produtos'
+
 
 export class ItemCarrinho{
-    itemCarrinho: Carrinho[]=[];
+    constructor(
+    public produto?: Produtos,
+    public quantidade?: number
+    ){}
 }

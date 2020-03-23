@@ -1,5 +1,8 @@
-import { Produtos } from './Produtos';
+import { ProdutoCarrinho } from './ProdutoCarrinho';
 
 export class Carrinho {
-    constructor(public produto: Produtos, public quantidade: number){}
+    constructor(
+        public idCarrinho?: number,
+        public produto?: ProdutoCarrinho
+        ){}
 }
