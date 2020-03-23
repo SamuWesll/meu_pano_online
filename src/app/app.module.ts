@@ -12,7 +12,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
-import { LoginComponent } from './components/login/login.component';
 import { CarouselProdutos } from './components/carousel-produtos/carousel-produtos.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
@@ -31,7 +30,6 @@ import { NavComponent } from './components/nav/nav.component';
     FooterComponent,
     SobreComponent,
     ContatoComponent,
-    LoginComponent,
     CarouselProdutos,
     ProdutosComponent,
     CadastroComponent,
@@ -52,7 +50,6 @@ import { NavComponent } from './components/nav/nav.component';
     NgxViacepModule,
     FormsModule,
   ],
-  entryComponents: [LoginComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

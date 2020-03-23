@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, Input, Output } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
 import { Cliente } from 'src/app/models/Cliente';
 import { FormControl } from '@angular/forms';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { Sexo } from 'src/app/models/Sexo';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +14,76 @@ export class HeaderComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
 
   // modalRef: BsModalRef
-  // public login: Cliente;
-  public login: number = 1; 
+  public login: Cliente;
+  // public login: number = 1; 
 
   emailInput = new FormControl();
   senhaInput = new FormControl();
 
-  constructor() {}
+  constructor(private httpCliente: ClienteService) {}
+
+  realizarLogin() {
+    let validarCampor: any = this.emailInput.value.indexOf('@');
+    
+    if(validarCampor >= 0) {
+      let body = {
+        "email": this.emailInput.value,
+	      "senha": this.senhaInput.value,
+      };
+      this.httpCliente.postLogin(body).subscribe(
+        (data) => {
+          if(data['statusCodeValue'] == 400) {
+            alert(data['body']);
+          } else if(data['statusCodeValue'] == 200) {
+            this.logadoLocalStorage(data['body']);
+            this.verificarLogin();
+            console.log(this.login)
+            return alert('Login realizado com sucesso')
+          }
+        }
+      )
+    } else {
+      alert('Voce informou um CPF')
+    }
+    
+
+    this.emailInput.setValue('');
+    this.senhaInput.setValue('');
+
+  }
+
+  logadoLocalStorage(body) {
+
+    let gen: Sexo;
+
+    if(body.genero == "M") {
+      gen = Sexo.masculino;
+    } else if(body.genero == "F") {
+      gen = Sexo.feminino;
+    }
+
+    let cliente = {
+      idCliente: body['idCliente'],
+      nome: body['nome'],
+      cpf: body['cpf'],
+      email: body['email'],
+      senha: body['senha'],
+      dataNascimento: body['dataNascimento'],
+      genero: gen,
+    }
+
+    localStorage.setItem("logado", JSON.stringify(cliente));
+
+    this.login = new Cliente(
+      cliente.idCliente,
+      cliente.nome,
+      cliente.cpf,
+      cliente.email,
+      cliente.senha,
+      cliente.dataNascimento,
+      cliente.genero
+    );
+  }
 
   verificarLogin() {
 
@@ -41,7 +105,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.verificarLogin();
   }
 
 }
