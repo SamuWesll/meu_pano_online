@@ -20,7 +20,8 @@
                 <div class="form-group">
                     <label for="cpf">CPF*</label>
                     <input ng class="form-control" type="text" id="cpf" name="cpf"
-                    placeholder="Digite o seu CPF" [ngModel]="usuario.cpf"
+                    placeholder="Digite o seu CPF" [ngModel]="usuario.cpf" 
+                    [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="11" maxlength="11" required #cpf="ngModel">
                     <div *ngIf="!cpf.valid && cpf.touched"
                     class="alert alert-danger" role="alert">
@@ -31,7 +32,8 @@
                 <div class="form-group">
                     <label for="telefone">Telefone ou celular*</label>
                     <input class="form-control" type="tel" id="telefone" name="telefone"
-                    placeholder="Digite o numero do seu telefone"  [ngModel]="usuario.telefone"
+                    placeholder="Digite o numero do seu telefone"  [ngModel]="usuario.telefone" 
+                    [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="10" maxlength="11" required #telefone="ngModel">
                     <div *ngIf="!telefone.valid && telefone.touched"
                     class="alert alert-danger" role="alert">
@@ -55,7 +57,9 @@
                     <label for="senha">Senha*</label>
                     <input class="form-control" type="password" id="senha" name="senha"
                     placeholder="Digite sua senha"  [ngModel]="usuario.senha" 
-                    minlength="6" maxlength="20" required #senha="ngModel">
+                    minlength="6" maxlength="20" required #senha="ngModel" [class.is-invalid]="senha.invalid && 
+                    senha.touched || senha.touched && senha.value != confSenha.value" [class.is-valid]="senha.touched &&
+                    senha.value == confSenha.value" [maxlength]="30" [minlength]="5">
                     <div *ngIf="!senha.valid && senha.touched"
                     class="alert alert-danger" role="alert">
                         Senha é obrigatório.
@@ -66,7 +70,7 @@
                     <label for="confSenha">Confirme a senha*</label>
                     <input class="form-control" type="password" id="confSenha"
                     name="confSenha" placeholder="Confirme sua senha" [ngModel]="usuario.confSenha" 
-                    minlength="6" maxlength="20" required #confSenha="ngModel">
+                    minlength="5" maxlength="30" required #confSenha="ngModel">
                     <div *ngIf="!confSenha.valid && confSenha.touched"
                     class="alert alert-danger" role="alert">
                         É obrigatório confirmar a senha.
@@ -87,6 +91,7 @@
                        
                     placeholder="Digite seu CEP" [ngModel]="usuario.cep"
                     minlength="8" maxlength="8" required #cep="ngModel" 
+                    [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     (blur)="consultaCEP($event.target.value)"
                     (keydown)="consultaCEP(usuario.cep)"> 
                     <div *ngIf="!cep.valid && cep.touched"
@@ -108,12 +113,13 @@
 
                 <div class="form-group">
                     <label for="numero">Número*</label>
-                    <input class="form-control" type="number" id="numero" name="numero"
-                    placeholder="Digite o número" [ngModel]="usuario.numero"
-                    minlength="2" maxlength="5" required #numero="ngModel">
+                    <input class="form-control" type="text" id="numero" name="numero"
+                    placeholder="Digite o número" [ngModel]="usuario.numero" 
+                    
+                    minlength="2"  maxlength="5" required #numero="ngModel">
                     <div *ngIf="!numero.valid && numero.touched"
                     class="alert alert-danger" role="alert">
-                    Número é obrigatório.
+                    Número é obrigatório. (Somente números)
                     </div>
                 </div>
 
@@ -211,7 +217,7 @@
                 <div class="form-group">
                     <label for="numCartao">Numero do cartão*</label>
                     <input class="form-control" type="text" id="numCartao" name="numCartao"
-                    placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao"
+                    placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao" pattern="^\d{16}$"
                     minlength="16" maxlength="16" required #numCartao="ngModel">
                     <div *ngIf="!numCartao.valid && numCartao.touched"
                         class="alert alert-danger" role="alert">
@@ -222,7 +228,8 @@
                 <div class="form-group row">
                     <div class="col-8">
                         <label for="dtValidade">Data de validade*</label>
-                        <input class="form-control" type="month" id="dtValidade" name="dtValidade"
+                        <input class="form-control" type="month" format="yyyy-mm" min="2020-03" 
+                        max="2099-12" id="dtValidade" name="dtValidade"
                         placeholder="Validade" [ngModel]="usuario.dtValidade"
                         required #dtValidade="ngModel">
                         <div *ngIf="!dtValidade.valid && dtValidade.touched"
@@ -232,9 +239,10 @@
                     </div>
                     <div class="col-4">
                         <label for="cdSeguranca">Cod. S*</label>
-                        <input class="form-control" type="number" id="cdSeguranca" name="cdSeguranca"
-                        placeholder="CVV" [ngModel]="usuario.cdSeguranca"
-                        minlength="3" maxlength="3" required #cdSeguranca="ngModel">
+                        <input class="form-control" type="text" id="cdSeguranca" name="cdSeguranca"
+                        placeholder="CVV" [ngModel]="usuario.cdSeguranca" pattern="^\d{3}$"
+                        [minlength]="3" [maxlength]="3"
+                        required #cdSeguranca="ngModel">
                         <div *ngIf="!cdSeguranca.valid && cdSeguranca.touched"
                             class="alert alert-danger" role="alert">
                             Cd. Seg
@@ -257,7 +265,7 @@
                 <div class="form-group">         
                     <label for="cpfTitular">CPF do titular*</label>
                     <input class="form-control" type="text" id="cpfTitular" name="cpfTitular"
-                    placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular"
+                    placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular" pattern="^\d{11}$"
                     minlength="11" maxlength="11" required #cpfTitular="ngModel">
                     <div *ngIf="!cpfTitular.valid && cpfTitular.touched"
                         class="alert alert-danger" role="alert">
