@@ -2,7 +2,7 @@
 <main class="container">
   <div class="row mt-3">
     <div class="col-8">
-      <div *ngFor="let itemCarrinho of itemCarrinho?.info; index as i">
+      <div *ngFor="let itemCarrinho of carrinhoService?.info; index as i">
         <div class="card mb-2" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -64,7 +64,8 @@
           </div>
         </div>
         <div class="row">
-          <button class="mx-auto btn btnDetalhe offset-1 col-10 mb-2">Continuar</button>
+          <button [routerLink]="['/carrinho/checkout']" type="submit"
+            class="mx-auto btn btnDetalhe offset-1 col-10 mb-2" value="submit">Continuar</button>
         </div>
       </div>
     </div>

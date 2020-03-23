@@ -1,3 +1,5 @@
+import { Produtos } from './Produtos';
+
 export class Carrinho {
-    constructor(){}
+    constructor(public produto: Produtos, public quantidade: number){}
 }

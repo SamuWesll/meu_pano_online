@@ -1,6 +1,5 @@
-import { Produtos } from './Produtos';
+import { Carrinho } from './Carrinho';
 
 export class ItemCarrinho{
-    produto: Produtos;
-    quantidade: number;
+    itemCarrinho: Carrinho[]=[];
 }

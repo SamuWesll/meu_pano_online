@@ -3,6 +3,8 @@ import { Produtos } from 'src/app/models/Produtos';
 import { Carrinho } from "src/app/models/Carrinho";
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { HttpService } from 'src/app/services/http.service';
+import { ItemCarrinho } from 'src/app/models/ItemCarrinho';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-carrinho',
@@ -17,18 +19,40 @@ export class CarrinhoComponent implements OnInit {
 
   public produtos: Produtos[];
   //public carrinho: Carrinho[];
-  public valorTotal: number = 0;
+  public item: ItemCarrinho;
+  public valorTotal: number;
+  public sub: Subscription;
 
-  constructor(public itemCarrinho: CarrinhoService) { 
-    // if(this.carrinho){
-    //   this.carrinho.forEach( item =>{
-    //       this.valorTotal +=(item.produtos.valorUnitario * item.qtde);
-    //   })
-    // }
+
+
+  constructor(public carrinhoService: CarrinhoService) { 
+    this.valorTotal=0;
    }
 
   ngOnInit(): void {
+    this.item = new ItemCarrinho();
   }
+
+  private calcularTotal(p: Carrinho[]): number{
+    let soma=0;
+    p.forEach(valor =>{
+      soma+=(valor.produto.valorDesconto*valor.quantidade);
+    })
+    return soma; 
+  }
+
+  carregarTotal(){
+    this.sub=this.carrinhoService.ItemAtualizado.subscribe(()=>{
+      this.valorTotal=this.calcularTotal(this.item.itemCarrinho);
+    })
+  }
+
+  carregarCOmpra(){
+    this.sub = this.carrinhoService.CarrinhoAtualizado.subscribe(()=>{
+      let carrinho = this.carrinhoService
+    })
+  }
+
 
   // alterarQtde(valor, item){
   //   if(item.qtde){
