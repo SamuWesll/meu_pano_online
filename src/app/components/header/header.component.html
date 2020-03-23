@@ -47,7 +47,7 @@
                 <div class="modal-body mt-4">
                     <div class="md-form row">
                         <label for="email" class="col-2 pt-2 text-center">Email</label>
-                        <input id="email" type="text" mdbInput class="form-control col-9" [formControl]="emailInput" placeholder="E-mail ou CPF" required>
+                        <input id="email" type="text" mdbInput class="form-control col-9" [formControl]="emaiOuCpflInput" placeholder="E-mail ou CPF" required>
                     </div>
                     <div class="md-form row mt-4">
                         <label for="senha" class="col-2 pt-2 text-center">senha</label>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal" [disabled]="!senhaInput.valid || !emailInput.valid" (click)="realizarLogin()">Login</button>
+                    <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal" [disabled]="!senhaInput.valid || !emaiOuCpflInput.valid" (click)="realizarLogin()">Login</button>
                     <button type="button" class="btn btn-outline-danger rounded" (click)="modalLogin.hide()">Fechar</button>
                 </div>
             </form>
