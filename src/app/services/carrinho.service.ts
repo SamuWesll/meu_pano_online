@@ -58,7 +58,7 @@ export class CarrinhoService {
             if (carrinhoLocal.length > 0) {
                 return this.carrinhoService.post<Carrinho>(URLCarrinho, carrinhoLocal).pipe(
                     tap(_ => {
-                        this.limparCarrinhoLocal();
+                        this.limparCarrinhoStorage();
                     }),
                     map(carrinho => carrinho.produto),
                     catchError(_ => of([]))
@@ -90,7 +90,7 @@ export class CarrinhoService {
             
             return this.carrinhoService.post<boolean>(URLAdicionar, {
                 'quantidade': produtoCarrinho.contador,
-                'productId': produtoCarrinho.idProduto
+                'idProduto': produtoCarrinho.idProduto
             });
         }
     }
@@ -118,11 +118,11 @@ export class CarrinhoService {
         return this.carrinhoService.post(url, null).pipe();
     }
 
-    storeLocalCart() {
-        this.cookieService.set('cart', JSON.stringify(this.localMap));
+    carrinhoStorage() {
+        this.cookieService.set('carrinho', JSON.stringify(this.localMap));
     }
 
-    limparCarrinhoLocal() {
+    limparCarrinhoStorage() {
         console.log('cheguei aqui');
         this.cookieService.delete('carrinho');
         this.localMap = {};
