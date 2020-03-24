@@ -1,45 +1,41 @@
 import { Injectable } from "@angular/core";
+
+import {CookieService} from 'ngx-cookie-service';
 import { Produtos } from '../models/Produtos';
 import { HttpClient } from '@angular/common/http';
 import { Carrinho } from '../models/Carrinho';
 import { ItemCarrinho } from '../models/ItemCarrinho';
-import { Subject } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 
 //udar url 
-const URLCarrinho: string = "http://localhost:8080/meupanoonline/produto/lista"
-//private ordersUrl = "/api/orders";
-const URLPedido: string = "http://localhost:8080/meupanoonline/pedido/"
+const URLCarrinho: string = "http://localhost:8080/meupanoonline/carrinho"
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class CarrinhoService{
-    info: Produtos;
-    carregado = false;
-    private carrinho: Carrinho;
-    private item: ItemCarrinho = new ItemCarrinho();
 
-    private carrinhoSubject = new Subject();
-    private itemSubject = new Subject();
-    private totalSubject = new Subject();
+    localMap={};
 
-    private total: number;
+    
+    private itemSubject: BehaviorSubject<ItemCarrinho[]>;
+    private totalSubject: BehaviorSubject<number>;
+    private item: Observable<ItemCarrinho[]>;
+    private total: Observable<number>;
 
-    CarrinhoAtualizado = this.carrinhoSubject.asObservable();
-    ItemAtualizado = this.itemSubject.asObservable();
-    TotalAtualizado = this.totalSubject.asObservable();
+    private clienteLogado: Response;
 
-    constructor(private itemCarrinho: HttpClient){
-        this.itemCarrinho.get(URLCarrinho).subscribe((resp: Produtos)=>{
-            this.carregado=true;
-            this.info=resp['body'];
-        })
-    }
-
-    // constructor(private itemCarrinho: HttpClient){
-        
+    // constructor(private carrinhoService: HttpClient, private cookieService: CookieService, private clienteService: ClienteService){ })
     // }
+
+    constructor(private carrinhoService: HttpClient){
+        this.itemSubject = new BehaviorSubject<ItemCarrinho>(null);
+        this.item = this.itemSubject.asObservable();
+        this.totalSubject = new BehaviorSubject<number>(null);
+        this.total = this.totalSubject.asObservable();
+        //this.clienteService.clienteLogado.subscribe(cliente => this.clienteLogado = cliente); 
+    }
 
     salvarPedido(carrinho: Carrinho){
         return this.itemCarrinho.post(URLPedido, carrinho);
