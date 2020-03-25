@@ -119,27 +119,5 @@ public f : FormGroup
       ])),    
     })
    }
-  
-
-  //  consultaCEP(cep){
-  //    console.log(cep);
-  //    // variavel (cep) somente com digitos
-  //     cep = cep.replace(/\D/g, '');
-
-  //     //verifica se campo cep possui valor informado
-  //     if (cep != ""){
-
-  //       //expressão regular para validar o cep.
-  //       var validacep = /^[0-9]{8}$/;
-
-  //       //valida o formato do cep
-  //       if(validacep.test(cep)){
-
-  //         this.HttpClient.get(`//viacep.com.br/ws/${cep}/json`)
-  //         .map(dados => dados.json())
-  //         .subscribe(dados => console.log(dados));
-  //       }
-  //     }
-  //  }
 
 }

@@ -23,6 +23,10 @@
                     placeholder="Digite o seu CPF" [ngModel]="usuario.cpf" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="11" maxlength="11" required #cpf="ngModel">
+                    <div *ngIf="cpf.value == 00000000000"
+                            class="alert alert-danger" role="alert">
+                            CPF inválido.
+                    </div>
                     <div *ngIf="!cpf.valid && cpf.touched"
                     class="alert alert-danger" role="alert">
                         CPF é obrigatório. (Somente números - 11 digitos)
@@ -199,7 +203,7 @@
                     </div>
                 </div>
                 <div  class="p-2 row">
-                    <div class="col-12" >
+                    <div class="col-12" id="fretes">
                         <label>Escolha um tipo de frete:</label>
                         <label><input type="radio" name="frete" value="male" checked> Até 30 dias - <strong style="color: green;">$ 7,99</strong> Receba em casa - Entrega normal</label>
                         <label><input type="radio" name="frete" value="female" >Até 7 dias - <strong style="color: green;">$ 15,99</strong> (Receba em casa) - Entrega rápida</label>
@@ -281,22 +285,16 @@
                         </select>
                     </div>
 
-                        <!-- <input class="form-control" type="year" format="yyyy" min="2020-03" 
-                        max="2099-12" id="dtValidade" name="dtValidade"
-                        placeholder="Validade" [ngModel]="usuario.dtValidade"
-                        required #dtValidade="ngModel">
-                        <div *ngIf="!dtValidade.valid && dtValidade.touched"
-                            class="alert alert-danger" role="alert">
-                            Ano*
-                        </div>
-                    </div> -->
-
                     <div class="col-4">
                         <label for="cdSeguranca">Cod. S*</label>
                         <input class="form-control" type="text" id="cdSeguranca" name="cdSeguranca"
                         placeholder="CVV" [ngModel]="usuario.cdSeguranca" pattern="^\d{3}$"
                         [minlength]="3" [maxlength]="3"
                         required #cdSeguranca="ngModel">
+                        <div *ngIf="cdSeguranca.value == 000"
+                            class="alert alert-danger" role="alert">
+                            Código inval.
+                        </div>
                         <div *ngIf="!cdSeguranca.valid && cdSeguranca.touched"
                             class="alert alert-danger" role="alert">
                             Cd. Seg
@@ -321,6 +319,10 @@
                     <input class="form-control" type="text" id="cpfTitular" name="cpfTitular"
                     placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular" pattern="^\d{11}$"
                     minlength="11" maxlength="11" required #cpfTitular="ngModel">
+                    <div *ngIf="cpfTitular.value == 00000000000"
+                            class="alert alert-danger" role="alert">
+                            CPF inválido.
+                    </div>
                     <div *ngIf="!cpfTitular.valid && cpfTitular.touched"
                         class="alert alert-danger" role="alert">
                         CPF do titular é obrigatório.
@@ -339,7 +341,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Compra realizada com sucesso!</h5>
+          <h5 class="modal-title">Estamos finalizando seu pedido!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
