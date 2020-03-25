@@ -232,19 +232,56 @@
                 <div class="form-group row">
                     <div class="col-4">
                         <label for="dtValidade">Mês*</label>
-                        <input class="form-control" type="month" format="mm" min="2020-03" 
-                        max="2099-12" id="dtValidade" name="dtValidade"
-                        placeholder="Validade" [ngModel]="usuario.dtValidade"
-                        required #dtValidade="ngModel">
-                        <div *ngIf="!dtValidade.valid && dtValidade.touched"
+                        <select class="form-control" type="text" id="mesValidade" name="mesValidade"
+                        placeholder="Validade" [ngModel]="usuario.mesValidade"
+                        required #mesValidade="ngModel">
+                        <div *ngIf="!mesValidade.valid && mesValidade.touched"
                             class="alert alert-danger" role="alert">
                             Mês*
                         </div>
+                        <option value="" disabled selected >Mês Venc.</option>
+                            <option value="jan">JANEIRO</option>
+                            <option value="fev">FEVEREIRO</option>
+                            <option value="mar">MARÇO</option>
+                            <option value="abr">ABRIL</option>
+                            <option value="mai">MAIO</option>
+                            <option value="jun">JUNHO</option>
+                            <option value="jul">JULHO</option>
+                            <option value="ago">AGOSTO</option>
+                            <option value="set">SETEMBRO</option>
+                            <option value="out">OUTUBTO</option>
+                            <option value="nov">NOVEMBRO</option>
+                            <option value="dez">DEZEMBRO</option>
+                        </select>
                     </div>
 
                     <div class="col-4">
                         <label for="dtValidade">Ano*</label>
-                        <input class="form-control" type="month" format="yyyy-mm" min="2020-03" 
+                        
+                        <select class="form-control" type="text" id="anoValidade" name="anoValidade"
+                        placeholder="Validade" [ngModel]="usuario.anoValidade"
+                        required #anoValidade="ngModel">
+                        <div *ngIf="!anoValidade.valid && anoValidade.touched"
+                            class="alert alert-danger" role="alert">
+                            Mês*
+                        </div>
+                        <option value="" disabled selected >Ano Venc.</option>
+                            <option value="vinte">2020</option>
+                            <option value="vinteUm">2021</option>
+                            <option value="vinteDois">2022</option>
+                            <option value="vinteTres">2023</option>
+                            <option value="vinteQuatro">2024</option>
+                            <option value="vinteCinco">2025</option>
+                            <option value="vinteSeis">2026</option>
+                            <option value="vinteSete">2027</option>
+                            <option value="vinteOito">2028</option>
+                            <option value="vinteNove">2029</option>
+                            <option value="trinta">2030</option>
+                            <option value="trintaUm">2031</option>
+                        </select>
+                    </div>
+
+                        <!-- <input class="form-control" type="year" format="yyyy" min="2020-03" 
                         max="2099-12" id="dtValidade" name="dtValidade"
                         placeholder="Validade" [ngModel]="usuario.dtValidade"
                         required #dtValidade="ngModel">
@@ -252,7 +289,7 @@
                             class="alert alert-danger" role="alert">
                             Ano*
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-4">
                         <label for="cdSeguranca">Cod. S*</label>
