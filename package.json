@@ -24,6 +24,7 @@
     "angular-bootstrap-md": "^9.0.0",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.4.1",
+    "crypto-js": "^4.0.0",
     "font-awesome": "^4.7.0",
     "mdbootstrap": "^4.14.1",
     "ngx-bootstrap": "^5.5.0",

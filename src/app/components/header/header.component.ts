@@ -14,9 +14,7 @@ import { formatDate } from '@angular/common';
 export class HeaderComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
 
-  // modalRef: BsModalRef
   public login: Cliente;
-  // public login: number = 1; 
 
   emaiOuCpflInput = new FormControl();
   senhaInput = new FormControl();
@@ -25,7 +23,6 @@ export class HeaderComponent implements OnInit {
 
   realizarLogin() {
     let validarCampor: any = this.emaiOuCpflInput.value.indexOf('@');
-    
     if(validarCampor >= 0) {
       let body = {
         "email": this.emaiOuCpflInput.value,
