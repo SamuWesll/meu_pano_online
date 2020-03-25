@@ -230,17 +230,30 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-8">
-                        <label for="dtValidade">Data de validade*</label>
+                    <div class="col-4">
+                        <label for="dtValidade">Mês*</label>
+                        <input class="form-control" type="month" format="mm" min="2020-03" 
+                        max="2099-12" id="dtValidade" name="dtValidade"
+                        placeholder="Validade" [ngModel]="usuario.dtValidade"
+                        required #dtValidade="ngModel">
+                        <div *ngIf="!dtValidade.valid && dtValidade.touched"
+                            class="alert alert-danger" role="alert">
+                            Mês*
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="dtValidade">Ano*</label>
                         <input class="form-control" type="month" format="yyyy-mm" min="2020-03" 
                         max="2099-12" id="dtValidade" name="dtValidade"
                         placeholder="Validade" [ngModel]="usuario.dtValidade"
                         required #dtValidade="ngModel">
                         <div *ngIf="!dtValidade.valid && dtValidade.touched"
                             class="alert alert-danger" role="alert">
-                            Data de validade é obrigatória.
+                            Ano*
                         </div>
                     </div>
+
                     <div class="col-4">
                         <label for="cdSeguranca">Cod. S*</label>
                         <input class="form-control" type="text" id="cdSeguranca" name="cdSeguranca"
