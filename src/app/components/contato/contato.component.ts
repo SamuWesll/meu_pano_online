@@ -26,8 +26,8 @@ export class ContatoComponent implements OnInit {
     })
   }
 
-  contactar() {
-    console.log(this.formContato)
+  contactar(formContato) {
+    
   }
  
   ngOnInit(): void {

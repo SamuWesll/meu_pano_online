@@ -1,29 +1,38 @@
 <main class="container">
     <div class="row">
-        <div class="col-md-5 mx-auto bg-nav-green mt-5 rounded">
+        <div class="col-md-10 col-xl-5 mx-auto bg-nav-green mt-5 rounded">
             <h3 class="p-2 text-center">Contato</h3>
-            <!-- <form [formGroup]="formContato" (ngSubmit)="contactar()"> -->
-            <form >
+            <form #formContato="ngForm" method="POST" action="mailto:destinatario@example.com" enctype="text/plain">
                 <div class="form-group">
                     <label for="nameContact">Nome</label>
-                    <input class="form-control" type="text" name="nameContact" formControlName="nome" placeholder="Seu nome"
-                        required>
+                    <input class="form-control" type="text" name="nameContact" #nameContact="ngModel" [class.is-invalid]="nameContact.invalid && nameContact.touched" placeholder="Seu nome" ngModel required>
+                    <div *ngIf="nameContact.invalid && nameContact.touched" class="text-danger">
+                        Nome é obrigatório.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="emailContact">E-mail</label>
-                    <input class="form-control" type="email" name="emailContact" formControlName="email" placeholder="email@email.com" required>
+                    <input class="form-control" type="email" name="emailContact" ngModel #emailContact="ngModel" [class.is-invalid]="emailContact.invalid && emailContact.touched"  placeholder="email@email.com" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                    <div *ngIf="emailContact.invalid && emailContact.touched" class="text-danger">
+                        E-mail é obrigatório.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="telContact">Telefone</label>
-                    <input class="form-control" type="tel" name="telContact" maxlength="11" formControlName="telefone" placeholder="(__)_____-____">
+                    <input class="form-control" type="tel" name="telContact" ngModel #telContact="ngModel" [class.is-invalid]="telContact.invalid && telContact.touched" [maxlength]="11" [minlength]="10" placeholder="(__)_____-____">
+                    <div *ngIf="telContact.invalid && telContact.touched" class="text-danger">
+                        Telefone é obrigatório.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="messageContact">Mensagem</label>
-                    <textarea class="form-control" name="messageContact" formControlName="mensagem" rows="5" cols="33"
-                        placeholder="Digite sua mensagem aqui..." required></textarea>
+                    <textarea class="form-control" name="messageContact" ngModel #messageContact="ngModel" [minlength]="10" rows="5" cols="33" placeholder="Digite sua mensagem aqui..." [class.is-invalid]="messageContact.invalid && messageContact.touched" required ></textarea>
+                    <div *ngIf="messageContact.invalid && messageContact.touched" class="text-danger">
+                        Digite pelos menos 10 caracteres.
+                    </div>
                 </div>
                 <div class="m-3">
-                    <button class="btn btnDetalhe offset-1 col-10">Enviar</button>
+                    <button type="submit" class="btn btn-primary offset-1 col-10" [disabled]="!formContato.valid">Enviar</button>
                 </div>
             </form>
         </div>
