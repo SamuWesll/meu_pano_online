@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, AfterContentChecked } from '@angular/core';
-import { Produtos } from 'src/app/models/Produtos';
-import { Carrinho } from "src/app/models/Carrinho";
 import { CarrinhoService } from 'src/app/services/carrinho.service';
-import { ItemCarrinho } from 'src/app/models/ItemCarrinho';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Router } from '@angular/router';
 import { Response } from "../../response/Response";
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
+import { debounceTime, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-carrinho',
@@ -15,139 +14,125 @@ import { Response } from "../../response/Response";
 })
 export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked {
 
-  convertDecimal(valor: string): string{
+  convertDecimal(valor: string): string {
     return parseFloat(valor).toFixed(2).replace('.', ',');
   }
-  
-  public produtos: Produtos[] = [];
+
+  public produtoCarrinho = [];
   public valorTotal: number = 0;
   public clienteLogado: Response;
   public clienteSub: Subscription;
 
-  constructor(public carrinhoService: CarrinhoService, public clienteService: ClienteService, private router: Router) { 
-    this.clienteSub=this.clienteService.clienteLogado.subscribe(cliente =>
+  constructor(public carrinhoService: CarrinhoService, public clienteService: ClienteService, private router: Router) {
+    this.clienteSub = this.clienteService.clienteLogado.subscribe(cliente =>
       this.clienteLogado = cliente);
   }
- 
-  // private updateTerms = new Subject<ProductInOrder>();
-  // sub: Subscription;
-  
-  // static validateCount(productInOrder) {
-  //   const max = productInOrder.productStock;
-  //   if (productInOrder.count > max) {
-  //   productInOrder.count = max;
-  //   } else if (productInOrder.count < 1) {
-  //   productInOrder.count = 1;
+
+  private atualizarTermos = new Subject<ProdutoCarrinho>();
+  sub: Subscription;
+
+  // static validateCount(produtoCarrinho) {
+  //   const max = produtoCarrinho.productStock;
+  //   if (produtoCarrinho.count > max) {
+  //   produtoCarrinho.count = max;
+  //   } else if (produtoCarrinho.count < 1) {
+  //   produtoCarrinho.count = 1;
   //   }
-  //   console.log(productInOrder.count);
+  //   console.log(produtoCarrinho.count);
   //   }
-    
-    ngOnInit() {
+
+  ngOnInit() {
     this.carrinhoService.getCarrinho().subscribe(produtos => {
-    this.produtos = produtos;
+      this.produtoCarrinho = produtos;
     });
 
-    // this.sub = this.updateTerms.pipe(
-    //   // wait 300ms after each keystroke before considering the term
-    //   debounceTime(300),
-    //   //
-    //   // ignore new term if same as previous term
-    //   // Same Object Reference, not working here
-    //   //  distinctUntilChanged((p: ProductInOrder, q: ProductInOrder) => p.count === q.count),
-    //   //
-    //   // switch to new search observable each time the term changes
-    //   switchMap((productInOrder: ProductInOrder) => this.cartService.update(productInOrder))
-    //   ).subscribe(prod => {
-    //     if (prod) { throw new Error(); }
-    //   },
-    //   _ => console.log('Update Item Failed'));
-    //   }
-      
-      ngOnDestroy() {
-      if (!this.clienteLogado) {
+    this.clienteSub = this.atualizarTermos.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
+      //
+      // ignore new term if same as previous term
+      // Same Object Reference, not working here
+      //  distinctUntilChanged((p: ProdutoCarrinhprodutoCarrinho, q: ProdutoCarrinhprodutoCarrinho) => p.count === q.count),
+      //
+      // switch to new search observable each time the term changes
+      switchMap((produtoCarrinho: ProdutoCarrinho) => this.carrinhoService.atualizar(produtoCarrinho))
+    ).subscribe(prod => {
+      if (prod) { throw new Error(); }
+    },
+      _ => console.log('Não atualizou'));
+  }
+
+  ngOnDestroy() {
+    if (!this.clienteLogado) {
       this.carrinhoService.carrinhoStorage();
-      }
-      this.clienteSub.unsubscribe();
-      }
-      
-      ngAfterContentChecked() {
-      this.total = this.productInOrders.reduce(
-      (prev, cur) => prev + cur.count * cur.productPrice, 0);
-      }
-      
-
-  private calcularTotal(p: Carrinho[]): number{
-    let soma=0;
-    p.forEach(valor =>{
-      soma+=(valor.produto.valorDesconto*valor.quantidade);
-    })
-    return soma; 
+    }
+    this.clienteSub.unsubscribe();
   }
 
-  carregarTotal(){
-    this.sub=this.carrinhoService.ItemAtualizado.subscribe(()=>{
-      this.valorTotal=this.calcularTotal(this.item.itemCarrinho);
-    })
+  ngAfterContentChecked() {
+    this.valorTotal = this.produtoCarrinho.reduce(
+      (prev, cur) => prev + cur.contador * cur.valorDesconto, 0);
   }
 
-  carregarCompra(){
-    this.sub = this.carrinhoService.CarrinhoAtualizado.subscribe(()=>{
-      let carrinho = this.carrinhoService
-    })
+  adicionar(produtoCarrinho) {
+    produtoCarrinho.contador++;
+    if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
   }
 
-  checkout(){
-    if(!this)
+  subtrair(produtoCarrinho) {
+    produtoCarrinho.contador--;
+    if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
   }
-//=================================================================
+
+  onChange(produtoCarrinho) {
+    if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
+  }
 
 
-addOne(productInOrder) {
-productInOrder.count++;
-CartComponent.validateCount(productInOrder);
-if (this.currentUser) { this.updateTerms.next(productInOrder); }
+  remover(produtoCarrinho: ProdutoCarrinho) {
+    this.carrinhoService.remover(produtoCarrinho).subscribe(
+      success => {
+        this.produtoCarrinho = this.produtoCarrinho.filter(e => e.idProduto !== produtoCarrinho.idProduto);
+        console.log('Carrinho: ' + this.produtoCarrinho);
+      },
+      _ => console.log('Erro 400'));
+  }
+
+  checkout() {
+    if (!this.clienteLogado) {
+      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+    } else {
+      this.carrinhoService.checkout().subscribe(
+        _ => {
+          this.produtoCarrinho = [];
+        },
+        error1 => {
+          console.log('Erro checkout');
+        });
+      this.router.navigate(['/']);
+    }
+
+  }
 }
+  // private calcularTotal(p: Carrinho[]): number {
+  //   let soma = 0;
+  //   p.forEach(valor => {
+  //     soma += (valor.produto.valorDesconto * valor.quantidade);
+  //   })
+  //   return soma;
+  // }
 
-minusOne(productInOrder) {
-productInOrder.count--;
-CartComponent.validateCount(productInOrder);
-if (this.currentUser) { this.updateTerms.next(productInOrder); }
-}
+  // carregarTotal() {
+  //   this.sub = this.carrinhoService.ItemAtualizado.subscribe(() => {
+  //     this.valorTotal = this.calcularTotal(this.item.itemCarrinho);
+  //   })
+  // }
 
-onChange(productInOrder) {
-CartComponent.validateCount(productInOrder);
-if (this.currentUser) { this.updateTerms.next(productInOrder); }
-}
-
-
-remove(productInOrder: ProductInOrder) {
-this.cartService.remove(productInOrder).subscribe(
-success => {
- this.productInOrders = this.productInOrders.filter(e => e.productId !== productInOrder.productId);
-  console.log('Cart: ' + this.productInOrders);
-},
-_ => console.log('Remove Cart Failed'));
-}
-
-checkout() {
-if (!this.currentUser) {
-this.router.navigate(['/login'], {queryParams: {returnUrl: this.router.url}});
-} else if (this.currentUser.role !== Role.Customer) {
-this.router.navigate(['/seller']);
-} else {
-this.cartService.checkout().subscribe(
-  _ => {
-      this.productInOrders = [];
-  },
-  error1 => {
-      console.log('Checkout Cart Failed');
-  });
-this.router.navigate(['/']);
-}
-
-}
-
-
+  // carregarCompra() {
+  //   this.sub = this.carrinhoService.CarrinhoAtualizado.subscribe(() => {
+  //     let carrinho = this.carrinhoService
+  //   })
+  // }
 
   // alterarQtde(valor, item){
   //   if(item.qtde){
@@ -164,4 +149,3 @@ this.router.navigate(['/']);
   //   this.carrinho = this.carrinho.filter(prod=>prod != item
   //   )
   // }
-}

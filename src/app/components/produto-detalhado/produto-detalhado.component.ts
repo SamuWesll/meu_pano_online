@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Produtos } from "src/app/models/Produtos";
 import { HttpService } from 'src/app/services/http.service';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -13,9 +16,9 @@ export class ProdutoDetalhadoComponent implements OnInit {
     return parseFloat(valor).toFixed(2).replace('.', ',');
   }
 
-  public produtos: Produtos[]=[];
+  public produtos: Produtos;
 
-  constructor(public http: HttpService) {
+  constructor(public http: HttpService, public carrinhoService: CarrinhoService, public router: Router) {
   //   this.http.getProdutos().subscribe(
   //     (data) => {
   //       this.produtos=data;
@@ -26,4 +29,18 @@ export class ProdutoDetalhadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  adicionarCarrinho() {
+    this.carrinhoService
+        .adicionarItem(new ProdutoCarrinho(this.produtos, this.count))
+        .subscribe(
+            res => {
+              if (!res) {
+                console.log('Erro' + res);
+                throw new Error();
+              }
+              this.router.navigateByUrl('/carrinho');
+            },
+            _ => console.log('Erro')
+        );
+  }
 }

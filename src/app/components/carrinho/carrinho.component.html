@@ -1,18 +1,70 @@
 <app-nav></app-nav>
 <main class="container">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th scope="col">Imagem</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor com Desconto</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let produtoCarrinho of produtoCarrinho">
+        <th class="align-middle" scope="row">
+          <a routerLink="/product/{{produtoCarrinho.idProduto}}"><img height="100px" src="{{produtoCarrinho.imagem}}"
+              alt="{{produtoCarrinho.tituloProduto}}"></a>
+        </th>
+        <td class="align-middle"><a
+            routerLink="/product/{{produtoCarrinho.idProduto}}">{{produtoCarrinho.tituloProduto}}</a></td>
+        <td class="align-middle">{{produtoCarrinho.valorDesconto | currency}}</td>
+
+        <td class="align-middle">
+          <a (click)="subtrair(produtoCarrinho)"><i class="fa fa-minus"></i></a>
+          <input min="1" id="{{produtoCarrinho.idProduto}}" 
+            [(ngModel)]="produtoCarrinho.contador" (change)="onChange(produtoCarrinho)" size="5" type="number" required
+            name='contador'>
+          <a (click)="adicionar(produtoCarrinho)"> <i class="fa fa-plus"></i></a>
+        </td>
+
+        <td class="align-middle">{{produtoCarrinho.valorDesconto * produtoCarrinho.contador|currency}}</td>
+        <td class="align-middle">
+          <a (click)="remover(produtoCarrinho)" routerLink="./">Remover</a>
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div *ngIf="produtoCarrinho?.length > 0; else empty">
+    <h5 style="display: inline;">Total: {{valorTotal | currency}}</h5>
+    <button (click)="checkout()" class="btn btn-warning float-right">Checkout</button>
+  </div>
+  <ng-template #empty>
+    <h4 class="text-muted text-center">Poxa, seu carrinho está vazio!<br> Sinta-se à vontade e conheça nossos produtos!
+      :)</h4>
+  </ng-template>
+</main>
+
+<!-- <main class="container">
   <div class="row mt-3">
     <div class="col-8">
-      <div *ngFor="let itemCarrinho of carrinhoService?.info; index as i">
+      <div *ngFor="let produtoCarrinho of produtoCarrinho">
         <div class="card mb-2" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="{{itemCarrinho.imagem}}" class="card-img mt-2" alt="Foto do pano de prato à venda"
+              <img src="{{produtoCarrinho.imagem}}" class="card-img mt-2" alt="Foto do pano de prato à venda"
                 title="Foto do pano de prato à venda">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{itemCarrinho.tituloProduto}}</h5>
-                <p class="card-text">{{itemCarrinho.descricao}}</p>
+                <h5 class="card-title">{{produtoCarrinho.tituloProduto}}</h5>
+                <p class="card-text">{{produtoCarrinho.descricao}}</p>
                 <div class="row">
                   <div class="col-4">
                     <form class="form-group">
@@ -20,7 +72,7 @@
                     </form>
                   </div>
                   <div class="col-4">
-                    <a href="" class="text-muted align-middle">Remover</a>
+                    <a (click)="remover(produtoCarrinho)"class="text-muted align-middle" routerLink="./">Remover</a>
                   </div>
                 </div>
               </div>
@@ -70,4 +122,11 @@
       </div>
     </div>
   </div>
-</main>
+  <div *ngIf="produtoCarrinho?.length > 0; else empty">
+    <h5 style="display: inline;">Total: {{valorTotal | currency}}</h5>
+    <button (click)="checkout()" class="btn btn-warning float-right">Checkout</button>
+</div>
+<ng-template #empty>
+    <h4 class="text-muted text-center">Poxa, seu carrinho está vazio.<br> Fique à vontade para fazer suas compras!</h4>
+</ng-template>
+</main> -->
