@@ -38,13 +38,17 @@ const routes: Routes = [
     path: "cadastro",
     component: CadastroComponent
   },
-  {
-    path: "produtos",
-    component: ProdutosComponent
-  },
+  // {
+  //   path: "produtos/categoria/0",
+  //   component: ProdutosComponent
+  // },
   {
     path: "produtos/:id",
     component: ProdutoDetalhadoComponent
+  },
+  {
+    path: "produtos/categoria/:categoria",
+    component: ProdutosComponent
   },
   {
     path: "busca/:produto",
