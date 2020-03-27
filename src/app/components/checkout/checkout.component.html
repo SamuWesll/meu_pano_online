@@ -37,9 +37,9 @@
                     placeholder="Digite o numero do seu telefone"  [ngModel]="usuario.telefone" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="10" maxlength="11" required #telefone="ngModel">
-                    <div *ngIf="!telefone.valid && telefone.touched"
+                    <div *ngIf="!telefone.valid && telefone.touched || telefone.value == 00000000000 || telefone.value == 00000000000"
                     class="alert alert-danger" role="alert">
-                        É necessário um número, telefone ou celular.
+                        É necessário um número de telefone ou celular. (Somente números)
                     </div>
                 </div>
 
@@ -222,14 +222,14 @@
                     <input class="form-control" type="text" id="numCartao" name="numCartao"
                     placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao" pattern="^\d{16}$"
                     minlength="16" maxlength="16" required #numCartao="ngModel">
-                    <div *ngIf="!numCartao.valid && numCartao.touched"
+                    <div *ngIf="!numCartao.valid && numCartao.touched || numCartao.value == 0000000000000000 "
                         class="alert alert-danger" role="alert">
                         Número do cartão é obrigatório.
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-4">
+                    <div class="col-5">
                         <label for="dtValidade">Mês*</label>
                         <select class="form-control" type="text" id="mesValidade" name="mesValidade"
                         placeholder="Validade" [ngModel]="usuario.mesValidade"
@@ -256,7 +256,6 @@
 
                     <div class="col-4">
                         <label for="dtValidade">Ano*</label>
-                        
                         <select class="form-control" type="text" id="anoValidade" name="anoValidade"
                         placeholder="Validade" [ngModel]="usuario.anoValidade"
                         required #anoValidade="ngModel">
@@ -280,7 +279,7 @@
                         </select>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-3">
                         <label for="cdSeguranca">Cod. S*</label>
                         <input class="form-control" type="text" id="cdSeguranca" name="cdSeguranca"
                         placeholder="CVV" [ngModel]="usuario.cdSeguranca" pattern="^\d{3}$"
@@ -312,8 +311,7 @@
                     minlength="11" maxlength="11" required #cpfTitular="ngModel">
                     <div *ngIf="!cpfTitular.valid && cpfTitular.touched || cpfTitular.value == 00000000000"
                         class="alert alert-danger" role="alert">
-                        CPF inválido.
-                        CPF do titular é obrigatório.
+                        CPF inválido. CPF do titular é obrigatório.
                         (Somente números - 11 digitos)
                     </div>
                 </div>

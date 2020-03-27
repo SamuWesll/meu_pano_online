@@ -49,7 +49,7 @@ export class CheckoutComponent implements OnInit {
 
   private createForm(checkout: Checkout): FormGroup {
     return new FormGroup({
-      // codigo: new FormControl(checkout.codigo),
+
       nome: new FormControl(checkout.nome),
       cpf: new FormControl(checkout.cpf),
       email: new FormControl(checkout.email),
@@ -78,7 +78,6 @@ export class CheckoutComponent implements OnInit {
   consultaCEP(cep: string){
 
     if (cep != ""){
-    //expressão regular para validar o cep.
     var validacep = /^[0-9]{8}$/;
 
     this.viacep.buscarPorCep(cep).then(
@@ -95,19 +94,6 @@ export class CheckoutComponent implements OnInit {
         console.log(error.message)
       }
     )}
-
-        // console.log(cep);
-        // // variavel (cep) somente com digitos
-        // cep = cep.replace(/\D/g, '');
-
-        // //verifica se campo cep possui valor informado
-        // if (cep != ""){
-
-        //   //expressão regular para validar o cep.
-        //   var validacep = /^[0-9]{8}$/;
-
-        //   //valida o formato do cep
-        //   if(validacep.test(cep)){
 
 }
 public f : FormGroup
