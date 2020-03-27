@@ -7,16 +7,17 @@ export class ProdutoCarrinho{
     public valor?: number;
     public valorDesconto?: number;
     public imagem?: string;
-    public Categoria?: number;
+    public categoria?: number;
     public contador?: number;
 
     constructor(produtos:Produtos, quantidade =1){
-        this.idProduto= produtos.idProduto,
-        this.tituloProduto= produtos.tituloProduto,
-        this.descricao= produtos.descricao,
-        this.valor= produtos.valor,
-        this.valorDesconto= produtos.valorDesconto,
-        this.imagem= produtos.imagem,
-        this.Categoria= quantidade
+        this.idProduto= produtos.idProduto;
+        this.tituloProduto= produtos.tituloProduto;
+        this.descricao= produtos.descricao;
+        this.valor= produtos.valor;
+        this.valorDesconto= produtos.valorDesconto;
+        this.imagem= produtos.imagem;
+        this.categoria= produtos.categoria;
+        this.contador=quantidade;
     }
 }

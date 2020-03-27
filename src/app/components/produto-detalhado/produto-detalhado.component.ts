@@ -3,7 +3,9 @@ import { Produtos } from "src/app/models/Produtos";
 import { HttpService } from 'src/app/services/http.service';
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProdutoService } from 'src/app/services/produto.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -17,21 +19,21 @@ export class ProdutoDetalhadoComponent implements OnInit {
   }
 
   public produtos: Produtos;
+  public contador: number;
 
-  constructor(public http: HttpService, public carrinhoService: CarrinhoService, public router: Router) {
-  //   this.http.getProdutos().subscribe(
-  //     (data) => {
-  //       this.produtos=data;
-  //     }
-  //   )
-   }
+  constructor(private http: HttpService,
+    private carrinhoService: CarrinhoService,
+    private cookieService: CookieService,
+    private route: ActivatedRoute,
+    private router: Router) {   }
 
   ngOnInit(): void {
+    this.
   }
 
   adicionarCarrinho() {
     this.carrinhoService
-        .adicionarItem(new ProdutoCarrinho(this.produtos, this.count))
+        .adicionarItem(new ProdutoCarrinho(this.produtos, this.contador))
         .subscribe(
             res => {
               if (!res) {
