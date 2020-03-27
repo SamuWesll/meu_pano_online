@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10 col-xl-5 mx-auto bg-nav-green mt-5 rounded">
             <h3 class="p-2 text-center">Contato</h3>
-            <form #formContato="ngForm" method="POST" action="mailto:destinatario@example.com" enctype="text/plain">
+            <form #formContato="ngForm" (ngSubmit)="envioEmail(formContato.value.messageContact, formContato.value.nameContact, formContato.value.telContact)">
                 <div class="form-group">
                     <label for="nameContact">Nome</label>
                     <input class="form-control" type="text" name="nameContact" #nameContact="ngModel" [class.is-invalid]="nameContact.invalid && nameContact.touched" placeholder="Seu nome" ngModel required>

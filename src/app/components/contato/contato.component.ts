@@ -11,6 +11,8 @@ import { HttpService } from 'src/app/services/http.service';
 export class ContatoComponent implements OnInit {
 
   formContato: FormGroup;
+  mailText: string = "";
+  links : any[] = [];
 
   // constructor(private http: HttpService) {
   //   this.formContato = this.createForm(new Contato('', '', '', ''))
@@ -26,8 +28,12 @@ export class ContatoComponent implements OnInit {
     })
   }
 
-  contactar(formContato) {
-    
+
+
+  envioEmail(message: string, nome: string, tell: string) {
+    this.links.push(message, "nome: " + nome, "contato: " + tell)
+    this.mailText = "mailto:contato@panooline.com?subject=files&body="+this.links.join(" ,");
+    window.location.href = this.mailText;
   }
  
   ngOnInit(): void {
