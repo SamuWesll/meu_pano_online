@@ -67,6 +67,7 @@ export class HeaderComponent implements OnInit {
   }
 
   btnFiltro(id: number) {
+    this.router.navigate(['/produtos/categoria', id])
     // console.log(id)
     // this.produtos = []
     // this.produtoService.getListaProdutos().forEach(prod => {
