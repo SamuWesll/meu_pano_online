@@ -5,8 +5,6 @@ import { Cliente } from 'src/app/models/Cliente';
 import { Router } from '@angular/router';
 import { Categorias } from 'src/app/models/Categorias';
 import { CategoriaService } from 'src/app/services/categoria.service';
-import { Produtos } from 'src/app/models/Produtos';
-import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
   selector: 'app-header',
@@ -19,19 +17,12 @@ export class HeaderComponent implements OnInit {
   public login: Cliente;
   public categorias: Categorias[] = [];
 
-  public produtos: Produtos[] = [];
-  public produtosPorCategoria: Produtos[] = [];
-
-  // @Output() categoriaClicada = new EventEmitter();
-
-
   private categoriaTotal: Categorias = new Categorias(0, 'Todas as Categorias');
 
   openModal() {
     this.modalRef = this.modalService.show(LoginComponent)
   }
-  constructor(private modalService: BsModalService, private router: Router, private categoria: CategoriaService,
-    private produtoService: ProdutoService) {
+  constructor(private modalService: BsModalService, private router: Router, private categoria: CategoriaService) {
 
     this.verificarLogin();
 
@@ -67,19 +58,7 @@ export class HeaderComponent implements OnInit {
   }
 
   btnFiltro(id: number) {
-    // console.log(id)
-    // this.produtos = []
-    // this.produtoService.getListaProdutos().forEach(prod => {
-    //   if (id !== 0) {
-    //     this.produtos = prod['body']
-    //     this.produtosPorCategoria = this.produtos.filter(p => p.categoria === id)
-    //     console.log(this.produtosPorCategoria)
-    //   } else {
-    //     this.produtosPorCategoria = prod['body']
-    //     console.log(this.produtosPorCategoria)
-    //   }
-    // })
-
+    this.router.navigate(['/produtos/categoria', id])
   }
 
   pesquisarProduto(pesquisa: string) {

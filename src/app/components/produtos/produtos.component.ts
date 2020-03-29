@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProdutosComponent implements OnInit {
   
   lastRoute: number = parseInt(this.route.params['_value'].categoria)
+  public idCategoria: number
   public produtos: Produtos[] = [];
   public produtosPorCategoria: Produtos[] = [];
 
@@ -36,7 +37,7 @@ export class ProdutosComponent implements OnInit {
     this.httpProduto.getListaProdutos().forEach(prod => {
       if (id !== 0) {
         this.produtos = prod['body']
-        this.produtosPorCategoria = this.produtos.filter(p => p.categoria === id)
+        this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
         // console.log(this.produtosPorCategoria)
       } else {
         this.produtosPorCategoria = prod['body']
@@ -46,13 +47,16 @@ export class ProdutosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.lastRoute >= 1) {
-      this.filtroProdutos(this.lastRoute)
-    } else {
-      this.lastRoute = 0
-      this.filtroProdutos(this.lastRoute)
+    let id = parseInt(this.route.snapshot.paramMap.get('id'))
+    this.idCategoria = id
+    this.filtroProdutos(this.idCategoria)
+    // if (this.lastRoute >= 1) {
+    //   this.filtroProdutos(this.lastRoute)
+    // } else {
+    //   this.lastRoute = 0
+    //   this.filtroProdutos(this.lastRoute)
+    //   console.log(this.lastRoute);
     }
-    console.log(this.lastRoute);
   }
 
 }

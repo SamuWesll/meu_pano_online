@@ -5,7 +5,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active d-flex justify-content-center">
             <div *ngFor="let produto of produtos; index as i" class="carProdudos">
-                <a [routerLink]="['/produtos', produto.idProduto]" *ngIf="i < 4" class="card"
+                <a [routerLink]="['/produtos/detalhes', produto.idProduto]" *ngIf="i < 4" class="card"
                     routerLink="/produto-detalhado">
                     <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p>
                     <img src="{{produto.imagem}}" class="card-img-top" alt="">

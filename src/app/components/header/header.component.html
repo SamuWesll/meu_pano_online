@@ -29,7 +29,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active" *ngFor="let cat of categorias">
-                <a (click)="btnFiltro(cat.cod)" class="nav-link minhaLista" 
+                <a class="nav-link" (click)="btnFiltro(cat.cod)" 
                 routerLink="/produtos/categoria/{{cat.cod}}">{{cat.nomeCategoria}}</a>
             </li>
         </ul>

@@ -43,7 +43,7 @@ const routes: Routes = [
   //   component: ProdutosComponent
   // },
   {
-    path: "produtos/:id",
+    path: "produtos/detalhes/:id",
     component: ProdutoDetalhadoComponent
   },
   {
