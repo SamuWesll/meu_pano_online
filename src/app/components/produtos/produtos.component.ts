@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent implements OnInit {
-  
+
   lastRoute: number = parseInt(this.route.params['_value'].categoria)
   public idCategoria: number
   public produtos: Produtos[] = [];
@@ -56,7 +56,6 @@ export class ProdutosComponent implements OnInit {
     //   this.lastRoute = 0
     //   this.filtroProdutos(this.lastRoute)
     //   console.log(this.lastRoute);
-    }
+    // }
   }
-
 }
