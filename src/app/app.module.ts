@@ -23,6 +23,7 @@ import { ProdutosSimilaresComponent } from './components/produtos-similares/prod
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
 import { NavComponent } from './components/nav/nav.component';
 import { BuscaComponent } from './components/busca/busca.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { BuscaComponent } from './components/busca/busca.component';
     ProdutosCategoriaComponent,
     NavComponent,
     BuscaComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

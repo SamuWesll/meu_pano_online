@@ -8,6 +8,7 @@ import { ProdutoDetalhadoComponent } from "./components/produto-detalhado/produt
 import { ProdutosCategoriaComponent } from "./components/produtos-categoria/produtos-categoria.component";
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { BuscaComponent } from './components/busca/busca.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -52,8 +53,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "/home",
-    pathMatch: "full"
+    component: PageNotFoundComponent
   }
 ];
 
