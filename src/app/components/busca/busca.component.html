@@ -5,7 +5,7 @@
             <a class="card" [routerLink]="['/produtos/detalhes', produto.idProduto]">
                 <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
                 <img src="{{produto.imagem}}" class="card-img-top" alt="">
-                <div [routerLink]="['/produtos', produto.idProduto]" class="card-body">
+                <div [routerLink]="['/produtos/detalhes', produto.idProduto]" class="card-body">
                     <p class="card-text font-weight-bold">{{produto.tituloProduto}}</p>
                     <div class="dropdown-divider"></div>
                     <p>

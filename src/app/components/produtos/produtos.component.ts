@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
 import { ProdutoService } from 'src/app/services/produto.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -11,8 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProdutosComponent implements OnInit {
 
-  lastRoute: number = parseInt(this.route.params['_value'].categoria)
-  public idCategoria: number
+  public idCategoria
   public produtos: Produtos[] = [];
   public produtosPorCategoria: Produtos[] = [];
 
@@ -25,7 +24,6 @@ export class ProdutosComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  // constructor(private httpProduto: ProdutoService, public http: HttpService) { }
   constructor(private httpProduto: ProdutoService, private route: ActivatedRoute) {
 
   }
@@ -38,24 +36,17 @@ export class ProdutosComponent implements OnInit {
       if (id !== 0) {
         this.produtos = prod['body']
         this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
-        // console.log(this.produtosPorCategoria)
       } else {
         this.produtosPorCategoria = prod['body']
-        // console.log(this.produtosPorCategoria)
       }
     })
   }
 
   ngOnInit(): void {
-    let id = parseInt(this.route.snapshot.paramMap.get('id'))
-    this.idCategoria = id
-    this.filtroProdutos(this.idCategoria)
-    // if (this.lastRoute >= 1) {
-    //   this.filtroProdutos(this.lastRoute)
-    // } else {
-    //   this.lastRoute = 0
-    //   this.filtroProdutos(this.lastRoute)
-    //   console.log(this.lastRoute);
-    // }
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      let id = parseInt(params.get('id')) 
+      this.idCategoria = id
+      this.filtroProdutos(this.idCategoria)
+    })
   }
 }
