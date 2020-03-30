@@ -77,8 +77,7 @@
                     <div *ngIf="!confSenha.valid && confSenha.touched"
                     class="alert alert-danger" role="alert">
                         É obrigatório confirmar a senha.
-                    </div>
-                    
+                    </div> 
                 </div>
 
             </div>
@@ -119,7 +118,6 @@
                     <label for="numero">Número*</label>
                     <input class="form-control" type="string" id="numero" name="numero"
                     placeholder="Digite o número" [ngModel]="usuario.numero" 
-                    
                     minlength="2"  maxlength="5" required #numero="ngModel">
                     <div *ngIf="!numero.valid && numero.touched"
                     class="alert alert-danger" role="alert">
@@ -129,7 +127,7 @@
 
                 <div class="form-group">
                     <label for="complementoUsuario">Complemento</label>
-                    <input class="form-control" type="text" id="complementoUsuario" name="complemento"
+                    <input class="form-control" type="text" id="complemento" name="complemento"
                         placeholder="Digite o complemento"
                         [ngModel]="usuario.complemento" #complemento="ngModel">
                 </div>
@@ -214,7 +212,6 @@
             <div class="d-flex justify-content-center flex-column p-2">
                 <h4>Quantidade itens: --------- <b> 00</b></h4>
                 <h4>Total: -------------------<b style="color: green;"> $ 0,00</b></h4>
-                
             </div>
             <div class="p-2">
                 <div class="form-group">
@@ -287,11 +284,10 @@
                         required #cdSeguranca="ngModel">
                         <div *ngIf="!cdSeguranca.valid && cdSeguranca.touched || cdSeguranca.value == 000"
                             class="alert alert-danger" role="alert">
-                            Código inval.
+                            Cód inval.
                         </div>
                     </div>
                 </div>
-
 
                 <div class="form-group">
                     <label for="nomeTitular">Nome do titular*</label>
