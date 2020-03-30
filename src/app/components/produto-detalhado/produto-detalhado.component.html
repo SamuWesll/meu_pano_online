@@ -1,26 +1,24 @@
 <main class="container bg-light border-bottom pb-5">
-
-    <!-- {{http.info[29] |json}} -->
     <div>
     <div class="row mt-3">
         <div class="col-md-4  text-secondary">
-            <h3 class="pt-2 pb-3 ">{{produtos.tituloProduto}}</h3>
+            <h3 class="pt-2 pb-3 ">{{produtoDetalhado.tituloProduto}}</h3>
             <p class="text-justify">
-                {{http.info[29].descricao}}
+                {{produtoDetalhado.descricao}}
             </p>
         </div>
         <div class="col-md-5 mt-3">
-            <img src="{{http.info[29].imagem}}" class="img-fluid mx-auto d-block rounded mw-100 mh-100"
+            <img src="{{produtoDetalhado.imagem}}" class="img-fluid mx-auto d-block rounded mw-100 mh-100"
                 style="width:300px; height: auto;" alt="Pano de Prato" title="Pano de Prato" />
         </div>
         <div class="col-md-3">
             <p class="p-3 ">
                     <span style="text-decoration: line-through">
-                        R$ {{convertDecimal(http.info[29].valor)}}
+                        R$ {{convertDecimal(produtoDetalhado.valor)}}
                     </span>
                     <br>
                     <span class="h3 font-weight-bold text-success text-decoration-none">
-                        R$ {{convertDecimal(http.info[29].valorDesconto)}}
+                        R$ {{convertDecimal(produtoDetalhado.valorDesconto)}}
                     </span>
             </p>
             <p class="text-muted text-right">Em até 1x sem juros</p>

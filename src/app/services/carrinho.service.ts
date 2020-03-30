@@ -60,12 +60,12 @@ export class CarrinhoService {
                     tap(_ => {
                         this.limparCarrinhoStorage();
                     }),
-                    map(carrinho => carrinho.produto),
+                    map(carrinho => carrinho.produtoCarrinho),
                     catchError(_ => of([]))
                 );
             } else {
                 return this.carrinhoService.get<Carrinho>(URLCarrinho).pipe(
-                    map(carrinho => carrinho.produto),
+                    map(carrinho => carrinho.produtoCarrinho),
                     catchError(_ => of([]))
                 );
             }
