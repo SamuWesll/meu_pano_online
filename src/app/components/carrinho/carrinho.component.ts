@@ -31,16 +31,6 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   private atualizarTermos = new Subject<ProdutoCarrinho>();
   sub: Subscription;
 
-  // static validateCount(produtoCarrinho) {
-  //   const max = produtoCarrinho.productStock;
-  //   if (produtoCarrinho.count > max) {
-  //   produtoCarrinho.count = max;
-  //   } else if (produtoCarrinho.count < 1) {
-  //   produtoCarrinho.count = 1;
-  //   }
-  //   console.log(produtoCarrinho.count);
-  //   }
-
   ngOnInit() {
     this.carrinhoService.getCarrinho().subscribe(produtos => {
       this.produtoCarrinho = produtos;
