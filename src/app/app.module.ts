@@ -21,6 +21,8 @@ import { ProdutoDetalhadoComponent } from './components/produto-detalhado/produt
 import { ProdutosSimilaresComponent } from './components/produtos-similares/produtos-similares.component';
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
 import { NavComponent } from './components/nav/nav.component';
+import { BuscaComponent } from './components/busca/busca.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { NavComponent } from './components/nav/nav.component';
     ProdutosSimilaresComponent,
     ProdutosCategoriaComponent,
     NavComponent,
-    
+    BuscaComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

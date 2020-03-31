@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
 import { ProdutoService } from 'src/app/services/produto.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -10,7 +11,9 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  public produtos: Produtos;
+  public idCategoria
+  public produtos: Produtos[] = [];
+  public produtosPorCategoria: Produtos[] = [];
 
   converteDecimal(valor: string): string {
     return parseFloat(valor).toFixed(2).replace('.', ',')
@@ -21,15 +24,29 @@ export class ProdutosComponent implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  constructor(private httpProduto: ProdutoService) { }
-
-  ngOnInit(): void {
-
-    this.httpProduto.getListaProdutos().subscribe(
-      (body) => {
-        this.produtos = body['body'];
-    })
+  constructor(private httpProduto: ProdutoService, private route: ActivatedRoute) {
 
   }
 
+  // usando o filtro de categorias
+  filtroProdutos(id: number) {
+    this.produtos = []
+    this.produtosPorCategoria = []
+    this.httpProduto.getListaProdutos().forEach(prod => {
+      if (id !== 0) {
+        this.produtos = prod['body']
+        this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
+      } else {
+        this.produtosPorCategoria = prod['body']
+      }
+    })
+  }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      let id = parseInt(params.get('id')) 
+      this.idCategoria = id
+      this.filtroProdutos(this.idCategoria)
+    })
+  }
 }

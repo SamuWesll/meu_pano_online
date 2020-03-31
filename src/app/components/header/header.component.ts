@@ -5,6 +5,9 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Sexo } from 'src/app/models/Sexo';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
+import { Categorias } from 'src/app/models/Categorias';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +18,21 @@ export class HeaderComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
 
   public login: Cliente;
+  public categorias: Categorias[] = [];
+
+  private categoriaTotal: Categorias = new Categorias(0, 'Todas as Categorias');
 
   emaiOuCpflInput = new FormControl();
   senhaInput = new FormControl();
 
-  constructor(private httpCliente: ClienteService) {}
+  constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService) {
+
+    this.categoria.carregarCategorias().subscribe(cat => {
+      this.categorias.push(this.categoriaTotal)
+      cat['body'].forEach(c => this.categorias.push(new Categorias(c.idCategoria, c.descricao)))
+    })
+
+  }
 
   realizarLogin() {
     let validarCampor: any = this.emaiOuCpflInput.value.indexOf('@');
@@ -99,6 +112,8 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  // this.sairLogin();
+
   verificarLogin() {
 
     this.login = JSON.parse(localStorage.getItem("logado"));
@@ -114,12 +129,27 @@ export class HeaderComponent implements OnInit {
   }
 
   separarNome(nome: string) {
-    let separado = nome.split(" ",1)
+    let separado = nome.split(" ", 1)
     return separado;
   }
 
   ngOnInit(): void {
     this.verificarLogin();
+
+  }
+
+  btnFiltro(id: number) {
+    this.router.navigate(['/produtos/categoria', id])
+  }
+
+  pesquisarProduto(pesquisa: string) {
+    if (pesquisa.length < 1) {
+      return
+    }
+
+    this.router.navigate(['/busca', pesquisa])
+    const input = document.querySelector('input')
+    input.value = ''
   }
 
 }

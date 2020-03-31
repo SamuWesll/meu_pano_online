@@ -8,6 +8,7 @@
 }
 
 #textPreco {
+    height: 30px;
     font-size: 12px;
     color: rgb(39, 39, 39);
 }
@@ -54,8 +55,8 @@
 }
 
 .card-img-top {
-    width: 150px;
-    margin: 10px;
+    width: 90%;
+    margin: 10px 10px -10px 10px;
 }
 
 .card-text {
@@ -63,11 +64,7 @@
     text-align: center;
 }
 
-#textPreco {
-    height: 40px;
-}
-
 .btn-success {
     margin-top: 20px;
-    margin-bottom: 14px;
+    margin-bottom: 4px;
 }

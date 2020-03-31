@@ -1,6 +1,7 @@
-<main class="container">
+<!-- <app-nav></app-nav> -->
+<div class="container">
     <div class="row mt-4">
-        <div *ngFor="let produto of produtosPorCategoria" class="animated fadeIn col-lg-3 col-md-4 col-sm-6 carProdudos mb-3">
+        <div *ngFor="let produto of http.produtoPesquisado" class="animated fadeIn col-lg-3 col-md-4 col-sm-6 carProdudos mb-3">
             <a class="card" [routerLink]="['/produtos/detalhes', produto.idProduto]">
                 <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
                 <img src="{{produto.imagem}}" class="card-img-top" alt="">
@@ -23,4 +24,4 @@
             </a>
         </div>
     </div>
-</main>
+</div>

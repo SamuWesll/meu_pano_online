@@ -1,5 +1,4 @@
 export class Produtos {
-    
     constructor(
         public idProduto: number,
         public tituloProduto: string,

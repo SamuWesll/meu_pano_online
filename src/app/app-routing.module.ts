@@ -7,6 +7,8 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ProdutoDetalhadoComponent } from "./components/produto-detalhado/produto-detalhado.component";
 import { ProdutosCategoriaComponent } from "./components/produtos-categoria/produtos-categoria.component";
 import { ProdutosComponent } from './components/produtos/produtos.component';
+import { BuscaComponent } from './components/busca/busca.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -38,13 +40,20 @@ const routes: Routes = [
     component: CadastroComponent
   },
   {
-    path: "produtos",
+    path: "produtos/detalhes/:id",
+    component: ProdutoDetalhadoComponent
+  },
+  {
+    path: "produtos/categoria/:id",
     component: ProdutosComponent
   },
   {
+    path: "busca/:produto",
+    component: BuscaComponent
+  },
+  {
     path: "**",
-    redirectTo: "/home",
-    pathMatch: "full"
+    component: PageNotFoundComponent
   }
 ];
 
