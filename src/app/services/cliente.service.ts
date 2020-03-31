@@ -36,6 +36,10 @@ export class ClienteService {
     postLogin(body: {}) {
         return this.clienteService.post("http://localhost:8080/meupanoonline/cliente/login", body)
     }
+    
+    postLoginCpf(body: {}) {
+        return this.clienteService.post("http://localhost:8080/meupanoonline/cliente/loginCpf", body)
+    }
 
     get clienteLogadoValue() {
         return this.clienteLogadoSubject.value;
