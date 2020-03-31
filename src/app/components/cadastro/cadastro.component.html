@@ -1,6 +1,6 @@
 <div class="container">
-    <!-- <form #userForm="ngForm" (ngSubmit)="enviarCadastro(userForm)"> -->
-    <form #userForm="ngForm">
+    <form #userForm="ngForm" (ngSubmit)="enviarCadastro(userForm)">
+    <!-- <form #userForm="ngForm"> -->
         <div class="d-flex justify-content-center m-5">
             <h4>Cadastro</h4>
         </div>
@@ -41,11 +41,11 @@
                 <div class="d-flex justify-content-between mt-3">
                     <div class="form-group m-0 col-md-6 p-0">
                         <label class="">Celular*</label>
-                        <input type="text" class="form-control" placeholder="" name="phone" ngModel required #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched">
+                        <input type="text" class="form-control" placeholder="" name="phone" ngModel required #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" [maxlength]="11" [minlength]="11">
                     </div>
                     <div class="form-group m-0 col-md-6 pr-0">
                         <label class="">Telefone*</label>
-                        <input type="text" class="form-control m-0" placeholder="" name="tell" ngModel required #tell="ngModel" [class.is-invalid]="tell.invalid && tell.touched">
+                        <input type="text" class="form-control m-0" placeholder="" name="tell" ngModel required #tell="ngModel" [class.is-invalid]="tell.invalid && tell.touched" [maxlength]="11" [minlength]="11">
                     </div>
                 </div>
                 <div class="form-group mt-3">

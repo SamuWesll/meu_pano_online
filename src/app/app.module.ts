@@ -13,7 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { LoginComponent } from './components/login/login.component';
-import { ListaDeProdutosComponent } from './components/lista-de-produtos/lista-de-produtos.component';
+import { CarouselProdutos } from './components/carousel-produtos/carousel-produtos.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,17 +23,19 @@ import { ProdutosSimilaresComponent } from './components/produtos-similares/prod
 import { ProdutosCategoriaComponent } from './components/produtos-categoria/produtos-categoria.component';
 import { NavComponent } from './components/nav/nav.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { BuscaComponent } from './components/busca/busca.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+
     HeaderComponent,
     FooterComponent,
     SobreComponent,
     ContatoComponent,
     LoginComponent,
-    ListaDeProdutosComponent,
+    CarouselProdutos,
     ProdutosComponent,
     CadastroComponent,
     EnderecoComponent,
@@ -41,6 +43,7 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     ProdutosCategoriaComponent,
     NavComponent,
     CarrinhoComponent,
+    BuscaComponent,
   ],
   imports: [
     BrowserModule,

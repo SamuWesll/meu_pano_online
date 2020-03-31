@@ -8,6 +8,7 @@ import { ProdutoDetalhadoComponent } from "./components/produto-detalhado/produt
 import { ProdutosCategoriaComponent } from "./components/produtos-categoria/produtos-categoria.component";
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CarrinhoComponent } from "./components/carrinho/carrinho.component";
+import { BuscaComponent } from './components/busca/busca.component';
 
 const routes: Routes = [
   {
@@ -39,8 +40,20 @@ const routes: Routes = [
     component: ContatoComponent
   },
   {
+    path: "cadastro",
+    component: CadastroComponent
+  },
+  {
     path: "produtos",
     component: ProdutosComponent
+  },
+  {
+    path: "produtos/:id",
+    component: ProdutoDetalhadoComponent
+  },
+  {
+    path: "busca/:produto",
+    component: BuscaComponent
   },
   {
     path: "**",

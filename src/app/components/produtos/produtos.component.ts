@@ -11,7 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProdutosComponent implements OnInit {
 
-  public idCategoriaprodutos
+  public idCategoria;
   public produtos: Produtos[] = [];
   public produtosPorCategoria: Produtos[] = [];
 

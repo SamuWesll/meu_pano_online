@@ -4,9 +4,10 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade d-flex justify-content-center" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active d-flex justify-content-center">
-            <div *ngFor="let produto of http?.info; index as i" class="carProdudos">
-                <a *ngIf="i < 4" class="card" routerLink="/produto-detalhado">
-                    <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
+            <div *ngFor="let produto of produtos; index as i" class="carProdudos">
+                <a [routerLink]="['/produtos', produto.idProduto]" *ngIf="i < 4" class="card"
+                    routerLink="/produto-detalhado">
+                    <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p>
                     <img src="{{produto.imagem}}" class="card-img-top" alt="">
                     <div class="card-body">
                         <p class="card-text font-weight-bold">{{produto.tituloProduto}}</p>
@@ -22,16 +23,17 @@
                         </p>
                         <p id="textPreco">R$ {{converteDecimal(produto.valorDesconto)}}
                             à vista ou em 3x de R$ {{tresParcelas(produto.valor)}} sem juros</p>
-                        <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
+                        <button [routerLink]="['/produtos', produto.idProduto]" class="btn btn-success col-md-10 ml-2"
+                            type="button">Comprar</button>
                     </div>
                 </a>
             </div>
 
         </div>
         <div class="carousel-item d-flex justify-content-center">
-            <div *ngFor="let produto of http?.info; index as i" class="carProdudos">
-                <a *ngIf="i < 4" class="card">
-                    <!-- <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p> -->
+            <div *ngFor="let produto of produtos; index as i" class="carProdudos">
+                <a [routerLink]="['/produtos', produto.idProduto]" *ngIf="i >= 4 && i <= 7" class="card">
+                    <p class="rounded-circle bg-success position-absolute percDesconto">-10%</p>
                     <img src="{{produto.imagem}}" class="card-img-top" alt="">
                     <div class="card-body">
                         <p class="card-text font-weight-bold">{{produto.tituloProduto}}</p>
@@ -47,7 +49,8 @@
                         </p>
                         <p id="textPreco">R$ {{converteDecimal(produto.valorDesconto)}}
                             à vista ou em 3x de R$ {{tresParcelas(produto.valor)}} sem juros</p>
-                        <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
+                        <button [routerLink]="['/produtos', produto.idProduto]" class="btn btn-success col-md-10 ml-2"
+                            type="button">Comprar</button>
                     </div>
                 </a>
             </div>
