@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/models/Cliente';
 import { Router } from '@angular/router';
 import { Categorias } from 'src/app/models/Categorias';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -26,10 +27,12 @@ export class HeaderComponent implements OnInit {
 
     this.verificarLogin();
 
-    this.categoria.carregarCategorias().subscribe(cat => {
-      this.categorias.push(this.categoriaTotal)
-      cat['body'].forEach(c => this.categorias.push(new Categorias(c.idCategoria, c.descricao)))
-    })
+    this.categoria.carregarCategorias().pipe(map((data: any[]) => {
+        this.categorias.push(this.categoriaTotal)
+      return data.map(cat => {
+        return this.categorias.push(new Categorias(cat.idCategoria, cat.descricao))
+      })
+    })).subscribe()
   }
 
   // this.sairLogin();
