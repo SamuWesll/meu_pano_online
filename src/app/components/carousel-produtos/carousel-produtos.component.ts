@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
 import { ProdutoService } from 'src/app/services/produto.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-carousel-produtos',
@@ -10,7 +11,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class CarouselProdutos implements OnInit {
 
-  public produtos: Produtos;
+  public produtos: Produtos[];
 
   converteDecimal(valor: string): string {
     return parseFloat(valor).toFixed(2).replace('.', ',')
@@ -21,15 +22,15 @@ export class CarouselProdutos implements OnInit {
     return valor.toFixed(2).replace('.', ',')
   }
 
-  constructor(public httpProduto: ProdutoService) {}
+  constructor(public httpProduto: ProdutoService) { }
 
   ngOnInit(): void {
 
-    this.httpProduto.getListaProdutos().subscribe(
-      (body) => {
-        this.produtos = body['body'];
+    // (refatorado)
+    this.httpProduto.getListaProdutos().pipe(map(data => data))
+    .forEach((prod: Produtos[]) => {
+      this.produtos = prod
     })
-
   }
 
 }
