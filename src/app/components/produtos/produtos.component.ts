@@ -3,6 +3,7 @@ import { Produtos } from 'src/app/models/Produtos';
 import { HttpService } from 'src/app/services/http.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-produtos',
@@ -28,23 +29,23 @@ export class ProdutosComponent implements OnInit {
 
   }
 
-  // usando o filtro de categorias
+  // usando o filtro de categorias (refatorado)
   filtroProdutos(id: number) {
     this.produtos = []
     this.produtosPorCategoria = []
-    this.httpProduto.getListaProdutos().forEach(prod => {
-      if (id !== 0) {
-        this.produtos = prod['body']
-        this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
-      } else {
-        this.produtosPorCategoria = prod['body']
-      }
+    this.httpProduto.getListaProdutos().pipe(map((data: Produtos[]) => data)).forEach(prod => {
+        if (id !== 0) {
+          this.produtos = prod
+          this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
+        } else {
+          this.produtosPorCategoria = prod
+        }
     })
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      let id = parseInt(params.get('id')) 
+      let id = parseInt(params.get('id'))
       this.idCategoria = id
       this.filtroProdutos(this.idCategoria)
     })
