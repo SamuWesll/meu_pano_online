@@ -10,7 +10,7 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CarrinhoComponent } from "./components/carrinho/carrinho.component";
 import { BuscaComponent } from './components/busca/busca.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -46,12 +46,12 @@ const routes: Routes = [
     component: CadastroComponent
   },
   {
-    path: "produtos",
-    component: ProdutosComponent
+    path: "produtos/detalhes/:id",
+    component: ProdutoDetalhadoComponent
   },
   {
-    path: "produtos/:id",
-    component: ProdutoDetalhadoComponent
+    path: "produtos/categoria/:id",
+    component: ProdutosComponent
   },
   {
     path: "busca/:produto",
@@ -63,8 +63,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "/home",
-    pathMatch: "full"
+    component: PageNotFoundComponent
   }
 ];
 

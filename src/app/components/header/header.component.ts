@@ -26,12 +26,10 @@ export class HeaderComponent implements OnInit {
   senhaInput = new FormControl();
 
   constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService) {
-
     this.categoria.carregarCategorias().subscribe(cat => {
       this.categorias.push(this.categoriaTotal)
       cat['body'].forEach(c => this.categorias.push(new Categorias(c.idCategoria, c.descricao)))
     })
-
   }
 
   realizarLogin() {
