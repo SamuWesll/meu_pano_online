@@ -9,6 +9,8 @@ import { ProdutosCategoriaComponent } from "./components/produtos-categoria/prod
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CarrinhoComponent } from "./components/carrinho/carrinho.component";
 import { BuscaComponent } from './components/busca/busca.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
 
 const routes: Routes = [
   {
@@ -54,6 +56,10 @@ const routes: Routes = [
   {
     path: "busca/:produto",
     component: BuscaComponent
+  },
+  {
+    path: "checkout",
+    component: CheckoutComponent
   },
   {
     path: "**",

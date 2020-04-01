@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro.component.css']
 })
 
-
 export class CadastroComponent implements OnInit {
 
   formRegister: FormGroup;

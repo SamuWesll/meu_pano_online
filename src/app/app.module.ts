@@ -3,8 +3,10 @@ import { NgModule, NO_ERRORS_SCHEMA, Component, ViewChild } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http';
 import { NgxViacepModule } from '@brunoc/ngx-viacep';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MDBBootstrapModule } from 'angular-bootstrap-md'
+// import { FormsModule } from  'angular/FormsModule;
+// import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,6 +25,8 @@ import { ProdutosCategoriaComponent } from './components/produtos-categoria/prod
 import { NavComponent } from './components/nav/nav.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { BuscaComponent } from './components/busca/busca.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+// import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
 
 @NgModule({
   declarations: [
@@ -41,9 +45,11 @@ import { BuscaComponent } from './components/busca/busca.component';
     NavComponent,
     CarrinhoComponent,
     BuscaComponent, 
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
+    NgxViacepModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
@@ -52,6 +58,10 @@ import { BuscaComponent } from './components/busca/busca.component';
     ReactiveFormsModule,
     NgxViacepModule,
     FormsModule,
+    FormsModule,
+    ModalModule.forRoot(),
+    // AngularFontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
