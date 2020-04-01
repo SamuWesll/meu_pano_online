@@ -1,10 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './../../services/http.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Checkout } from 'src/app/models/Checkout';
 import { HttpClient } from "@angular/common/http";
 import { NgxViacepService, Endereco, ErroCep } from '@brunoc/ngx-viacep';
+import { ModalDirective } from 'angular-bootstrap-md';
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -15,7 +16,7 @@ import { NgxViacepService, Endereco, ErroCep } from '@brunoc/ngx-viacep';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
+  @ViewChild(ModalDirective) modal: ModalDirective;
 
   usuario: any = {
     nome: null,
@@ -72,6 +73,39 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  enderecos: any[] = [{
+    endereco: "Rua Baltazar Lopes Fragoso",
+    numero: "122",
+    complemento: "Qualquer coisa",
+    bairro: "Jardim Aracati",
+    cidade: "São Paulo",
+    estado: "SP",
+    cep: "04949130",
+    idEndereco: 123,
+    }, 
+    {
+    endereco: "Rua 1",
+    numero: "122",
+    complemento: "Qualquer coisa",
+    bairro: "Jardim Aracati",
+    cidade: "São Paulo",
+    estado: "SP",
+    cep: "04949130",
+    idEndereco: 321,
+    },
+    {
+    endereco: "Rua Baltazar Lopes Fragoso",
+    numero: "122",
+    complemento: "Qualquer coisa",
+    bairro: "Jardim Aracati",
+    cidade: "São Paulo",
+    estado: "SP",
+    cep: "04949130",
+    idEndereco: 231,
+    },
+  ]
+
+  
   title = 'app';
   constructor( private viacep: NgxViacepService, private Http: HttpClient) {} // Injetando o serviço
 

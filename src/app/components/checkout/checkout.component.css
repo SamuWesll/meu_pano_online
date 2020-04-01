@@ -1,3 +1,32 @@
 .ng-invalid.ng-touched:not(form) {
     border: 1px solid red;
 }
+
+.carEndereco {
+    /* border: 2px solid rgba(129, 125, 125, 0.479); */
+    background-color: rgba(231, 231, 222, 0.548);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.carEndereco header {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+}
+
+.carEndereco header input {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.carEndereco header label {
+    margin-left: 10px;
+}
+
+.endereco p {
+    margin: 10px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
