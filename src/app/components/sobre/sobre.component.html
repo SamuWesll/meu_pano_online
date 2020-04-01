@@ -44,7 +44,7 @@
                     <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecUilson" (mouseover)="selecionarUilson()">Uilson Ribeiro</p>
                 </div>
                 <div class="col-8 cardColab">
-                    <div *ngIf="!selecKarina && !selecRonaldo && !selecSamuel && !selecUilson">
+                    <div class="d-flex justify-content-center align-items-center" *ngIf="!selecKarina && !selecRonaldo && !selecSamuel && !selecUilson">
                         Colaborador não selecionado
                     </div>
                     <div class="d-flex" *ngIf="selecKarina || selecRonaldo || selecSamuel || selecUilson" class="mt-2">
