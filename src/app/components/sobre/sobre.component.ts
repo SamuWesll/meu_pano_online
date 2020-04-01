@@ -70,6 +70,9 @@ export class SobreComponent implements OnInit {
   public hobbiesColab: string = null;
   public tituloColab: string = null;
   public experienciaColab: string = null;
+  public linkLinkedin: string = null;
+  public linkGithub: string = null;
+  public linkWorkPlace: string = null;
 
   constructor() {
 
@@ -108,6 +111,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.karina['hobbies'];
     this.tituloColab = this.karina['formacao'];
     this.experienciaColab = this.karina['experiencias'];
+    this.linkLinkedin = this.karina['linkedin'];
+    this.linkGithub = this.karina['github'];
+    this.linkWorkPlace = this.karina['workplace'];
 
     this.selecKarina = true;
     this.selecRonaldo = false;
@@ -122,6 +128,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.ronaldo['hobbies'];
     this.tituloColab = this.ronaldo['formacao'];
     this.experienciaColab = this.ronaldo['experiencias'];
+    this.linkLinkedin = this.ronaldo['linkedin'];
+    this.linkGithub = this.ronaldo['github'];
+    this.linkWorkPlace = this.ronaldo['workplace'];
 
     this.selecKarina = false;
     this.selecRonaldo = true;
@@ -136,6 +145,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.samuel['hobbies'];
     this.tituloColab = this.samuel['formacao'];
     this.experienciaColab = this.samuel['experiencias'];
+    this.linkLinkedin = this.samuel['linkedin'];
+    this.linkGithub = this.samuel['github'];
+    this.linkWorkPlace = this.samuel['workplace'];
 
     this.selecKarina = false;
     this.selecRonaldo = false;
@@ -150,6 +162,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.uilson['hobbies'];
     this.tituloColab = this.uilson['formacao'];
     this.experienciaColab = this.uilson['experiencias'];
+    this.linkLinkedin = this.uilson['linkedin'];
+    this.linkGithub = this.uilson['github'];
+    this.linkWorkPlace = this.uilson['workplace'];
 
     this.selecKarina = false;
     this.selecRonaldo = false;
