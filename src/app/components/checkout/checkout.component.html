@@ -2,14 +2,15 @@
     <h3 class="d-flex justify-content-center">Preencha os dados para finalizar compra!</h3>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="checkout" class="row mt-4">
         <div class="col-md-4">
-            <header class="p-2" style="background-color: rgba(31, 189, 139, 0.29); border-style: solid; color: white; border-color: rgb(124, 124, 124)" >
+            <header class="p-2 headerTitle">
+                <img class="mr-2" src="../../../assets/img/user.png" height="22px" alt="">
                 Dados pessoais
             </header>
             <div class="p-2">
                 <div class="form-group">
                     <label for="nome">Nome completo*</label>
-                    <input class="form-control" type="text" id="nome" name="nome"
-                    placeholder="Digite seu nome completo" [ngModel]="usuario.nome" [ngModel] pattern="[a-zA-Z ]*"
+                    <input readonly class="form-control" type="text" id="nome" name="nome"
+                    placeholder="" [ngModel]="usuario.nome" [ngModel] pattern="[a-zA-Z ]*"
                     minlength="12" maxlength="50"required #nome="ngModel"> 
                     <div *ngIf="!nome.valid && nome.touched"
                     class="alert alert-danger" role="alert">
@@ -20,8 +21,8 @@
             
                 <div class="form-group">
                     <label for="cpf">CPF*</label>
-                    <input ng class="form-control" type="text" id="cpf" name="cpf"
-                    placeholder="Digite o seu CPF" [ngModel]="usuario.cpf" 
+                    <input readonly ng class="form-control" type="text" id="cpf" name="cpf"
+                    placeholder="" [ngModel]="usuario.cpf" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="11" maxlength="11" required #cpf="ngModel">
                     <div *ngIf="!cpf.valid && cpf.touched || cpf.value == 00000000000"
@@ -33,8 +34,8 @@
 
                 <div class="form-group">
                     <label for="telefone">Telefone ou celular*</label>
-                    <input class="form-control" type="tel" id="telefone" name="telefone"
-                    placeholder="Digite o numero do seu telefone"  [ngModel]="usuario.telefone" 
+                    <input readonly class="form-control" type="tel" id="telefone" name="telefone"
+                    placeholder=""  [ngModel]="usuario.telefone" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="10" maxlength="11" required #telefone="ngModel">
                     <div *ngIf="!telefone.valid && telefone.touched || telefone.value == 00000000000 || telefone.value == 00000000000"
@@ -45,8 +46,8 @@
 
                 <div class="form-group">
                     <label for="email">Email*</label>
-                    <input class="form-control" type="email" id="email" name="email"
-                    placeholder="Digite o seu email"  [ngModel]="usuario.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    <input readonly class="form-control" type="email" id="email" name="email"
+                    placeholder=""  [ngModel]="usuario.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     minlength="12" maxlength="40" required email #email="ngModel">
                     <div *ngIf="!email.valid && email.touched "
                     class="alert alert-danger" role="alert"  >
@@ -83,7 +84,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <header class="text-light p-2" style="background-color: rgba(31, 189, 139, 0.29); border-style: solid; border-color: rgb(124, 124, 124)">
+            <header class="p-2 headerTitle">
+                <img class="mr-2" src="../../../assets/img/delivery.png" height="22px" alt="">
                 Entrega
             </header>
             <div class="p-2">
@@ -101,114 +103,6 @@
                     </div>
                 </div>
                 
-                <!-- <div class="form-group">
-                    <label for="cep">CEP</label>
-                    <input class="form-control" type="text" id="cep" name="cep"
-                    
-                       
-                    placeholder="Digite seu CEP" [ngModel]="usuario.cep"
-                    minlength="8" maxlength="8" required #cep="ngModel" 
-                    [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
-                    (blur)="consultaCEP($event.target.value)"
-                    (keydown)="consultaCEP(usuario.cep)"> 
-                    <div *ngIf="!cep.valid && cep.touched"
-                    class="alert alert-danger" role="alert">
-                    CEP é obrigatório.
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="endereco">Endereço*</label>
-                    <input class="form-control" type="text" id="endereco" name="endereco"
-                    placeholder="Digite seu endereço" [ngModel]="usuario.endereco"
-                    required #endereco="ngModel">
-                    <div *ngIf="!endereco.valid && endereco.touched"
-                    class="alert alert-danger" role="alert">
-                    Endereço é obrigatório.
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="numero">Número*</label>
-                    <input class="form-control" type="string" id="numero" name="numero"
-                    placeholder="Digite o número" [ngModel]="usuario.numero" 
-                    minlength="2"  maxlength="5" required #numero="ngModel">
-                    <div *ngIf="!numero.valid && numero.touched"
-                    class="alert alert-danger" role="alert">
-                    Número é obrigatório. (Somente números)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="complementoUsuario">Complemento</label>
-                    <input class="form-control" type="text" id="complemento" name="complemento"
-                        placeholder="Digite o complemento"
-                        [ngModel]="usuario.complemento" #complemento="ngModel">
-                </div>
-
-                <div class="form-group">
-                    <label for="bairro">Bairro*</label>
-                    <input class="form-control" type="text" id="bairro" name="bairro"
-                    placeholder="Digite seu bairro" [ngModel]="usuario.bairro"
-                    required #bairro="ngModel">
-                    <div *ngIf="!bairro.valid && bairro.touched"
-                    class="alert alert-danger" role="alert">
-                    Bairro é obrigatório.
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label for="cidade">Cidade*</label>
-                        <input class="form-control" type="text" id="cidade" name="cidade"
-                        placeholder="Cidade" [ngModel]="usuario.cidade"
-                        required #cidade="ngModel">
-                        <div *ngIf="!cidade.valid && cidade.touched"
-                        class="alert alert-danger" role="alert">
-                        Digite sua cidade.
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <label for="estado" >Estado*</label>
-                        <select class="form-control" name="estado" id="estado" [ngModel]="usuario.estado"
-                        required #estado="ngModel">
-                        <div *ngIf="!estado.valid && estado.touched"
-                        class="alert alert-danger" role="alert">
-                        Selecione seu estado.
-                        </div>
-                        
-                            <option value="" disabled selected >Estado*</option>
-                            <option value="AC">AC</option>
-                            <option value="AL">AL</option>
-                            <option value="AP">AP</option>
-                            <option value="AM">AM</option>
-                            <option value="BA">BA</option>
-                            <option value="CE">CE</option>
-                            <option value="DF">DF</option>
-                            <option value="ES">ES</option>
-                            <option value="GO">GO</option>
-                            <option value="MA">MA</option>
-                            <option value="MT">MT</option>
-                            <option value="MS">MS</option>
-                            <option value="MG">MG</option>
-                            <option value="PA">PA</option>
-                            <option value="PB">PB</option>
-                            <option value="PR">PR</option>
-                            <option value="PE">PE</option>
-                            <option value="PI">PI</option>
-                            <option value="RJ">RJ</option>
-                            <option value="RN">RN</option>
-                            <option value="RS">RS</option>
-                            <option value="RO">RO</option>
-                            <option value="RR">RR</option>
-                            <option value="SC">SC</option>
-                            <option value="SP">SP</option>
-                            <option value="SE">SE</option>
-                            <option value="TO">TO</option>
-                        </select>
-                    </div> -->
-                <!-- </div> -->
-
                 <div class="m-3 col-12 d-flex justify-content-center">
                     <button type="button" (click)="modalNovoEndereco.show()" class="btn btn-info">Novo endereço</button>
                 </div>
@@ -216,8 +110,8 @@
                 <div  class="p-2 row">
                     <div class="col-12" id="fretes">
                         <label>Escolha um tipo de frete:</label>
-                        <label><input type="radio" name="frete" value="male" checked> Até 30 dias - <strong style="color: green;">$ 7,99</strong> Receba em casa - Entrega normal</label>
-                        <label><input type="radio" name="frete" value="female" >Até 7 dias - <strong style="color: green;">$ 15,99</strong> (Receba em casa) - Entrega rápida</label>
+                        <label><input type="radio" name="frete" value="7.99" (click)="valorFrete(7.99)" checked> Até 30 dias - <strong style="color: green;">R$ 7,99</strong> (Receba em casa) - Entrega normal</label>
+                        <label><input type="radio" name="frete" value="15.99" (click)="valorFrete(15.99)" >Até 7 dias - <strong style="color: green;">R$ 15,99</strong> (Receba em casa) - Entrega rápida</label>
                     </div>
                 </div>
                 
@@ -225,12 +119,35 @@
         </div>
 
         <div class="col-md-4">
-            <header class=" text-light p-2" style= "background-color: rgba(31, 189, 139, 0.29); border-style: solid; border-color: rgb(124, 124, 124);" >
+            <header class="p-2 headerTitle">
+                <img class="mr-2" src="../../../assets/img/payment.png" height="22px" alt="">
                 Pagamento 
             </header>
             <div class="d-flex justify-content-center flex-column p-2">
-                <h4>Quantidade itens: --------- <b> 00</b></h4>
-                <h4>Total: -------------------<b style="color: green;"> $ 0,00</b></h4>
+                <div class="mt-3 mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="col-6">Quantidade itens:</span>
+                        <div class="col-3 dropdown-divider mt-3 pb-0"></div>
+                        <span class="col-3 d-flex flex-row-reverse valorSpan">{{ adicionarZero(qtdProdutos) }}</span>
+                    </div>
+                </div>
+                <!-- <h4>Quantidade itens: --------- <b> 00</b></h4> -->
+                <div class="d-flex justify-content-between">
+                    <span class="col-4">Valor Frete</span>
+                    <div class="col-5 dropdown-divider mt-3 pb-0"></div>
+                    <span class="col-3 d-flex flex-row-reverse valorSpan">{{ mascaraValor(valorFreteRadio) }}</span>
+                </div>
+                <div class="d-flex mt-2 justify-content-between">
+                    <span class="col-4">Produtos</span>
+                    <div class="col-5 dropdown-divider mt-3 pb-0"></div>
+                    <span class="col-3 d-flex flex-row-reverse valorSpan">{{ mascaraValor(valorProdutos) }}</span>
+                </div>
+                <div class="d-flex mt-2 justify-content-between">
+                    <span class="col-4">Total</span>
+                    <div class="col-5 dropdown-divider mt-3 pb-0"></div>
+                    <span class="col-3 d-flex flex-row-reverse valorSpan">{{ mascaraValor(valorProdutos + valorFreteRadio) }}</span>
+                </div>
+                <!-- <h4>Total: -------------------<b style="color: green;"> $ 0,00</b></h4> -->
             </div>
             <div class="p-2">
                 <div class="form-group">
@@ -332,7 +249,7 @@
                 </div>
 
             </div>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success" data-toggle="modal" 
                 data-target="#compraFinalizada" [disabled]="!f.valid" >Finalizar compra</button>
             </div>
@@ -372,10 +289,120 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h5 class="modal-title w-100">Cadastra novo endereço</h5>
+                <h5 class="modal-title w-100">Cadastrar novo endereço</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalNovoEndereco.hide()">
                     <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
+            </div>
+            <div class="modal-body mt-2">
+                <form #formEndereco="ngForm" id="formEndereco">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="cep">CEP</label>
+                            <input class="form-control" type="text" id="cep" name="cep"
+                            placeholder="Digite seu CEP" [ngModel]="usuario.cep"
+                            [minlength]="8" [maxlength]="8" required #cep="ngModel" 
+                            [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
+                            (blur)="consultaCEP($event.target.value)"
+                            (keydown)="consultaCEP(usuario.cep)"> 
+                            <div *ngIf="!cep.valid && cep.touched"
+                            class="alert alert-danger" role="alert">
+                            CEP é obrigatório.
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="numero">Número*</label>
+                            <input class="form-control" type="string" id="numero" name="numero"
+                            placeholder="Digite o número" [ngModel]="usuario.numero" 
+                            minlength="2"  maxlength="5" required #numero="ngModel">
+                            <div *ngIf="!numero.valid && numero.touched"
+                            class="alert alert-danger" role="alert">
+                            Número é obrigatório.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ender">Endereço*</label>
+                        <input class="form-control" type="text" id="ender" name="ender"
+                        placeholder="Digite seu endereço" [ngModel]="usuario.endereco"
+                        required #ender="ngModel">
+                        <div *ngIf="!ender.valid && ender.touched"
+                        class="alert alert-danger" role="alert">
+                        Endereço é obrigatório.
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="complementoUsuario">Complemento</label>
+                        <input class="form-control" type="text" id="complemento" name="complemento"
+                            placeholder="Digite o complemento"
+                            [ngModel]="usuario.complemento" #complemento="ngModel">
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro*</label>
+                        <input class="form-control" type="text" id="bairro" name="bairro"
+                        placeholder="Digite seu bairro" [ngModel]="usuario.bairro"
+                        required #bairro="ngModel">
+                        <div *ngIf="!bairro.valid && bairro.touched"
+                        class="alert alert-danger" role="alert">
+                        Bairro é obrigatório.
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="cidade">Cidade*</label>
+                            <input class="form-control" type="text" id="cidade" name="cidade"
+                            placeholder="Cidade" [ngModel]="usuario.cidade"
+                            required #cidade="ngModel">
+                            <div *ngIf="!cidade.valid && cidade.touched"
+                            class="alert alert-danger" role="alert">
+                            Digite sua cidade.
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="estado" >Estado*</label>
+                            <select class="form-control" name="estado" id="estado" [ngModel]="usuario.estado"
+                            required #estado="ngModel">
+                                <div *ngIf="!estado.valid && estado.touched"
+                                class="alert alert-danger" role="alert">
+                                Selecione seu estado.
+                                </div>
+                                <option value="" disabled selected >Estado*</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal" [disabled]="!formEndereco.valid" (click)="cadastrarNovoEndereco(formEndereco.value); modalNovoEndereco.hide()">Cadastrar</button>
+                        <button type="button" class="btn btn-outline-danger rounded" (click)="modalNovoEndereco.hide()" >Fechar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

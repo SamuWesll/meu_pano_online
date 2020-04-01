@@ -2,6 +2,31 @@
     border: 1px solid red;
 }
 
+label {
+    font-size: 14px;
+}
+
+input {
+    font-size: 14px;
+}
+
+span {
+    font-size: 14px;
+}
+
+.valorSpan {
+    font-weight: bold;
+}
+
+.headerTitle {
+    background-color: rgba(31, 189, 139, 0.29);
+    font-weight: bold;
+    text-align: center;
+    color: #7c7c7c;
+    border-radius: 8px;
+    border: 1px solid rgb(121, 118, 118);
+}
+
 .carEndereco {
     /* border: 2px solid rgba(129, 125, 125, 0.479); */
     background-color: rgba(255, 255, 255, 0.548);
@@ -31,4 +56,12 @@
     margin: 10px;
     font-size: 13px;
     margin-bottom: 20px;
+}
+
+#formEndereco .form-group label {
+    font-size: 14px;
+}
+
+#formEndereco .form-group input, select,#formEndereco .form-group div {
+    font-size: 12px;
 }

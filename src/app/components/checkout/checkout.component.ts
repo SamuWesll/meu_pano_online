@@ -6,6 +6,8 @@ import { Checkout } from 'src/app/models/Checkout';
 import { HttpClient } from "@angular/common/http";
 import { NgxViacepService, Endereco, ErroCep } from '@brunoc/ngx-viacep';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
+import { Produtos } from 'src/app/models/Produtos';
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -17,6 +19,29 @@ import { ModalDirective } from 'angular-bootstrap-md';
 })
 export class CheckoutComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
+
+  valorFreteRadio: any;
+  valorProdutos: any;
+  qtdProdutos: number;
+
+  carrinho: any[] = [{
+    id: 1,
+    nome: "pano 1",
+    qtdProdut: 2,
+    valor: 7.40
+  }, {
+    id: 2,
+    nome: "pano 2",
+    qtdProdut: 1,
+    valor: 13
+  }, 
+  {
+    id: 3,
+    nome: "pano 3",
+    qtdProdut: 5,
+    valor: 13
+  }
+  ]
 
   usuario: any = {
     nome: null,
@@ -42,7 +67,7 @@ export class CheckoutComponent implements OnInit {
   HttpClient: any;
 
   onSubmit(form){
-    console.log(form);
+    // console.log(form);
   }
 
    formBuilder: any;
@@ -83,26 +108,26 @@ export class CheckoutComponent implements OnInit {
     cep: "04949130",
     idEndereco: 123,
     }, 
-    {
-    endereco: "Rua 1",
-    numero: "122",
-    complemento: "Qualquer coisa",
-    bairro: "Jardim Aracati",
-    cidade: "São Paulo",
-    estado: "SP",
-    cep: "04949130",
-    idEndereco: 321,
-    },
-    {
-    endereco: "Rua Baltazar Lopes Fragoso",
-    numero: "122",
-    complemento: "Qualquer coisa",
-    bairro: "Jardim Aracati",
-    cidade: "São Paulo",
-    estado: "SP",
-    cep: "04949130",
-    idEndereco: 231,
-    },
+    // {
+    // endereco: "Rua 1",
+    // numero: "122",
+    // complemento: "Qualquer coisa",
+    // bairro: "Jardim Aracati",
+    // cidade: "São Paulo",
+    // estado: "SP",
+    // cep: "04949130",
+    // idEndereco: 321,
+    // },
+    // {
+    // endereco: "Rua Baltazar Lopes Fragoso",
+    // numero: "122",
+    // complemento: "Qualquer coisa",
+    // bairro: "Jardim Aracati",
+    // cidade: "São Paulo",
+    // estado: "SP",
+    // cep: "04949130",
+    // idEndereco: 231,
+    // },
   ]
 
   
@@ -121,17 +146,66 @@ export class CheckoutComponent implements OnInit {
         this.usuario.bairro = endereco.bairro;
         this.usuario.cidade = endereco.localidade;
         this.usuario.estado = endereco.uf;
-        console.log(endereco);
       }
     ).catch(
       (error: ErroCep) => {
-        console.log(error.message)
+        return 
       }
     )}
 
 }
+
+valorFrete(valor: number) {
+  this.valorFreteRadio = valor;
+}
+
+mascaraValor(valor: number) {
+  return Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
+}
+
+carrinhoDeCompra() {
+  let qtdProduto: number = 0;
+  let valorProduto: number = 0;
+
+  for(let i = 0; i < this.carrinho.length; i++) {
+    qtdProduto += this.carrinho[i].qtdProdut;
+    valorProduto += this.carrinho[i].valor * this.carrinho[i].qtdProdut;
+  }
+  
+  this.valorProdutos = valorProduto;
+  this.qtdProdutos = qtdProduto;
+}
+
+adicionarZero(numero: number) {
+  if(numero < 10) {
+    return "0" + numero;
+  };
+  return numero;
+};
+
+cadastrarNovoEndereco(form) {
+
+  let novoEndereco = {
+    endereco: form['ender'],
+    numero: form['numero'],
+    complemento: form['complemento'],
+    bairro: form['bairro'],
+    cidade: form['cidade'],
+    estado: form['estado'],
+    cep: form['cep'],
+    idEndereco: 21312,
+  }
+
+  this.enderecos.push(novoEndereco)
+}
+
 public f : FormGroup
   ngOnInit() {
+
+    this.valorFreteRadio =  7.99
+
+    this.carrinhoDeCompra();
+
     this.f = this.formBuilder.group({
       cep: new FormControl('', Validators.compose([
       Validators.required,
