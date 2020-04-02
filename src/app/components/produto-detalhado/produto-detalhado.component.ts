@@ -22,10 +22,8 @@ export class ProdutoDetalhadoComponent implements OnInit {
   ngOnInit(): void {
     // (refatorado)
     this.route.params.subscribe(parametros => {
-      this.http.getProdutoById(parametros['id']).forEach(p => {
-        this.produtoDetalhado = new Produtos(
-          p['idProduto'], p['tituloProduto'], p['descricao'], 
-          p['imagem'], p['valor'], p['valorDesconto'], p['categoria'])
+      this.http.getProdutoById(parametros['id']).forEach((prod: Produtos) => {
+        this.produtoDetalhado = prod 
       })
     })
   }
