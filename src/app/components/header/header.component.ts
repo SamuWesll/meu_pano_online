@@ -29,24 +29,24 @@ export class HeaderComponent implements OnInit {
   constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService) {
     this.categoria.carregarCategorias().pipe(map((data: any[]) => {
       this.categorias.push(this.categoriaTotal)
-    return data.map(cat => {
-      return this.categorias.push(new Categorias(cat.idCategoria, cat.descricao))
-    })
-  })).subscribe()
+      return data.map(cat => {
+        return this.categorias.push(new Categorias(cat.idCategoria, cat.descricao))
+      })
+    })).subscribe()
   }
 
   realizarLogin() {
     let validarCampor: any = this.emaiOuCpflInput.value.indexOf('@');
-    if(validarCampor >= 0) {
+    if (validarCampor >= 0) {
       let body = {
         "email": this.emaiOuCpflInput.value,
-	      "senha": this.senhaInput.value,
+        "senha": this.senhaInput.value,
       };
       this.httpCliente.postLogin(body).subscribe(
         (data) => {
-          if(data['statusCodeValue'] == 400) {
+          if (data['statusCodeValue'] == 400) {
             alert(data['body']);
-          } else if(data['statusCodeValue'] == 200) {
+          } else if (data['statusCodeValue'] == 200) {
             this.logadoLocalStorage(data['body']);
             this.verificarLogin();
             console.log(this.login)
@@ -57,13 +57,13 @@ export class HeaderComponent implements OnInit {
     } else {
       let body = {
         "cpf": this.emaiOuCpflInput.value,
-	      "senha": this.senhaInput.value,
+        "senha": this.senhaInput.value,
       };
       this.httpCliente.postLoginCpf(body).subscribe(
         (data) => {
-          if(data['statusCodeValue'] == 400) {
+          if (data['statusCodeValue'] == 400) {
             alert(data['body']);
-          } else if(data['statusCodeValue'] == 200) {
+          } else if (data['statusCodeValue'] == 200) {
             this.logadoLocalStorage(data['body']);
             this.verificarLogin();
             console.log(this.login)
@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit {
         }
       )
     }
-    
+
 
     this.emaiOuCpflInput.setValue('');
     this.senhaInput.setValue('');
@@ -84,9 +84,9 @@ export class HeaderComponent implements OnInit {
 
     let gen: Sexo;
 
-    if(body.genero == "M") {
+    if (body.genero == "M") {
       gen = Sexo.masculino;
-    } else if(body.genero == "F") {
+    } else if (body.genero == "F") {
       gen = Sexo.feminino;
     }
 
@@ -111,6 +111,7 @@ export class HeaderComponent implements OnInit {
       cliente.dataNascimento,
       cliente.genero
     );
+
   }
 
   // this.sairLogin();

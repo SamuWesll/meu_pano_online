@@ -17,11 +17,12 @@ export class HttpService {
     this.carregarProdutos();
   }
 
+  // (refatorado)
   public carregarProdutos() {
     return new Promise((resolve, reject) => {
-      this.http.get(URLLocalJson).subscribe((resp: Produtos) => {
+      this.http.get(URLLocalJson).forEach((resp: Produtos[]) => {
         this.carregado = true;
-        this.info = resp['body']
+        this.info = resp
         resolve();
       });
     });

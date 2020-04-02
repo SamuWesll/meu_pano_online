@@ -6,6 +6,7 @@ import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ProdutoService } from 'src/app/services/produto.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -15,7 +16,11 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class ProdutoDetalhadoComponent implements OnInit {
 
   converteDecimal(valor: number): string {
-    return valor.toFixed(2).replace('.', ',');
+    if (valor){
+      return valor.toFixed(2).replace('.', ',');
+    } else {
+      return ''
+    }
   }
 
   public produtoDetalhado: Produtos;
@@ -30,9 +35,10 @@ export class ProdutoDetalhadoComponent implements OnInit {
     private httpProduto: ProdutoService) { }
 
   ngOnInit(): void {
+    // (refatorado)
     this.route.params.subscribe(parametros => {
-      this.http.getProdutoById(parametros['id']).forEach(produto => {
-        this.produtoDetalhado = produto['body']
+      this.http.getProdutoById(parametros['id']).forEach((prod: Produtos) => {
+        this.produtoDetalhado = prod 
       })
     })
   }
