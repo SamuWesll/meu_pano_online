@@ -12,7 +12,11 @@ import { map } from 'rxjs/operators';
 export class ProdutoDetalhadoComponent implements OnInit {
 
   converteDecimal(valor: number): string {
-    return valor.toFixed(2).replace('.', ',');
+    if (valor){
+      return valor.toFixed(2).replace('.', ',');
+    } else {
+      return ''
+    }
   }
 
   public produtoDetalhado: Produtos;
