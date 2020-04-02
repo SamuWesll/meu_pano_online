@@ -11,8 +11,6 @@ import {Response} from '../response/Response';
 import {ProdutoCarrinho} from '../models/ProdutoCarrinho';
 
 const URLCarrinho: string = "http://localhost:8080/meupanoonline/carrinho";
-const URLAdicionar: string = "http://localhost:8080/meupanoonline/carrinho/adicionar";
-const URLAtualizar: string = "http://localhost:8080/meupanoonline/carrinho/`${produtoCarrinho.idProduto}`";
 
 @Injectable({
     providedIn: 'root'
@@ -37,7 +35,7 @@ export class CarrinhoService {
         this.item = this.itemSubject.asObservable();
         this.totalSubject = new BehaviorSubject<number>(null);
         this.total = this.totalSubject.asObservable();
-        this.clienteService.clienteLogado.subscribe(user => this.clienteLogado = user);
+        this.clienteService.clienteLogado.subscribe(cliente => this.clienteLogado = cliente);
 
 
     }
@@ -82,12 +80,12 @@ export class CarrinhoService {
             if (!this.localMap[produtoCarrinho.idProduto]) {
                 this.localMap[produtoCarrinho.idProduto] = produtoCarrinho;
             } else {
-                this.localMap[produtoCarrinho.idProduto].count += produtoCarrinho.count;
+                this.localMap[produtoCarrinho.idProduto].contador += produtoCarrinho.contador;
             }
             this.cookieService.set('carrinho', JSON.stringify(this.localMap));
             return of(true);
         } else {
-            
+            const URLAdicionar: string = "http://localhost:8080/meupanoonline/carrinho/adicionar";            
             return this.carrinhoService.post<boolean>(URLAdicionar, {
                 'quantidade': produtoCarrinho.contador,
                 'idProduto': produtoCarrinho.idProduto
@@ -96,11 +94,11 @@ export class CarrinhoService {
     }
 
     atualizar(produtoCarrinho): Observable<ProdutoCarrinho> {
-        if (this.clienteLogado) {       
+        if (this.clienteLogado) {      
+            const URLAtualizar: string = "http://localhost:8080/meupanoonline/carrinho/`${produtoCarrinho.idProduto}`"; 
             return this.carrinhoService.put<ProdutoCarrinho>(URLAtualizar, produtoCarrinho.contador);
         }
     }
-
 
     remover(produtoCarrinho) {
         if (!this.clienteLogado) {
@@ -111,7 +109,6 @@ export class CarrinhoService {
             return this.carrinhoService.delete(url).pipe( );
         }
     }
-
 
     checkout(): Observable<any> {
         const url = `${URLCarrinho}/checkout`;
@@ -127,5 +124,4 @@ export class CarrinhoService {
         this.cookieService.delete('carrinho');
         this.localMap = {};
     }
-
 }

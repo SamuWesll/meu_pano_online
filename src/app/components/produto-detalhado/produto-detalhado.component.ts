@@ -52,6 +52,3 @@ export class ProdutoDetalhadoComponent implements OnInit {
       );
   }
 }
-
-
-

@@ -2,20 +2,21 @@ import { Component, OnInit, OnDestroy, AfterContentChecked } from '@angular/core
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { Subject, Subscription } from 'rxjs';
 import { ClienteService } from 'src/app/services/cliente.service';
-import { Router } from '@angular/router';
 import { Response } from "../../response/Response";
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 import { debounceTime, switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrinho',
   templateUrl: './carrinho.component.html',
   styleUrls: ['./carrinho.component.css']
 })
+
 export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked {
 
-  convertDecimal(valor: string): string {
-    return parseFloat(valor).toFixed(2).replace('.', ',');
+  converteDecimal(valor: number): string {
+    return valor.toFixed(2).replace('.', ',');
   }
 
   public produtoCarrinho = [];
@@ -23,7 +24,9 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   public clienteLogado: Response;
   public clienteSub: Subscription;
 
-  constructor(public carrinhoService: CarrinhoService, public clienteService: ClienteService, private router: Router) {
+  constructor(public carrinhoService: CarrinhoService,
+              public clienteService: ClienteService, 
+              private router: Router) {
     this.clienteSub = this.clienteService.clienteLogado.subscribe(cliente =>
       this.clienteLogado = cliente);
   }
@@ -31,20 +34,19 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   private atualizarTermos = new Subject<ProdutoCarrinho>();
   sub: Subscription;
 
+  static quantidadeMaiorQueZero(produtoCarrinho){
+    if(produtoCarrinho.contador<1){
+      produtoCarrinho.contador=1;
+    }
+  }
+
   ngOnInit() {
     this.carrinhoService.getCarrinho().subscribe(produtos => {
       this.produtoCarrinho = produtos;
     });
 
     this.clienteSub = this.atualizarTermos.pipe(
-      // wait 300ms after each keystroke before considering the term
       debounceTime(300),
-      //
-      // ignore new term if same as previous term
-      // Same Object Reference, not working here
-      //  distinctUntilChanged((p: ProdutoCarrinhprodutoCarrinho, q: ProdutoCarrinhprodutoCarrinho) => p.count === q.count),
-      //
-      // switch to new search observable each time the term changes
       switchMap((produtoCarrinho: ProdutoCarrinho) => this.carrinhoService.atualizar(produtoCarrinho))
     ).subscribe(prod => {
       if (prod) { throw new Error(); }
@@ -75,22 +77,25 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   }
 
   onChange(produtoCarrinho) {
-    if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
+    CarrinhoComponent.quantidadeMaiorQueZero(produtoCarrinho);
+    if (this.clienteLogado){ 
+      this.atualizarTermos.next(produtoCarrinho); 
+    }
   }
-
 
   remover(produtoCarrinho: ProdutoCarrinho) {
     this.carrinhoService.remover(produtoCarrinho).subscribe(
       success => {
         this.produtoCarrinho = this.produtoCarrinho.filter(e => e.idProduto !== produtoCarrinho.idProduto);
-        console.log('Carrinho: ' + this.produtoCarrinho);
+        //console.log('Carrinho: ' + this.produtoCarrinho);
       },
       _ => console.log('Erro 400'));
   }
 
   checkout() {
     if (!this.clienteLogado) {
-      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+      //this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+      //como chamar o viewChild?
     } else {
       this.carrinhoService.checkout().subscribe(
         _ => {

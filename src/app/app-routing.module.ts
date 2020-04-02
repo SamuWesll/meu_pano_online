@@ -58,7 +58,7 @@ const routes: Routes = [
     component: BuscaComponent
   },
   {
-    path: "checkout",
+    path: "carrinho/checkout",
     component: CheckoutComponent
   },
   {
