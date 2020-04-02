@@ -8,6 +8,7 @@ import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { Categorias } from 'src/app/models/Categorias';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -26,10 +27,12 @@ export class HeaderComponent implements OnInit {
   senhaInput = new FormControl();
 
   constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService) {
-    this.categoria.carregarCategorias().subscribe(cat => {
+    this.categoria.carregarCategorias().pipe(map((data: any[]) => {
       this.categorias.push(this.categoriaTotal)
-      cat['body'].forEach(c => this.categorias.push(new Categorias(c.idCategoria, c.descricao)))
+    return data.map(cat => {
+      return this.categorias.push(new Categorias(cat.idCategoria, cat.descricao))
     })
+  })).subscribe()
   }
 
   realizarLogin() {
