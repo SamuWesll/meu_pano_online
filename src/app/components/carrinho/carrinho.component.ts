@@ -25,38 +25,41 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   public clienteSub: Subscription;
 
   constructor(public carrinhoService: CarrinhoService,
-              public clienteService: ClienteService, 
-              private router: Router) {
-    this.clienteSub = this.clienteService.clienteLogado.subscribe(cliente =>
-      this.clienteLogado = cliente);
+    public clienteService: ClienteService,
+    private router: Router) {
+    this.clienteSub = this.clienteService.clienteLogado
+      .subscribe(cliente =>
+        this.clienteLogado = cliente);
   }
 
   private atualizarTermos = new Subject<ProdutoCarrinho>();
   sub: Subscription;
 
-  static quantidadeMaiorQueZero(produtoCarrinho){
-    if(produtoCarrinho.contador<1){
-      produtoCarrinho.contador=1;
+  static quantidadeMaiorQueZero(produtoCarrinho) {
+    if (produtoCarrinho.contador < 1) {
+      produtoCarrinho.contador = 1;
     }
   }
 
   ngOnInit() {
-    this.carrinhoService.getCarrinho().subscribe(produtos => {
-      this.produtoCarrinho = produtos;
-    });
+    this.carrinhoService.getCarrinho()
+      .subscribe(produtos => {
+        this.produtoCarrinho = produtos;
+      });
 
-    this.clienteSub = this.atualizarTermos.pipe(
+    this.sub = this.atualizarTermos.pipe(
       debounceTime(300),
-      switchMap((produtoCarrinho: ProdutoCarrinho) => this.carrinhoService.atualizar(produtoCarrinho))
-    ).subscribe(prod => {
-      if (prod) { throw new Error(); }
+      switchMap((produtoCarrinho: ProdutoCarrinho) => 
+      this.carrinhoService.atualizar(produtoCarrinho))
+    ).subscribe(produto => {
+      if (produto) { throw new Error(); }
     },
       _ => console.log('Não atualizou'));
   }
 
   ngOnDestroy() {
     if (!this.clienteLogado) {
-      this.carrinhoService.carrinhoStorage();
+      this.carrinhoService.armazenarCarrinhoLocal();
     }
     this.clienteSub.unsubscribe();
   }
@@ -68,79 +71,31 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
 
   adicionar(produtoCarrinho) {
     produtoCarrinho.contador++;
-    if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
+    if (this.clienteLogado) { 
+      this.atualizarTermos.next(produtoCarrinho); 
+    }
   }
 
   subtrair(produtoCarrinho) {
     produtoCarrinho.contador--;
-    if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
+    if (this.clienteLogado) { 
+      this.atualizarTermos.next(produtoCarrinho); 
+    }
   }
 
   onChange(produtoCarrinho) {
     CarrinhoComponent.quantidadeMaiorQueZero(produtoCarrinho);
-    if (this.clienteLogado){ 
-      this.atualizarTermos.next(produtoCarrinho); 
+    if (this.clienteLogado) {
+      this.atualizarTermos.next(produtoCarrinho);
     }
   }
 
   remover(produtoCarrinho: ProdutoCarrinho) {
     this.carrinhoService.remover(produtoCarrinho).subscribe(
       success => {
-        this.produtoCarrinho = this.produtoCarrinho.filter(e => e.idProduto !== produtoCarrinho.idProduto);
-        //console.log('Carrinho: ' + this.produtoCarrinho);
+        this.produtoCarrinho = this.produtoCarrinho
+        .filter(prod => prod.idProduto !== produtoCarrinho.idProduto);
       },
       _ => console.log('Erro 400'));
   }
-
-  checkout() {
-    if (!this.clienteLogado) {
-      //this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
-      //como chamar o viewChild?
-    } else {
-      this.carrinhoService.checkout().subscribe(
-        _ => {
-          this.produtoCarrinho = [];
-        },
-        error1 => {
-          console.log('Erro checkout');
-        });
-      this.router.navigate(['/']);
-    }
-
-  }
 }
-  // private calcularTotal(p: Carrinho[]): number {
-  //   let soma = 0;
-  //   p.forEach(valor => {
-  //     soma += (valor.produto.valorDesconto * valor.quantidade);
-  //   })
-  //   return soma;
-  // }
-
-  // carregarTotal() {
-  //   this.sub = this.carrinhoService.ItemAtualizado.subscribe(() => {
-  //     this.valorTotal = this.calcularTotal(this.item.itemCarrinho);
-  //   })
-  // }
-
-  // carregarCompra() {
-  //   this.sub = this.carrinhoService.CarrinhoAtualizado.subscribe(() => {
-  //     let carrinho = this.carrinhoService
-  //   })
-  // }
-
-  // alterarQtde(valor, item){
-  //   if(item.qtde){
-  //     item.qtde++;
-  //     this.valorTotal+=item.produtos.valorUnitario;
-  //   }else{
-  //     item.qtde--;
-  //     this.valorTotal -= item.produtos.valorUnitario;
-  //   }
-  // }
-
-  // removerCarrinho(item){
-  //   this.valorTotal-=item.produtos.valorUnitario;
-  //   this.carrinho = this.carrinho.filter(prod=>prod != item
-  //   )
-  // }

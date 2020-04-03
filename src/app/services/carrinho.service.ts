@@ -85,7 +85,7 @@ export class CarrinhoService {
             this.cookieService.set('carrinho', JSON.stringify(this.localMap));
             return of(true);
         } else {
-            const URLAdicionar: string = "http://localhost:8080/meupanoonline/carrinho/adicionar";            
+            const URLAdicionar: string = "http://localhost:8080/meupanoonline/carrinho/adicionar";
             return this.carrinhoService.post<boolean>(URLAdicionar, {
                 'quantidade': produtoCarrinho.contador,
                 'idProduto': produtoCarrinho.idProduto
@@ -105,17 +105,12 @@ export class CarrinhoService {
             delete this.localMap[produtoCarrinho.idProduto];
             return of(null);
         } else {
-            const url = `${URLCarrinho}/${produtoCarrinho.idProduto}`;
+            const url:string ="http://localhost:8080/meupanoonline/carrinho/${produtoCarrinho.idProduto}";
             return this.carrinhoService.delete(url).pipe( );
         }
     }
 
-    checkout(): Observable<any> {
-        const url = `${URLCarrinho}/checkout`;
-        return this.carrinhoService.post(url, null).pipe();
-    }
-
-    carrinhoStorage() {
+    armazenarCarrinhoLocal() {
         this.cookieService.set('carrinho', JSON.stringify(this.localMap));
     }
 
