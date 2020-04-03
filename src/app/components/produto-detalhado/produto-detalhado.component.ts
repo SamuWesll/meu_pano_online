@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Produtos } from "src/app/models/Produtos";
 import { HttpService } from 'src/app/services/http.service';
-import { ActivatedRoute } from '@angular/router';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { ProdutoService } from 'src/app/services/produto.service';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -20,8 +24,15 @@ export class ProdutoDetalhadoComponent implements OnInit {
   }
 
   public produtoDetalhado: Produtos;
+  public contador: number;
+  public produtos: Produtos[] = [];
 
-  constructor(public http: HttpService, private route: ActivatedRoute) { }
+  constructor(private http: HttpService,
+    private carrinhoService: CarrinhoService,
+    private cookieService: CookieService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private httpProduto: ProdutoService) { }
 
   ngOnInit(): void {
     // (refatorado)
@@ -30,5 +41,20 @@ export class ProdutoDetalhadoComponent implements OnInit {
         this.produtoDetalhado = prod 
       })
     })
+  }
+
+  adicionarCarrinho() {
+    this.carrinhoService
+      .adicionarItem(new ProdutoCarrinho(this.produtoDetalhado, this.contador))
+      .subscribe(
+        res => {
+          if (!res) {
+            console.log('Erro' + res);
+            throw new Error();
+          }
+          this.router.navigateByUrl('/carrinho');
+        },
+        _ => console.log('Erro')
+      );
   }
 }

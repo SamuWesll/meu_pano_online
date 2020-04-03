@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class ProdutosComponent implements OnInit {
 
-  public idCategoria
+  public idCategoria;
   public produtos: Produtos[] = [];
   public produtosPorCategoria: Produtos[] = [];
 

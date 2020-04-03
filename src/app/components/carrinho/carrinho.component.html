@@ -1,0 +1,44 @@
+<main class="container">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th scope="col">Imagem</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor com Desconto</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produtoCarrinho of produtoCarrinho">
+        <th class="align-middle" scope="row">
+          <a routerLink="/produtos/detalhes/{{produtoCarrinho.idProduto}}"><img height="100px" src="{{produtoCarrinho.imagem}}"
+              alt="{{produtoCarrinho.tituloProduto}}" title="{{produtoCarrinho.tituloProduto}}"></a>
+        </th>
+        <td class="align-middle"><a
+            routerLink="/produtos/detalhes/{{produtoCarrinho.idProduto}}">{{produtoCarrinho.tituloProduto}}</a></td>
+        <td class="align-middle">R$ {{converteDecimal(produtoCarrinho.valorDesconto)}}</td>
+        <td class="align-middle">
+          <a (click)="subtrair(produtoCarrinho)"><i class="fa fa-minus"></i></a>
+          <input min="1" id="{{produtoCarrinho.idProduto}}" 
+            [(ngModel)]="produtoCarrinho.contador" (change)="onChange(produtoCarrinho)" size="3" type="number" required
+            name='contador'>
+          <a (click)="adicionar(produtoCarrinho)"> <i class="fa fa-plus"></i></a>
+        </td>
+        <td class="align-middle">R$ {{converteDecimal(produtoCarrinho.valorDesconto * produtoCarrinho.contador)}}</td>
+        <td class="align-middle">
+          <a (click)="remover(produtoCarrinho)" class="text-muted align-middle" routerLink="./">Remover</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="produtoCarrinho?.length > 0; else vazio">
+    <h4 style="display: inline;">Total: R$ {{converteDecimal(valorTotal)}}</h4>
+    <button  [routerLink]="['/carrinho/checkout']" class="btn btnDetalhe float-right">Continuar</button> 
+  </div>
+<ng-template #vazio>
+    <h4 class="text-muted text-center">Poxa, seu carrinho está vazio!<br> Sinta-se à vontade e conheça nossos produtos!
+      :)</h4>
+  </ng-template>
+</main>

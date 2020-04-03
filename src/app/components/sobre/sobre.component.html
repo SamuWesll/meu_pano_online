@@ -1,7 +1,6 @@
-<app-nav></app-nav>
 <div class="container text-justify">
-    <div class="row mt-5">
-        <div class="col-8">
+    <div class="col-sm-12 row mt-5">
+        <div class="col-xl-7">
             <h4>Sobre Nós</h4>
             <p>Olá, tudo bem? Nós somos a Meu Pano Online.</p>
             <p>Acreditamos que nada precisa ser chato, nem mesmo os seus panos de prato.</p>
@@ -12,26 +11,61 @@
             <p>Que tal nos conhecer um pouco mais? Pode entrar, conheça nossos produtos, sinta-se em casa!</p>
         </div>
         <div class="col-3 ml-2">
-            <img src="../../../assets/img/logo1.png" alt="Logotipo Meu Pano Online" title="Logotipo Meu Pano Online" class="mt-4">
+            <!-- <img src="../../../assets/img/logo1.png" alt="Logotipo Meu Pano Online" title="Logotipo Meu Pano Online" class="mt-4"> -->
+            <img src="../../../assets/img/Pano_de_Copa.jpg" alt="Logotipo Meu Pano Online" title="Logotipo Meu Pano Online" class="mt-4">
         </div>
     </div>
     <div class="dropdown-divider bg-dark"></div>
-    <div class="row">
-        <div class="col-4">
-            <h5 class="text-center">Missão</h5>
-            <p>Panos de pratos para todos os públicos!</p>
+    <div class="row mt-4">
+        
+        <div class="flex-column col-sm-12 col-xl-4">
+            <div class="d-flex justify-content-around divVMV">
+                <h5 id="visao" (mouseover)="textVisao()" [class.selecionado]="visao" class="col-4 vmv">Visão</h5>
+                <h5 id="missao" (mouseover)="textMissao()" [class.selecionado]="missao" class="col-4 vmv">Missão</h5>
+                <h5 id="valor" (mouseover)="textValor()" [class.selecionado]="valor" class="col-4 vmv">Valores</h5>
+            </div>
+            <p class="col-12 textVMV">{{ textVMV }}</p>
         </div>
-        <div class="col-4">
-            <h5 class="text-center">Visão</h5>
-            <p>Permitir que todos possam deixar seu lar do jeitinho que desejam, abrangendo pequenos detalhes como os
-                panos de prato da sua cozinha, que deixam de ser simples panos e passam a fazer parte da sua decoração.</p>
+        <div class="col-sm-12 col-xl-3">
+            <div class="d-flex justify-content-around divIniciativa">
+                <h5 class="iniciativa">Iniciativa</h5>
+            </div>
+            <p class="col-12 textVMV">Essa é mais uma iniciativa RD, aonde tem com o objetivo de formar Desenvolvedores qualificados e prontos para ingressar no time de T.I. E esse site foi desenvolvido pela equipe panoOnline</p>
         </div>
-        <div class="col-4">
-            <h5 class="text-center">Valores</h5>
-            <p>Respeito: ao consumidor e a nossa equipe.</p>
-            <p>Responsabilidade ambiental: trabalhando sempre de maneira consciente.</p>
-            <p>Respeito à diversidade: para construir um mundo mais justo.</p>
-            <p>Fazer a diferença: parte do lucro de nossas vendas são revertidas para instituições de caridade.</p>
+        <div class="col-sm-12 col-xl-5">
+            <div class="d-flex justify-content-around divEquipe">
+                <h5 class="iniciativa">Equipe PanoOnline</h5>
+            </div>
+            <div class="d-flex">
+                <div class="col-4 mt-4">
+                    <p class="nomeEquipe" [class.nomeEquipeSelecionado]="selecKarina" (mouseover)="selecionarKarina()">Karina Aquino</p>
+                    <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecRonaldo" (mouseover)="selecionarRonaldo()">Ronaldo Mendes</p>
+                    <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecSamuel" (mouseover)="selecionarSamuel()">Samuel Weslley</p>
+                    <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecUilson" (mouseover)="selecionarUilson()">Uilson Ribeiro</p>
+                </div>
+                <div class="col-8 cardColab">
+                    <div class="d-flex justify-content-center align-items-center" *ngIf="!selecKarina && !selecRonaldo && !selecSamuel && !selecUilson">
+                        Colaborador não selecionado
+                    </div>
+                    <div class="d-flex" *ngIf="selecKarina || selecRonaldo || selecSamuel || selecUilson" class="mt-2">
+                        <div class="d-flex">
+                            <img class="imagem" src="{{ imgColab }}" alt="">
+                            <div class="col-7">
+                                <h5>Nome: </h5>
+                                <p>{{ textColab }}</p>
+                                <h5>Idade: </h5>
+                                <p>{{ idadeColab }}</p>
+                                <h5>Hobiies: </h5>
+                                <p>{{ hobbiesColab }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex-column">
+                            <p><strong class="titulo">Esperiências: </strong><span class="texto">{{ experienciaColab }}</span></p>
+                            <p><strong class="titulo">Formação: </strong><span class="texto">{{ tituloColab }}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

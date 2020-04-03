@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
-import { LoginComponent } from '../login/login.component';
+import { Component, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { Cliente } from 'src/app/models/Cliente';
+import { FormControl } from '@angular/forms';
+import { ModalDirective } from 'angular-bootstrap-md';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { Sexo } from 'src/app/models/Sexo';
+import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { Categorias } from 'src/app/models/Categorias';
 import { CategoriaService } from 'src/app/services/categoria.service';
@@ -13,26 +16,102 @@ import { map } from "rxjs/operators";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild(ModalDirective) modal: ModalDirective;
 
-  modalRef: BsModalRef
   public login: Cliente;
   public categorias: Categorias[] = [];
 
   private categoriaTotal: Categorias = new Categorias(0, 'Todas as Categorias');
 
-  openModal() {
-    this.modalRef = this.modalService.show(LoginComponent)
-  }
-  constructor(private modalService: BsModalService, private router: Router, private categoria: CategoriaService) {
+  emaiOuCpflInput = new FormControl();
+  senhaInput = new FormControl();
 
-    this.verificarLogin();
-
+  constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService) {
     this.categoria.carregarCategorias().pipe(map((data: any[]) => {
-        this.categorias.push(this.categoriaTotal)
+      this.categorias.push(this.categoriaTotal)
       return data.map(cat => {
         return this.categorias.push(new Categorias(cat.idCategoria, cat.descricao))
       })
     })).subscribe()
+  }
+
+  realizarLogin() {
+    let validarCampor: any = this.emaiOuCpflInput.value.indexOf('@');
+    if (validarCampor >= 0) {
+      let body = {
+        "email": this.emaiOuCpflInput.value,
+        "senha": this.senhaInput.value,
+      };
+      this.httpCliente.postLogin(body).subscribe(
+        (data) => {
+          if (data['statusCodeValue'] == 400) {
+            alert(data['body']);
+          } else if (data['statusCodeValue'] == 200) {
+            this.logadoLocalStorage(data['body']);
+            this.verificarLogin();
+            console.log(this.login)
+            return alert('Login realizado com sucesso')
+          }
+        }
+      )
+    } else {
+      let body = {
+        "cpf": this.emaiOuCpflInput.value,
+        "senha": this.senhaInput.value,
+      };
+      this.httpCliente.postLoginCpf(body).subscribe(
+        (data) => {
+          if (data['statusCodeValue'] == 400) {
+            alert(data['body']);
+          } else if (data['statusCodeValue'] == 200) {
+            this.logadoLocalStorage(data['body']);
+            this.verificarLogin();
+            console.log(this.login)
+            return alert('Login realizado com sucesso')
+          }
+        }
+      )
+    }
+
+
+    this.emaiOuCpflInput.setValue('');
+    this.senhaInput.setValue('');
+
+  }
+
+  // Função para carregar as informações do cliente
+  logadoLocalStorage(body) {
+
+    let gen: Sexo;
+
+    if (body.genero == "M") {
+      gen = Sexo.masculino;
+    } else if (body.genero == "F") {
+      gen = Sexo.feminino;
+    }
+
+    let cliente = {
+      idCliente: body['idCliente'],
+      nome: body['nome'],
+      cpf: body['cpf'],
+      email: body['email'],
+      senha: null,
+      dataNascimento: formatDate(body['dataNascimento'], 'dd/MM/yyyy', 'en-BR'),
+      genero: gen,
+    }
+
+    localStorage.setItem("logado", JSON.stringify(cliente));
+
+    this.login = new Cliente(
+      cliente.idCliente,
+      cliente.nome,
+      cliente.cpf,
+      cliente.email,
+      cliente.senha,
+      cliente.dataNascimento,
+      cliente.genero
+    );
+
   }
 
   // this.sairLogin();
@@ -47,6 +126,8 @@ export class HeaderComponent implements OnInit {
 
     localStorage.removeItem("logado");
 
+    this.verificarLogin();
+
   }
 
   separarNome(nome: string) {
@@ -55,7 +136,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.verificarLogin();
 
   }

@@ -1,0 +1,111 @@
+.divVMV {
+    background-color: rgba(217, 217, 233, 0.61);
+    border-radius: 5px;
+    padding: 0px;
+    color: rgb(138, 135, 135);
+    /* margin-top: 10px; */
+}
+
+.vmv {
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    padding-top: 5px;
+}
+
+#visao:hover {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+#missao:hover {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+#valor:hover {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.selecionado {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.textVMV {
+    margin-top: 20px;
+    display: flex;
+    height: 170px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.divIniciativa {
+    background-color: rgba(217, 217, 233, 0.61);
+    border-radius: 5px;
+    padding: 0px;
+    color: rgb(138, 135, 135);
+    /* margin-top: 10px; */
+}
+
+.iniciativa {
+    align-items: center;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.divEquipe {
+    background-color: rgba(217, 217, 233, 0.61);
+    border-radius: 5px;
+    padding: 0px;
+    color: rgb(138, 135, 135);
+}
+
+
+.nomeEquipe {
+    cursor: pointer;
+    font-size: 14px;
+    transition: font-weight 0.2s ;
+}
+
+.nomeEquipeSelecionado {
+    font-weight: bold;
+}
+
+
+.cardColab {
+    margin-top: 20px;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 8px;
+}
+
+.imagem {
+    border-radius: 20px;
+    height: 120px;
+    margin-top: 5px;
+}
+
+.cardColab h5 {
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 2px;
+}
+
+.cardColab p {
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.titulo {
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 2px;
+}
+
+.texto {
+    font-size: 11px;
+    margin-bottom: 2px;
+    margin-left: 5px;
+}

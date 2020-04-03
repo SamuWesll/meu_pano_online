@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Produtos } from '../models/Produtos';
-import { Endereco } from '../models/Endereco';
-import { Observable } from 'rxjs';
-
 
 const URLLocalJson: string = "http://localhost:8080/meupanoonline/produto/lista";
 
