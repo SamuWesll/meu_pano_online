@@ -215,9 +215,7 @@ criarPedido() {
 
   for(let i = 0; i < this.carrinho.length; i ++) {
     let p1 = {
-      produto: {
-        idProduto: this.carrinho[i].idProduto
-        },
+      produto: this.carrinho[i].idProduto,
       qtdProduto: this.carrinho[i].contador,
       valorProduto: this.carrinho[i].contador * this.carrinho[i].valorDesconto
       };
@@ -225,16 +223,14 @@ criarPedido() {
   }
 
   let pedido = {
-    formaPgto: "cartão de credito",
-    itensPedido: produtosCarrinhos,
-    tb_cliente_id_cliente: {
-      idCliente: this.cliente['idCliente']
-      },
-    tb_endereco_id_endereco: {
-      idEndereco: this.idEndereco
-      },
-    totalCompra: this.valorProdutos,
-    valorFrete: this.valorFreteRadio
+    
+      formaPgto: "cartão de crédito",
+      itensPedido: produtosCarrinhos,
+      tb_cliente_id_cliente: this.cliente['idCliente'],
+      tb_endereco_id_endereco: this.idEndereco,
+      totalCompra: this.valorProdutos,
+      valorFrete: this.valorFreteRadio
+    
   };
 
   this.pedidoService.criarPedido(pedido).subscribe(
