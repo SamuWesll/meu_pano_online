@@ -31,7 +31,7 @@ export class CadastroComponent implements OnInit {
     };
     this.httpCliente.postClientes(body).subscribe(
       (data) => {
-        if(data['statusCode'] == "OK") {
+        if(data) {
           this.router.navigate(['/home']);
           return alert("Cadastro realizado com sucesso");
         }
