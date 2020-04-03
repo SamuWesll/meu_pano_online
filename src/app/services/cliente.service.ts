@@ -28,6 +28,10 @@ export class ClienteService {
         cookieService.set('clienteLogado', memo);
     }
 
+    getClienteId(id: number) {
+        return this.clienteService.get(`http://localhost:8080/meupanoonline/cliente?idCliente=${id}`)
+    }
+
 
     postClientes(body: {}) {
         return this.clienteService.post("http://localhost:8080/meupanoonline/cliente", body);

@@ -8,6 +8,7 @@ import { NgxViacepService, Endereco, ErroCep } from '@brunoc/ngx-viacep';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 import { Produtos } from 'src/app/models/Produtos';
+import { ClienteService } from 'src/app/services/cliente.service';
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -23,6 +24,8 @@ export class CheckoutComponent implements OnInit {
   valorFreteRadio: any;
   valorProdutos: any;
   qtdProdutos: number;
+
+  cliente: any;
 
   carrinho: any[] = [{
     id: 1,
@@ -132,7 +135,8 @@ export class CheckoutComponent implements OnInit {
 
   
   title = 'app';
-  constructor( private viacep: NgxViacepService, private Http: HttpClient) {} // Injetando o serviço
+
+  constructor( private viacep: NgxViacepService, private Http: HttpClient, private httpCliente: ClienteService) {} // Injetando o serviço
 
   consultaCEP(cep: string){
 
@@ -199,8 +203,23 @@ cadastrarNovoEndereco(form) {
   this.enderecos.push(novoEndereco)
 }
 
+postCliente() {
+
+  let cli = JSON.parse(localStorage.getItem("logado"))
+
+  this.httpCliente.getClienteId(cli['idCliente']).subscribe(
+    (body) => {
+      this.cliente = body;
+      return console.log(this.cliente);
+    }
+  )
+
+}
+
 public f : FormGroup
   ngOnInit() {
+
+    this.postCliente(); 
 
     this.valorFreteRadio =  7.99
 
