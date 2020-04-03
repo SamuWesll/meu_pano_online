@@ -65,3 +65,10 @@ span {
 #formEndereco .form-group input, select,#formEndereco .form-group div {
     font-size: 12px;
 }
+
+.trash {
+    position: absolute;
+    margin-top: -105px;
+    margin-left: 300px;
+    cursor: pointer;
+}

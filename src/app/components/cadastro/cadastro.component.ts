@@ -19,16 +19,24 @@ export class CadastroComponent implements OnInit {
   constructor(private httpCliente: ClienteService, private router: Router) { }
 
   enviarCadastro(form) {
+
+    let telefoneFixo: string;
+
+    if(form.value.phone == null) {
+        telefoneFixo = "";
+    } else {
+        telefoneFixo = form.value.phone;
+    }
+
     let body = {
-      "idCliente": 0,
-      "nome": form.value.fullName,
-      "cpf": form.value.numCPF,
-      "email": form.value.email,
-      "senha": form.value.senha1,
-      "dataNascimento": this.corrigindoData(form.value.dataNasc),
-      "genero": form.value.genero,
-      // "nrCelular": form.value.phone,
-      // "nrTelefone": form.value.tell
+      cpf: form.value.numCPF,
+      dataNascimento: this.corrigindoData(form.value.dataNasc),
+      email: form.value.email,
+      genero: form.value.genero,
+      nome: form.value.fullName,
+      numTelefoneCelular: form.value.phone,
+      numTelefoneFixo: telefoneFixo,
+      senha: form.value.senha1
     };
     this.httpCliente.postClientes(body).subscribe(
       (data) => {

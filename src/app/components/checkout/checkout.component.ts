@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './../../services/http.service';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Checkout } from 'src/app/models/Checkout';
 import { HttpClient } from "@angular/common/http";
@@ -10,6 +10,8 @@ import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 import { Produtos } from 'src/app/models/Produtos';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
+import { PedidoService } from 'src/app/services/pedido.service';
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -27,25 +29,9 @@ export class CheckoutComponent implements OnInit {
   qtdProdutos: number;
 
   cliente: any;
+  carrinho: any;
 
-  carrinho: any[] = [{
-    id: 1,
-    nome: "pano 1",
-    qtdProdut: 2,
-    valor: 7.40
-  }, {
-    id: 2,
-    nome: "pano 2",
-    qtdProdut: 1,
-    valor: 13
-  }, 
-  {
-    id: 3,
-    nome: "pano 3",
-    qtdProdut: 5,
-    valor: 13
-  }
-  ]
+  idEndereco: number = null;
 
   usuario: any = {
     nome: null,
@@ -97,15 +83,20 @@ export class CheckoutComponent implements OnInit {
       dtValidade: new FormControl(checkout.dtValidade),
       validade: new FormControl(checkout.validade),
       nomeTitular: new FormControl(checkout.nomeTitular),
-      cpfTitular: new FormControl(checkout.cpfTitular)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-
+      cpfTitular: new FormControl(checkout.cpfTitular)
     })
   }
 
   
   title = 'app';
 
-  constructor( private viacep: NgxViacepService, private Http: HttpClient, private httpCliente: ClienteService, private httpEndereco: EnderecoService) {} // Injetando o serviço
+  constructor(private viacep: NgxViacepService, 
+              private Http: HttpClient, 
+              private httpCliente: ClienteService, 
+              private httpEndereco: EnderecoService,
+              private carrinhoService: CarrinhoService,
+              private pedidoService: PedidoService,
+  ) {} // Injetando o serviço
 
   consultaCEP(cep: string){
 
@@ -130,6 +121,11 @@ export class CheckoutComponent implements OnInit {
 
 valorFrete(valor: number) {
   this.valorFreteRadio = valor;
+};
+
+selecionarEndereco(id) {
+  this.idEndereco = parseInt(id);
+  console.log(this.idEndereco)
 }
 
 mascaraValor(valor: number) {
@@ -141,8 +137,8 @@ carrinhoDeCompra() {
   let valorProduto: number = 0;
 
   for(let i = 0; i < this.carrinho.length; i++) {
-    qtdProduto += this.carrinho[i].qtdProdut;
-    valorProduto += this.carrinho[i].valor * this.carrinho[i].qtdProdut;
+    qtdProduto += this.carrinho[i].contador;
+    valorProduto += this.carrinho[i].valorDesconto * this.carrinho[i].contador;
   }
   
   this.valorProdutos = valorProduto;
@@ -155,6 +151,7 @@ adicionarZero(numero: number) {
   };
   return numero;
 };
+
 
 cadastrarNovoEndereco(form) {
 
@@ -179,6 +176,18 @@ cadastrarNovoEndereco(form) {
 
 }
 
+deletarEndere(idEndereco: number) {
+  this.httpEndereco.deletarEndereco(idEndereco).subscribe(
+    (data) => {
+      if(data == "Endereço não encontrado!") {
+        return alert(data)
+      } else {
+        return alert("Endereço deletado")
+      }
+    }
+  )
+}
+
 postCliente() {
 
   let cli = JSON.parse(localStorage.getItem("logado"))
@@ -186,16 +195,62 @@ postCliente() {
   this.httpCliente.getClienteId(cli['idCliente']).subscribe(
     (body) => {
       this.cliente = body;
-      return console.log(this.cliente);
+      // return console.log(this.cliente);
     }
   )
 
 }
 
+getCarrinho() {
+  this.carrinhoService.getCarrinho().subscribe(
+    (produto) => {
+      return this.carrinho = produto;
+    }
+  )
+}
+
+criarPedido() {
+
+  let produtosCarrinhos: object[] = [];
+
+  for(let i = 0; i < this.carrinho.length; i ++) {
+    let p1 = {
+      produto: {
+        idProduto: this.carrinho[i].idProduto
+        },
+      qtdProduto: this.carrinho[i].contador,
+      valorProduto: this.carrinho[i].contador * this.carrinho[i].valorDesconto
+      };
+    produtosCarrinhos.push(p1)
+  }
+
+  let pedido = {
+    formaPgto: "cartão de credito",
+    itensPedido: produtosCarrinhos,
+    tb_cliente_id_cliente: {
+      idCliente: this.cliente['idCliente']
+      },
+    tb_endereco_id_endereco: {
+      idEndereco: this.idEndereco
+      },
+    totalCompra: this.valorProdutos,
+    valorFrete: this.valorFreteRadio
+  };
+
+  this.pedidoService.criarPedido(pedido).subscribe(
+    (pedido) => {
+      console.log(pedido)
+    }
+  )
+  
+}
+
 public f : FormGroup
   ngOnInit() {
 
-    this.postCliente(); 
+    this.postCliente();
+
+    this.getCarrinho();
 
     this.valorFreteRadio =  7.99
 
@@ -206,7 +261,9 @@ public f : FormGroup
       Validators.required,
       Validators.pattern('[0-9]{5}')
       ])),    
-    })
-   }
+    });
+
+   };
+  
 
 }

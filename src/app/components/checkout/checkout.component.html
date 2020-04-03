@@ -37,7 +37,7 @@
                     <input readonly class="form-control" type="tel" id="telefone" name="telefone"
                     placeholder=""  [ngModel]="usuario.telefone" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
-                    minlength="10" maxlength="11" required #telefone="ngModel" placeholder="{{ cliente.tb_endereco_id_cliente[0].numTelefone }}">
+                    minlength="10" maxlength="11" required #telefone="ngModel" placeholder="{{ cliente.numTelefoneCelular }}">
                     <!-- <div *ngIf="!telefone.valid && telefone.touched || telefone.value == 00000000000 || telefone.value == 00000000000"
                     class="alert alert-danger" role="alert" >
                         É necessário um número de telefone ou celular. (Somente números)
@@ -92,7 +92,7 @@
                 <div *ngFor="let endereco of cliente.tb_endereco_id_cliente, index as i">
                     <div class="carEndereco">
                         <header>
-                            <input type="radio" name="endereco" value="{{ endereco.idEndereco }}">
+                            <input type="radio" name="endereco" value="{{ endereco.idEndereco }}" (click)="selecionarEndereco(endereco.idEndereco)">
                             <label for="">Endereço {{ i + 1  }}</label>
                         </header>
                         <div class="endereco">
@@ -100,6 +100,7 @@
                                 <span>{{ endereco.logradouro }} {{ endereco.numero }} {{ endereco.bairro }}, {{ endereco.complemento }} - {{ endereco.cidade }}/{{ endereco.uf }} - CEP: {{ endereco.cep }} </span>
                             </p>
                         </div>
+                        <img class="trash" src="../../../assets/img/trash.png" (click)="deletarEndere(endereco.idEndereco)" height="15px" alt="">
                     </div>
                 </div>
                 
@@ -111,7 +112,7 @@
                     <div class="col-12" id="fretes">
                         <label>Escolha um tipo de frete:</label>
                         <label><input type="radio" name="frete" value="7.99" (click)="valorFrete(7.99)" checked> Até 30 dias - <strong style="color: green;">R$ 7,99</strong> (Receba em casa) - Entrega normal</label>
-                        <label><input type="radio" name="frete" value="15.99" (click)="valorFrete(15.99)" >Até 7 dias - <strong style="color: green;">R$ 15,99</strong> (Receba em casa) - Entrega rápida</label>
+                        <label><input type="radio" name="frete" value="15.99" (click)="valorFrete(15.99)" >Até 7 dias - <strong style="color: green;">R$ 15,99</strong> (Receba em casa) -<br> Entrega rápida</label>
                     </div>
                 </div>
                 
@@ -250,8 +251,9 @@
 
             </div>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success" data-toggle="modal" 
-                data-target="#compraFinalizada" [disabled]="!f.valid" >Finalizar compra</button>
+                <button type="button" class="btn btn-success" [disabled]="!f.valid && !idEndereco" (click)="criarPedido()" >Finalizar compra</button>
+                <!-- <button type="submit" class="btn btn-success" data-toggle="modal" 
+                data-target="#compraFinalizada" [disabled]="!f.valid" >Finalizar compra</button> -->
             </div>
         </div>
     </form>
