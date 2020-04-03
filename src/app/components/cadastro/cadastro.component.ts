@@ -20,20 +20,24 @@ export class CadastroComponent implements OnInit {
 
   enviarCadastro(form) {
     let body = {
+      "idCliente": 0,
       "nome": form.value.fullName,
       "cpf": form.value.numCPF,
       "email": form.value.email,
       "senha": form.value.senha1,
       "dataNascimento": this.corrigindoData(form.value.dataNasc),
       "genero": form.value.genero,
-      "nrCelular": form.value.phone,
-      "nrTelefone": form.value.tell
+      // "nrCelular": form.value.phone,
+      // "nrTelefone": form.value.tell
     };
     this.httpCliente.postClientes(body).subscribe(
       (data) => {
+        console.log(data);
         if(data) {
           this.router.navigate(['/home']);
           return alert("Cadastro realizado com sucesso");
+        } else {
+          alert(data['status'])
         }
       }
     )

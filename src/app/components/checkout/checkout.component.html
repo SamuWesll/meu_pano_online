@@ -12,11 +12,11 @@
                     <input readonly class="form-control" type="text" id="nome" name="nome"
                     placeholder="" [ngModel]="usuario.nome" [ngModel] pattern="[a-zA-Z ]*"
                     minlength="12" maxlength="50"required #nome="ngModel" placeholder="{{ cliente.nome }}"> 
-                    <div *ngIf="!nome.valid && nome.touched"
+                    <!-- <div *ngIf="!nome.valid && nome.touched"
                     class="alert alert-danger" role="alert">
                         Nome é obrigatório. 
                         (Somente letras)
-                    </div>
+                    </div> -->
                 </div>
             
                 <div class="form-group">
@@ -25,11 +25,11 @@
                     placeholder="" [ngModel]="usuario.cpf" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="11" maxlength="11" required #cpf="ngModel" placeholder="{{ cliente.cpf }}">
-                    <div *ngIf="!cpf.valid && cpf.touched || cpf.value == 00000000000"
+                    <!-- <div *ngIf="!cpf.valid && cpf.touched || cpf.value == 00000000000"
                     class="alert alert-danger" role="alert">
                         CPF inválido.
                         CPF é obrigatório. (Somente números - 11 digitos)
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -38,10 +38,10 @@
                     placeholder=""  [ngModel]="usuario.telefone" 
                     [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
                     minlength="10" maxlength="11" required #telefone="ngModel" placeholder="{{ cliente.tb_endereco_id_cliente[0].numTelefone }}">
-                    <div *ngIf="!telefone.valid && telefone.touched || telefone.value == 00000000000 || telefone.value == 00000000000"
+                    <!-- <div *ngIf="!telefone.valid && telefone.touched || telefone.value == 00000000000 || telefone.value == 00000000000"
                     class="alert alert-danger" role="alert" >
                         É necessário um número de telefone ou celular. (Somente números)
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -49,10 +49,10 @@
                     <input readonly class="form-control" type="email" id="email" name="email"
                     placeholder=""  [ngModel]="usuario.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     minlength="12" maxlength="40" required email #email="ngModel" placeholder="{{ cliente.email }}" >
-                    <div *ngIf="!email.valid && email.touched "
+                    <!-- <div *ngIf="!email.valid && email.touched "
                     class="alert alert-danger" role="alert"  >
                         Digite um email válido.
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- <div class="form-group">

@@ -9,6 +9,7 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 import { Produtos } from 'src/app/models/Produtos';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { EnderecoService } from 'src/app/services/endereco.service';
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -101,42 +102,10 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  enderecos: any[] = [{
-    endereco: "Rua Baltazar Lopes Fragoso",
-    numero: "122",
-    complemento: "Qualquer coisa",
-    bairro: "Jardim Aracati",
-    cidade: "São Paulo",
-    estado: "SP",
-    cep: "04949130",
-    idEndereco: 123,
-    }, 
-    // {
-    // endereco: "Rua 1",
-    // numero: "122",
-    // complemento: "Qualquer coisa",
-    // bairro: "Jardim Aracati",
-    // cidade: "São Paulo",
-    // estado: "SP",
-    // cep: "04949130",
-    // idEndereco: 321,
-    // },
-    // {
-    // endereco: "Rua Baltazar Lopes Fragoso",
-    // numero: "122",
-    // complemento: "Qualquer coisa",
-    // bairro: "Jardim Aracati",
-    // cidade: "São Paulo",
-    // estado: "SP",
-    // cep: "04949130",
-    // idEndereco: 231,
-    // },
-  ]
-
   
   title = 'app';
 
-  constructor( private viacep: NgxViacepService, private Http: HttpClient, private httpCliente: ClienteService) {} // Injetando o serviço
+  constructor( private viacep: NgxViacepService, private Http: HttpClient, private httpCliente: ClienteService, private httpEndereco: EnderecoService) {} // Injetando o serviço
 
   consultaCEP(cep: string){
 
@@ -189,18 +158,25 @@ adicionarZero(numero: number) {
 
 cadastrarNovoEndereco(form) {
 
-  let novoEndereco = {
-    endereco: form['ender'],
-    numero: form['numero'],
-    complemento: form['complemento'],
+  let body = {
     bairro: form['bairro'],
-    cidade: form['cidade'],
-    estado: form['estado'],
     cep: form['cep'],
-    idEndereco: 21312,
+    cidade: form['cidade'],
+    complemento: form['complemento'],
+    logradouro: form['ender'],
+    numTelefone: "11984670655",
+    numero: form['numero'],
+    referencia: null,
+    tb_cliente_id_cliente: this.cliente['idCliente'],
+    uf: form['estado']
   }
 
-  this.enderecos.push(novoEndereco)
+  this.httpEndereco.postEndereco(body).subscribe(
+    (data) => {
+      this.cliente.tb_endereco_id_cliente.push(data);
+    }
+  )
+
 }
 
 postCliente() {
