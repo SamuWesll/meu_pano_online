@@ -22,7 +22,7 @@
         <td class="align-middle">
           <a (click)="subtrair(produtoCarrinho)"><i class="fa fa-minus"></i></a>
           <input min="1" id="{{produtoCarrinho.idProduto}}" 
-            [(ngModel)]="produtoCarrinho.contador" (change)="onChange(produtoCarrinho)" size="3" type="number" required
+            [(ngModel)]="produtoCarrinho.contador" (change)="alterar(produtoCarrinho)" size="3" type="number" required
             name='contador'>
           <a (click)="adicionar(produtoCarrinho)"> <i class="fa fa-plus"></i></a>
         </td>

@@ -24,6 +24,9 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   public clienteLogado: Response;
   public clienteSub: Subscription;
 
+  private atualizarTermos = new Subject<ProdutoCarrinho>();
+  sub: Subscription;
+
   constructor(public carrinhoService: CarrinhoService,
     public clienteService: ClienteService,
     private router: Router) {
@@ -31,10 +34,7 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
       .subscribe(cliente =>
         this.clienteLogado = cliente);
   }
-
-  private atualizarTermos = new Subject<ProdutoCarrinho>();
-  sub: Subscription;
-
+  
   static quantidadeMaiorQueZero(produtoCarrinho) {
     if (produtoCarrinho.contador < 1) {
       produtoCarrinho.contador = 1;
@@ -71,6 +71,7 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
 
   adicionar(produtoCarrinho) {
     produtoCarrinho.contador++;
+    CarrinhoComponent.quantidadeMaiorQueZero(produtoCarrinho);
     if (this.clienteLogado) { 
       this.atualizarTermos.next(produtoCarrinho); 
     }
@@ -78,12 +79,13 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
 
   subtrair(produtoCarrinho) {
     produtoCarrinho.contador--;
+    CarrinhoComponent.quantidadeMaiorQueZero(produtoCarrinho);
     if (this.clienteLogado) { 
       this.atualizarTermos.next(produtoCarrinho); 
     }
   }
 
-  onChange(produtoCarrinho) {
+  alterar(produtoCarrinho) {
     CarrinhoComponent.quantidadeMaiorQueZero(produtoCarrinho);
     if (this.clienteLogado) {
       this.atualizarTermos.next(produtoCarrinho);
