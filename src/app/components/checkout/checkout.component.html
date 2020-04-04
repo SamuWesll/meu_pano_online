@@ -276,7 +276,16 @@
         </button>
         </div>
         <div class="modal-body">
-          <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p>
+            <div>
+                <strong>Numero do pedido: </strong><span>{{ pedidoFinaliza['idPedido'] }}</span>
+            </div>
+            <div class="mt-2">
+                <strong>Valor da compra: </strong><span>{{ mascaraValor(pedidoFinaliza['valorFrete'] + pedidoFinaliza['totalCompra']) }}</span>
+            </div>
+            <div class="mt-2">
+                <strong>Forma de pagamento: </strong><span>{{ pedidoFinaliza['formaPgto'] }}</span>
+            </div>
+          <!-- <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p> -->
         </div>
         <div class="modal-footer">        
           <button type="button" class="btn btn-primary" (click)="compraFinalizada.hide(); pageHome()">Fechar</button>

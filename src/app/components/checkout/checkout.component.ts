@@ -30,6 +30,16 @@ export class CheckoutComponent implements OnInit {
   valorProdutos: any;
   qtdProdutos: number;
 
+  pedidoFinaliza: object  = {
+    idPedido: '',
+    valorFrete: 0,
+    totalCompra: 0,
+    formaPgto: "",
+    tb_cliente_id_cliente: 0,
+    tb_endereco_id_endereco: 0,
+    itensPedido: []
+  }
+
   cliente: any = {
     nome: "",
   };
@@ -130,7 +140,6 @@ valorFrete(valor: number) {
 
 selecionarEndereco(id) {
   this.idEndereco = parseInt(id);
-  console.log(this.idEndereco)
 }
 
 mascaraValor(valor: number) {
@@ -200,9 +209,6 @@ deletarEndere(idEndereco: number) {
     //   }
     // }
   
-
-  console.log(idEndereco)
-  console.log(this.cliente.tb_endereco_id_cliente)
 }
 
 postCliente() {
@@ -228,11 +234,6 @@ getCarrinho() {
 
 deleteCarrinho() {
   this.carrinhoService.limparCarrinhoStorage();
-  // this.carrinhoService.remover(this.carrinho).subscribe(
-  //   success => {
-  //     console.log(success)
-  //   },
-  //   _ => console.log('Erro 400'));
 }
 
 criarPedido() {
@@ -261,7 +262,8 @@ criarPedido() {
 
   this.pedidoService.criarPedido(pedido).subscribe(
     (pedido) => {
-      console.log(pedido);
+      this.pedidoFinaliza = pedido
+      // localStorage.setItem('pedidoFinaliza', JSON.stringify(pedido))
       if(pedido['idPedido'] > 0) {
         this.deleteCarrinho();
         this.modal.toggle();
