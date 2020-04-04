@@ -11,7 +11,7 @@
                     <label for="nome">Nome completo*</label>
                     <input readonly class="form-control" type="text" id="nome" name="nome"
                     placeholder="" [ngModel]="usuario.nome" [ngModel] pattern="[a-zA-Z ]*"
-                    minlength="12" maxlength="50"required #nome="ngModel" placeholder="{{ cliente.nome }}"> 
+                    minlength="12" maxlength="50"required #nome="ngModel" placeholder="{{ cliente['nome'] }}"> 
                     <!-- <div *ngIf="!nome.valid && nome.touched"
                     class="alert alert-danger" role="alert">
                         Nome é obrigatório. 
@@ -148,7 +148,6 @@
                     <div class="col-5 dropdown-divider mt-3 pb-0"></div>
                     <span class="col-3 d-flex flex-row-reverse valorSpan">{{ mascaraValor(valorProdutos + valorFreteRadio) }}</span>
                 </div>
-                <!-- <h4>Total: -------------------<b style="color: green;"> $ 0,00</b></h4> -->
             </div>
             <div class="p-2">
                 <div class="form-group">
@@ -172,7 +171,7 @@
                             class="alert alert-danger" role="alert">
                             Mês*
                         </div>
-                        <option value="" disabled selected >Mês Venc.</option>
+                        <option required value="" disabled selected >Mês Venc.</option>
                             <option value="jan">JANEIRO</option>
                             <option value="fev">FEVEREIRO</option>
                             <option value="mar">MARÇO</option>
@@ -258,20 +257,25 @@
         </div>
     </form>
 </main>
-<div id="compraFinalizada" class="modal" tabindex="-1" role="dialog">
+<div
+    mdbModal
+    #compraFinalizada="mdbModal"
+    id="compraFinalizada" 
+    class="modal fade top" 
+    role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Estamos finalizando seu pedido!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="compraFinalizada.hide()">
+            <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
         </div>
         <div class="modal-body">
           <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p>
         </div>
         <div class="modal-footer">        
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" (click)="compraFinalizada.hide(); pageHome()">Fechar</button>
         </div>
       </div>
     </div>

@@ -12,6 +12,8 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { PedidoService } from 'src/app/services/pedido.service';
+import { CarrinhoComponent } from '../carrinho/carrinho.component';
+import { Router } from '@angular/router';
 // import 'rxjs/add/operator/map';
 // import { Http } from '@angular/http';
 
@@ -28,7 +30,9 @@ export class CheckoutComponent implements OnInit {
   valorProdutos: any;
   qtdProdutos: number;
 
-  cliente: any;
+  cliente: any = {
+    nome: "",
+  };
   carrinho: any;
 
   idEndereco: number = null;
@@ -96,6 +100,7 @@ export class CheckoutComponent implements OnInit {
               private httpEndereco: EnderecoService,
               private carrinhoService: CarrinhoService,
               private pedidoService: PedidoService,
+              private router: Router,
   ) {} // Injetando o serviço
 
   consultaCEP(cep: string){
@@ -125,7 +130,6 @@ valorFrete(valor: number) {
 
 selecionarEndereco(id) {
   this.idEndereco = parseInt(id);
-  console.log(this.idEndereco)
 }
 
 mascaraValor(valor: number) {
@@ -195,7 +199,6 @@ postCliente() {
   this.httpCliente.getClienteId(cli['idCliente']).subscribe(
     (body) => {
       this.cliente = body;
-      // return console.log(this.cliente);
     }
   )
 
@@ -204,9 +207,19 @@ postCliente() {
 getCarrinho() {
   this.carrinhoService.getCarrinho().subscribe(
     (produto) => {
+      console.log(produto)
       return this.carrinho = produto;
     }
   )
+}
+
+deleteCarrinho() {
+  this.carrinhoService.limparCarrinhoStorage();
+  // this.carrinhoService.remover(this.carrinho).subscribe(
+  //   success => {
+  //     console.log(success)
+  //   },
+  //   _ => console.log('Erro 400'));
 }
 
 criarPedido() {
@@ -235,11 +248,20 @@ criarPedido() {
 
   this.pedidoService.criarPedido(pedido).subscribe(
     (pedido) => {
-      console.log(pedido)
+      console.log(pedido);
+      if(pedido['idPedido'] > 0) {
+        this.deleteCarrinho();
+        this.modal.toggle();
+        
+      }
     }
   )
   
 }
+
+pageHome() {
+  this.router.navigate(["/home"]);
+};
 
 public f : FormGroup
   ngOnInit() {
@@ -252,12 +274,12 @@ public f : FormGroup
 
     this.carrinhoDeCompra();
 
-    this.f = this.formBuilder.group({
-      cep: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.pattern('[0-9]{5}')
-      ])),    
-    });
+    // this.f = this.formBuilder.group({
+    //   cep: new FormControl('', Validators.compose([
+    //   Validators.required,
+    //   Validators.pattern('[0-9]{5}')
+    //   ])),    
+    // });
 
    };
   
