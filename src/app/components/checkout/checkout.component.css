@@ -67,8 +67,8 @@ span {
 }
 
 .trash {
-    position: absolute;
-    margin-top: -105px;
-    margin-left: 300px;
     cursor: pointer;
+    padding: 0px;
+    margin-right: 20px;
+    margin-top: -5px;
 }

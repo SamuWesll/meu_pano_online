@@ -130,6 +130,7 @@ valorFrete(valor: number) {
 
 selecionarEndereco(id) {
   this.idEndereco = parseInt(id);
+  console.log(this.idEndereco)
 }
 
 mascaraValor(valor: number) {
@@ -181,15 +182,24 @@ cadastrarNovoEndereco(form) {
 }
 
 deletarEndere(idEndereco: number) {
+
   this.httpEndereco.deletarEndereco(idEndereco).subscribe(
     (data) => {
       if(data == "Endereço não encontrado!") {
         return alert(data)
       } else {
-        return alert("Endereço deletado")
+        alert("Endereço deletado");
+        let arrayEndereco: any[] = this.cliente.tb_endereco_id_cliente;
+        this.cliente.tb_endereco_id_cliente = arrayEndereco.filter((end) => {
+          return idEndereco != end['idEndereco']
+        });
+        this.idEndereco = null;
       }
     }
   )
+
+  console.log(idEndereco)
+  console.log(this.cliente.tb_endereco_id_cliente)
 }
 
 postCliente() {
