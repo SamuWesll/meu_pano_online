@@ -1,3 +1,74 @@
-.ng-invalid.ng-touched:not(form) {
+/* .ng-invalid.ng-touched:not(form) {
     border: 1px solid red;
+} */
+
+label {
+    font-size: 14px;
+}
+
+input {
+    font-size: 14px;
+}
+
+span {
+    font-size: 14px;
+}
+
+.valorSpan {
+    font-weight: bold;
+}
+
+.headerTitle {
+    background-color: rgba(31, 189, 139, 0.29);
+    font-weight: bold;
+    text-align: center;
+    color: #7c7c7c;
+    border-radius: 8px;
+    border: 1px solid rgb(121, 118, 118);
+}
+
+.carEndereco {
+    /* border: 2px solid rgba(129, 125, 125, 0.479); */
+    background-color: rgba(255, 255, 255, 0.548);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
+}
+
+.carEndereco header {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    font-weight: bold;
+}
+
+.carEndereco header input {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.carEndereco header label {
+    margin-left: 10px;
+}
+
+.endereco p {
+    margin: 10px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+#formEndereco .form-group label {
+    font-size: 14px;
+}
+
+#formEndereco .form-group input, select,#formEndereco .form-group div {
+    font-size: 12px;
+}
+
+.trash {
+    cursor: pointer;
+    padding: 0px;
+    margin-right: 20px;
+    margin-top: -5px;
 }

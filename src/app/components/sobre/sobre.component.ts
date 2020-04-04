@@ -19,7 +19,7 @@ export class SobreComponent implements OnInit {
     img: "http://localhost:4200/assets/img/colaboradores/Karina.png",
     linkedin: "https://www.linkedin.com/in/karina-a-t-aquino/",
     github: "https://github.com/KarinaThomaz",
-    workplace: "https://raiadrogasil.workplace.com",
+    workplace: "https://raiadrogasil.workplace.com/profile.php?id=100049626968120&sk=about",
     idade: "20 anos",
     hobbies: "livros e series",
     formacao: "Análise e desenvolvimento de sistema, Tecnologia da Informação - IFSP",
@@ -30,7 +30,7 @@ export class SobreComponent implements OnInit {
     img: "http://localhost:4200/assets/img/colaboradores/Ronaldo.png",
     linkedin: "https://www.linkedin.com/in/ronaldo-mendes-da-silva-b3382511a/",
     github: "https://github.com/ronaldomendes",
-    workplace: "https://raiadrogasil.workplace.com",
+    workplace: "https://raiadrogasil.workplace.com/profile.php?id=100048154912711&sk=about",
     idade: "18 anos",
     hobbies: "musicas e jogos",
     formacao: "Bacharelado em Engenharia da Computação - Impacta Tecnologia",
@@ -41,7 +41,7 @@ export class SobreComponent implements OnInit {
     img: "http://localhost:4200/assets/img/colaboradores/Samuel.png",
     linkedin: "https://www.linkedin.com/in/samuel-weslley-126703181/",
     github: "https://github.com/SamuWesll",
-    workplace: "https://raiadrogasil.workplace.com",
+    workplace: "https://raiadrogasil.workplace.com/profile.php?id=100048181071440&sk=about",
     idade: "25 anos",
     hobbies: "musicas e jogos",
     formacao: "Bacharelado em Engenharia da Computação - Univesp",
@@ -52,7 +52,7 @@ export class SobreComponent implements OnInit {
     img: "http://localhost:4200/assets/img/colaboradores/Uilson.png",
     linkedin: "https://www.linkedin.com/in/uilson-ribeiro-campos-203b32141/",
     github: "https://github.com/Uilson2020",
-    workplace: "https://raiadrogasil.workplace.com",
+    workplace: "https://raiadrogasil.workplace.com/profile.php?id=100049798951424&sk=about",
     idade: "38 anos",
     hobbies: "livros e series",
     formacao: "Graduação, Ciência da Computação - Uninove",
@@ -70,6 +70,9 @@ export class SobreComponent implements OnInit {
   public hobbiesColab: string = null;
   public tituloColab: string = null;
   public experienciaColab: string = null;
+  public linkLinkedin: string = null;
+  public linkGithub: string = null;
+  public linkWorkPlace: string = null;
 
   constructor() {
 
@@ -108,6 +111,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.karina['hobbies'];
     this.tituloColab = this.karina['formacao'];
     this.experienciaColab = this.karina['experiencias'];
+    this.linkLinkedin = this.karina['linkedin'];
+    this.linkGithub = this.karina['github'];
+    this.linkWorkPlace = this.karina['workplace'];
 
     this.selecKarina = true;
     this.selecRonaldo = false;
@@ -122,6 +128,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.ronaldo['hobbies'];
     this.tituloColab = this.ronaldo['formacao'];
     this.experienciaColab = this.ronaldo['experiencias'];
+    this.linkLinkedin = this.ronaldo['linkedin'];
+    this.linkGithub = this.ronaldo['github'];
+    this.linkWorkPlace = this.ronaldo['workplace'];
 
     this.selecKarina = false;
     this.selecRonaldo = true;
@@ -136,6 +145,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.samuel['hobbies'];
     this.tituloColab = this.samuel['formacao'];
     this.experienciaColab = this.samuel['experiencias'];
+    this.linkLinkedin = this.samuel['linkedin'];
+    this.linkGithub = this.samuel['github'];
+    this.linkWorkPlace = this.samuel['workplace'];
 
     this.selecKarina = false;
     this.selecRonaldo = false;
@@ -150,6 +162,9 @@ export class SobreComponent implements OnInit {
     this.hobbiesColab = this.uilson['hobbies'];
     this.tituloColab = this.uilson['formacao'];
     this.experienciaColab = this.uilson['experiencias'];
+    this.linkLinkedin = this.uilson['linkedin'];
+    this.linkGithub = this.uilson['github'];
+    this.linkWorkPlace = this.uilson['workplace'];
 
     this.selecKarina = false;
     this.selecRonaldo = false;
