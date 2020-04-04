@@ -181,7 +181,7 @@ cadastrarNovoEndereco(form) {
 
 }
 
-deletarEndere(idEndereco: string) {
+deletarEndere(idEndereco: number) {
 
   this.httpEndereco.deletarEndereco(idEndereco).subscribe(
       () => console.log(`o endereço do id: ${idEndereco} foi deletado`),

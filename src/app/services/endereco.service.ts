@@ -30,7 +30,7 @@ export class EnderecoService {
     return this.enderecoService.post("http://localhost:8080/meupanoonline/endereco", body)
   };
 
-  deletarEndereco(idEndereco: string): Observable<void> {
+  deletarEndereco(idEndereco: number): Observable<void> {
 
     let httpHeaders = new HttpHeaders()
     .set('Content-Type', 'Aplication/Json');
@@ -38,7 +38,7 @@ export class EnderecoService {
       headers: httpHeaders
     }
 
-    return this.enderecoService.delete<void>(`http://localhost:8080/meupanoonline/endereco?idEndereco=${idEndereco}`).pipe(catchError(this.handleError))
+    return this.enderecoService.delete<void>(`http://localhost:8080/meupanoonline/endereco?idEndereco=${idEndereco}.json`).pipe(catchError(this.handleError))
   }
 
 }
