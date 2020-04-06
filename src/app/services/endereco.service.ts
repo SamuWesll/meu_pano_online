@@ -32,13 +32,12 @@ export class EnderecoService {
 
   deletarEndereco(idEndereco: number): Observable<void> {
 
-    let httpHeaders = new HttpHeaders()
-    .set('Content-Type', 'Aplication/Json');
+    let httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     let options = {
       headers: httpHeaders
     }
 
-    return this.enderecoService.delete<void>(`http://localhost:8080/meupanoonline/endereco?idEndereco=${idEndereco}.json`).pipe(catchError(this.handleError))
+    return this.enderecoService.delete<void>(`http://localhost:8080/meupanoonline/endereco?idEndereco=${idEndereco}`, options).pipe(catchError(this.handleError))
   }
 
 }

@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
 export class ProdutoDetalhadoComponent implements OnInit {
 
   converteDecimal(valor: number): string {
-    if (valor){
+    if (valor) {
       return valor.toFixed(2).replace('.', ',');
     } else {
       return ''
@@ -38,12 +38,26 @@ export class ProdutoDetalhadoComponent implements OnInit {
     // (refatorado)
     this.route.params.subscribe(parametros => {
       this.http.getProdutoById(parametros['id']).forEach((prod: Produtos) => {
-        this.produtoDetalhado = prod 
+        this.produtoDetalhado = prod
       })
     })
   }
 
   adicionarCarrinho() {
+    this.carrinhoService
+      .adicionarItem(new ProdutoCarrinho(this.produtoDetalhado, this.contador))
+      .subscribe(
+        res => {
+          if (!res) {
+            console.log('Erro' + res);
+            throw new Error();
+          }
+        },
+        _ => console.log('Erro')
+      );
+  }
+
+  comprar() {
     this.carrinhoService
       .adicionarItem(new ProdutoCarrinho(this.produtoDetalhado, this.contador))
       .subscribe(

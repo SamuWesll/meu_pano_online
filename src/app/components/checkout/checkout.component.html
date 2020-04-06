@@ -96,7 +96,7 @@
                                 <input type="radio" name="endereco" value="{{ endereco.idEndereco }}" (click)="selecionarEndereco(endereco.idEndereco)">
                                 <label for="">Endereço {{ i + 1  }}</label>
                             </div>
-                            <img class="trash" src="../../../assets/img/trash.png" (click)="modalDeletarEndereco.show(); selecionarEndereco(endereco.idEndereco)" height="15px" alt="">
+                            <!-- <img class="trash" src="../../../assets/img/trash.png" (click)="modalDeletarEndereco.show(); selecionarEndereco(endereco.idEndereco)" height="15px" alt=""> -->
                         </header>
                         <div class="endereco">
                             <p>
@@ -182,7 +182,7 @@
                             <option value="jul">JULHO</option>
                             <option value="ago">AGOSTO</option>
                             <option value="set">SETEMBRO</option>
-                            <option value="out">OUTUBTO</option>
+                            <option value="out">OUTUBRO</option>
                             <option value="nov">NOVEMBRO</option>
                             <option value="dez">DEZEMBRO</option>
                         </select>
@@ -284,6 +284,9 @@
             </div>
             <div class="mt-2">
                 <strong>Forma de pagamento: </strong><span>{{ pedidoFinaliza['formaPgto'] }}</span>
+            </div>
+            <div class="mt-2">
+                <strong>Status do pedido: </strong><span>{{ pedidoFinaliza['status'] }}</span>
             </div>
           <!-- <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p> -->
         </div>

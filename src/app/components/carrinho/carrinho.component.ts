@@ -25,8 +25,8 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   public clienteSub: Subscription;
 
   constructor(public carrinhoService: CarrinhoService,
-              public clienteService: ClienteService, 
-              private router: Router) {
+    public clienteService: ClienteService,
+    private router: Router) {
     this.clienteSub = this.clienteService.clienteLogado.subscribe(cliente =>
       this.clienteLogado = cliente);
   }
@@ -34,9 +34,9 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
   private atualizarTermos = new Subject<ProdutoCarrinho>();
   sub: Subscription;
 
-  static quantidadeMaiorQueZero(produtoCarrinho){
-    if(produtoCarrinho.contador<1){
-      produtoCarrinho.contador=1;
+  static quantidadeMaiorQueZero(produtoCarrinho) {
+    if (produtoCarrinho.contador < 1) {
+      produtoCarrinho.contador = 1;
     }
   }
 
@@ -73,13 +73,17 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
 
   subtrair(produtoCarrinho) {
     produtoCarrinho.contador--;
+    if (produtoCarrinho.contador <= 1) {
+      produtoCarrinho.contador = 1
+    }
+
     if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
   }
 
   onChange(produtoCarrinho) {
     CarrinhoComponent.quantidadeMaiorQueZero(produtoCarrinho);
-    if (this.clienteLogado){ 
-      this.atualizarTermos.next(produtoCarrinho); 
+    if (this.clienteLogado) {
+      this.atualizarTermos.next(produtoCarrinho);
     }
   }
 
@@ -91,56 +95,4 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
       },
       _ => console.log('Erro 400'));
   }
-
-  checkout() {
-    if (!this.clienteLogado) {
-      //this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
-      //como chamar o viewChild?
-    } else {
-      this.carrinhoService.checkout().subscribe(
-        _ => {
-          this.produtoCarrinho = [];
-        },
-        error1 => {
-          console.log('Erro checkout');
-        });
-      this.router.navigate(['/']);
-    }
-
-  }
 }
-  // private calcularTotal(p: Carrinho[]): number {
-  //   let soma = 0;
-  //   p.forEach(valor => {
-  //     soma += (valor.produto.valorDesconto * valor.quantidade);
-  //   })
-  //   return soma;
-  // }
-
-  // carregarTotal() {
-  //   this.sub = this.carrinhoService.ItemAtualizado.subscribe(() => {
-  //     this.valorTotal = this.calcularTotal(this.item.itemCarrinho);
-  //   })
-  // }
-
-  // carregarCompra() {
-  //   this.sub = this.carrinhoService.CarrinhoAtualizado.subscribe(() => {
-  //     let carrinho = this.carrinhoService
-  //   })
-  // }
-
-  // alterarQtde(valor, item){
-  //   if(item.qtde){
-  //     item.qtde++;
-  //     this.valorTotal+=item.produtos.valorUnitario;
-  //   }else{
-  //     item.qtde--;
-  //     this.valorTotal -= item.produtos.valorUnitario;
-  //   }
-  // }
-
-  // removerCarrinho(item){
-  //   this.valorTotal-=item.produtos.valorUnitario;
-  //   this.carrinho = this.carrinho.filter(prod=>prod != item
-  //   )
-  // }
