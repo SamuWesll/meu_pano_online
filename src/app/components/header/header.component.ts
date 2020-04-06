@@ -44,10 +44,11 @@ export class HeaderComponent implements OnInit {
       };
       this.httpCliente.postLogin(body).subscribe(
         (data) => {
-          if (data['statusCodeValue'] == 400) {
-            alert(data['body']);
-          } else if (data['statusCodeValue'] == 200) {
-            this.logadoLocalStorage(data['body']);
+          if (data == "Cliente não cadastrado") {
+            alert(data);
+          } else if (data != "Cliente não cadastrado") {
+            console.log(data)
+            this.logadoLocalStorage(data);
             this.verificarLogin();
             console.log(this.login)
             return alert('Login realizado com sucesso')
@@ -61,10 +62,11 @@ export class HeaderComponent implements OnInit {
       };
       this.httpCliente.postLoginCpf(body).subscribe(
         (data) => {
-          if (data['statusCodeValue'] == 400) {
+          console.log(data)
+          if (data == "Cliente não cadastrado") {
             alert(data['body']);
-          } else if (data['statusCodeValue'] == 200) {
-            this.logadoLocalStorage(data['body']);
+          } else if(data != "Cliente não cadastrado") {
+            this.logadoLocalStorage(data);
             this.verificarLogin();
             console.log(this.login)
             return alert('Login realizado com sucesso')
@@ -84,9 +86,9 @@ export class HeaderComponent implements OnInit {
 
     let gen: Sexo;
 
-    if (body.genero == "M") {
+    if (body.genero == "m") {
       gen = Sexo.masculino;
-    } else if (body.genero == "F") {
+    } else if (body.genero == "f") {
       gen = Sexo.feminino;
     }
 
