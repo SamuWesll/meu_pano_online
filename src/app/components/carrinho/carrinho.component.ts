@@ -73,6 +73,10 @@ export class CarrinhoComponent implements OnInit, OnDestroy, AfterContentChecked
 
   subtrair(produtoCarrinho) {
     produtoCarrinho.contador--;
+    if(produtoCarrinho.contador <= 1) {
+      produtoCarrinho.contador = 1
+    }
+
     if (this.clienteLogado) { this.atualizarTermos.next(produtoCarrinho); }
   }
 
