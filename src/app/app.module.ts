@@ -28,6 +28,7 @@ import { BuscaComponent } from './components/busca/busca.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 // import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BuscaComponent, 
     CheckoutComponent,
     PageNotFoundComponent,
+    PedidoComponent,
   ],
   imports: [
     BrowserModule,
