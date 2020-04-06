@@ -47,10 +47,8 @@ export class HeaderComponent implements OnInit {
           if (data == "Cliente não cadastrado") {
             alert(data);
           } else if (data != "Cliente não cadastrado") {
-            console.log(data)
             this.logadoLocalStorage(data);
             this.verificarLogin();
-            console.log(this.login)
             return alert('Login realizado com sucesso')
           }
         }
@@ -62,13 +60,11 @@ export class HeaderComponent implements OnInit {
       };
       this.httpCliente.postLoginCpf(body).subscribe(
         (data) => {
-          console.log(data)
           if (data == "Cliente não cadastrado") {
             alert(data['body']);
           } else if(data != "Cliente não cadastrado") {
             this.logadoLocalStorage(data);
             this.verificarLogin();
-            console.log(this.login)
             return alert('Login realizado com sucesso')
           }
         }

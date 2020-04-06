@@ -30,7 +30,7 @@ export class CheckoutComponent implements OnInit {
   valorProdutos: any;
   qtdProdutos: number;
 
-  pedidoFinaliza: object  = {
+  pedidoFinaliza: object = {
     idPedido: '',
     valorFrete: 0,
     totalCompra: 0,
@@ -70,12 +70,12 @@ export class CheckoutComponent implements OnInit {
   HttpClientModule: any;
   HttpClient: any;
 
-  onSubmit(form){
+  onSubmit(form) {
     // console.log(form);
   }
 
-   formBuilder: any;
-   formulario: any;
+  formBuilder: any;
+  formulario: any;
 
   private createForm(checkout: Checkout): FormGroup {
     return new FormGroup({
@@ -101,101 +101,102 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  
+
   title = 'app';
 
-  constructor(private viacep: NgxViacepService, 
-              private Http: HttpClient, 
-              private httpCliente: ClienteService, 
-              private httpEndereco: EnderecoService,
-              private carrinhoService: CarrinhoService,
-              private pedidoService: PedidoService,
-              private router: Router,
-  ) {} // Injetando o serviço
+  constructor(private viacep: NgxViacepService,
+    private Http: HttpClient,
+    private httpCliente: ClienteService,
+    private httpEndereco: EnderecoService,
+    private carrinhoService: CarrinhoService,
+    private pedidoService: PedidoService,
+    private router: Router,
+  ) { } // Injetando o serviço
 
-  consultaCEP(cep: string){
+  consultaCEP(cep: string) {
 
-    if (cep != ""){
-    var validacep = /^[0-9]{8}$/;
+    if (cep != "") {
+      var validacep = /^[0-9]{8}$/;
 
-    this.viacep.buscarPorCep(cep).then(
-      (endereco: Endereco) => {
-        this.usuario.endereco = endereco.logradouro;
-        this.usuario.complemento = endereco.complemento;
-        this.usuario.bairro = endereco.bairro;
-        this.usuario.cidade = endereco.localidade;
-        this.usuario.estado = endereco.uf;
-      }
-    ).catch(
-      (error: ErroCep) => {
-        return 
-      }
-    )}
-
-}
-
-valorFrete(valor: number) {
-  this.valorFreteRadio = valor;
-};
-
-selecionarEndereco(id) {
-  this.idEndereco = parseInt(id);
-}
-
-mascaraValor(valor: number) {
-  return Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
-}
-
-carrinhoDeCompra() {
-  let qtdProduto: number = 0;
-  let valorProduto: number = 0;
-
-  for(let i = 0; i < this.carrinho.length; i++) {
-    qtdProduto += this.carrinho[i].contador;
-    valorProduto += this.carrinho[i].valorDesconto * this.carrinho[i].contador;
-  }
-  
-  this.valorProdutos = valorProduto;
-  this.qtdProdutos = qtdProduto;
-}
-
-adicionarZero(numero: number) {
-  if(numero < 10) {
-    return "0" + numero;
-  };
-  return numero;
-};
-
-
-cadastrarNovoEndereco(form) {
-
-  let body = {
-    bairro: form['bairro'],
-    cep: form['cep'],
-    cidade: form['cidade'],
-    complemento: form['complemento'],
-    logradouro: form['ender'],
-    numTelefone: "11984670655",
-    numero: form['numero'],
-    referencia: null,
-    tb_cliente_id_cliente: this.cliente['idCliente'],
-    uf: form['estado']
-  }
-
-  this.httpEndereco.postEndereco(body).subscribe(
-    (data) => {
-      this.cliente.tb_endereco_id_cliente.push(data);
+      this.viacep.buscarPorCep(cep).then(
+        (endereco: Endereco) => {
+          this.usuario.endereco = endereco.logradouro;
+          this.usuario.complemento = endereco.complemento;
+          this.usuario.bairro = endereco.bairro;
+          this.usuario.cidade = endereco.localidade;
+          this.usuario.estado = endereco.uf;
+        }
+      ).catch(
+        (error: ErroCep) => {
+          return
+        }
+      )
     }
-  )
 
-}
+  }
 
-deletarEndere(idEndereco: number) {
+  valorFrete(valor: number) {
+    this.valorFreteRadio = valor;
+  };
 
-  this.httpEndereco.deletarEndereco(idEndereco).subscribe(
+  selecionarEndereco(id) {
+    this.idEndereco = parseInt(id);
+  }
+
+  mascaraValor(valor: number) {
+    return Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
+  }
+
+  carrinhoDeCompra() {
+    let qtdProduto: number = 0;
+    let valorProduto: number = 0;
+
+    for (let i = 0; i < this.carrinho.length; i++) {
+      qtdProduto += this.carrinho[i].contador;
+      valorProduto += this.carrinho[i].valorDesconto * this.carrinho[i].contador;
+    }
+
+    this.valorProdutos = valorProduto;
+    this.qtdProdutos = qtdProduto;
+  }
+
+  adicionarZero(numero: number) {
+    if (numero < 10) {
+      return "0" + numero;
+    };
+    return numero;
+  };
+
+
+  cadastrarNovoEndereco(form) {
+
+    let body = {
+      bairro: form['bairro'],
+      cep: form['cep'],
+      cidade: form['cidade'],
+      complemento: form['complemento'],
+      logradouro: form['ender'],
+      numTelefone: "11984670655",
+      numero: form['numero'],
+      referencia: null,
+      tb_cliente_id_cliente: this.cliente['idCliente'],
+      uf: form['estado']
+    }
+
+    this.httpEndereco.postEndereco(body).subscribe(
+      (data) => {
+        this.cliente.tb_endereco_id_cliente.push(data);
+      }
+    )
+
+  }
+
+  deletarEndere(idEndereco: number) {
+
+    this.httpEndereco.deletarEndereco(idEndereco).subscribe(
       () => console.log(`o endereço do id: ${idEndereco} foi deletado`),
       (err) => console.log(err)
-  )
+    )
     // (data) => {
     //   if(data == "Endereço não encontrado!") {
     //     return alert(data)
@@ -208,84 +209,84 @@ deletarEndere(idEndereco: number) {
     //     this.idEndereco = null;
     //   }
     // }
-  
-}
 
-postCliente() {
-
-  let cli = JSON.parse(localStorage.getItem("logado"))
-
-  this.httpCliente.getClienteId(cli['idCliente']).subscribe(
-    (body) => {
-      this.cliente = body;
-    }
-  )
-
-}
-
-getCarrinho() {
-  this.carrinhoService.getCarrinho().subscribe(
-    (produto) => {
-      console.log(produto)
-      return this.carrinho = produto;
-    }
-  )
-}
-
-deleteCarrinho() {
-  this.carrinhoService.limparCarrinhoStorage();
-}
-
-criarPedido() {
-
-  let produtosCarrinhos: object[] = [];
-
-  for(let i = 0; i < this.carrinho.length; i ++) {
-    let p1 = {
-      produto: this.carrinho[i].idProduto,
-      qtdProduto: this.carrinho[i].contador,
-      valorProduto: this.carrinho[i].contador * this.carrinho[i].valorDesconto
-      };
-    produtosCarrinhos.push(p1)
   }
 
-  let pedido = {
-    
-      formaPgto: "cartão de crédito",
+  postCliente() {
+
+    let cli = JSON.parse(localStorage.getItem("logado"))
+
+    this.httpCliente.getClienteId(cli['idCliente']).subscribe(
+      (body) => {
+        this.cliente = body;
+      }
+    )
+
+  }
+
+  getCarrinho() {
+    this.carrinhoService.getCarrinho().subscribe(
+      (produto) => {
+        return this.carrinho = produto;
+      }
+    )
+  }
+
+  deleteCarrinho() {
+    this.carrinhoService.limparCarrinhoStorage();
+  }
+
+  criarPedido() {
+
+    let produtosCarrinhos: object[] = [];
+
+    for (let i = 0; i < this.carrinho.length; i++) {
+      let p1 = {
+        produto: this.carrinho[i].idProduto,
+        qtdProduto: this.carrinho[i].contador,
+        valorProduto: this.carrinho[i].contador * this.carrinho[i].valorDesconto
+      };
+      produtosCarrinhos.push(p1)
+    }
+
+    let pedido = {
+
+      formaPgto: "Cartão de Crédito",
       itensPedido: produtosCarrinhos,
       tb_cliente_id_cliente: this.cliente['idCliente'],
       tb_endereco_id_endereco: this.idEndereco,
       totalCompra: this.valorProdutos,
-      valorFrete: this.valorFreteRadio
-    
+      valorFrete: this.valorFreteRadio,
+      status: "Aguardando confirmação de pagamento",
+      dataPedido: new Date()
+
+    };
+
+    this.pedidoService.criarPedido(pedido).subscribe(
+      (pedido) => {
+        this.pedidoFinaliza = pedido
+        if (pedido['idPedido'] > 0) {
+          this.deleteCarrinho();
+          this.modal.toggle();
+
+        }
+      }
+    )
+
+  }
+
+  pageHome() {
+    this.router.navigate(["/home"]);
   };
 
-  this.pedidoService.criarPedido(pedido).subscribe(
-    (pedido) => {
-      this.pedidoFinaliza = pedido
-      // localStorage.setItem('pedidoFinaliza', JSON.stringify(pedido))
-      if(pedido['idPedido'] > 0) {
-        this.deleteCarrinho();
-        this.modal.toggle();
-        
-      }
-    }
-  )
-  
-}
-
-pageHome() {
-  this.router.navigate(["/home"]);
-};
-
-public f : FormGroup
+  public f: FormGroup
   ngOnInit() {
 
     this.postCliente();
 
     this.getCarrinho();
 
-    this.valorFreteRadio =  7.99
+    this.valorFreteRadio = 7.99
 
     this.carrinhoDeCompra();
 
@@ -296,7 +297,7 @@ public f : FormGroup
     //   ])),    
     // });
 
-   };
-  
+  };
+
 
 }
