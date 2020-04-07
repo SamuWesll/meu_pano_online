@@ -1,22 +1,25 @@
-<header class="navbar bg-nav-green p-4 text-light">
+<header class="navbar bg-nav-green p-2 text-light">
     <a href="#" class="navbar-brand mb-1 text-dark font-weight-bold" routerLink="/home">
         <img src="../../../assets/img/logo1.png" alt="">
     </a>
-    <div class="input-group col-md-4 col-sm-12 mb-1">
+    <div class="input-group col-md-6 col-sm-12 mb-1">
         <input type="text" (keyup.enter)="pesquisarProduto(txtPesquisa.value)" class="form-control"
             placeholder="Sua pesquisa..." aria-label="Sua pesquisa..." aria-describedby="pesquisa" #txtPesquisa>
         <div class="input-group-append">
-            <button class="btn btn-outline-info" type="button" id="pesquisa"></button>
+            <button class="btn btn-info" type="button" id="pesquisa"></button>
         </div>
     </div>
     <div class="mb-1">
-        <button type="button" class="btn btn-outline-success rounded login mr-2" data-toggle="modal"
+        <button type="button" class="btn btn-success rounded login mr-2" data-toggle="modal"
         data-target="#login" (click)="modalLogin.show()">
+        <span *ngIf="!login">
+            Entrar
+        </span>
             <span *ngIf="login">
                 {{ separarNome(login['nome']) }}
             </span>
         </button>
-        <a class="btn btn-outline-warning text-light rounded carrinho" routerLink="/carrinho"></a>
+        <a class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"> Carrinho</a>
     </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light">
