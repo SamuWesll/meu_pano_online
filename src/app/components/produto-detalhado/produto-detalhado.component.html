@@ -1,18 +1,18 @@
-<main class="container bg-light border-bottom pb-5">
+<main class="container border-bottom pb-5">
 
     <div>
-        <div class="row mt-3">
-            <div class="col-md-4  text-secondary">
+        <div class="row mt-6">
+
+            <div class="col-md-6 mt-3 ">
+                <img src="{{ produtoDetalhado?.imagem }}" class="img-fluid mx-auto d-block rounded mw-100 mh-100"
+                    style="width:300px; height: auto;" alt="Pano de Prato" title="Pano de Prato" />
+            </div>
+            <div class="col-md-6  ">
                 <h3 class="pt-2 pb-3 ">{{ produtoDetalhado?.tituloProduto }}</h3>
                 <p class="text-justify">
                     {{ produtoDetalhado?.descricao }}
                 </p>
-            </div>
-            <div class="col-md-5 mt-3">
-                <img src="{{ produtoDetalhado?.imagem }}" class="img-fluid mx-auto d-block rounded mw-100 mh-100"
-                    style="width:300px; height: auto;" alt="Pano de Prato" title="Pano de Prato" />
-            </div>
-            <div class="col-md-3">
+
                 <p class="p-3 ">
                     <span style="text-decoration: line-through">
                         R$ {{ converteDecimal(produtoDetalhado?.valor) }}
@@ -22,16 +22,20 @@
                         R$ {{ converteDecimal(produtoDetalhado?.valorDesconto) }}
                     </span>
                 </p>
-                <p class="text-muted text-right">Em até 1x sem juros</p>
-                <div class="row">
-                    <button type="submit" (click)="adicionarCarrinho()" class="mx-auto btn btnDetalhe offset-1 col-10 mb-2"
+                <p class="text-muted text-left">Em até 1x sem juros</p>
+                <div class="row" >
+                    <button type="submit" (click)="comprar()" class="mx-auto btn btnDetalhe offset-1 col-10 mb-2" style="height: 48px;"
                         value="submit">Comprar</button>
                 </div>
-                <div class="pb-1 border-bottom text-center">
-                    <a (click)="adicionarCarrinho()" class="text-success">Adicionar ao carrinho</a>
+                <div class="pb-1 border-bottom text-center text-muted">
+                    <a add-cart (click)="adicionarCarrinho()" class="light"><strong>Adicionar ao carrinho</strong></a>
                 </div>
-                <!--<app-consultar-frete></app-consultar-frete>-->
+
             </div>
+            
+            <!-- <div class="col-md-3">   
+                <app-consultar-frete></app-consultar-frete>
+            </div> -->
         </div>
     </div>
 </main>

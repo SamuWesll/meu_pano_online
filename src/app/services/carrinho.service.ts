@@ -115,7 +115,6 @@ export class CarrinhoService {
     }
 
     limparCarrinhoStorage() {
-        console.log('cheguei aqui');
         this.cookieService.delete('carrinho');
         this.localMap = {};
     }

@@ -1,0 +1,16 @@
+/* .input-group input {
+   
+} */
+
+.input-group button {
+    width: 80px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
+}
+
+.navbar a img {
+    width: 190px;
+    height: 60px;
+    padding-left: 40px;
+    
+}
+

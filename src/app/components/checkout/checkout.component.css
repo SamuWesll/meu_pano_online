@@ -22,9 +22,9 @@ span {
     background-color: rgba(31, 189, 139, 0.29);
     font-weight: bold;
     text-align: center;
-    color: #7c7c7c;
-    border-radius: 8px;
-    border: 1px solid rgb(121, 118, 118);
+    color: #424040;
+    border-radius: 5px;
+    /* border: 1px solid rgb(121, 118, 118); */
 }
 
 .carEndereco {
