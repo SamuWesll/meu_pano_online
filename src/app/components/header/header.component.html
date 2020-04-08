@@ -10,17 +10,23 @@
         </div>
     </div>
     <div class="mb-1">
-        <h6 style="color: #424040;">Olá, bem vindo!</h6>
+        <!-- <h6 style="color: #424040;">Olá, bem vindo!</h6> -->
+        <!-- <p style="color: #424040;">Olá visitante, entre na sua conta </p> -->
+        
         <button type="button" class="btn btn-success rounded login mr-2" data-toggle="modal"
         data-target="#login" (click)="modalLogin.show()">
-        <span *ngIf="!login">
-            Entrar
+        <span class="small" *ngIf="!login">
+            Olá,
+            Entre ou cadastre-se
         </span>
+
+        <!-- <span class="header-account-username-small current-username">Olá! Entrar na</span> -->
             <span *ngIf="login">
                 {{ separarNome(login['nome']) }}
             </span>
         </button>
-        <a class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"> Carrinho</a>
+        <a style="height: px;" class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"> Carrinho</a>
+        <!-- <a class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"> Meu<br>carrinho</a> -->
     </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light">
