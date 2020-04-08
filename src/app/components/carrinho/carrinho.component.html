@@ -33,9 +33,9 @@
       </tr>
     </tbody>
   </table>
-  <div *ngIf="produtoCarrinho?.length > 0; else vazio">
-    <h4 style="display: inline;">Total: R$ {{converteDecimal(valorTotal)}}</h4>
-    <button  [routerLink]="['/carrinho/checkout']" class="btn btnDetalhe float-right">Continuar</button> 
+  <div style="text-align: right;" *ngIf="produtoCarrinho?.length > 0; else vazio">
+    <h4 style="display: block;">Total: R$ {{converteDecimal(valorTotal)}}</h4>
+    <button  [routerLink]="['/carrinho/checkout']" class="btn btnDetalhe ">Ir para pagamento</button> 
   </div>
 <ng-template #vazio>
     <h4 class="text-muted text-center">Poxa, seu carrinho está vazio!<br> Sinta-se à vontade e conheça nossos produtos!
