@@ -10,8 +10,6 @@ const URLPedido: string = "http://localhost:8080/meupanoonline/pedido" ;
     providedIn: 'root'
 })
 
-
-
 export class PedidoService{
 
     constructor(private pedidoService: HttpClient){ }
@@ -20,10 +18,12 @@ export class PedidoService{
         return this.pedidoService.post(URLPedido, body);
     }
 
+    getPedidos():Observable<any>{
+        return this.pedidoService.get(URLPedido+"/lista").pipe();
+    }
+
     exibir(idPedido): Observable<Pedido>{
-        return this.pedidoService.get<Pedido>(`$URLPedido/${idPedido}`).pipe(
-            catchError(_ => of(null))
-        );
+        return this.pedidoService.get<Pedido>(`$URLPedido/${idPedido}`).pipe();
     }
 
     cancelar(idPedido): Observable<Pedido>{

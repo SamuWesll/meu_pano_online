@@ -14,6 +14,9 @@ import { Pedido } from "../../models/Pedido";
 })
 export class PedidoComponent implements OnInit, OnDestroy {
 
+  pedidos: Pedido
+  pedidosCliente: Pedido[]=[];
+  
   clienteLogado: Response;
 
   constructor(private http: HttpClient, 
@@ -25,6 +28,11 @@ export class PedidoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.clienteLogado=this.clienteService.clienteLogadoValue;
+    this.getPedidos();
+  }
+
+  getPedidos(){
+    this.pedidoService.getPedidos().subscribe();
   }
 
   // cancelar(pedido: Pedido){
@@ -36,6 +44,7 @@ export class PedidoComponent implements OnInit, OnDestroy {
   //     }
   //   );
   // }
+
 
   ngOnDestroy(){
     this.sub.unsubscribe();

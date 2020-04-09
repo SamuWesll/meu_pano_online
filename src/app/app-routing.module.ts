@@ -11,6 +11,7 @@ import { CarrinhoComponent } from "./components/carrinho/carrinho.component";
 import { BuscaComponent } from './components/busca/busca.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PedidoComponent } from "./components/pedido/pedido.component";
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: "carrinho/checkout",
     component: CheckoutComponent
+  },
+  {
+    path: "pedidos",
+    component: PedidoComponent
   },
   {
     path: "**",
