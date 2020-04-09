@@ -24,7 +24,7 @@
 .card {
     margin: 20px;
     /* height: 400px; */
-    width: 200px;
+    width: 230px;
     display: flex;
     justify-content: center;
 }
@@ -57,6 +57,7 @@
 .card-img-top {
     width: 90%;
     margin: 10px 10px -10px 10px;
+    max-height: 160px;
 }
 
 .card-text {
@@ -67,4 +68,8 @@
 .btn-success {
     margin-top: 20px;
     margin-bottom: 4px;
+}
+
+span {
+    font-size: 1.2rem;
 }
