@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class ProdutosComponent implements OnInit {
 
   public idCategoria;
+  public produtosOrdenados = 'padrao';
   public produtos: Produtos[] = [];
   public produtosPorCategoria: Produtos[] = [];
 
@@ -29,25 +30,55 @@ export class ProdutosComponent implements OnInit {
 
   }
 
+  listarProdutos(valor) {
+    if (valor === 'padrao') {
+      this.produtosOrdenados = valor
+    } else if (valor === 'menor') {
+      this.produtosOrdenados = valor
+    } else if (valor === 'maior') {
+      this.produtosOrdenados = valor
+    } else if (valor === 'az') {
+      this.produtosOrdenados = valor
+    } else if (valor === 'za') {
+      this.produtosOrdenados = valor
+    }
+  }
+
+  adaptadorFiltro(id, prod) {
+    if (id !== 0) {
+      this.produtos = prod
+      this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
+    } else {
+      this.produtosPorCategoria = prod
+    }
+
+  }
+
   // usando o filtro de categorias (refatorado)
-  filtroProdutos(id: number) {
-    this.produtos = []
-    this.produtosPorCategoria = []
-    this.httpProduto.getListaProdutos().pipe(map((data: Produtos[]) => data)).forEach(prod => {
-        if (id !== 0) {
-          this.produtos = prod
-          this.produtosPorCategoria = this.produtos.filter(p => p.categoria == id)
-        } else {
-          this.produtosPorCategoria = prod
-        }
-    })
+  filtroProdutos(id: number, ordem: string) {
+    if (ordem === 'padrao') {
+      this.httpProduto.getListaProdutos().pipe(map((data: Produtos[]) => data))
+        .forEach(prod => this.adaptadorFiltro(id, prod))
+    } else if (ordem === 'menor') {
+      this.httpProduto.getMenorPreco().pipe(map((data: Produtos[]) => data))
+        .forEach(prod => this.adaptadorFiltro(id, prod))
+    } else if (ordem === 'maior') {
+      this.httpProduto.getMaiorPreco().pipe(map((data: Produtos[]) => data))
+        .forEach(prod => this.adaptadorFiltro(id, prod))
+    } else if (ordem === 'az') {
+      this.httpProduto.getProdutosAZ().pipe(map((data: Produtos[]) => data))
+        .forEach(prod => this.adaptadorFiltro(id, prod))
+    } else if (ordem === 'za') {
+      this.httpProduto.getProdutosZA().pipe(map((data: Produtos[]) => data))
+        .forEach(prod => this.adaptadorFiltro(id, prod))
+    }
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'))
       this.idCategoria = id
-      this.filtroProdutos(this.idCategoria)
+      this.filtroProdutos(this.idCategoria, this.produtosOrdenados)
     })
   }
 }
