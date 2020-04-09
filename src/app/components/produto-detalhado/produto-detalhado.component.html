@@ -12,14 +12,13 @@
                 <p class="text-justify">
                     {{ produtoDetalhado?.descricao }}
                 </p>
-                <p>paragrafo teste</p>
-                <p class="p-3 ">
+                <p style="align-content: left;">
                     <span style="text-decoration: line-through">
                         R$ {{ converteDecimal(produtoDetalhado?.valor) }}
                     </span>
                     <br>
-                    <span class="h3 font-weight-bold text-success text-decoration-none" style="text-align: left;">
-                        R$ {{ converteDecimal(produtoDetalhado?.valorDesconto) }}
+                    <span class="h3 font-weight-bold text-success text-decoration-none text-muted text-left" >
+                         R$ {{ converteDecimal(produtoDetalhado?.valorDesconto) }}
                     </span>
                 </p>
                 <p class="text-muted text-left">Em até 1x sem juros</p>
