@@ -16,6 +16,22 @@ export class ProdutoService {
     return buscarProdutos
   };
 
+  getMenorPreco() {
+    return this.http.get(`${urlProduto}/valor-asc`);
+  }
+  
+  getMaiorPreco() {
+    return this.http.get(`${urlProduto}/valor-desc`);
+  }
+  
+  getProdutosAZ() {
+    return this.http.get(`${urlProduto}/ordem-az`);
+  }
+
+  getProdutosZA(){
+    return this.http.get(`${urlProduto}/ordem-za`);
+  }
+
   getProduto(codProduto: number) {
     let buscarProduto = this.http.get(urlProduto + "?idCliente=" + codProduto)
     return buscarProduto;
