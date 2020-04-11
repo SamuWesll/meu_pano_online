@@ -102,6 +102,7 @@ export class CheckoutComponent implements OnInit {
   }
 
 
+
   title = 'app';
 
   constructor(private viacep: NgxViacepService,
@@ -194,7 +195,14 @@ export class CheckoutComponent implements OnInit {
   deletarEndere(idEndereco: number) {
 
     this.httpEndereco.deletarEndereco(idEndereco).subscribe(
-      () => console.log(`o endereço do id: ${idEndereco} foi deletado`),
+      () =>  {
+        // alert(`o endereço do id: ${idEndereco} foi deletado`);
+        this.cliente.tb_endereco_id_cliente.forEach(end => {
+          if(end.idEndereco == idEndereco) {
+            this.cliente.tb_endereco_id_cliente.splice(end,1)
+          }
+        });
+      },
       (err) => console.log(err)
     )
     // (data) => {
@@ -218,6 +226,7 @@ export class CheckoutComponent implements OnInit {
 
     this.httpCliente.getClienteId(cli['idCliente']).subscribe(
       (body) => {
+        console.log(body)
         this.cliente = body;
       }
     )
