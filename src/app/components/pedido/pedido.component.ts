@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Subscription } from 'rxjs';
 import { Response } from "../../response/Response";
 import { Pedido } from "../../models/Pedido";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-pedido',
@@ -14,10 +15,11 @@ import { Pedido } from "../../models/Pedido";
 })
 export class PedidoComponent implements OnInit, OnDestroy {
 
-  pedidos: Pedido
-  pedidosCliente: Pedido[]=[];
-  
   clienteLogado: Response;
+
+  //pedidos: Pedido
+  pedidosCliente: Pedido[]=[];
+    
 
   constructor(private http: HttpClient, 
     private pedidoService: PedidoService, 
@@ -32,8 +34,11 @@ export class PedidoComponent implements OnInit, OnDestroy {
   }
 
   getPedidos(){
-    this.pedidoService.getPedidos().subscribe();
+    this.pedidoService.getPedidos().pipe(map((data : Pedido[])=>data)).forEach(pCliente=> {
+      this.pedidosCliente = pCliente;
+    });
   }
+
 
   // cancelar(pedido: Pedido){
   //   this.pedidoService.cancelar(pedido.idPedido).subscribe(

@@ -12,6 +12,8 @@ const URLPedido: string = "http://localhost:8080/meupanoonline/pedido" ;
 
 export class PedidoService{
 
+    //private URL: string = `$URLPedido/lista-cliente`;
+
     constructor(private pedidoService: HttpClient){ }
 
     criarPedido(body: object) {
@@ -19,7 +21,7 @@ export class PedidoService{
     }
 
     getPedidos():Observable<any>{
-        return this.pedidoService.get(URLPedido+"/lista").pipe();
+        return this.pedidoService.get(URLPedido+"/data-desc").pipe();
     }
 
     exibir(idPedido): Observable<Pedido>{
