@@ -21,7 +21,7 @@ export class PedidoService{
     }
 
     getPedidos():Observable<any>{
-        return this.pedidoService.get(URLPedido+"/data-desc").pipe();
+        return this.pedidoService.get(URLPedido+"/lista-cliente").pipe();
     }
 
     exibir(idPedido): Observable<Pedido>{

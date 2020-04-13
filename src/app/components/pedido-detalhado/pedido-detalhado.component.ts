@@ -1,8 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { PedidoService } from 'src/app/services/pedido.service';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { PedidoService } from 'src/app/services/pedido.service';
 import { Pedido } from 'src/app/models/Pedido';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+    selector: 'app-pedido-detalhado',
+    templateUrl: './pedido-detalhado.component.html',
+    styleUrls: ['./pedido-detalhado.component.css']
+})
 
 export class PedidoDetalhadoComponent implements OnInit {
 

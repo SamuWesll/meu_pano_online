@@ -18,9 +18,9 @@
         <td class="align-middle"><a routerLink="/produtos/detalhes/{{item.idProduto}}">{{item.tituloProduto}}</a></td>
         <td class="align-middle">{{converteDecimal(item.valorDesconto)}}</td>
         <td class="align-middle">{{item.contador}}</td>
-        <td class="align-middle">{{(item.valorDesconto * item.contador)}}</td>
+        <td class="align-middle">{{converteDecimal(item.valorDesconto * item.contador)}}</td>
     </tr>
     </tbody>
 </table>
-<h5 style="display: inline" class="float-right">Total: {{(order$ | async)?.orderAmount | currency}}</h5>
+<!--<h5 style="display: inline" class="float-right">Total: {{converteDecimal(totalCompra)}}</h5>-->
 </main>

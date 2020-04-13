@@ -29,6 +29,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 // import { NgxViacepService, Endereco, ErroCep, ErrorValues } from '@brunoc/ngx-viacep';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { PedidoDetalhadoComponent } from "./components/pedido-detalhado/pedido-detalhado.component";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     CheckoutComponent,
     PageNotFoundComponent,
     PedidoComponent,
+    PedidoDetalhadoComponent,
   ],
   imports: [
     BrowserModule,
