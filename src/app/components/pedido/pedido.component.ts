@@ -19,7 +19,10 @@ export class PedidoComponent implements OnInit, OnDestroy {
 
   //pedidos: Pedido
   pedidosCliente: Pedido[]=[];
-    
+  
+  converteDecimal(valor: number): string {
+    return valor.toFixed(2).replace('.', ',');
+  }
 
   constructor(private http: HttpClient, 
     private pedidoService: PedidoService, 
