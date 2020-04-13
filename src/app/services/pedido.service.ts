@@ -12,8 +12,6 @@ const URLPedido: string = "http://localhost:8080/meupanoonline/pedido" ;
 
 export class PedidoService{
 
-    //private URL: string = `$URLPedido/lista-cliente`;
-
     constructor(private pedidoService: HttpClient){ }
 
     criarPedido(body: object) {
@@ -25,12 +23,10 @@ export class PedidoService{
     }
 
     exibir(idPedido): Observable<Pedido>{
-        return this.pedidoService.get<Pedido>(`$URLPedido/${idPedido}`).pipe();
+        return this.pedidoService.get<Pedido>(URLPedido+"?idPedido="+idPedido).pipe();
     }
 
     cancelar(idPedido): Observable<Pedido>{
-        return this.pedidoService.patch<Pedido>(`{URLPedido}/deletar${idPedido}`, null).pipe(
-            catchError(_ => of(null))
-        )
+        return this.pedidoService.patch<Pedido>(`{URLPedido}/deletar${idPedido}`, null).pipe();
     }
 }

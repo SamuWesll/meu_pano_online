@@ -6,7 +6,9 @@ export class Pedido{
     public formaPgto?: string,
     public status?: string,
     public dataPedido?: string,
-    public cliente?: number,
-    public endereco?: number
+    public tbClienteIdCliente?: number,
+    public nomeCliente?: string,
+    public tbEnderecoIdEndereco?: number,
+    public enderecoEntrega?: string
 ){}
 }

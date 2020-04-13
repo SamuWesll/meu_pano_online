@@ -33,13 +33,19 @@ export class PedidoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.clienteLogado=this.clienteService.clienteLogadoValue;
-    this.getPedidos();
+    this.sub=this.route.queryParams.subscribe(()=>{
+      this.getPedidos();
+    })
+    
   }
 
   getPedidos(){
     this.pedidoService.getPedidos().pipe(map((data : Pedido[])=>data)).forEach(pCliente=> {
       this.pedidosCliente = pCliente;
     });
+    // this.pedidoService.getPedidos().subscribe(map((data : Pedido[])=>data)).forEach(pCliente=> {
+    //   this.pedidosCliente = pCliente;
+    // });
   }
 
 
