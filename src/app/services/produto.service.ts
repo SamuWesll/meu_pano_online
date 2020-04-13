@@ -16,6 +16,10 @@ export class ProdutoService {
     return buscarProdutos
   };
 
+  getMaisVendidos(){
+    return this.http.get(`${urlProduto}/mais-vendidos`)
+  }
+
   getMenorPreco() {
     return this.http.get(`${urlProduto}/valor-asc`);
   }

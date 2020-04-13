@@ -22,7 +22,7 @@
 
         <!-- <span class="header-account-username-small current-username">Olá! Entrar na</span> -->
             <span *ngIf="login">
-                {{ separarNome(login['nome']) }}
+                Olá, {{ separarNome(login['nome']) }}
             </span>
         </button>
         <a style="height: px;" class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"> Carrinho</a>

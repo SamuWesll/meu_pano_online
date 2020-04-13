@@ -33,6 +33,8 @@ export class ProdutosComponent implements OnInit {
   listarProdutos(valor) {
     if (valor === 'padrao') {
       this.produtosOrdenados = valor
+    } else if (valor === 'mais-vendidos') {
+      this.produtosOrdenados = valor
     } else if (valor === 'menor') {
       this.produtosOrdenados = valor
     } else if (valor === 'maior') {
@@ -58,6 +60,9 @@ export class ProdutosComponent implements OnInit {
   filtroProdutos(id: number, ordem: string) {
     if (ordem === 'padrao') {
       this.httpProduto.getListaProdutos().pipe(map((data: Produtos[]) => data))
+        .forEach(prod => this.adaptadorFiltro(id, prod))
+    } else if (ordem === 'mais-vendidos') {
+      this.httpProduto.getMaisVendidos().pipe(map((data: Produtos[]) => data))
         .forEach(prod => this.adaptadorFiltro(id, prod))
     } else if (ordem === 'menor') {
       this.httpProduto.getMenorPreco().pipe(map((data: Produtos[]) => data))
