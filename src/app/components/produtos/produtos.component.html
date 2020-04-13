@@ -1,12 +1,7 @@
 <main class="container">
     <div class="offset-sm-6 offset-md-8 offset-lg-10">
         <select name="" id="" class="form-control" (change)="listarProdutos($event.target.value)">
-            <option selected value="padrao">Padrão</option>
-            <option value="mais-vendidos">Mais Vendidos</option>
-            <option value="menor">Menor Preço</option>
-            <option value="maior">Maior Preço</option>
-            <option value="az">A - Z</option>
-            <option value="za">Z - A</option>
+            <option *ngFor="let op of opcoes" value="{{ op.chave }}">{{ op.valor }}</option>
         </select>
     </div>
     <div class="row mt-4">

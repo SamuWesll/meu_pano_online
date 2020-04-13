@@ -12,12 +12,11 @@ export class ProdutoService {
   constructor(private http: HttpClient) {  }
 
   getListaProdutos() {
-    let buscarProdutos = this.http.get(urlProduto + "/lista");
-    return buscarProdutos
-  };
+    return this.http.get(`${urlProduto}/lista`);
+  }
 
   getMaisVendidos(){
-    return this.http.get(`${urlProduto}/mais-vendidos`)
+    return this.http.get(`${urlProduto}/mais-vendidos`);
   }
 
   getMenorPreco() {

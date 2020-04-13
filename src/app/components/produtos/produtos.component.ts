@@ -16,6 +16,14 @@ export class ProdutosComponent implements OnInit {
   public produtosOrdenados = 'padrao';
   public produtos: Produtos[] = [];
   public produtosPorCategoria: Produtos[] = [];
+  public opcoes = [
+    { "chave": "padrao", "valor": "Padrão" },
+    { "chave": "mais-vendidos", "valor": "Mais Vendidos" },
+    { "chave": "menor", "valor": "Menor Preço" },
+    { "chave": "maior", "valor": "Maior Preço" },
+    { "chave": "az", "valor": "A - Z" },
+    { "chave": "za", "valor": "Z - A" }
+  ]
 
   converteDecimal(valor: string): string {
     return parseFloat(valor).toFixed(2).replace('.', ',')
@@ -33,16 +41,22 @@ export class ProdutosComponent implements OnInit {
   listarProdutos(valor) {
     if (valor === 'padrao') {
       this.produtosOrdenados = valor
+      this.filtroProdutos(this.idCategoria, valor)
     } else if (valor === 'mais-vendidos') {
       this.produtosOrdenados = valor
+      this.filtroProdutos(this.idCategoria, valor)
     } else if (valor === 'menor') {
       this.produtosOrdenados = valor
+      this.filtroProdutos(this.idCategoria, valor)
     } else if (valor === 'maior') {
       this.produtosOrdenados = valor
+      this.filtroProdutos(this.idCategoria, valor)
     } else if (valor === 'az') {
       this.produtosOrdenados = valor
+      this.filtroProdutos(this.idCategoria, valor)
     } else if (valor === 'za') {
       this.produtosOrdenados = valor
+      this.filtroProdutos(this.idCategoria, valor)
     }
   }
 
