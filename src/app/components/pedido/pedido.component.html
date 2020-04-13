@@ -21,9 +21,7 @@
             <td class="align-middle">R${{converteDecimal(pedido.valorFrete)}}</td>
             <td class="align-middle">{{pedido.status}}</td>
             <td class="align-middle">
-                <a *ngIf="(clienteLogado)"
-                   style="display:
-                block" href="" routerLink="/pedido/{{pedido.pedidoId}}">
+                <a style="display: block" routerLink="/pedido/detalhes/{{pedido.idPedido}}">
                     Exibir</a>
                 <!-- <a *ngIf="pedido.pedidoStatus == 0" style="display: block" (click)="cancelar(pedido)" routerLink="./">Cancelar</a> -->
             </td>
