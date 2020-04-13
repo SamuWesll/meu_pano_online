@@ -4,14 +4,18 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pedido } from 'src/app/models/Pedido';
 
-export class PedidoDetalhadoComponent implements OnInit{
-    
-    constructor(private pedidoService: PedidoService, private route: ActivatedRoute){}
+export class PedidoDetalhadoComponent implements OnInit {
 
-    pedido: Observable<Pedido>;
+    constructor(private pedidoService: PedidoService, private route: ActivatedRoute) { }
 
-    ngOnInit(){
-        this.pedido = this.pedidoService.exibir(this.route.snapshot.paramMap.get('id'));
+    converteDecimal(valor: number): string {
+        return valor.toFixed(2).replace('.', ',');
     }
-    
+
+    pedido$: Observable<Pedido>;
+
+    ngOnInit() {
+        this.pedido$ = this.pedidoService.exibir(this.route.snapshot.paramMap.get('id'));
+    }
+
 }

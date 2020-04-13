@@ -20,8 +20,8 @@
             <td class="align-middle">R${{converteDecimal(pedido.totalCompra)}}</td>
             <td class="align-middle">R${{converteDecimal(pedido.valorFrete)}}</td>
             <td class="align-middle">{{pedido.status}}</td>
-            <td class="align-middle">
-                <a style="display: block" routerLink="/pedido/detalhes/{{pedido.idPedido}}">
+            <td class="align-middle"> 
+                <a style="display: block" [routerLink]="['/pedidos/detalhes', pedido.idPedido]">
                     Exibir</a>
                 <!-- <a *ngIf="pedido.pedidoStatus == 0" style="display: block" (click)="cancelar(pedido)" routerLink="./">Cancelar</a> -->
             </td>

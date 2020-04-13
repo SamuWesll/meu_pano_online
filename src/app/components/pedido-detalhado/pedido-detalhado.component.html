@@ -1,1 +1,26 @@
-<p>detalhado works!</p>
+<main class="container">
+<table class="table table-striped text-center">
+    <thead>
+    <tr>
+        <th scope="col">Imagem</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Valor com Desconto</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Subtotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of (pedido$ | async)?.produtos">
+        <th class="align-middle" scope="row">
+            <a routerLink="/produtos/detalhes/{{item.idProduto}}"><img height="100px" src="{{item.imagem}}"
+            alt="{{item.tituloProduto}}" title="{{item.tituloProduto}}"></a>
+        </th>
+        <td class="align-middle"><a routerLink="/produtos/detalhes/{{item.idProduto}}">{{item.tituloProduto}}</a></td>
+        <td class="align-middle">{{converteDecimal(item.valorDesconto)}}</td>
+        <td class="align-middle">{{item.contador}}</td>
+        <td class="align-middle">{{(item.valorDesconto * item.contador)}}</td>
+    </tr>
+    </tbody>
+</table>
+<h5 style="display: inline" class="float-right">Total: {{(order$ | async)?.orderAmount | currency}}</h5>
+</main>

@@ -12,6 +12,7 @@ import { BuscaComponent } from './components/busca/busca.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PedidoComponent } from "./components/pedido/pedido.component";
+import { PedidoDetalhadoComponent } from "./components/pedido-detalhado/pedido-detalhado.component";
 
 const routes: Routes = [
   {
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: "pedidos",
     component: PedidoComponent
+  },
+  {
+    path: "pedidos/detalhes/:id",
+    component: PedidoDetalhadoComponent
   },
   {
     path: "**",
