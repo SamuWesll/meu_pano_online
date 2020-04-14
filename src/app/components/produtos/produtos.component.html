@@ -1,4 +1,9 @@
 <main class="container">
+    <div class="offset-sm-6 offset-md-8 offset-lg-10">
+        <select name="" id="" class="form-control" (change)="listarProdutos($event.target.value)">
+            <option *ngFor="let op of opcoes" value="{{ op.chave }}">{{ op.valor }}</option>
+        </select>
+    </div>
     <div class="row mt-4">
         <div *ngFor="let produto of produtosPorCategoria" class="animated fadeIn col-lg-3 col-md-4 col-sm-6 carProdudos mb-3">
             <a class="card" [routerLink]="['/produtos/detalhes', produto.idProduto]">
@@ -18,7 +23,7 @@
                     </p>
                     <p id="textPreco">R$ {{converteDecimal(produto.valorDesconto)}}
                         à vista ou em 3x de R$ {{tresParcelas(produto.valor)}} sem juros</p>
-                    <button class="btn btn-success col-md-10 ml-2" type="button">Comprar</button>
+                    <button class="btn btnDetalhe  col-md-10 ml-2" type="button">Comprar</button>
                 </div>
             </a>
         </div>

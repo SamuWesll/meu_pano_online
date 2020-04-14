@@ -13,6 +13,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PedidoComponent } from "./components/pedido/pedido.component";
 import { PedidoDetalhadoComponent } from "./components/pedido-detalhado/pedido-detalhado.component";
+import { CompraFinalizadaComponent } from './components/compra-finalizada/compra-finalizada.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path: "pedidos/detalhes/:id",
     component: PedidoDetalhadoComponent
+  },
+  {
+    path: "checkout/compra-finalizada",
+    component: CompraFinalizadaComponent
   },
   {
     path: "**",

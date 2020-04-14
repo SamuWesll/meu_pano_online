@@ -102,6 +102,7 @@ export class CheckoutComponent implements OnInit {
   }
 
 
+
   title = 'app';
 
   constructor(private viacep: NgxViacepService,
@@ -111,6 +112,8 @@ export class CheckoutComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private pedidoService: PedidoService,
     private router: Router,
+    
+    
   ) { } // Injetando o serviço
 
   consultaCEP(cep: string) {
@@ -155,7 +158,7 @@ export class CheckoutComponent implements OnInit {
       qtdProduto += this.carrinho[i].contador;
       valorProduto += this.carrinho[i].valorDesconto * this.carrinho[i].contador;
     }
-
+ 
     this.valorProdutos = valorProduto;
     this.qtdProdutos = qtdProduto;
   }
@@ -185,7 +188,7 @@ export class CheckoutComponent implements OnInit {
 
     this.httpEndereco.postEndereco(body).subscribe(
       (data) => {
-        this.cliente.tb_endereco_id_cliente.push(data);
+        this.cliente.tbEnderecoIdEndereco.push(data);
       }
     )
 
@@ -194,7 +197,14 @@ export class CheckoutComponent implements OnInit {
   deletarEndere(idEndereco: number) {
 
     this.httpEndereco.deletarEndereco(idEndereco).subscribe(
-      () => console.log(`o endereço do id: ${idEndereco} foi deletado`),
+      () =>  {
+        // alert(`o endereço do id: ${idEndereco} foi deletado`);
+        this.cliente.tbEnderecoIdEndereco.forEach(end => {
+          if(end.idEndereco == idEndereco) {
+            this.cliente.tbEnderecoIdEndereco.splice(end,1)
+          }
+        });
+      },
       (err) => console.log(err)
     )
     // (data) => {
@@ -218,6 +228,7 @@ export class CheckoutComponent implements OnInit {
 
     this.httpCliente.getClienteId(cli['idCliente']).subscribe(
       (body) => {
+        console.log(body)
         this.cliente = body;
       }
     )
@@ -269,8 +280,8 @@ export class CheckoutComponent implements OnInit {
         this.pedidoFinaliza = pedido
         if (pedido['idPedido'] > 0) {
           this.deleteCarrinho();
-          this.modal.toggle();
-
+          this.router.navigate(['/checkout/compra-finalizada'])
+          localStorage.setItem('pedidoFinalizado', JSON.stringify(pedido))
         }
       }
     )

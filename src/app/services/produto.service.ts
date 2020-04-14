@@ -14,9 +14,28 @@ export class ProdutoService {
   constructor(private http: HttpClient) {  }
 
   getListaProdutos() {
-    let buscarProdutos = this.http.get(urlProduto + "/lista");
-    return buscarProdutos
-  };
+    return this.http.get(`${urlProduto}/lista`);
+  }
+
+  getMaisVendidos(){
+    return this.http.get(`${urlProduto}/mais-vendidos`);
+  }
+
+  getMenorPreco() {
+    return this.http.get(`${urlProduto}/valor-asc`);
+  }
+  
+  getMaiorPreco() {
+    return this.http.get(`${urlProduto}/valor-desc`);
+  }
+  
+  getProdutosAZ() {
+    return this.http.get(`${urlProduto}/ordem-az`);
+  }
+
+  getProdutosZA(){
+    return this.http.get(`${urlProduto}/ordem-za`);
+  }
 
   getProduto(codProduto: number) {
     let buscarProduto = this.http.get(urlProduto + "?idCliente=" + codProduto)

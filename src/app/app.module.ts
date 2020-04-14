@@ -30,6 +30,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidoDetalhadoComponent } from "./components/pedido-detalhado/pedido-detalhado.component";
+import { CompraFinalizadaComponent } from './components/compra-finalizada/compra-finalizada.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PedidoDetalhadoComponent } from "./components/pedido-detalhado/pedido-d
     PageNotFoundComponent,
     PedidoComponent,
     PedidoDetalhadoComponent,
+    CompraFinalizadaComponent,
   ],
   imports: [
     BrowserModule,
