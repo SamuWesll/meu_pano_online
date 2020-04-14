@@ -111,6 +111,8 @@ export class CheckoutComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private pedidoService: PedidoService,
     private router: Router,
+    
+    
   ) { } // Injetando o serviço
 
   consultaCEP(cep: string) {
@@ -155,7 +157,7 @@ export class CheckoutComponent implements OnInit {
       qtdProduto += this.carrinho[i].contador;
       valorProduto += this.carrinho[i].valorDesconto * this.carrinho[i].contador;
     }
-
+ 
     this.valorProdutos = valorProduto;
     this.qtdProdutos = qtdProduto;
   }
@@ -267,8 +269,8 @@ export class CheckoutComponent implements OnInit {
         this.pedidoFinaliza = pedido
         if (pedido['idPedido'] > 0) {
           this.deleteCarrinho();
-          this.modal.toggle();
-
+          this.router.navigate(['/checkout/compra-finalizada'])
+          localStorage.setItem('pedidoFinalizado', JSON.stringify(pedido))
         }
       }
     )

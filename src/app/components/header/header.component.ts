@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Categorias } from 'src/app/models/Categorias';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { map } from "rxjs/operators";
+import { CarrinhoService } from 'src/app/services/carrinho.service';
 
 @Component({
   selector: 'app-header',
@@ -25,15 +26,20 @@ export class HeaderComponent implements OnInit {
 
   emaiOuCpflInput = new FormControl();
   senhaInput = new FormControl();
+  contadorCarrinho = 0;
 
-  constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService) {
+  constructor(private httpCliente: ClienteService, private router: Router, private categoria: CategoriaService, private carrinhoService: CarrinhoService) {
     this.categoria.carregarCategorias().pipe(map((data: any[]) => {
       this.categorias.push(this.categoriaTotal)
       return data.map(cat => {
         return this.categorias.push(new Categorias(cat.idCategoria, cat.descricao))
       })
     })).subscribe()
+    
+    this.checarCarrinho();
   }
+
+
 
   realizarLogin() {
     let validarCampor: any = this.emaiOuCpflInput.value.indexOf('@');
@@ -133,13 +139,27 @@ export class HeaderComponent implements OnInit {
     return separado;
   }
 
+  checarCarrinho(){
+    this.carrinhoService
+    .getCarrinho()
+    .subscribe((data) => { 
+      for(let i = 0; i < data.length; i++ ){
+        this.contadorCarrinho += data[i].contador 
+      }
+    }) 
+  }
+
   ngOnInit(): void {
     this.verificarLogin();
-
+   
   }
 
   btnFiltro(id: number) {
     this.router.navigate(['/produtos/categoria', id])
+  }
+
+  produtosNoCarrinho(id: number){
+    this.router.navigate(['/carrinho', id])
   }
 
   pesquisarProduto(pesquisa: string) {
