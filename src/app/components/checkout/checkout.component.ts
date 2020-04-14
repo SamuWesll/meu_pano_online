@@ -35,8 +35,8 @@ export class CheckoutComponent implements OnInit {
     valorFrete: 0,
     totalCompra: 0,
     formaPgto: "",
-    tb_cliente_id_cliente: 0,
-    tb_endereco_id_endereco: 0,
+    tbClienteIdCliente: 0,
+    tbEnderecoIdEndereco: 0,
     itensPedido: []
   }
 
@@ -100,6 +100,7 @@ export class CheckoutComponent implements OnInit {
       cpfTitular: new FormControl(checkout.cpfTitular)
     })
   }
+
 
 
   title = 'app';
@@ -181,13 +182,13 @@ export class CheckoutComponent implements OnInit {
       numTelefone: "11984670655",
       numero: form['numero'],
       referencia: null,
-      tb_cliente_id_cliente: this.cliente['idCliente'],
+      tbClienteIdCliente: this.cliente['idCliente'],
       uf: form['estado']
     }
 
     this.httpEndereco.postEndereco(body).subscribe(
       (data) => {
-        this.cliente.tb_endereco_id_cliente.push(data);
+        this.cliente.tbEnderecoIdEndereco.push(data);
       }
     )
 
@@ -196,7 +197,14 @@ export class CheckoutComponent implements OnInit {
   deletarEndere(idEndereco: number) {
 
     this.httpEndereco.deletarEndereco(idEndereco).subscribe(
-      () => console.log(`o endereço do id: ${idEndereco} foi deletado`),
+      () =>  {
+        // alert(`o endereço do id: ${idEndereco} foi deletado`);
+        this.cliente.tbEnderecoIdEndereco.forEach(end => {
+          if(end.idEndereco == idEndereco) {
+            this.cliente.tbEnderecoIdEndereco.splice(end,1)
+          }
+        });
+      },
       (err) => console.log(err)
     )
     // (data) => {
@@ -220,6 +228,7 @@ export class CheckoutComponent implements OnInit {
 
     this.httpCliente.getClienteId(cli['idCliente']).subscribe(
       (body) => {
+        console.log(body)
         this.cliente = body;
       }
     )
@@ -255,8 +264,8 @@ export class CheckoutComponent implements OnInit {
 
       formaPgto: "Cartão de Crédito",
       itensPedido: produtosCarrinhos,
-      tb_cliente_id_cliente: this.cliente['idCliente'],
-      tb_endereco_id_endereco: this.idEndereco,
+      tbClienteIdCliente: this.cliente['idCliente'],
+      tbEnderecoIdEndereco: this.idEndereco,
       totalCompra: this.valorProdutos,
       valorFrete: this.valorFreteRadio,
       status: "Aguardando confirmação de pagamento",

@@ -96,7 +96,7 @@
                                 <input type="radio" name="endereco" value="{{ endereco.idEndereco }}" (click)="selecionarEndereco(endereco.idEndereco)">
                                 <label for="">Endereço {{ i + 1  }}</label>
                             </div>
-                            <!-- <img class="trash" src="../../../assets/img/trash.png" (click)="modalDeletarEndereco.show(); selecionarEndereco(endereco.idEndereco)" height="15px" alt=""> -->
+                            <img class="trash" src="../../../assets/img/trash.png" (click)="modalDeletarEndereco.show(); selecionarEndereco(endereco.idEndereco)" height="15px" alt="">
                         </header>
                         <div class="endereco">
                             <p>
@@ -462,7 +462,7 @@
                     <p class="col- text-center">Você realmente deseja excluir seu endereço?</p>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                    <button type="submit" class="btn btn-outline-warning rounded mr-3" data-dismiss="modal" (click)="deletarEndere(idEndereco); modalNovoEndereco.hide()">Sim</button>
+                    <button type="submit" class="btn btn-outline-warning rounded mr-3" data-dismiss="modal" (click)="deletarEndere(idEndereco); modalDeletarEndereco.hide()">Sim</button>
                     <button type="button" class="btn btn-outline-danger rounded ml-3" (click)="modalDeletarEndereco.hide()" >Não</button>
                 </div>
             </div>
