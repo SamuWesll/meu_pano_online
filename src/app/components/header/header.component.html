@@ -10,25 +10,21 @@
         </div>
     </div>
     <div class="mb-1">
-        <!-- <h6 style="color: #424040;">Olá, bem vindo!</h6> -->
+        <h6 style="color: #424040;">Olá, bem vindo!</h6>
         <!-- <p style="color: #424040;">Olá visitante, entre na sua conta </p> -->
         
         <button type="button" class="btn btn-success rounded login mr-2" data-toggle="modal"
         data-target="#login" (click)="modalLogin.show()">
         <span class="small" *ngIf="!login">
-            Olá,
             Entre ou cadastre-se
         </span>
 
-        <!-- <span class="header-account-username-small current-username">Olá! Entrar na</span> -->
             <span *ngIf="login">
                 {{ separarNome(login['nome']) }}
             </span>
         </button>
         
-        <a style="height: px;"  class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"> {{ contadorCarrinho }} </a>
-        
-        <!-- <a *ngFor="let cont of carrinho" class="link" (click)="produtosNoCarrinho(cont.id)" routerLink="/carrinho/{{ cont.id }}">aumenta {{ cont.id }}</a> -->
+        <a style="height: px;"  class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"></a>
         
     </div>
 </header>

@@ -37,7 +37,7 @@ export class CompraFinalizadaComponent implements OnInit {
     this.qtdProdutosComprados()
   }
 
-  btnVoltarHome(){
+  btnVoltarHome(){ 
     this.router.navigate(['home'])
     this.pedido = []
   }
