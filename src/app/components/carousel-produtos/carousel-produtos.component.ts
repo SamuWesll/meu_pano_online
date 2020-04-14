@@ -25,12 +25,7 @@ export class CarouselProdutos implements OnInit {
   constructor(public httpProduto: ProdutoService) { }
 
   ngOnInit(): void {
-
-    // (refatorado)
-    this.httpProduto.getListaProdutos().pipe(map(data => data))
-    .forEach((prod: Produtos[]) => {
-      this.produtos = prod
-    })
+    this.httpProduto.getMaisVendidos().pipe(map(data => data))
+      .forEach((prod: Produtos[]) => this.produtos = prod)
   }
-
 }
