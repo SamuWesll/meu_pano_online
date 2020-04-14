@@ -242,7 +242,9 @@ export class CheckoutComponent implements OnInit {
 
     for (let i = 0; i < this.carrinho.length; i++) {
       let p1 = {
-        produto: this.carrinho[i].idProduto,
+        produto: {
+          idProduto: this.carrinho[i].idProduto
+        },
         qtdProduto: this.carrinho[i].contador,
         valorProduto: this.carrinho[i].contador * this.carrinho[i].valorDesconto
       };

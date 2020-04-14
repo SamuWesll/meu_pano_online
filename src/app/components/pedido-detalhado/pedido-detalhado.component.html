@@ -10,17 +10,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of (pedido$ | async)?.produtos">
+    <tr *ngFor="let item of pedido">
         <th class="align-middle" scope="row">
-            <a routerLink="/produtos/detalhes/{{item.idProduto}}"><img height="100px" src="{{item.imagem}}"
-            alt="{{item.tituloProduto}}" title="{{item.tituloProduto}}"></a>
+            <a routerLink="/produtos/detalhes/{{item?.produto?.idProduto}}">
+            <img height="100px" src="{{item?.produto?.imagem}}" alt="{{item?.produto?.tituloProduto}}" title="{{item?.produto?.tituloProduto}}"></a>
         </th>
-        <td class="align-middle"><a routerLink="/produtos/detalhes/{{item.idProduto}}">{{item.tituloProduto}}</a></td>
-        <td class="align-middle">{{converteDecimal(item.valorDesconto)}}</td>
-        <td class="align-middle">{{item.contador}}</td>
-        <td class="align-middle">{{converteDecimal(item.valorDesconto * item.contador)}}</td>
+        <td class="align-middle">{{item?.produto?.tituloProduto}}</td>
+        <td class="align-middle">R${{converteDecimal(item?.valorProduto)}}</td>
+        <td class="align-middle">{{item?.qtdProduto}}</td>
+        <td class="align-middle">R${{converteDecimal(item?.valorProduto * item?.qtdProduto)}}</td>
     </tr>
     </tbody>
 </table>
-<!--<h5 style="display: inline" class="float-right">Total: {{converteDecimal(totalCompra)}}</h5>-->
+<!-- <h5 style="display: inline" class="float-right">Total: {{converteDecimal(pedido$ | async)??.totalCompra}}</h5> -->
 </main>

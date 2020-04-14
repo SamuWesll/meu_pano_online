@@ -12,16 +12,22 @@ import { ActivatedRoute } from '@angular/router';
 
 export class PedidoDetalhadoComponent implements OnInit {
 
-    constructor(private pedidoService: PedidoService, private route: ActivatedRoute) { }
+    constructor(private pedidoService: PedidoService,
+         private route: ActivatedRoute) { }
 
     converteDecimal(valor: number): string {
         return valor.toFixed(2).replace('.', ',');
     }
 
-    pedido$: Observable<Pedido>;
-
+    pedido: any[] = [];
     ngOnInit() {
-        this.pedido$ = this.pedidoService.exibir(this.route.snapshot.paramMap.get('id'));
+        this.pedidoService.exibir(this.route.snapshot.paramMap.get('id')).subscribe(data=>{
+            console.log(this.pedido)
+            console.log(data)
+            return this.pedido=data
+            
+        });
+        console.log(this.pedido);
     }
 
 }

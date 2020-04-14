@@ -13,10 +13,10 @@ import { map } from "rxjs/operators";
   templateUrl: './pedido.component.html',
   styleUrls: ['./pedido.component.css']
 })
-export class PedidoComponent implements OnInit, OnDestroy {
+export class PedidoComponent implements OnInit {
 
   clienteLogado: Response;
-
+  idCliente= JSON.parse(localStorage.getItem("logado"));
   //pedidos: Pedido
   pedidosCliente: Pedido[]=[];
   
@@ -33,14 +33,16 @@ export class PedidoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.clienteLogado=this.clienteService.clienteLogadoValue;
-    this.sub=this.route.queryParams.subscribe(()=>{
-      this.getPedidos();
-    })
+    this.getPedidos(this.idCliente.idCliente);
+    console.log(this.idCliente.idCliente);
+      //console.log(data)
+    
+    //this.getPedidos(this.sub);
     
   }
 
-  getPedidos(){
-    this.pedidoService.getPedidos().pipe(map((data : Pedido[])=>data)).forEach(pCliente=> {
+  getPedidos(id){
+    this.pedidoService.getPedidos(id).pipe(map((data : Pedido[])=>data)).forEach(pCliente=> {
       this.pedidosCliente = pCliente;
     });
     // this.pedidoService.getPedidos().subscribe(map((data : Pedido[])=>data)).forEach(pCliente=> {
@@ -60,7 +62,7 @@ export class PedidoComponent implements OnInit, OnDestroy {
   // }
 
 
-  ngOnDestroy(){
-    this.sub.unsubscribe();
-  }
+  // ngOnDestroy(){
+  //   this.sub.unsubscribe();
+  // }
 }

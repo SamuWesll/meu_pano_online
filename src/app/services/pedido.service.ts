@@ -18,12 +18,23 @@ export class PedidoService{
         return this.pedidoService.post(URLPedido, body);
     }
 
-    getPedidos():Observable<any>{
-        return this.pedidoService.get(URLPedido+"/lista-cliente").pipe();
+    getPedidos(id){
+        return this.pedidoService.get(URLPedido+"/lista-cliente/"+id).pipe();
     }
 
-    exibir(idPedido): Observable<Pedido>{
-        return this.pedidoService.get<Pedido>(URLPedido+"?idPedido="+idPedido).pipe();
+    // exibir(id: number) {
+    //     let buscarPedido = this.pedidoService.get(URLPedido + "?idPedido=" + id)
+    //     return buscarPedido;
+    //   }
+
+
+    exibir(id){
+        console.log(id);
+        return this.pedidoService.get(URLPedido+"?idPedido="+id)
+            .pipe(
+            catchError(_=> of(null))
+        );
+        
     }
 
     cancelar(idPedido): Observable<Pedido>{
