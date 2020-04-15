@@ -14,3 +14,11 @@
     
 }
 
+li {
+    width: 220px;
+    text-align: center;
+}
+
+li:hover {
+    background-color: rgba(31, 189, 139, 0.29);
+}
