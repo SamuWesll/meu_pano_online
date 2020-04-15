@@ -123,7 +123,6 @@
 
         <div class="col-md-4">
 
-            
 
             <header class="p-2 headerTitle">
                 <img class="mr-2" src="../../../assets/img/payment.png" height="22px" alt="">
@@ -260,13 +259,16 @@
                     type="button" 
                     class="btn btnDetalhe"
                     [disabled]="!idEndereco || numCartao.invalid || mesValidade.invalid || anoValidade.invalid || cdSeguranca.invalid || nomeTitular.invalid || cpfTitular.invalid" 
-                    (click)="criarPedido()" 
+                    (click)="criarPedido() " 
                 >Finalizar compra</button>
             </div>
         </div>
     </form>
 </main>
-<div
+
+
+
+  <div
     mdbModal
     #compraFinalizada="mdbModal"
     id="compraFinalizada" 
@@ -276,7 +278,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Estamos finalizando seu pedido!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="compraFinalizada.hide()">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="compraFinalizada.hide()" routerLink="/produto-detalhado">
             <span aria-hidden="true" class="white-text">&times;</span>
         </button>
         </div>
@@ -293,14 +295,14 @@
             <div class="mt-2">
                 <strong>Status do pedido: </strong><span>{{ pedidoFinaliza['status'] }}</span>
             </div>
-          <!-- <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p> -->
-        </div>
+           <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p> 
+         </div>
         <div class="modal-footer">        
-          <button type="button" class="btn btn-primary" (click)="compraFinalizada.hide(); pageHome()">Fechar</button>
+          <button type="button" class="btn btn-primary" (click)="compraFinalizada.hide()">Fechar</button>
         </div>
       </div>
     </div>
-  </div>
+  </div>   
 
 <div
   mdbModal
