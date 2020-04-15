@@ -36,7 +36,8 @@ export class CheckoutComponent implements OnInit {
     totalCompra: 0,
     formaPgto: "",
     tb_cliente_id_cliente: 0,
-    tb_endereco_id_cliente: 0,
+    //tb_endereco_id_cliente: 0,
+    tb_endereco_id_endereco: 0,
     itensPedido: []
   }
 
@@ -188,7 +189,8 @@ export class CheckoutComponent implements OnInit {
 
     this.httpEndereco.postEndereco(body).subscribe(
       (data) => {
-        this.cliente.tb_endereco_id_cliente.push(data);
+        //this.cliente.tb_endereco_id_cliente.push(data);
+        this.cliente.tb_endereco_id_endereco.push(data);
       }
     )
 
@@ -199,9 +201,9 @@ export class CheckoutComponent implements OnInit {
     this.httpEndereco.deletarEndereco(idEndereco).subscribe(
       () =>  {
         // alert(`o endereço do id: ${idEndereco} foi deletado`);
-        this.cliente.tb_endereco_id_cliente.forEach(end => {
+        this.cliente.tb_endereco_id_endereco.forEach(end => {
           if(end.idEndereco == idEndereco) {
-            this.cliente.tb_endereco_id_cliente.splice(end,1)
+            this.cliente.tb_endereco_id_endereco.splice(end,1)
           }
         });
       },
@@ -267,7 +269,7 @@ export class CheckoutComponent implements OnInit {
       formaPgto: "Cartão de Crédito",
       itensPedido: produtosCarrinhos,
       tb_cliente_id_cliente: this.cliente['idCliente'],
-      tb_endereco_id_cliente: this.idEndereco,
+      tb_endereco_id_endereco: this.idEndereco,
       totalCompra: this.valorProdutos,
       valorFrete: this.valorFreteRadio,
       status: "Aguardando confirmação de pagamento",
