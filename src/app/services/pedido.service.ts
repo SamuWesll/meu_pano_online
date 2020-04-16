@@ -22,19 +22,12 @@ export class PedidoService{
         return this.pedidoService.get(URLPedido+"/lista-cliente/"+id).pipe();
     }
 
-    // exibir(id: number) {
-    //     let buscarPedido = this.pedidoService.get(URLPedido + "?idPedido=" + id)
-    //     return buscarPedido;
-    //   }
-
-
     exibir(id){
         console.log(id);
         return this.pedidoService.get(URLPedido+"?idPedido="+id)
             .pipe(
             catchError(_=> of(null))
         );
-        
     }
 
     cancelar(idPedido): Observable<Pedido>{

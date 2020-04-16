@@ -7,6 +7,10 @@ import { Subscription } from 'rxjs';
 import { Response } from "../../response/Response";
 import { Pedido } from "../../models/Pedido";
 import { map } from "rxjs/operators";
+import { ProdutoCarrinho } from "src/app/models/ProdutoCarrinho";
+import { Router } from "@angular/router";
+import { CarrinhoService } from "src/app/services/carrinho.service";
+import { Carrinho } from "src/app/models/Carrinho";
 
 @Component({
   selector: 'app-pedido',
@@ -16,50 +20,61 @@ import { map } from "rxjs/operators";
 export class PedidoComponent implements OnInit {
 
   clienteLogado: Response;
-  idCliente= JSON.parse(localStorage.getItem("logado"));
-  //pedidos: Pedido
-  pedidosCliente: Pedido[]=[];
-  
+  idCliente = JSON.parse(localStorage.getItem("logado"));
+  sub: Subscription;
+  pedidosCliente: Pedido[] = [];
+  refazer: any;
+
   converteDecimal(valor: number): string {
     return valor.toFixed(2).replace('.', ',');
   }
 
-  constructor(private http: HttpClient, 
-    private pedidoService: PedidoService, 
-    private clienteService: ClienteService, 
+  constructor(private http: HttpClient,
+    private pedidoService: PedidoService,
+    private clienteService: ClienteService,
+    private router: Router,
+    private carrinhoService: CarrinhoService,
     private route: ActivatedRoute) { }
 
-    sub: Subscription;
-
   ngOnInit() {
-    this.clienteLogado=this.clienteService.clienteLogadoValue;
+    this.clienteLogado = this.clienteService.clienteLogadoValue;
     this.getPedidos(this.idCliente.idCliente);
     console.log(this.idCliente.idCliente);
-      //console.log(data)
-    
-    //this.getPedidos(this.sub);
-    
   }
 
-  getPedidos(id){
-    this.pedidoService.getPedidos(id).pipe(map((data : Pedido[])=>data)).forEach(pCliente=> {
+  getPedidos(id) {
+    this.pedidoService.getPedidos(id).pipe(map((data: Pedido[]) => data)).forEach(pCliente => {
       this.pedidosCliente = pCliente;
     });
-    // this.pedidoService.getPedidos().subscribe(map((data : Pedido[])=>data)).forEach(pCliente=> {
-    //   this.pedidosCliente = pCliente;
-    // });
   }
 
-
-  // cancelar(pedido: Pedido){
-  //   this.pedidoService.cancelar(pedido.idPedido).subscribe(
-  //     res => {
-  //       if(res){
-  //         pedido.status = res.status;
-  //       }
-  //     }
-  //   );
-  // }
+  refazerPedido(pedido: any) {
+    console.log(pedido)
+    let itensPedido: any[] = pedido.itensPedido;
+    let contador: number;
+    itensPedido.forEach(data => {
+      this.carrinhoService.adicionarItem(new ProdutoCarrinho(data.produto, data.contador))
+      .subscribe(
+        res => {
+          if (!res) {
+            console.log('Erro' + res);
+            throw new Error();
+          }
+        },
+        _ => console.log('Erro')
+      )
+    })
+  }
+   
+  cancelar(pedido: Pedido) {
+    this.pedidoService.cancelar(pedido.idPedido).subscribe(
+      res => {
+        if (res) {
+          pedido.status = res.status;
+        }
+      }
+    );
+  }
 
 
   // ngOnDestroy(){
