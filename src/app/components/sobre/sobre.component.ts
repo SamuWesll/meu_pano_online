@@ -172,8 +172,6 @@ export class SobreComponent implements OnInit {
     this.selecUilson = true;
   }
 
-  
-
   ngOnInit(): void { }
 
 }

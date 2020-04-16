@@ -3,7 +3,6 @@
         <thead>
         <tr>
             <th scope="col">Pedido</th>
-            <!-- <th scope="col">Endereço de Entrega</th> -->
             <th scope="col">Valor Compra</th>
             <th scope="col">Frete</th>
             <th scope="col">Status</th>
@@ -16,7 +15,6 @@
             <th class="align-middle" scope="row">
                 {{pedido.idPedido}}
             </th>
-            <!-- <td class="align-middle">{{pedido.tbEnderecoIdEndereco}}</td> -->
             <td class="align-middle">R${{converteDecimal(pedido.totalCompra)}}</td>
             <td class="align-middle">R${{converteDecimal(pedido.valorFrete)}}</td>
             <td class="align-middle">{{pedido.status}}</td>

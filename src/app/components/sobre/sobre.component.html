@@ -11,13 +11,13 @@
             <p>Que tal nos conhecer um pouco mais? Pode entrar, conheça nossos produtos, sinta-se em casa!</p>
         </div>
         <div class="col-3 ml-2">
-            <!-- <img src="../../../assets/img/logo1.png" alt="Logotipo Meu Pano Online" title="Logotipo Meu Pano Online" class="mt-4"> -->
-            <img src="../../../assets/img/Pano_de_Copa.jpg" alt="Logotipo Meu Pano Online" title="Logotipo Meu Pano Online" class="mt-4">
+            <img src="../../../assets/img/Pano_de_Copa.jpg" alt="Logotipo Meu Pano Online"
+                title="Logotipo Meu Pano Online" class="mt-4">
         </div>
     </div>
     <div class="dropdown-divider bg-dark"></div>
     <div class="row mt-4">
-        
+
         <div class="flex-column col-sm-12 col-xl-4">
             <div class="d-flex justify-content-around divVMV">
                 <h5 id="visao" (mouseover)="textVisao()" [class.selecionado]="visao" class="col-4 vmv">Visão</h5>
@@ -30,7 +30,9 @@
             <div class="d-flex justify-content-around divIniciativa">
                 <h5 class="iniciativa">Iniciativa</h5>
             </div>
-            <p class="col-12 textVMV">Essa é mais uma iniciativa RD, aonde tem com o objetivo de formar Desenvolvedores qualificados e prontos para ingressar no time de T.I. E esse site foi desenvolvido pela equipe panoOnline</p>
+            <p class="col-12 textVMV">Essa é mais uma iniciativa RD, aonde tem com o objetivo de formar Desenvolvedores
+                qualificados e prontos para ingressar no time de T.I. E esse site foi desenvolvido pela equipe
+                panoOnline</p>
         </div>
         <div class="col-sm-12 col-xl-5">
             <div class="d-flex justify-content-around divEquipe">
@@ -38,13 +40,18 @@
             </div>
             <div class="d-flex">
                 <div class="col-4 mt-4">
-                    <p class="nomeEquipe" [class.nomeEquipeSelecionado]="selecKarina" (mouseover)="selecionarKarina()">Karina Aquino</p>
-                    <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecRonaldo" (mouseover)="selecionarRonaldo()">Ronaldo Mendes</p>
-                    <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecSamuel" (mouseover)="selecionarSamuel()">Samuel Weslley</p>
-                    <p class="nomeEquipe"  [class.nomeEquipeSelecionado]="selecUilson" (mouseover)="selecionarUilson()">Uilson Ribeiro</p>
+                    <p class="nomeEquipe" [class.nomeEquipeSelecionado]="selecKarina" (mouseover)="selecionarKarina()">
+                        Karina Aquino</p>
+                    <p class="nomeEquipe" [class.nomeEquipeSelecionado]="selecRonaldo"
+                        (mouseover)="selecionarRonaldo()">Ronaldo Mendes</p>
+                    <p class="nomeEquipe" [class.nomeEquipeSelecionado]="selecSamuel" (mouseover)="selecionarSamuel()">
+                        Samuel Weslley</p>
+                    <p class="nomeEquipe" [class.nomeEquipeSelecionado]="selecUilson" (mouseover)="selecionarUilson()">
+                        Uilson Ribeiro</p>
                 </div>
                 <div class="col-8 cardColab">
-                    <div class="d-flex justify-content-center align-items-center" *ngIf="!selecKarina && !selecRonaldo && !selecSamuel && !selecUilson">
+                    <div class="d-flex justify-content-center align-items-center"
+                        *ngIf="!selecKarina && !selecRonaldo && !selecSamuel && !selecUilson">
                         Colaborador não selecionado
                     </div>
                     <div class="d-flex" *ngIf="selecKarina || selecRonaldo || selecSamuel || selecUilson" class="mt-2">
@@ -60,12 +67,17 @@
                             </div>
                         </div>
                         <div class="mt-2 flex-column">
-                            <p><strong class="titulo">Experiências: </strong><span class="texto">{{ experienciaColab }}</span></p>
-                            <p><strong class="titulo">Formação: </strong><span class="texto">{{ tituloColab }}</span></p>
+                            <p><strong class="titulo">Experiências: </strong><span
+                                    class="texto">{{ experienciaColab }}</span></p>
+                            <p><strong class="titulo">Formação: </strong><span class="texto">{{ tituloColab }}</span>
+                            </p>
                             <div class="d-flex justify-content-around col-12">
-                                <a class="m-3" href="{{ linkLinkedin }}" target="_blank"><img src="../../../assets/img/linkedin.png" height="30px" alt=""></a>
-                                <a class="m-3" href=" {{ linkGithub }}" target="_blank"><img src="../../../assets/img/github.png" height="30px" alt=""></a>
-                                <a class="m-3" href="{{ linkWorkPlace }}" target="_blank"><img src="../../../assets/img/workplace.png" height="30px" alt=""></a>
+                                <a class="m-3" href="{{ linkLinkedin }}" target="_blank"><img
+                                        src="../../../assets/img/linkedin.png" height="30px" alt=""></a>
+                                <a class="m-3" href=" {{ linkGithub }}" target="_blank"><img
+                                        src="../../../assets/img/github.png" height="30px" alt=""></a>
+                                <a class="m-3" href="{{ linkWorkPlace }}" target="_blank"><img
+                                        src="../../../assets/img/workplace.png" height="30px" alt=""></a>
                             </div>
                         </div>
                     </div>

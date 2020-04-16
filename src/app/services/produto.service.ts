@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
 import { Produtos } from '../models/Produtos';
 import { Observable } from 'rxjs';
 
@@ -11,29 +10,29 @@ const urlProduto: string = "http://localhost:8080/meupanoonline/produto";
 })
 export class ProdutoService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
 
   getListaProdutos() {
     return this.http.get(`${urlProduto}/lista`);
   }
 
-  getMaisVendidos(){
+  getMaisVendidos() {
     return this.http.get(`${urlProduto}/mais-vendidos`);
   }
 
   getMenorPreco() {
     return this.http.get(`${urlProduto}/valor-asc`);
   }
-  
+
   getMaiorPreco() {
     return this.http.get(`${urlProduto}/valor-desc`);
   }
-  
+
   getProdutosAZ() {
     return this.http.get(`${urlProduto}/ordem-az`);
   }
 
-  getProdutosZA(){
+  getProdutosZA() {
     return this.http.get(`${urlProduto}/ordem-za`);
   }
 
@@ -43,7 +42,7 @@ export class ProdutoService {
   }
 
   getDetalhe(produto: Produtos): Observable<Produtos> {
-    const url = urlProduto+"/produtos/detalhes/${produto.idProduto}";
+    const url = urlProduto + "/produtos/detalhes/${produto.idProduto}";
     return this.http.get<Produtos>(url);
-}
+  }
 }

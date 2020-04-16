@@ -37,10 +37,6 @@ const routes: Routes = [
     component: ProdutosCategoriaComponent
   },
   {
-    path: "produto-detalhado",
-    component: ProdutoDetalhadoComponent
-  },
-  {
     path: "contato",
     component: ContatoComponent
   },

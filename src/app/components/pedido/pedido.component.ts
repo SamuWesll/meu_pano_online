@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -10,7 +10,6 @@ import { map } from "rxjs/operators";
 import { ProdutoCarrinho } from "src/app/models/ProdutoCarrinho";
 import { Router } from "@angular/router";
 import { CarrinhoService } from "src/app/services/carrinho.service";
-import { Carrinho } from "src/app/models/Carrinho";
 
 @Component({
   selector: 'app-pedido',
@@ -75,9 +74,4 @@ export class PedidoComponent implements OnInit {
       }
     );
   }
-
-
-  // ngOnDestroy(){
-  //   this.sub.unsubscribe();
-  // }
 }

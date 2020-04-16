@@ -1,22 +1,14 @@
-import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './../../services/http.service';
-import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Checkout } from 'src/app/models/Checkout';
 import { HttpClient } from "@angular/common/http";
 import { NgxViacepService, Endereco, ErroCep } from '@brunoc/ngx-viacep';
 import { ModalDirective } from 'angular-bootstrap-md';
-import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
-import { Produtos } from 'src/app/models/Produtos';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { PedidoService } from 'src/app/services/pedido.service';
-import { CarrinhoComponent } from '../carrinho/carrinho.component';
 import { Router } from '@angular/router';
-// import 'rxjs/add/operator/map';
-// import { Http } from '@angular/http';
-
 
 @Component({
   selector: 'app-checkout',
@@ -36,7 +28,6 @@ export class CheckoutComponent implements OnInit {
     totalCompra: 0,
     formaPgto: "",
     tb_cliente_id_cliente: 0,
-    //tb_endereco_id_cliente: 0,
     tb_endereco_id_endereco: 0,
     itensPedido: []
   }
@@ -44,6 +35,7 @@ export class CheckoutComponent implements OnInit {
   cliente: any = {
     nome: "",
   };
+
   carrinho: any;
 
   idEndereco: number = null;
@@ -102,8 +94,6 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-
-
   title = 'app';
 
   constructor(private viacep: NgxViacepService,
@@ -113,8 +103,6 @@ export class CheckoutComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private pedidoService: PedidoService,
     private router: Router,
-    
-    
   ) { } // Injetando o serviço
 
   consultaCEP(cep: string) {
@@ -159,7 +147,7 @@ export class CheckoutComponent implements OnInit {
       qtdProduto += this.carrinho[i].contador;
       valorProduto += this.carrinho[i].valorDesconto * this.carrinho[i].contador;
     }
- 
+
     this.valorProdutos = valorProduto;
     this.qtdProdutos = qtdProduto;
   }
@@ -171,9 +159,7 @@ export class CheckoutComponent implements OnInit {
     return numero;
   };
 
-
   cadastrarNovoEndereco(form) {
-
     let body = {
       bairro: form['bairro'],
       cep: form['cep'],
@@ -189,60 +175,31 @@ export class CheckoutComponent implements OnInit {
 
     this.httpEndereco.postEndereco(body).subscribe(
       (data) => {
-        //this.cliente.tb_endereco_id_cliente.push(data);
         this.cliente.tb_endereco_id_endereco.push(data);
       }
     )
-
   }
 
   deletarEndere(idEndereco: number) {
-
     this.httpEndereco.deletarEndereco(idEndereco).subscribe(
-      () =>  {
-        // alert(`o endereço do id: ${idEndereco} foi deletado`);
+      () => {
         this.cliente.tb_endereco_id_endereco.forEach(end => {
-          if(end.idEndereco == idEndereco) {
-            this.cliente.tb_endereco_id_endereco.splice(end,1)
+          if (end.idEndereco == idEndereco) {
+            this.cliente.tb_endereco_id_endereco.splice(end, 1)
           }
         });
       },
       (err) => console.log(err)
     )
-    // (data) => {
-    //   if(data == "Endereço não encontrado!") {
-    //     return alert(data)
-    //   } else {
-    //     alert("Endereço deletado");
-    //     let arrayEndereco: any[] = this.cliente.tb_endereco_id_cliente;
-    //     this.cliente.tb_endereco_id_cliente = arrayEndereco.filter((end) => {
-    //       return idEndereco != end['idEndereco']
-    //     });
-    //     this.idEndereco = null;
-    //   }
-    // }
-
   }
 
   postCliente() {
-
     let cli = JSON.parse(localStorage.getItem("logado"))
-
-    this.httpCliente.getClienteId(cli['idCliente']).subscribe(
-      (body) => {
-        console.log(body)
-        this.cliente = body;
-      }
-    )
-
+    this.httpCliente.getClienteId(cli['idCliente']).subscribe((body) => this.cliente = body)
   }
 
   getCarrinho() {
-    this.carrinhoService.getCarrinho().subscribe(
-      (produto) => {
-        return this.carrinho = produto;
-      }
-    )
+    this.carrinhoService.getCarrinho().subscribe((produto) => this.carrinho = produto)
   }
 
   deleteCarrinho() {
@@ -250,14 +207,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   criarPedido() {
-
     let produtosCarrinhos: object[] = [];
 
     for (let i = 0; i < this.carrinho.length; i++) {
       let p1 = {
-        produto: {
-          idProduto: this.carrinho[i].idProduto
-        },
+        produto: this.carrinho[i].idProduto,
         qtdProduto: this.carrinho[i].contador,
         valorProduto: this.carrinho[i].contador * this.carrinho[i].valorDesconto
       };
@@ -265,7 +219,6 @@ export class CheckoutComponent implements OnInit {
     }
 
     let pedido = {
-
       formaPgto: "Cartão de Crédito",
       itensPedido: produtosCarrinhos,
       tb_cliente_id_cliente: this.cliente['idCliente'],
@@ -274,7 +227,6 @@ export class CheckoutComponent implements OnInit {
       valorFrete: this.valorFreteRadio,
       status: "Aguardando confirmação de pagamento",
       dataPedido: new Date()
-
     };
 
     this.pedidoService.criarPedido(pedido).subscribe(
@@ -287,7 +239,6 @@ export class CheckoutComponent implements OnInit {
         }
       }
     )
-
   }
 
   pageHome() {
@@ -304,15 +255,5 @@ export class CheckoutComponent implements OnInit {
     this.valorFreteRadio = 7.99
 
     this.carrinhoDeCompra();
-
-    // this.f = this.formBuilder.group({
-    //   cep: new FormControl('', Validators.compose([
-    //   Validators.required,
-    //   Validators.pattern('[0-9]{5}')
-    //   ])),    
-    // });
-
   };
-
-
 }

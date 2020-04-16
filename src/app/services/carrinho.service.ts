@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import {CookieService} from 'ngx-cookie-service';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
-import {ClienteService} from './cliente.service';
-import {Carrinho} from '../models/Carrinho';
-import {ItemCarrinho} from '../models/ItemCarrinho';
-import {Response} from '../response/Response';
-import {ProdutoCarrinho} from '../models/ProdutoCarrinho';
+import { CookieService } from 'ngx-cookie-service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { ClienteService } from './cliente.service';
+import { Carrinho } from '../models/Carrinho';
+import { ItemCarrinho } from '../models/ItemCarrinho';
+import { Response } from '../response/Response';
+import { ProdutoCarrinho } from '../models/ProdutoCarrinho';
 
 const URLCarrinho: string = "http://localhost:8080/meupanoonline/carrinho";
 
@@ -29,15 +29,13 @@ export class CarrinhoService {
     private clienteLogado: Response;
 
     constructor(private carrinhoService: HttpClient,
-                private cookieService: CookieService,
-                private clienteService: ClienteService) {
+        private cookieService: CookieService,
+        private clienteService: ClienteService) {
         this.itemSubject = new BehaviorSubject<ItemCarrinho[]>(null);
         this.item = this.itemSubject.asObservable();
         this.totalSubject = new BehaviorSubject<number>(null);
         this.total = this.totalSubject.asObservable();
         this.clienteService.clienteLogado.subscribe(cliente => this.clienteLogado = cliente);
-
-
     }
 
     private getCarrinhoLocal(): ProdutoCarrinho[] {
@@ -94,8 +92,8 @@ export class CarrinhoService {
     }
 
     atualizar(produtoCarrinho): Observable<ProdutoCarrinho> {
-        if (this.clienteLogado) {      
-            const URLAtualizar: string = "http://localhost:8080/meupanoonline/carrinho/`${produtoCarrinho.idProduto}`"; 
+        if (this.clienteLogado) {
+            const URLAtualizar: string = "http://localhost:8080/meupanoonline/carrinho/`${produtoCarrinho.idProduto}`";
             return this.carrinhoService.put<ProdutoCarrinho>(URLAtualizar, produtoCarrinho.contador);
         }
     }
@@ -105,8 +103,8 @@ export class CarrinhoService {
             delete this.localMap[produtoCarrinho.idProduto];
             return of(null);
         } else {
-            const url:string ="http://localhost:8080/meupanoonline/carrinho/${produtoCarrinho.idProduto}";
-            return this.carrinhoService.delete(url).pipe( );
+            const url: string = "http://localhost:8080/meupanoonline/carrinho/${produtoCarrinho.idProduto}";
+            return this.carrinhoService.delete(url).pipe();
         }
     }
 

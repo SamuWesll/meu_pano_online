@@ -9,78 +9,34 @@
             <div class="p-2">
                 <div class="form-group">
                     <label for="nome">Nome completo*</label>
-                    <input readonly class="form-control" type="text" id="nome" name="nome"
-                    placeholder="" [ngModel]="usuario.nome" [ngModel] pattern="[a-zA-Z ]*"
-                    minlength="12" maxlength="50"required #nome="ngModel" placeholder="{{ cliente['nome'] }}"> 
-                    <!-- <div *ngIf="!nome.valid && nome.touched"
-                    class="alert alert-danger" role="alert">
-                        Nome é obrigatório. 
-                        (Somente letras)
-                    </div> -->
+                    <input readonly class="form-control" type="text" id="nome" name="nome" placeholder=""
+                        [ngModel]="usuario.nome" [ngModel] pattern="[a-zA-Z ]*" minlength="12" maxlength="50" required
+                        #nome="ngModel" placeholder="{{ cliente['nome'] }}">
                 </div>
-            
+
                 <div class="form-group">
                     <label for="cpf">CPF*</label>
-                    <input readonly ng class="form-control" type="text" id="cpf" name="cpf"
-                    placeholder="" [ngModel]="usuario.cpf" 
-                    [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
-                    minlength="11" maxlength="11" required #cpf="ngModel" placeholder="{{ cliente.cpf }}">
-                    <!-- <div *ngIf="!cpf.valid && cpf.touched || cpf.value == 00000000000"
-                    class="alert alert-danger" role="alert">
-                        CPF inválido.
-                        CPF é obrigatório. (Somente números - 11 digitos)
-                    </div> -->
+                    <input readonly ng class="form-control" type="text" id="cpf" name="cpf" placeholder=""
+                        [ngModel]="usuario.cpf" [ngModel]
+                        pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
+                        minlength="11" maxlength="11" required #cpf="ngModel" placeholder="{{ cliente.cpf }}">
                 </div>
 
                 <div class="form-group">
                     <label for="telefone">Telefone ou celular*</label>
-                    <input readonly class="form-control" type="tel" id="telefone" name="telefone"
-                    placeholder=""  [ngModel]="usuario.telefone" 
-                    [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
-                    minlength="10" maxlength="11" required #telefone="ngModel" placeholder="{{ cliente.numTelefoneCelular }}">
-                    <!-- <div *ngIf="!telefone.valid && telefone.touched || telefone.value == 00000000000 || telefone.value == 00000000000"
-                    class="alert alert-danger" role="alert" >
-                        É necessário um número de telefone ou celular. (Somente números)
-                    </div> -->
+                    <input readonly class="form-control" type="tel" id="telefone" name="telefone" placeholder=""
+                        [ngModel]="usuario.telefone" [ngModel]
+                        pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
+                        minlength="10" maxlength="11" required #telefone="ngModel"
+                        placeholder="{{ cliente.numTelefoneCelular }}">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email*</label>
-                    <input readonly class="form-control" type="email" id="email" name="email"
-                    placeholder=""  [ngModel]="usuario.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    minlength="12" maxlength="40" required email #email="ngModel" placeholder="{{ cliente.email }}" >
-                    <!-- <div *ngIf="!email.valid && email.touched "
-                    class="alert alert-danger" role="alert"  >
-                        Digite um email válido.
-                    </div> -->
+                    <input readonly class="form-control" type="email" id="email" name="email" placeholder=""
+                        [ngModel]="usuario.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        minlength="12" maxlength="40" required email #email="ngModel" placeholder="{{ cliente.email }}">
                 </div>
-
-                <!-- <div class="form-group">
-                    <label for="senha">Senha*</label>
-                    <input class="form-control" type="password" id="senha" name="senha"
-                    placeholder="Digite sua senha"  [ngModel]="usuario.senha" 
-                    minlength="5" maxlength="30" required #senha="ngModel" [class.is-invalid]="senha.invalid && 
-                    senha.touched || senha.touched && senha.value != confSenha.value" [class.is-valid]="senha.touched &&
-                    senha.value == confSenha.value" [maxlength]="30" [minlength]="5">
-                    <div *ngIf="!senha.valid && senha.touched"
-                    class="alert alert-danger" role="alert">
-                        Senha é obrigatório.
-                    </div>
-                </div> -->
-
-                <!-- <div class="form-group">
-                    <label for="confSenha">Confirme a senha*</label>
-                    <input class="form-control" type="password" id="confSenha"
-                    name="confSenha" placeholder="Confirme sua senha" [ngModel]="usuario.confSenha" 
-                    minlength="5" maxlength="30" required #confSenha="ngModel" [class.is-invalid]="confSenha.invalid && 
-                    confSenha.touched || confSenha.touched && senha.value != confSenha.value" [class.is-valid]="confSenha.touched && 
-                    senha.value == confSenha.value" [maxlength]="30" [minlength]="5">
-                    <div *ngIf="!confSenha.valid && confSenha.touched"
-                    class="alert alert-danger" role="alert">
-                        É obrigatório confirmar a senha.
-                    </div> 
-                </div> -->
-
             </div>
         </div>
         <div class="col-md-4">
@@ -93,31 +49,40 @@
                     <div class="carEndereco">
                         <header class="d-flex justify-content-between">
                             <div>
-                                <input type="radio" name="endereco" value="{{ endereco.idEndereco }}" (click)="selecionarEndereco(endereco.idEndereco)">
+                                <input type="radio" name="endereco" value="{{ endereco.idEndereco }}"
+                                    (click)="selecionarEndereco(endereco.idEndereco)">
                                 <label for="">Endereço {{ i + 1  }}</label>
                             </div>
-                            <img class="trash" src="../../../assets/img/trash.png" (click)="modalDeletarEndereco.show(); selecionarEndereco(endereco.idEndereco)" height="15px" alt="">
+                            <img class="trash" src="../../../assets/img/trash.png"
+                                (click)="modalDeletarEndereco.show(); selecionarEndereco(endereco.idEndereco)"
+                                height="15px" alt="">
                         </header>
                         <div class="endereco">
                             <p>
-                                <span>{{ endereco.logradouro }} {{ endereco.numero }} {{ endereco.bairro }}, {{ endereco.complemento }} - {{ endereco.cidade }}/{{ endereco.uf }} - CEP: {{ endereco.cep }} </span>
+                                <span>{{ endereco.logradouro }} {{ endereco.numero }} {{ endereco.bairro }},
+                                    {{ endereco.complemento }} - {{ endereco.cidade }}/{{ endereco.uf }} - CEP:
+                                    {{ endereco.cep }} </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="m-3 col-12 d-flex justify-content-center">
                     <button type="button" (click)="modalNovoEndereco.show()" class="btn btn-info">Novo endereço</button>
                 </div>
 
-                <div  class="p-2 row">
+                <div class="p-2 row">
                     <div class="col-12" id="fretes">
                         <label>Escolha um tipo de frete:</label>
-                        <label><input type="radio" name="frete" value="7.99" (click)="valorFrete(7.99)" checked> Até 30 dias - <strong style="color: green;">R$ 7,99</strong> (Receba em casa) - Entrega normal</label>
-                        <label><input type="radio" name="frete" value="15.99" (click)="valorFrete(15.99)" >Até 7 dias - <strong style="color: green;">R$ 15,99</strong> (Receba em casa) -<br> Entrega rápida</label>
+                        <label><input type="radio" name="frete" value="7.99" (click)="valorFrete(7.99)" checked> Até 30
+                            dias - <strong style="color: green;">R$ 7,99</strong> (Receba em casa) - Entrega
+                            normal</label>
+                        <label><input type="radio" name="frete" value="15.99" (click)="valorFrete(15.99)">Até 7 dias -
+                            <strong style="color: green;">R$ 15,99</strong> (Receba em casa) -<br> Entrega
+                            rápida</label>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -126,15 +91,15 @@
 
             <header class="p-2 headerTitle">
                 <img class="mr-2" src="../../../assets/img/payment.png" height="22px" alt="">
-                Pagamento 
+                Pagamento
             </header>
-            
+
             <div class="p-2">
                 <div class="form-group">
                     <label for="numCartao">Numero do cartão*</label>
                     <input class="form-control" type="text" id="numCartao" name="numCartao"
-                    placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao" pattern="^\d{16}$"
-                    minlength="16" maxlength="16" required #numCartao="ngModel">
+                        placeholder="Digite o numero do cartão" [ngModel]="usuario.numCartao" pattern="^\d{16}$"
+                        minlength="16" maxlength="16" required #numCartao="ngModel">
                     <div *ngIf="!numCartao.valid && numCartao.touched || numCartao.value == 0000000000000000 "
                         class="alert alert-danger" role="alert">
                         Número do cartão é obrigatório.
@@ -145,13 +110,12 @@
                     <div class="col-5">
                         <label for="dtValidade">Mês*</label>
                         <select class="form-control" type="text" id="mesValidade" name="mesValidade"
-                        placeholder="Validade" [ngModel]="usuario.mesValidade"
-                        required #mesValidade="ngModel">
-                        <div *ngIf="!mesValidade.valid && mesValidade.touched"
-                            class="alert alert-danger" role="alert">
-                            Mês*
-                        </div>
-                        <option required value="" disabled selected >Mês Venc.</option>
+                            placeholder="Validade" [ngModel]="usuario.mesValidade" required #mesValidade="ngModel">
+                            <div *ngIf="!mesValidade.valid && mesValidade.touched" class="alert alert-danger"
+                                role="alert">
+                                Mês*
+                            </div>
+                            <option required value="" disabled selected>Mês Venc.</option>
                             <option value="jan">JANEIRO</option>
                             <option value="fev">FEVEREIRO</option>
                             <option value="mar">MARÇO</option>
@@ -170,13 +134,12 @@
                     <div class="col-4">
                         <label for="dtValidade">Ano*</label>
                         <select class="form-control" type="text" id="anoValidade" name="anoValidade"
-                        placeholder="Validade" [ngModel]="usuario.anoValidade"
-                        required #anoValidade="ngModel">
-                        <div *ngIf="!anoValidade.valid && anoValidade.touched"
-                            class="alert alert-danger" role="alert">
-                            Mês*
-                        </div>
-                        <option value="" disabled selected >Ano Venc.</option>
+                            placeholder="Validade" [ngModel]="usuario.anoValidade" required #anoValidade="ngModel">
+                            <div *ngIf="!anoValidade.valid && anoValidade.touched" class="alert alert-danger"
+                                role="alert">
+                                Mês*
+                            </div>
+                            <option value="" disabled selected>Ano Venc.</option>
                             <option value="vinte">2020</option>
                             <option value="vinteUm">2021</option>
                             <option value="vinteDois">2022</option>
@@ -194,10 +157,9 @@
 
                     <div class="col-3">
                         <label for="cdSeguranca">Cod. CVV</label>
-                        <input class="form-control" type="text" id="cdSeguranca" name="cdSeguranca"
-                        placeholder="CVV" [ngModel]="usuario.cdSeguranca" pattern="^\d{3}$"
-                        [minlength]="3" [maxlength]="3"
-                        required #cdSeguranca="ngModel">
+                        <input class="form-control" type="text" id="cdSeguranca" name="cdSeguranca" placeholder="CVV"
+                            [ngModel]="usuario.cdSeguranca" pattern="^\d{3}$" [minlength]="3" [maxlength]="3" required
+                            #cdSeguranca="ngModel">
                         <div *ngIf="!cdSeguranca.valid && cdSeguranca.touched || cdSeguranca.value == 000"
                             class="alert alert-danger" role="alert">
                             Cód inval.
@@ -208,19 +170,18 @@
                 <div class="form-group">
                     <label for="nomeTitular">Nome do titular*</label>
                     <input class="form-control" type="text" id="nomeTitular" name="nomeTitular"
-                    placeholder="Digite o nome do titular" [ngModel]="usuario.nomeTitular" [ngModel] pattern="[a-zA-Z ]*"
-                    minlength="12" maxlength="50" required #nomeTitular="ngModel">
-                    <div *ngIf="!nomeTitular.valid && nomeTitular.touched"
-                        class="alert alert-danger" role="alert">
+                        placeholder="Digite o nome do titular" [ngModel]="usuario.nomeTitular" [ngModel]
+                        pattern="[a-zA-Z ]*" minlength="12" maxlength="50" required #nomeTitular="ngModel">
+                    <div *ngIf="!nomeTitular.valid && nomeTitular.touched" class="alert alert-danger" role="alert">
                         Nome do titular é obrigatório. (Somente letras)
                     </div>
                 </div>
 
-                <div class="form-group">         
+                <div class="form-group">
                     <label for="cpfTitular">CPF do titular*</label>
                     <input class="form-control" type="text" id="cpfTitular" name="cpfTitular"
-                    placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular"   pattern="^\d{11}$"
-                    minlength="11" maxlength="11" required #cpfTitular="ngModel">
+                        placeholder="Digite o CPF do titular" [ngModel]="usuario.cpfTitular" pattern="^\d{11}$"
+                        minlength="11" maxlength="11" required #cpfTitular="ngModel">
                     <div *ngIf="!cpfTitular.valid && cpfTitular.touched || cpfTitular.value == 00000000000"
                         class="alert alert-danger" role="alert">
                         CPF inválido. CPF do titular é obrigatório.
@@ -233,7 +194,8 @@
                         <div class="d-flex justify-content-between">
                             <span class="col-6">Quantidade itens:</span>
                             <div class="col-3 dropdown-divider mt-3 pb-0"></div>
-                            <span class="col-3 d-flex flex-row-reverse valorSpan">{{ adicionarZero(qtdProdutos) }}</span>
+                            <span
+                                class="col-3 d-flex flex-row-reverse valorSpan">{{ adicionarZero(qtdProdutos) }}</span>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
@@ -249,77 +211,62 @@
                     <div class="d-flex mt-2 justify-content-between">
                         <span class="col-4">Total</span>
                         <div class="col-5 dropdown-divider mt-3 pb-0"></div>
-                        <span class="col-3 d-flex flex-row-reverse valorSpan">{{ mascaraValor(valorProdutos + valorFreteRadio) }}</span>
+                        <span
+                            class="col-3 d-flex flex-row-reverse valorSpan">{{ mascaraValor(valorProdutos + valorFreteRadio) }}</span>
                     </div>
                 </div>
 
             </div>
             <div class="d-flex justify-content-center">
-                <button 
-                    type="button" 
-                    class="btn btnDetalhe"
-                    [disabled]="!idEndereco || numCartao.invalid || mesValidade.invalid || anoValidade.invalid || cdSeguranca.invalid || nomeTitular.invalid || cpfTitular.invalid" 
-                    (click)="criarPedido() " 
-                >Finalizar compra</button>
+                <button type="button" class="btn btnDetalhe"
+                    [disabled]="!idEndereco || numCartao.invalid || mesValidade.invalid || anoValidade.invalid || cdSeguranca.invalid || nomeTitular.invalid || cpfTitular.invalid"
+                    (click)="criarPedido() ">Finalizar compra</button>
             </div>
         </div>
     </form>
 </main>
 
-
-
-  <div
-    mdbModal
-    #compraFinalizada="mdbModal"
-    id="compraFinalizada" 
-    class="modal fade top" 
-    role="dialog">
+<div mdbModal #compraFinalizada="mdbModal" id="compraFinalizada" class="modal fade top" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Estamos finalizando seu pedido!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="compraFinalizada.hide()" routerLink="/produto-detalhado">
-            <span aria-hidden="true" class="white-text">&times;</span>
-        </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Estamos finalizando seu pedido!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="compraFinalizada.hide()" routerLink="/produto-detalhado">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <strong>Numero do pedido: </strong><span>{{ pedidoFinaliza['idPedido'] }}</span>
+                </div>
+                <div class="mt-2">
+                    <strong>Valor da compra:
+                    </strong><span>{{ mascaraValor(pedidoFinaliza['valorFrete'] + pedidoFinaliza['totalCompra']) }}</span>
+                </div>
+                <div class="mt-2">
+                    <strong>Forma de pagamento: </strong><span>{{ pedidoFinaliza['formaPgto'] }}</span>
+                </div>
+                <div class="mt-2">
+                    <strong>Status do pedido: </strong><span>{{ pedidoFinaliza['status'] }}</span>
+                </div>
+                <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="compraFinalizada.hide()">Fechar</button>
+            </div>
         </div>
-        <div class="modal-body">
-            <div>
-                <strong>Numero do pedido: </strong><span>{{ pedidoFinaliza['idPedido'] }}</span>
-            </div>
-            <div class="mt-2">
-                <strong>Valor da compra: </strong><span>{{ mascaraValor(pedidoFinaliza['valorFrete'] + pedidoFinaliza['totalCompra']) }}</span>
-            </div>
-            <div class="mt-2">
-                <strong>Forma de pagamento: </strong><span>{{ pedidoFinaliza['formaPgto'] }}</span>
-            </div>
-            <div class="mt-2">
-                <strong>Status do pedido: </strong><span>{{ pedidoFinaliza['status'] }}</span>
-            </div>
-           <p><b>Obrigado pela confiança! </b>Seja bem vindo.</p> 
-         </div>
-        <div class="modal-footer">        
-          <button type="button" class="btn btn-primary" (click)="compraFinalizada.hide()">Fechar</button>
-        </div>
-      </div>
     </div>
-  </div>   
+</div>
 
-<div
-  mdbModal
-  #modalNovoEndereco="mdbModal"
-  class="modal fade top"
-  id="frameModalTop"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
-  aria-hidden="true"
-  style="overflow-y: auto"
->
+<div mdbModal #modalNovoEndereco="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title w-100">Cadastrar novo endereço</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalNovoEndereco.hide()">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="modalNovoEndereco.hide()">
                     <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
             </div>
@@ -328,75 +275,64 @@
                     <div class="form-group row">
                         <div class="col-6">
                             <label for="cep">CEP</label>
-                            <input class="form-control" type="text" id="cep" name="cep"
-                            placeholder="Digite seu CEP" [ngModel]="usuario.cep"
-                            [minlength]="8" [maxlength]="8" required #cep="ngModel" 
-                            [ngModel]  pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
-                            (blur)="consultaCEP($event.target.value)"
-                            (keydown)="consultaCEP(usuario.cep)"> 
-                            <div *ngIf="!cep.valid && cep.touched"
-                            class="alert alert-danger" role="alert">
-                            CEP é obrigatório.
+                            <input class="form-control" type="text" id="cep" name="cep" placeholder="Digite seu CEP"
+                                [ngModel]="usuario.cep" [minlength]="8" [maxlength]="8" required #cep="ngModel"
+                                [ngModel]
+                                pattern="^\s*(?:\+?\d{1,3})?[- (]*\d{3}(?:[- )]*\d{3})?[- ]*\d{4}(?: *[x/#]\d+)?\s*$"
+                                (blur)="consultaCEP($event.target.value)" (keydown)="consultaCEP(usuario.cep)">
+                            <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
+                                CEP é obrigatório.
                             </div>
                         </div>
                         <div class="col-6">
                             <label for="numero">Número*</label>
                             <input class="form-control" type="string" id="numero" name="numero"
-                            placeholder="Digite o número" [ngModel]="usuario.numero" 
-                            minlength="2"  maxlength="5" required #numero="ngModel">
-                            <div *ngIf="!numero.valid && numero.touched"
-                            class="alert alert-danger" role="alert">
-                            Número é obrigatório.
+                                placeholder="Digite o número" [ngModel]="usuario.numero" minlength="2" maxlength="5"
+                                required #numero="ngModel">
+                            <div *ngIf="!numero.valid && numero.touched" class="alert alert-danger" role="alert">
+                                Número é obrigatório.
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="ender">Endereço*</label>
                         <input class="form-control" type="text" id="ender" name="ender"
-                        placeholder="Digite seu endereço" [ngModel]="usuario.endereco"
-                        required #ender="ngModel">
-                        <div *ngIf="!ender.valid && ender.touched"
-                        class="alert alert-danger" role="alert">
-                        Endereço é obrigatório.
+                            placeholder="Digite seu endereço" [ngModel]="usuario.endereco" required #ender="ngModel">
+                        <div *ngIf="!ender.valid && ender.touched" class="alert alert-danger" role="alert">
+                            Endereço é obrigatório.
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="complementoUsuario">Complemento</label>
                         <input class="form-control" type="text" id="complemento" name="complemento"
-                            placeholder="Digite o complemento"
-                            [ngModel]="usuario.complemento" #complemento="ngModel">
+                            placeholder="Digite o complemento" [ngModel]="usuario.complemento" #complemento="ngModel">
                     </div>
                     <div class="form-group">
                         <label for="bairro">Bairro*</label>
                         <input class="form-control" type="text" id="bairro" name="bairro"
-                        placeholder="Digite seu bairro" [ngModel]="usuario.bairro"
-                        required #bairro="ngModel">
-                        <div *ngIf="!bairro.valid && bairro.touched"
-                        class="alert alert-danger" role="alert">
-                        Bairro é obrigatório.
+                            placeholder="Digite seu bairro" [ngModel]="usuario.bairro" required #bairro="ngModel">
+                        <div *ngIf="!bairro.valid && bairro.touched" class="alert alert-danger" role="alert">
+                            Bairro é obrigatório.
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-6">
                             <label for="cidade">Cidade*</label>
-                            <input class="form-control" type="text" id="cidade" name="cidade"
-                            placeholder="Cidade" [ngModel]="usuario.cidade"
-                            required #cidade="ngModel">
-                            <div *ngIf="!cidade.valid && cidade.touched"
-                            class="alert alert-danger" role="alert">
-                            Digite sua cidade.
+                            <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade"
+                                [ngModel]="usuario.cidade" required #cidade="ngModel">
+                            <div *ngIf="!cidade.valid && cidade.touched" class="alert alert-danger" role="alert">
+                                Digite sua cidade.
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="estado" >Estado*</label>
-                            <select class="form-control" name="estado" id="estado" [ngModel]="usuario.estado"
-                            required #estado="ngModel">
-                                <div *ngIf="!estado.valid && estado.touched"
-                                class="alert alert-danger" role="alert">
-                                Selecione seu estado.
+                            <label for="estado">Estado*</label>
+                            <select class="form-control" name="estado" id="estado" [ngModel]="usuario.estado" required
+                                #estado="ngModel">
+                                <div *ngIf="!estado.valid && estado.touched" class="alert alert-danger" role="alert">
+                                    Selecione seu estado.
                                 </div>
-                                <option value="" disabled selected >Estado*</option>
+                                <option value="" disabled selected>Estado*</option>
                                 <option value="AC">AC</option>
                                 <option value="AL">AL</option>
                                 <option value="AP">AP</option>
@@ -428,8 +364,11 @@
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal" [disabled]="!formEndereco.valid" (click)="cadastrarNovoEndereco(formEndereco.value); modalNovoEndereco.hide()">Cadastrar</button>
-                        <button type="button" class="btn btn-outline-danger rounded" (click)="modalNovoEndereco.hide()" >Fechar</button>
+                        <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal"
+                            [disabled]="!formEndereco.valid"
+                            (click)="cadastrarNovoEndereco(formEndereco.value); modalNovoEndereco.hide()">Cadastrar</button>
+                        <button type="button" class="btn btn-outline-danger rounded"
+                            (click)="modalNovoEndereco.hide()">Fechar</button>
                     </div>
                 </form>
             </div>
@@ -437,22 +376,14 @@
     </div>
 </div>
 
-<div
-  mdbModal
-  #modalDeletarEndereco="mdbModal"
-  class="modal fade top"
-  id="frameModalTop"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
-  aria-hidden="true"
-  style="overflow-y: auto"
->
+<div mdbModal #modalDeletarEndereco="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="col-12 text-center">Excluir Endereço</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalDeletarEndereco.hide()">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="modalDeletarEndereco.hide()">
                     <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
             </div>
@@ -461,11 +392,13 @@
                     <p class="col- text-center">Você realmente deseja excluir seu endereço?</p>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                    <button type="submit" class="btn btn-outline-warning rounded mr-3" data-dismiss="modal" (click)="deletarEndere(idEndereco); modalDeletarEndereco.hide()">Sim</button>
-                    <button type="button" class="btn btn-outline-danger rounded ml-3" (click)="modalDeletarEndereco.hide()" >Não</button>
+                    <button type="submit" class="btn btn-outline-warning rounded mr-3" data-dismiss="modal"
+                        (click)="deletarEndere(idEndereco); modalDeletarEndereco.hide()">Sim</button>
+                    <button type="button" class="btn btn-outline-danger rounded ml-3"
+                        (click)="modalDeletarEndereco.hide()">Não</button>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
