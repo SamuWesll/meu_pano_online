@@ -23,7 +23,7 @@ export class PedidoDetalhadoComponent implements OnInit {
 
     ngOnInit() {
         this.pedidoService.exibir(this.route.snapshot.paramMap.get('id')).subscribe(data => {
-            this.pedido = data
+            this.pedido = data['itensPedido']
             return this.pedido;
         });
     }
