@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PedidoService } from 'src/app/services/pedido.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 
 @Component({
     selector: 'app-pedido-detalhado',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class PedidoDetalhadoComponent implements OnInit {
 
-    pedido: any[] = [];
+    pedido: ProdutoCarrinho[] = [];
 
     constructor(private pedidoService: PedidoService,
         private route: ActivatedRoute,
@@ -23,7 +24,7 @@ export class PedidoDetalhadoComponent implements OnInit {
 
     ngOnInit() {
         this.pedidoService.exibir(this.route.snapshot.paramMap.get('id')).subscribe(data => {
-            this.pedido = data
+            this.pedido = data['itensPedido']
             return this.pedido;
         });
     }

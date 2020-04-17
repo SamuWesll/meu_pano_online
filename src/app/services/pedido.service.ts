@@ -19,7 +19,7 @@ export class PedidoService{
     }
 
     getPedidos(id){
-        return this.pedidoService.get(URLPedido+"/lista-cliente/"+id).pipe();
+        return this.pedidoService.get(URLPedido+"/lista-cliente?tbClienteIdCliente="+id)
     }
 
     exibir(id){
