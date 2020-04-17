@@ -6,7 +6,6 @@ import { ProdutoCarrinho } from 'src/app/models/ProdutoCarrinho';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ProdutoService } from 'src/app/services/produto.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-produto-detalhado',

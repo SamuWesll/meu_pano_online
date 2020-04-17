@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Produtos } from 'src/app/models/Produtos';
-import { HttpService } from 'src/app/services/http.service';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -70,7 +69,6 @@ export class ProdutosComponent implements OnInit {
 
   }
 
-  // usando o filtro de categorias (refatorado)
   filtroProdutos(id: number, ordem: string) {
     if (ordem === 'padrao') {
       this.httpProduto.getListaProdutos().pipe(map((data: Produtos[]) => data))

@@ -10,26 +10,22 @@
         </div>
     </div>
     <div class="mb-1">
-        <h6 style="color: #424040;">Olá, bem vindo!</h6>
-        <!-- <p style="color: #424040;">Olá visitante, entre na sua conta </p> -->
-        
-        <button type="button" class="btn btn-success rounded login mr-2" data-toggle="modal"
-        data-target="#login" (click)="modalLogin.show()">
-        <span class="small" *ngIf="!login">
-            Entre ou cadastre-se
-        </span>
+        <button type="button" class="btn btn-success rounded login mr-2" data-toggle="modal" data-target="#login"
+            (click)="modalLogin.show()">
+            <span class="small" *ngIf="!login">
+                Entre ou cadastre-se
+            </span>
 
             <span *ngIf="login">
                 Olá, {{ separarNome(login['nome']) }}
             </span>
         </button>
-        
-        <a style="height: px;"  class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"></a>
-        
+
+        <a style="height: px;" class="btn btn-info text-light rounded carrinho" routerLink="/carrinho"></a>
+
     </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <!-- <a class="navbar-brand" href="#">Produtos</a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,93 +33,90 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item active" *ngFor="let cat of categorias">
-                <a class="nav-link" (click)="btnFiltro(cat.cod)" 
-                routerLink="/produtos/categoria/{{cat.cod}}">{{cat.nomeCategoria}}</a>
+                <a class="nav-link" (click)="btnFiltro(cat.cod)"
+                    routerLink="/produtos/categoria/{{cat.cod}}">{{cat.nomeCategoria}}</a>
             </li>
         </ul>
     </div>
 </nav>
-<div
-  mdbModal
-  #modalLogin="mdbModal"
-  class="modal fade top"
-  id="frameModalTop"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
-  aria-hidden="true"
-  style="overflow-y: auto"
->
-  <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-            <h5 class="modal-title w-100">Já sou cliente PanoOnline</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalLogin.hide()">
-                <span aria-hidden="true" class="white-text">&times;</span>
-            </button>
-        </div>
-        <div *ngIf="!login">
-            <form #login="ngForm">
+<div mdbModal #modalLogin="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100">Já sou cliente PanoOnline</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalLogin.hide()">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <div *ngIf="!login">
+                <form #login="ngForm">
+                    <div class="modal-body mt-4">
+                        <div class="md-form row">
+                            <label for="email" class="col-2 pt-2 text-center">Email</label>
+                            <input id="email" type="text" mdbInput class="form-control col-9"
+                                [formControl]="emaiOuCpflInput" placeholder="E-mail ou CPF" required>
+                        </div>
+                        <div class="md-form row mt-4">
+                            <label for="senha" class="col-2 pt-2 text-center">Senha</label>
+                            <input id="senha" type="password" name="senhaInput" mdbInput class="form-control col-9"
+                                [formControl]="senhaInput" required [maxlength]="30" [minlength]="5"
+                                placeholder="Digite sua senha">
+                        </div>
+                        <div class="d-flex justify-content-around mt-3">
+                            <a id="esqueciSenha"
+                                class="text-uppercase text-decoration-none text-secondary font-weight-bold"
+                                data-toggle="modal" routerLink="/"
+                                (click)="modalEsqueciSenha.show(); modalLogin.hide()">
+                                Esqueceu a senha?
+                            </a>
+                            <a class="text-uppercase text-decoration-none text-secondary font-weight-bold pr-1"
+                                data-dismiss="modal" routerLink="/cadastro" (click)="modalLogin.hide()">Criar
+                                cadastro</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal"
+                            [disabled]="!senhaInput.valid || !emaiOuCpflInput.valid"
+                            (click)="realizarLogin()">Login</button>
+                        <button type="button" class="btn btn-outline-danger rounded"
+                            (click)="modalLogin.hide()">Fechar</button>
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="login">
                 <div class="modal-body mt-4">
-                    <div class="md-form row">
-                        <label for="email" class="col-2 pt-2 text-center">Email</label>
-                        <input id="email" type="text" mdbInput class="form-control col-9" [formControl]="emaiOuCpflInput" placeholder="E-mail ou CPF" required>
+                    <div class="d-flex justify-content-between mt-3">
+                        <h5 class="">Nome Completo:</h5>
+                        <span>{{login.nome}}</span>
                     </div>
-                    <div class="md-form row mt-4">
-                        <label for="senha" class="col-2 pt-2 text-center">Senha</label>
-                        <input id="senha" type="password" name="senhaInput" mdbInput class="form-control col-9" [formControl]="senhaInput" required [maxlength]="30" [minlength]="5" placeholder="Digite sua senha">
+                    <div class="d-flex justify-content-between mt-3">
+                        <h5 class="">E-mail:</h5>
+                        <span>{{login.email}}</span>
                     </div>
-                    <div class="d-flex justify-content-around mt-3">
-                        <a id="esqueciSenha" class="text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="modal" routerLink="/" (click)="modalEsqueciSenha.show(); modalLogin.hide()">
-                            Esqueceu a senha?
-                        </a>
-                        <a class="text-uppercase text-decoration-none text-secondary font-weight-bold pr-1" data-dismiss="modal" routerLink="/cadastro" (click)="modalLogin.hide()">Criar cadastro</a>
+                    <div class="d-flex justify-content-between mt-3">
+                        <h5 class="">Data Nascimento</h5>
+                        <span>{{login.dataNascimento}}</span>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-success rounded" data-dismiss="modal" [disabled]="!senhaInput.valid || !emaiOuCpflInput.valid" (click)="realizarLogin()">Login</button>
-                    <button type="button" class="btn btn-outline-danger rounded" (click)="modalLogin.hide()">Fechar</button>
-                </div>
-            </form>
-        </div>
-        <div *ngIf="login">
-            <div class="modal-body mt-4">
-                <div class="d-flex justify-content-between mt-3">
-                    <h5 class="">Nome Completo:</h5>
-                    <span>{{login.nome}}</span>
-                </div>
-                <div class="d-flex justify-content-between mt-3">
-                    <h5 class="">E-mail:</h5>
-                    <span>{{login.email}}</span>
-                </div>
-                <div class="d-flex justify-content-between mt-3">
-                    <h5 class="">Data Nascimento</h5>
-                    <span>{{login.dataNascimento}}</span>
+                    <button type="button" class="btn btn-outline-danger rounded"
+                        (click)="modalLogin.hide()">Fechar</button>
+                    <button type="button" class="btn btn-outline-warning rounded" (click)="sairLogin()">Sair da
+                        conta</button>
                 </div>
             </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-danger rounded" (click)="modalLogin.hide()">Fechar</button>
-                <button type="button" class="btn btn-outline-warning rounded" (click)="sairLogin()">Sair da conta</button>
-            </div>
         </div>
-      </div>
-  </div>
+    </div>
 </div>
-<div 
-    mdbModal
-    #modalEsqueciSenha="mdbModal"
-    class="modal fade top"
-    id="frameModalTop"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="myModalLabel"
-    aria-hidden="true"
-    style="overflow-y: auto">
+<div mdbModal #modalEsqueciSenha="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title w-100">Esqueceu sua senha?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalEsqueciSenha.hide()">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="modalEsqueciSenha.hide()">
                     <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
             </div>
@@ -132,12 +125,14 @@
                     senha.</p>
                 <form action="">
                     <label for="emailEsqueciSenha">E-mail</label>
-                    <input class="form-control" type="email" name="emailEsqueciSenha" id="emailEsqueciSenha" placeholder="Digite o seu e-mail">
+                    <input class="form-control" type="email" name="emailEsqueciSenha" id="emailEsqueciSenha"
+                        placeholder="Digite o seu e-mail">
                 </form>
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button type="submit" class="btn btn-outline-success rounded" id="btnEnviarEmail">Enviar</button>
-                <button type="button" class="btn btn-outline-danger rounded" (click)="modalLogin.show(); modalEsqueciSenha.hide()">Voltar</button>
+                <button type="button" class="btn btn-outline-danger rounded"
+                    (click)="modalLogin.show(); modalEsqueciSenha.hide()">Voltar</button>
             </div>
         </div>
     </div>

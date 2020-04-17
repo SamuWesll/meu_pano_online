@@ -1,9 +1,14 @@
 export class Pedido{
    constructor(
     public idPedido?: number,
-    public valor_Frete?: number,
-    public total_compra?: number,
-    public id_cliente?: number,
-    public id_endereco?: number
+    public valorFrete?: number,
+    public totalCompra?: number,
+    public formaPgto?: string,
+    public status?: string,
+    public dataPedido?: string,
+    public tbClienteIdCliente?: number,
+    public nomeCliente?: string,
+    public tbEnderecoIdEndereco?: number,
+    public enderecoEntrega?: string
 ){}
 }

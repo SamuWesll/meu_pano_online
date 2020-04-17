@@ -11,38 +11,38 @@ export class CompraFinalizadaComponent implements OnInit {
   pedido: [] = []
   qtdProdutos: number = 0
 
-  qtdProdutosComprados(){
+  qtdProdutosComprados() {
     let contadorProdutos = 0
-    for(let i=0; i<this.pedido['itensPedido'].length; i++ ){
-    contadorProdutos += this.pedido['itensPedido'][i].qtdProduto
+    for (let i = 0; i < this.pedido['itensPedido'].length; i++) {
+      contadorProdutos += this.pedido['itensPedido'][i].qtdProduto
     }
 
     this.qtdProdutos = contadorProdutos
   }
-  
+
   mascaraValor(valor: number) {
     return Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
   }
 
   valorFreteRadio: number;
-  
- valorFrete(valor: number) {
+
+  valorFrete(valor: number) {
     this.valorFreteRadio = valor;
   };
 
   getCompraFinalizada() {
-    this.pedido = JSON.parse(localStorage.getItem('pedidoFinalizado')) 
+    this.pedido = JSON.parse(localStorage.getItem('pedidoFinalizado'))
     console.log(this.pedido)
     localStorage.removeItem('pedidoFinalizado')
     this.qtdProdutosComprados()
   }
 
-  btnVoltarHome(){ 
+  btnVoltarHome() {
     this.router.navigate(['home'])
     this.pedido = []
   }
 
-  constructor( private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getCompraFinalizada()

@@ -1,0 +1,29 @@
+<main class="container">
+    <table class="table table-striped text-center">
+        <thead>
+        <tr>
+            <th scope="col">Pedido</th>
+            <th scope="col">Valor Compra</th>
+            <th scope="col">Frete</th>
+            <th scope="col">Status</th>
+            <th scope="col">Opções</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        <tr *ngFor="let pedido of pedidosCliente">
+            <th class="align-middle" scope="row">
+                {{pedido.idPedido}}
+            </th>
+            <td class="align-middle">R${{converteDecimal(pedido.totalCompra)}}</td>
+            <td class="align-middle">R${{converteDecimal(pedido.valorFrete)}}</td>
+            <td class="align-middle">{{pedido.status}}</td>
+            <td class="align-middle"> 
+                <a style="display: block" routerLink="/pedidos/detalhes/{{pedido.idPedido}}">Exibir</a>
+                <a style="display: block" (click)="refazerPedido(pedido)" routerLink="/carrinho">Refazer Pedido</a>
+                <a *ngIf="pedido.status == 0" style="display: block" (click)="cancelar(pedido)" routerLink="./">Cancelar</a> 
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>

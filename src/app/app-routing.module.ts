@@ -11,8 +11,9 @@ import { CarrinhoComponent } from "./components/carrinho/carrinho.component";
 import { BuscaComponent } from './components/busca/busca.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PedidoComponent } from "./components/pedido/pedido.component";
+import { PedidoDetalhadoComponent } from "./components/pedido-detalhado/pedido-detalhado.component";
 import { CompraFinalizadaComponent } from './components/compra-finalizada/compra-finalizada.component';
-
 
 const routes: Routes = [
   {
@@ -34,10 +35,6 @@ const routes: Routes = [
   {
     path: "produtos-categoria",
     component: ProdutosCategoriaComponent
-  },
-  {
-    path: "produto-detalhado",
-    component: ProdutoDetalhadoComponent
   },
   {
     path: "contato",
@@ -62,6 +59,14 @@ const routes: Routes = [
   {
     path: "carrinho/checkout",
     component: CheckoutComponent
+  },
+  {
+    path: "pedidos",
+    component: PedidoComponent
+  },
+  {
+    path: "pedidos/detalhes/:id",
+    component: PedidoDetalhadoComponent
   },
   {
     path: "checkout/compra-finalizada",

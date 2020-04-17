@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { HttpService } from 'src/app/services/http.service';
-import { HomeComponent } from '../home/home.component';
+import { FormGroup } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Router } from '@angular/router';
-import { formatDate, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
@@ -22,10 +19,10 @@ export class CadastroComponent implements OnInit {
 
     let telefoneFixo: string;
 
-    if(form.value.phone == null) {
-        telefoneFixo = "";
+    if (form.value.phone == null) {
+      telefoneFixo = "";
     } else {
-        telefoneFixo = form.value.phone;
+      telefoneFixo = form.value.phone;
     }
 
     let body = {
@@ -40,8 +37,8 @@ export class CadastroComponent implements OnInit {
     };
     this.httpCliente.postClientes(body).subscribe(
       (data) => {
-        console.log(data);
-        if(data) {
+        // console.log(data);
+        if (data) {
           this.router.navigate(['/home']);
           return alert("Cadastro realizado com sucesso");
         } else {
@@ -56,17 +53,17 @@ export class CadastroComponent implements OnInit {
     let diaAtual = dataAtual.getDay();
     let mesAtual = dataAtual.getMonth();
 
-    let anoValidacao = dataAtual.getFullYear() -18 ;
+    let anoValidacao = dataAtual.getFullYear() - 18;
 
     let anoNasc = parseInt((data.split("-", -2))[0]);
     let mesNasc = parseInt((data.split("-", -2))[1]);
     let diaNasc = parseInt((data.split("-", -2))[2]);
 
-    if(data == "") {
+    if (data == "") {
       return;
     }
 
-    if(anoNasc > anoValidacao || anoNasc > anoValidacao && mesNasc > mesAtual && diaNasc > diaAtual) {
+    if (anoNasc > anoValidacao || anoNasc > anoValidacao && mesNasc > mesAtual && diaNasc > diaAtual) {
       return alert('Voce não tem 18 anos completos.Por favor, direcionar o cadastrado para alguem de maior!');
     }
   }

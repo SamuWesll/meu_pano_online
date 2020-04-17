@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -36,8 +36,8 @@ export class EnderecoService {
     let options = {
       headers: httpHeaders
     }
-
-    return this.enderecoService.delete<void>(`http://localhost:8080/meupanoonline/endereco?idEndereco=${idEndereco}`, options).pipe(catchError(this.handleError))
+    return this.enderecoService
+      .delete<void>(`http://localhost:8080/meupanoonline/endereco?idEndereco=${idEndereco}`, options)
+      .pipe(catchError(this.handleError))
   }
-
 }
