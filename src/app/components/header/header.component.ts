@@ -172,4 +172,9 @@ export class HeaderComponent implements OnInit {
     input.value = ''
   }
 
+  historicoPedidos() {
+    this.router.navigate(['/pedidos']);
+    this.modal.hide();
+  }
+
 }
